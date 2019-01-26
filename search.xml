@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ss科学上网]]></title>
+    <url>%2F2019%2F01%2F26%2Fss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%2F</url>
+    <content type="text"><![CDATA[嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。 一、vultr注册—&gt;绑定银行卡—&gt;建服务器 前两个就不细说了 Server Location: sydney Server Type：centos7 x64 Server Size: 按实际需要选 Deploy Now 接下来是漫长的等待…… 二、ubuntu(我也很奇怪为什么centos可以在ubuntu里)连接：1$ ssh root@IP 之后有一个要输入yes 之后是密码 一键配置ss123wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.shchmod +x shadowsocks.sh./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log 之后按照提示输入IP、端口、密码、加密方式 出现红框框的时候，恭喜，快要成功了…… 三、shadowsocks下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定 bingo~至于为什么会在Ubuntu里可以我再看看 以下为我走的弯路学到的知识一、新建centos7虚拟机 准备 VMware workstation 14 、镜像（https://www.centos.org/download/） 具体步骤 安装程序光盘映像文件，找到下载的路径 命名，选择位置 确定磁盘大小和是否拆分为多个文件 自定义硬件 选择使用ISO映像文件，并找到映像文件的路径 完成之后就可以打开虚拟机了 点黑色的地方，用上下键选第一条，漫长的等待…… 选择语言（ENGLISH） 确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装 之后设置root和新建用户 这次是非常漫长的等待…… reboot! 设置网络，登陆，bingo~ 二、端口放行（操作防火墙）主要是三个命令 123firewall-cmd --zone=public --add-port=80/tcp --permanent //--zone :作用域 80/tcp:端口/传输协议 --permanent：没有这个重启以后还得再来一遍firewall-cmd --reloadiptables-save 第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口 ##同时用到的对防火墙的操作 1234firewall-cmd --state //查看防火墙状态systemctl stop firewalld.service //关闭防火墙systemctl start firewalld.service //开启防火墙systemctl disable firewalld.service //禁止firewall开机启动]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F01%2F21%2Ftest%2F</url>
     <content type="text"><![CDATA[Welcome! This is a test!]]></content>

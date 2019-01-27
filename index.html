@@ -360,14 +360,14 @@
 <p>Server Size: 按实际需要选</p>
 <p>Deploy Now</p>
 <p>接下来是漫长的等待……</p>
-<h3 id="二、ubuntu-我也很奇怪为什么centos可以在ubuntu里"><a href="#二、ubuntu-我也很奇怪为什么centos可以在ubuntu里" class="headerlink" title="二、ubuntu(我也很奇怪为什么centos可以在ubuntu里)"></a>二、ubuntu(我也很奇怪为什么centos可以在ubuntu里)</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
+<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
 <p>之后有一个要输入yes</p>
 <p>之后是密码</p>
-<h4 id="一键配置ss"><a href="#一键配置ss" class="headerlink" title="一键配置ss"></a>一键配置ss</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
 <p>之后按照提示输入IP、端口、密码、加密方式</p>
 <p>出现红框框的时候，恭喜，快要成功了……</p>
 <h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
-<p>bingo~至于为什么会在Ubuntu里可以我再看看</p>
+<p><strong>bingo~</strong></p>
 <hr>
 <h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
 <li><p>准备</p>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[CSAPP_3]]></title>
     <url>%2F2019%2F02%2F01%2FCSAPP-3%2F</url>
-    <content type="text"><![CDATA[无符号数编码$$B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i$$ $$eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1$$ 无符号数编码唯一性 双射 补码编码$$B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i$$ 二进制数编码表示 原码 最左边一位为符号位（小数：小数点左边一位为符号位） +：0 —：1 反码 符号位不变，其他取反 补码 负数：反码末尾加一 正数：本身 有符号数和无符号数的转换 补码转换为无符号数$$T2U_\omega(x)=\begin{cases}x+2^\omega, x&lt;0\x, x\geq0\\end{cases}$$ 无符号数转换为补码$$U2T_\omega(u)=-u_{\omega-1}2^\omega+u$$]]></content>
+    <content type="text"><![CDATA[无符号数编码$$B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i$$ $$eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1$$ 无符号数编码唯一性 双射 补码编码$$B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i$$ 二进制数编码表示 原码 最左边一位为符号位（小数：小数点左边一位为符号位） +：0 —：1 反码 符号位不变，其他取反 补码 负数：反码末尾加一 正数：本身 有符号数和无符号数的转换 补码转换为无符号数$$T2U_\omega(x)=\begin{cases}x+2^\omega, x&lt;0\x,x\geq0\\end{cases}$$ 无符号数转换为补码$$U2T_\omega(u)=-u_{\omega-1}2^\omega+u$$]]></content>
   </entry>
   <entry>
     <title><![CDATA[CSAPP_2]]></title>

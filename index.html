@@ -271,6 +271,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/07/CSAPP-datalab/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/07/CSAPP-datalab/" itemprop="url">CSAPP-datalab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-07T13:41:56+08:00">
+                2019-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h4><p>题目：只能用～和|来实现位的与操作。</p>
+<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int bitAnd(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x|~y));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h4><p>题目：给定n （0&lt;=n&lt;=3），求出第n个字节是哪数字。</p>
+<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/01/CSAPP-3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -511,13 +635,13 @@
 <td style="text-align:center">AND</td>
 </tr>
 <tr>
-<td style="text-align:center">^</td>
-<td style="text-align:center">异或（不同为1，相同为0）</td>
-</tr>
-<tr>
 <td style="text-align:center">\</td>
 <td style="text-align:center"></td>
 <td>OR</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">异或（不同为1，相同为0）</td>
 </tr>
 </tbody>
 </table>
@@ -1069,7 +1193,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

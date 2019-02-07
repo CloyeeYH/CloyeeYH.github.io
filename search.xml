@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CSAPP-datalab]]></title>
+    <url>%2F2019%2F02%2F07%2FCSAPP-datalab%2F</url>
+    <content type="text"><![CDATA[bitAnd题目：只能用～和|来实现位的与操作。 思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y 1234int bitAnd(int x,int y)&#123; return (~(~x|~y));&#125; getByte题目：给定n （0&lt;=n&lt;=3），求出第n个字节是哪数字。 思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[CSAPP_3]]></title>
     <url>%2F2019%2F02%2F01%2FCSAPP-3%2F</url>
     <content type="text"><![CDATA[无符号数编码$$B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i$$ $$eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1$$ 无符号数编码唯一性 双射 补码编码$$B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i$$ 二进制数编码表示 原码 最左边一位为符号位（小数：小数点左边一位为符号位） +：0 —：1 反码 符号位不变，其他取反 补码 负数：反码末尾加一 正数：本身 有符号数和无符号数的转换 补码转换为无符号数$$T2U_\omega(x)=\begin{cases}x+2^\omega, x&lt;0\x,x\geq0\\end{cases}$$ 无符号数转换为补码$$U2T_\omega(u)=-u_{\omega-1}2^\omega+u$$]]></content>
@@ -8,7 +13,7 @@
   <entry>
     <title><![CDATA[CSAPP_2]]></title>
     <url>%2F2019%2F01%2F30%2FCSAPP-2%2F</url>
-    <content type="text"><![CDATA[寻址和字节顺序 小端法：最低有效字节在最前面 大端法：最高有效字节在最前面 浮点型和整型数据有不同的字节模式 二进制代码不兼容 布尔代数 布尔运算 逻辑运算 ~ NOT &amp; AND ^ 异或（不同为1，相同为0） \ OR 位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左 布尔环 移位运算 C表达式 意义 x&gt;&gt;k x右移k位 x&lt;&lt;k x左移k位 位级运算转换为二进制进行运算，之后转回相应进制 掩码运算]]></content>
+    <content type="text"><![CDATA[寻址和字节顺序 小端法：最低有效字节在最前面 大端法：最高有效字节在最前面 浮点型和整型数据有不同的字节模式 二进制代码不兼容 布尔代数 布尔运算 逻辑运算 ~ NOT &amp; AND \ OR ^ 异或（不同为1，相同为0） 位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左 布尔环 移位运算 C表达式 意义 x&gt;&gt;k x右移k位 x&lt;&lt;k x左移k位 位级运算转换为二进制进行运算，之后转回相应进制 掩码运算]]></content>
   </entry>
   <entry>
     <title><![CDATA[CSAPP_1]]></title>

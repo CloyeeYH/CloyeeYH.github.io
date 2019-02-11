@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cloyee&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta name="description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-4（浮点数）">
+<meta property="og:url" content="http://yoursite.com/2019/02/11/CSAPP-4/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
+<meta property="og:description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T13:27:07.398Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cloyee&#39;s blog">
+<meta name="twitter:title" content="CSAPP-4（浮点数）">
+<meta name="twitter:description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/11/CSAPP-4/">
 
 
 
 
 
-  <title>Archive | Cloyee's blog</title>
+  <title>CSAPP-4（浮点数） | Cloyee's blog</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
       <a href="https://cloyeeyh.github.io/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -256,282 +260,161 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CSAPP-4/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">CSAPP-4（浮点数）</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T20:13:09+08:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 7 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/11/CSAPP-4/" itemprop="url">
-              
-                <span itemprop="name">CSAPP-4（浮点数）</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-11T20:13:09+08:00" content="2019-02-11">
-          02-11
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/11/CSAPP-datalab/" itemprop="url">
-              
-                <span itemprop="name">CSAPP-datalab</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-11T13:41:56+08:00" content="2019-02-11">
-          02-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/01/CSAPP-3/" itemprop="url">
-              
-                <span itemprop="name">CSAPP_3</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-01T18:57:48+08:00" content="2019-02-01">
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h4><ul>
+<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
+<li>向零舍入：正数向下舍入，负数向上舍入</li>
+<li>向上舍入：大于该数的最小整数</li>
+<li>向下舍入：不大于该数的最大整数</li>
+</ul>
+<h4 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h4><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
+<ul>
+<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
+</li>
+<li><p>规格化的值</p>
+<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
+</li>
+<li><p>非规格化的值</p>
+<p>阶码域全为0，E=1-Bias</p>
+</li>
+<li><p>特殊值</p>
+<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
+</li>
+</ul>
+<h4 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h4><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/30/CSAPP-2/" itemprop="url">
-              
-                <span itemprop="name">CSAPP_2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-30T18:57:17+08:00" content="2019-01-30">
-          01-30
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/27/CSAPP-1/" itemprop="url">
-              
-                <span itemprop="name">CSAPP_1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-27T13:50:46+08:00" content="2019-01-27">
-          01-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/26/ss科学上网/" itemprop="url">
-              
-                <span itemprop="name">ss科学上网</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-26T20:00:52+08:00" content="2019-01-26">
-          01-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/05/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-01-05T19:47:20+08:00" content="2019-01-05">
-          01-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/11/CSAPP-datalab/" rel="next" title="CSAPP-datalab">
+                <i class="fa fa-chevron-left"></i> CSAPP-datalab
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -539,6 +422,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -559,8 +446,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -604,6 +500,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#舍入"><span class="nav-number">1.</span> <span class="nav-text">舍入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IEEE浮点表示"><span class="nav-number">2.</span> <span class="nav-text">IEEE浮点表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数转换为浮点数"><span class="nav-number">3.</span> <span class="nav-text">整数转换为浮点数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -750,6 +662,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1124,26 +1040,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

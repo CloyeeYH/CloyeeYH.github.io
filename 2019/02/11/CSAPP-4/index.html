@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
+<meta name="description" content="bomb lab题目都找不到……所以，又回来啃书了…… 舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP-4（浮点数）">
 <meta property="og:url" content="http://yoursite.com/2019/02/11/CSAPP-4/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
+<meta property="og:description" content="bomb lab题目都找不到……所以，又回来啃书了…… 舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-11T13:27:07.398Z">
+<meta property="og:updated_time" content="2019-02-13T10:22:05.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-4（浮点数）">
-<meta name="twitter:description" content="舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：">
+<meta name="twitter:description" content="bomb lab题目都找不到……所以，又回来啃书了…… 舍入 向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。 向零舍入：正数向下舍入，负数向上舍入 向上舍入：大于该数的最小整数 向下舍入：不大于该数的最大整数  IEEE浮点表示$$V=(-1)^s\times M\times 2^E$$  符号位（s），阶码字段(E)，小数字段(M)  规格化的值 E的位模式不全">
 
 
 
@@ -341,13 +341,14 @@
       
 
       
-        <h4 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h4><ul>
+        <p>bomb lab题目都找不到……所以，又回来啃书了……</p>
+<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
 <li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
 <li>向零舍入：正数向下舍入，负数向上舍入</li>
 <li>向上舍入：大于该数的最小整数</li>
 <li>向下舍入：不大于该数的最大整数</li>
 </ul>
-<h4 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h4><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
+<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
 <ul>
 <li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
 </li>
@@ -361,7 +362,7 @@
 <p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
 </li>
 </ul>
-<h4 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h4><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
+<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
 
       
     </div>
@@ -510,7 +511,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#舍入"><span class="nav-number">1.</span> <span class="nav-text">舍入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IEEE浮点表示"><span class="nav-number">2.</span> <span class="nav-text">IEEE浮点表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数转换为浮点数"><span class="nav-number">3.</span> <span class="nav-text">整数转换为浮点数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#舍入"><span class="nav-number">1.</span> <span class="nav-text">舍入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IEEE浮点表示"><span class="nav-number">2.</span> <span class="nav-text">IEEE浮点表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数转换为浮点数"><span class="nav-number">3.</span> <span class="nav-text">整数转换为浮点数</span></a></li></ol></div>
             
 
           </div>

@@ -79,14 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP-6">
+<meta property="og:url" content="http://yoursite.com/2019/02/15/CSAPP-6/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
+<meta property="og:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-05T12:53:31.246Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg">
+<meta property="og:updated_time" content="2019-02-27T15:19:22.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="CSAPP-6">
+<meta name="twitter:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg">
 
 
 
@@ -116,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/15/CSAPP-6/">
 
 
 
 
 
-  <title>tags | Cloyee's blog</title>
+  <title>CSAPP-6 | Cloyee's blog</title>
   
 
 
@@ -259,40 +265,152 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/CSAPP-6/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                No tags
-            </div>
-            <div class="tag-cloud-tags">
+          <h1 class="post-title" itemprop="name headline">CSAPP-6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
               
-            </div>
-          </div>
-        
-      </div>
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-15T23:18:48+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
+<p>二元：俩个操作数</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
+<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
+<p>高位被忽略，eg：salb移7位……</p>
+<p>左移：SAL、SHL右边都是填0</p>
+<p>右移：SAR左边填符号位。SHR左边填0</p>
+<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/13/CSAPP-5/" rel="next" title="CSAPP-5">
+                <i class="fa fa-chevron-left"></i> CSAPP-5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/17/CSAPP-7/" rel="prev" title="CSAPP-7">
+                CSAPP-7 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -325,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -370,6 +497,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#算术和逻辑操作"><span class="nav-number">1.</span> <span class="nav-text">算术和逻辑操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载有效地址"><span class="nav-number">1.1.</span> <span class="nav-text">加载有效地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元和二元操作"><span class="nav-number">1.2.</span> <span class="nav-text">一元和二元操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移位操作"><span class="nav-number">1.3.</span> <span class="nav-text">移位操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊的算术操作"><span class="nav-number">1.4.</span> <span class="nav-text">特殊的算术操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
+<meta name="description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-datalab">
-<meta property="og:url" content="http://yoursite.com/2019/02/11/CSAPP-datalab/index.html">
+<meta property="og:title" content="CSAPP-9">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/CSAPP-9/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
+<meta property="og:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-13T10:13:57.851Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
+<meta property="og:updated_time" content="2019-02-27T15:09:41.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-datalab">
-<meta name="twitter:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
+<meta name="twitter:title" content="CSAPP-9">
+<meta name="twitter:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/11/CSAPP-datalab/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/21/CSAPP-9/">
 
 
 
 
 
-  <title>CSAPP-datalab | Cloyee's blog</title>
+  <title>CSAPP-9 | Cloyee's blog</title>
   
 
 
@@ -274,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CSAPP-datalab/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/CSAPP-9/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -291,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-datalab</h1>
+          <h1 class="post-title" itemprop="name headline">CSAPP-9</h1>
         
 
         <div class="post-meta">
@@ -303,8 +305,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T13:41:56+08:00">
-                2019-02-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T22:58:12+08:00">
+                2019-02-21
               </time>
             
 
@@ -341,191 +343,39 @@
       
 
       
-        <p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
-<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
-<ul>
-<li><p>bitAnd - x&amp;y using only ~ and |</p>
-<ul>
-<li>Example: bitAnd(6, 5) = 4</li>
-<li>Legal ops: ~ |</li>
-<li>Max ops: 8</li>
-<li>Rating: 1</li>
-</ul>
+        <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+<p>起始地址：储存在%ebp寄存器（桢指针）</p>
+<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
+<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
+<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
+<li><p>备份原来指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int bitAnd(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x|~y));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>getByte</p>
-<p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
-<ul>
-<li>getByte - Extract byte n from word x</li>
-<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
-<li>Examples: getByte(0x12345678,1) = 0x56</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 6</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
-<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int getByte(int x,int n)</span><br><span class="line">&#123;</span><br><span class="line">	int temp=x&gt;&gt;((n)&lt;&lt;3);</span><br><span class="line">	temp=temp&amp;0xFF;</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
-<ul>
-<li>logicalShift - shift x to the right by n, using a logical shift<ul>
-<li>Can assume that 0 &lt;= n &lt;= 31</li>
-<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 20</li>
-<li>Rating: 3</li>
-</ul>
+<li><p>给临时变量分配预留内存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：</p>
-<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int logicalShift(int x,int n)</span><br><span class="line">&#123;</span><br><span class="line">	int x1=x&gt;&gt;n;</span><br><span class="line">	int mask=(~（1&lt;&lt;31)&gt;&gt;n&lt;&lt;1)+1</span><br><span class="line">	return X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
-<ul>
-<li><p>bitCount - returns count of number of 1’s in word</p>
-<ul>
-<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 40</li>
-<li>Rating: 4</li>
-</ul>
+<li><p>值压入栈顶（备份）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
-<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
-<ul>
-<li>bang - Compute !x without using !</li>
-<li>Examples: bang(3) = 0, bang(0) = 1</li>
-<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 12</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int bang(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int x1=~x+1;</span><br><span class="line">	x=x|x1;</span><br><span class="line">	x=x&gt;&gt;31;</span><br><span class="line">	x=x+1；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
-<ul>
-<li>tmin - return minimum two’s complement integer</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 4</li>
-<li>Rating: 1</li>
-</ul>
-<p>思路：这不就是返回一个确定的值吗？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int tmin(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0x80 &lt;&lt; 24;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>fitsBits</p>
-<p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
-<ul>
-<li>fitsBits - return 1 if x can be represented as an</li>
-<li>n-bit, two’s complement integer.</li>
-<li>1 &lt;= n &lt;= 32</li>
-<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int fitsBits(int x, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int x1 =~((~n)+1);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   int ans=(!tmpx|!(tmpx+1));</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
-<ul>
-<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
-<li>Round toward zero</li>
-<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int divpwr2(int x, int n)</span><br><span class="line">&#123;</span><br><span class="line">    int tmp = (~( (x &gt;&gt; 31) &amp; 0x1) )+1 ;</span><br><span class="line">    int q= ~((~0)&lt;&lt;n);</span><br><span class="line">    int ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
-<ul>
-<li>negate - return -x <ul>
-<li>Example: negate(1) = -1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 5</li>
-<li>Rating: 2</li>
-</ul>
+<li><p>使用建立好的栈帧，mov,push,pop</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int negate(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return ((~x)+1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>isPositive</p>
-<p>题目:判断x是不是正数</p>
-<ul>
-<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
-<li>Example: isPositive(-1) = 0.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 8</li>
-<li>Rating: 3</li>
-</ul>
+<li><p>从栈帧中将备份的值恢复到寄存器</p>
 </li>
-</ul>
-<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int isPositive(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return !(!x|(x&gt;&gt;31)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
-<ul>
-<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
-<li>Example: isLessOrEqual(4,5) = 1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 24</li>
-<li>Rating: 3</li>
-</ul>
-<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int isLessOrEqual(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">   int signx = (x &gt;&gt; 31);</span><br><span class="line">   int signy = (y &gt;&gt; 31);</span><br><span class="line">   int isSameSign=!(signx^signy) ;</span><br><span class="line">   int p=!(((~x)+1+y)&gt;&gt;31);</span><br><span class="line">   int ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ilog2</p>
-<p>题目：求整数的log(x)。</p>
-<ul>
-<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
-<li>Example: ilog2(16) = 4</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 90</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int ilog2(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int num=0;</span><br><span class="line">	num=(!!(x&gt;&gt;16))&lt;&lt;4;</span><br><span class="line">	num=num+((!!(x&gt;&gt;(8+num)))&lt;&lt;3);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(4+num)))&lt;&lt;2);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(2+num)))&lt;&lt;1);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(1+num)))&lt;&lt;0);</span><br><span class="line">	return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
-<ul>
-<li>float_neg - Return bit-level equivalent of expression -f for</li>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representations of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 10</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">unsigned float_neg(unsigned uf)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned result;</span><br><span class="line">    unsigned tmp;</span><br><span class="line">    result=uf^0x80000000;</span><br><span class="line">    tmp=uf&amp;0x7fffffff;</span><br><span class="line">    if(tmp&gt;0x7f800000) result=uf;</span><br><span class="line">    return  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
-<ul>
-<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
-<li>Result is returned as unsigned int, but</li>
-<li>it is to be interpreted as the bit-level representation of a</li>
-<li>single-precision floating point values.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
-<p>如果是0，直接返回即可</p>
-<p>如果是0x80000000,返回0xcf000000</p>
-<p>如果负数：变为整正数之后按照正数计算</p>
-<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
-<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
-<ul>
-<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representation of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
+<li><p>释放被调用的栈帧，栈指针增大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>嘤嘤嘤~浮点数真令人头大</p>
+<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+</li>
+</ol>
+<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
+<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
+<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
+<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
+<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 
       
     </div>
@@ -550,8 +400,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/01/CSAPP-3/" rel="next" title="CSAPP_3">
-                <i class="fa fa-chevron-left"></i> CSAPP_3
+              <a href="/2019/02/17/CSAPP-8/" rel="next" title="CSAPP-8">
+                <i class="fa fa-chevron-left"></i> CSAPP-8
               </a>
             
           </div>
@@ -560,8 +410,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/11/CSAPP-4/" rel="prev" title="CSAPP-4（浮点数）">
-                CSAPP-4（浮点数） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/23/CSAPP-10/" rel="prev" title="CSAPP-10">
+                CSAPP-10 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -678,7 +528,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#bitAnd"><span class="nav-number">1.</span> <span class="nav-text">bitAnd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logicalShift"><span class="nav-number">2.</span> <span class="nav-text">logicalShift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitCount"><span class="nav-number">3.</span> <span class="nav-text">bitCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bang"><span class="nav-number">4.</span> <span class="nav-text">bang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmin"><span class="nav-number">5.</span> <span class="nav-text">tmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#divpwr2"><span class="nav-number">6.</span> <span class="nav-text">divpwr2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negate"><span class="nav-number">7.</span> <span class="nav-text">negate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLessOrEqual"><span class="nav-number">8.</span> <span class="nav-text">isLessOrEqual</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-neg"><span class="nav-number">9.</span> <span class="nav-text">float_neg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-i2f"><span class="nav-number">10.</span> <span class="nav-text">float_i2f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-twice"><span class="nav-number">11.</span> <span class="nav-text">float_twice</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧的结构"><span class="nav-number">1.1.</span> <span class="nav-text">栈帧的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程的实现"><span class="nav-number">1.2.</span> <span class="nav-text">过程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程相关指令-call、leave、ret"><span class="nav-number">1.3.</span> <span class="nav-text">过程相关指令:call、leave、ret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器的使用规则"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器的使用规则</span></a></li></ol></li></ol></div>
             
 
           </div>

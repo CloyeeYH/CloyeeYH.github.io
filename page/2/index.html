@@ -79,17 +79,13 @@
 
 
 
-<meta name="description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-datalab">
-<meta property="og:url" content="http://yoursite.com/2019/02/11/CSAPP-datalab/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cloyee&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-13T10:13:57.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-datalab">
-<meta name="twitter:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
+<meta name="twitter:title" content="Cloyee&#39;s blog">
 
 
 
@@ -119,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/11/CSAPP-datalab/">
+  <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
 
 
-  <title>CSAPP-datalab | Cloyee's blog</title>
+  <title>Cloyee's blog</title>
   
 
 
@@ -144,7 +140,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
       <a href="https://cloyeeyh.github.io/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -259,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -274,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CSAPP-datalab/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/30/CSAPP-2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -291,7 +288,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-datalab</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/30/CSAPP-2/" itemprop="url">CSAPP_2</a></h1>
         
 
         <div class="post-meta">
@@ -303,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T13:41:56+08:00">
-                2019-02-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-30T18:57:17+08:00">
+                2019-01-30
               </time>
             
 
@@ -341,192 +340,72 @@
       
 
       
-        <p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
-<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
+        
+          
+            <h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
+<li>小端法：最低有效字节在最前面</li>
+<li>大端法：最高有效字节在最前面</li>
+<li>浮点型和整型数据有不同的字节模式</li>
+<li>二进制代码不兼容</li>
+</ol>
+<h4 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">布尔运算</th>
+<th style="text-align:center">逻辑运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~</td>
+<td style="text-align:center">NOT</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">AND</td>
+</tr>
+<tr>
+<td style="text-align:center">单竖线</td>
+<td style="text-align:center">OR</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">异或（不同为1，相同为0）</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><p>bitAnd - x&amp;y using only ~ and |</p>
-<ul>
-<li>Example: bitAnd(6, 5) = 4</li>
-<li>Legal ops: ~ |</li>
-<li>Max ops: 8</li>
-<li>Rating: 1</li>
+<li>位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左</li>
+<li>布尔环</li>
 </ul>
-</li>
-</ul>
-<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int bitAnd(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x|~y));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>getByte</p>
-<p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
-<ul>
-<li>getByte - Extract byte n from word x</li>
-<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
-<li>Examples: getByte(0x12345678,1) = 0x56</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 6</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
-<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int getByte(int x,int n)</span><br><span class="line">&#123;</span><br><span class="line">	int temp=x&gt;&gt;((n)&lt;&lt;3);</span><br><span class="line">	temp=temp&amp;0xFF;</span><br><span class="line">	return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
-<ul>
-<li>logicalShift - shift x to the right by n, using a logical shift<ul>
-<li>Can assume that 0 &lt;= n &lt;= 31</li>
-<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 20</li>
-<li>Rating: 3</li>
-</ul>
-</li>
-</ul>
-<p>思路：</p>
-<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int logicalShift(int x,int n)</span><br><span class="line">&#123;</span><br><span class="line">	int x1=x&gt;&gt;n;</span><br><span class="line">	int mask=(~（1&lt;&lt;31)&gt;&gt;n&lt;&lt;1)+1</span><br><span class="line">	return X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
-<ul>
-<li><p>bitCount - returns count of number of 1’s in word</p>
-<ul>
-<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 40</li>
-<li>Rating: 4</li>
-</ul>
-</li>
-</ul>
-<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
-<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
-<ul>
-<li>bang - Compute !x without using !</li>
-<li>Examples: bang(3) = 0, bang(0) = 1</li>
-<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 12</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int bang(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int x1=~x+1;</span><br><span class="line">	x=x|x1;</span><br><span class="line">	x=x&gt;&gt;31;</span><br><span class="line">	x=x+1；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
-<ul>
-<li>tmin - return minimum two’s complement integer</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 4</li>
-<li>Rating: 1</li>
-</ul>
-<p>思路：这不就是返回一个确定的值吗？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int tmin(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0x80 &lt;&lt; 24;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>fitsBits</p>
-<p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
-<ul>
-<li>fitsBits - return 1 if x can be represented as an</li>
-<li>n-bit, two’s complement integer.</li>
-<li>1 &lt;= n &lt;= 32</li>
-<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int fitsBits(int x, int n)</span><br><span class="line">&#123;</span><br><span class="line">   int x1 =~((~n)+1);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   int ans=(!tmpx|!(tmpx+1));</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
-<ul>
-<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
-<li>Round toward zero</li>
-<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int divpwr2(int x, int n)</span><br><span class="line">&#123;</span><br><span class="line">    int tmp = (~( (x &gt;&gt; 31) &amp; 0x1) )+1 ;</span><br><span class="line">    int q= ~((~0)&lt;&lt;n);</span><br><span class="line">    int ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
-<ul>
-<li>negate - return -x <ul>
-<li>Example: negate(1) = -1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 5</li>
-<li>Rating: 2</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int negate(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return ((~x)+1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>isPositive</p>
-<p>题目:判断x是不是正数</p>
-<ul>
-<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
-<li>Example: isPositive(-1) = 0.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 8</li>
-<li>Rating: 3</li>
-</ul>
-</li>
-</ul>
-<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int isPositive(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return !(!x|(x&gt;&gt;31)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
-<ul>
-<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
-<li>Example: isLessOrEqual(4,5) = 1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 24</li>
-<li>Rating: 3</li>
-</ul>
-<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int isLessOrEqual(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">   int signx = (x &gt;&gt; 31);</span><br><span class="line">   int signy = (y &gt;&gt; 31);</span><br><span class="line">   int isSameSign=!(signx^signy) ;</span><br><span class="line">   int p=!(((~x)+1+y)&gt;&gt;31);</span><br><span class="line">   int ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ilog2</p>
-<p>题目：求整数的log(x)。</p>
-<ul>
-<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
-<li>Example: ilog2(16) = 4</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 90</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int ilog2(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int num=0;</span><br><span class="line">	num=(!!(x&gt;&gt;16))&lt;&lt;4;</span><br><span class="line">	num=num+((!!(x&gt;&gt;(8+num)))&lt;&lt;3);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(4+num)))&lt;&lt;2);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(2+num)))&lt;&lt;1);</span><br><span class="line">	num=num+((!!(x&gt;&gt;(1+num)))&lt;&lt;0);</span><br><span class="line">	return num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
-<ul>
-<li>float_neg - Return bit-level equivalent of expression -f for</li>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representations of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 10</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">unsigned float_neg(unsigned uf)</span><br><span class="line">&#123;</span><br><span class="line">    unsigned result;</span><br><span class="line">    unsigned tmp;</span><br><span class="line">    result=uf^0x80000000;</span><br><span class="line">    tmp=uf&amp;0x7fffffff;</span><br><span class="line">    if(tmp&gt;0x7f800000) result=uf;</span><br><span class="line">    return  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
-<ul>
-<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
-<li>Result is returned as unsigned int, but</li>
-<li>it is to be interpreted as the bit-level representation of a</li>
-<li>single-precision floating point values.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
-<p>如果是0，直接返回即可</p>
-<p>如果是0x80000000,返回0xcf000000</p>
-<p>如果负数：变为整正数之后按照正数计算</p>
-<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
-<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
-<ul>
-<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representation of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-</li>
-</ul>
-<p>嘤嘤嘤~浮点数真令人头大</p>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：右端补k个0，移位之后符号为不变，将一个整数左移1位相当于乘以2</p>
+<p>逻辑右移：左端补k个0</p>
+<p>算术右移：左端补k个最高有效位的值</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x&gt;&gt;k</td>
+<td style="text-align:center">x右移k位</td>
+</tr>
+<tr>
+<td style="text-align:center">x&lt;&lt;k</td>
+<td style="text-align:center">x左移k位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>转换为二进制进行运算，之后转回相应进制</p>
+<p><strong>掩码运算</strong></p>
+<p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
+<p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
 
+          
+        
       
     </div>
     
@@ -543,32 +422,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/02/01/CSAPP-3/" rel="next" title="CSAPP_3">
-                <i class="fa fa-chevron-left"></i> CSAPP_3
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/11/CSAPP-4/" rel="prev" title="CSAPP-4（浮点数）">
-                CSAPP-4（浮点数） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -578,11 +437,327 @@
   </article>
 
 
+    
+      
 
-    <div class="post-spread">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/CSAPP-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/27/CSAPP-1/" itemprop="url">CSAPP_1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T13:50:46+08:00">
+                2019-01-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h4><ol>
+<li><strong>硬件</strong><ul>
+<li>总线：贯穿整个系统的电子管道</li>
+<li>I/O设备：系统和外部联系的通道</li>
+<li>主存：执行程序时，存放相关数据</li>
+<li>处理器：解释或执行储存在主存中指令中的引擎</li>
+</ul>
+</li>
+<li><strong>软件</strong><ul>
+<li>应用程序</li>
+<li>操作系统</li>
+</ul>
+</li>
+</ol>
+<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
+<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
+<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
+<li><strong>共享库</strong></li>
+<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
+<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
+</ol>
+<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
+<li>并发：同时有多个活动的系统</li>
+<li>并行：用并发使一个系统运行更快</li>
+</ol>
+<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
+<li>文件是对I/O设备的抽象</li>
+<li>虚拟内存是对主存和磁盘的抽象</li>
+<li>进程是对正在运行的程序的抽象</li>
+<li>虚拟机是对整个计算机的抽象</li>
+</ol>
+
+          
+        
       
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/26/ss科学上网/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/26/ss科学上网/" itemprop="url">ss科学上网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-26T20:00:52+08:00">
+                2019-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
+<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
+<p>前两个就不细说了</p>
+<p>Server Location: sydney</p>
+<p>Server Type：centos7 x64</p>
+<p>Server Size: 按实际需要选</p>
+<p>Deploy Now</p>
+<p>接下来是漫长的等待……</p>
+<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
+<p>之后有一个要输入yes</p>
+<p>之后是密码</p>
+<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<p>之后按照提示输入IP、端口、密码、加密方式</p>
+<p>出现红框框的时候，恭喜，快要成功了……</p>
+<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
+<p><strong>bingo~</strong></p>
+<hr>
+<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
+<li><p>准备</p>
+<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
+</li>
+<li><p>具体步骤</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
+<p>安装程序光盘映像文件，找到下载的路径</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
+<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
+<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
+<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
+<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
+<p>完成之后就可以打开虚拟机了</p>
+<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
+<p>选择语言（ENGLISH）</p>
+<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
+<p>之后设置root和新建用户</p>
+<p>这次是非常漫长的等待……</p>
+<p>reboot!</p>
+<p>设置网络，登陆，bingo~</p>
+<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
+<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
+<p>##同时用到的对防火墙的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -590,10 +765,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -614,17 +785,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -668,22 +830,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#bitAnd"><span class="nav-number">1.</span> <span class="nav-text">bitAnd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logicalShift"><span class="nav-number">2.</span> <span class="nav-text">logicalShift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitCount"><span class="nav-number">3.</span> <span class="nav-text">bitCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bang"><span class="nav-number">4.</span> <span class="nav-text">bang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmin"><span class="nav-number">5.</span> <span class="nav-text">tmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#divpwr2"><span class="nav-number">6.</span> <span class="nav-text">divpwr2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negate"><span class="nav-number">7.</span> <span class="nav-text">negate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLessOrEqual"><span class="nav-number">8.</span> <span class="nav-text">isLessOrEqual</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-neg"><span class="nav-number">9.</span> <span class="nav-text">float_neg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-i2f"><span class="nav-number">10.</span> <span class="nav-text">float_i2f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-twice"><span class="nav-number">11.</span> <span class="nav-text">float_twice</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -830,10 +976,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -1208,6 +1350,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

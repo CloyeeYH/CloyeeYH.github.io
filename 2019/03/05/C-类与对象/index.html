@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
+<meta name="description" content="面向对象程序设计的基本特点抽象抽出一类对象的公共性质并加以描述 数据抽象：某类对象的属性和状态 行为（功能，代码）抽象：某类对象的共同行为和功能特征 封装抽象得到的数据和行为相结合，形成类 继承多态一段程序处理多种类型对象 强制多态、重载多态、类型参数化多态、包含多态 类与对象类的定义类实现对数据的封装和隐蔽 123456789class 类名称&amp;#123;public：	外部接口protecte">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-9">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/CSAPP-9/index.html">
+<meta property="og:title" content="C++类与对象">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/C-类与对象/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
+<meta property="og:description" content="面向对象程序设计的基本特点抽象抽出一类对象的公共性质并加以描述 数据抽象：某类对象的属性和状态 行为（功能，代码）抽象：某类对象的共同行为和功能特征 封装抽象得到的数据和行为相结合，形成类 继承多态一段程序处理多种类型对象 强制多态、重载多态、类型参数化多态、包含多态 类与对象类的定义类实现对数据的封装和隐蔽 123456789class 类名称&amp;#123;public：	外部接口protecte">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
-<meta property="og:updated_time" content="2019-02-27T15:09:41.274Z">
+<meta property="og:updated_time" content="2019-03-09T12:16:17.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-9">
-<meta name="twitter:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
+<meta name="twitter:title" content="C++类与对象">
+<meta name="twitter:description" content="面向对象程序设计的基本特点抽象抽出一类对象的公共性质并加以描述 数据抽象：某类对象的属性和状态 行为（功能，代码）抽象：某类对象的共同行为和功能特征 封装抽象得到的数据和行为相结合，形成类 继承多态一段程序处理多种类型对象 强制多态、重载多态、类型参数化多态、包含多态 类与对象类的定义类实现对数据的封装和隐蔽 123456789class 类名称&amp;#123;public：	外部接口protecte">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/CSAPP-9/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/C-类与对象/">
 
 
 
 
 
-  <title>CSAPP-9 | Cloyee's blog</title>
+  <title>C++类与对象 | Cloyee's blog</title>
   
 
 
@@ -276,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/CSAPP-9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/C-类与对象/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -293,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-9</h1>
+          <h1 class="post-title" itemprop="name headline">C++类与对象</h1>
         
 
         <div class="post-meta">
@@ -305,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T22:58:12+08:00">
-                2019-02-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T09:57:54+08:00">
+                2019-03-05
               </time>
             
 
@@ -343,39 +341,33 @@
       
 
       
-        <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
-</li>
-</ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+        <h2 id="面向对象程序设计的基本特点"><a href="#面向对象程序设计的基本特点" class="headerlink" title="面向对象程序设计的基本特点"></a>面向对象程序设计的基本特点</h2><h3 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h3><p>抽出一类对象的公共性质并加以描述</p>
+<p>数据抽象：某类对象的属性和状态</p>
+<p>行为（功能，代码）抽象：某类对象的共同行为和功能特征</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>抽象得到的数据和行为相结合，形成类</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p>一段程序处理多种类型对象</p>
+<p>强制多态、重载多态、类型参数化多态、包含多态</p>
+<h2 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>类实现对数据的封装和隐蔽</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class 类名称</span><br><span class="line">&#123;</span><br><span class="line">public：</span><br><span class="line">	外部接口</span><br><span class="line">protected：</span><br><span class="line">	保护型成员</span><br><span class="line">private：</span><br><span class="line">	私有成员</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+<h3 id="类成员的访问控制"><a href="#类成员的访问控制" class="headerlink" title="类成员的访问控制"></a>类成员的访问控制</h3><p>公有类型：类的外部接口</p>
+<p>保护类型：和私有类型相似，区别在于继承过程中对产生的新类影响不同</p>
+<p>私有类型：私有成员只能被本类的成员函数访问，类外的任何访问都是非法的</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象的声明：</p>
+<p>​    类名   对象名；</p>
+<p>访问数据成员：</p>
+<p>​    对象名.数据成员名</p>
+<h3 id="类的成员函数"><a href="#类的成员函数" class="headerlink" title="类的成员函数"></a>类的成员函数</h3><h4 id="类的成员函数的实现"><a href="#类的成员函数的实现" class="headerlink" title="类的成员函数的实现"></a>类的成员函数的实现</h4><p>函数的原型声明要写在类体中，函数的具体实现写在类定义之外</p>
+<p>实现成员函数时要指明类的名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">返回值类型  类名：：函数成员名（参数表）</span><br><span class="line">&#123;</span><br><span class="line">	函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="成员函数调用中的目的对象"><a href="#成员函数调用中的目的对象" class="headerlink" title="成员函数调用中的目的对象"></a>成员函数调用中的目的对象</h4><h4 id="带默认形参值的成员函数"><a href="#带默认形参值的成员函数" class="headerlink" title="带默认形参值的成员函数"></a>带默认形参值的成员函数</h4><p>类成员函数的默认值写在类定义中，不能写在类定义之外的函数实现</p>
+<h2 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h2><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><p>对象在被创建时，利用特定的值构造对象，将对象初始化为一个特定的状态。</p>
+<p>构造函数的函数名与类名相同，没有返回值，一般为共有函数（public）</p>
+<ul>
+<li>无参数的构造函数（默认构造函数）</li>
+<li>有参数的构造函数：可以进行初始化</li>
+<li>复制构造函数：使用一个已经存在的对象（复制构造函数的参数指定），初始化同类的一个新对象</li>
+</ul>
+<p>#### </p>
 
       
     </div>
@@ -400,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/17/CSAPP-8/" rel="next" title="CSAPP-8">
-                <i class="fa fa-chevron-left"></i> CSAPP-8
+              <a href="/2019/03/04/C-散知识点/" rel="next" title="C++散知识点">
+                <i class="fa fa-chevron-left"></i> C++散知识点
               </a>
             
           </div>
@@ -410,8 +402,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/23/CSAPP-10/" rel="prev" title="CSAPP-10">
-                CSAPP-10 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/26/Data-Lab/" rel="prev" title="Data Lab">
+                Data Lab <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -528,7 +520,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧的结构"><span class="nav-number">1.1.</span> <span class="nav-text">栈帧的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程的实现"><span class="nav-number">1.2.</span> <span class="nav-text">过程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程相关指令-call、leave、ret"><span class="nav-number">1.3.</span> <span class="nav-text">过程相关指令:call、leave、ret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器的使用规则"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器的使用规则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象程序设计的基本特点"><span class="nav-number">1.</span> <span class="nav-text">面向对象程序设计的基本特点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象"><span class="nav-number">1.1.</span> <span class="nav-text">抽象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">1.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.3.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">1.4.</span> <span class="nav-text">多态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类与对象"><span class="nav-number">2.</span> <span class="nav-text">类与对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的定义"><span class="nav-number">2.1.</span> <span class="nav-text">类的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类成员的访问控制"><span class="nav-number">2.2.</span> <span class="nav-text">类成员的访问控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">2.3.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类的成员函数"><span class="nav-number">2.4.</span> <span class="nav-text">类的成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类的成员函数的实现"><span class="nav-number">2.4.1.</span> <span class="nav-text">类的成员函数的实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员函数调用中的目的对象"><span class="nav-number">2.4.2.</span> <span class="nav-text">成员函数调用中的目的对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带默认形参值的成员函数"><span class="nav-number">2.4.3.</span> <span class="nav-text">带默认形参值的成员函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数和析构函数"><span class="nav-number">3.</span> <span class="nav-text">构造函数和析构函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">3.0.1.</span> <span class="nav-text">构造函数</span></a></li></ol></li></ol></div>
             
 
           </div>

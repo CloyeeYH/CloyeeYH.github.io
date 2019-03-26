@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
+<meta name="description" content="回文数：数字反向读方法 1m=m*10+i%10;  123int i=5;cout&amp;lt;&amp;lt;i++&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;++i&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;i--&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;--i&amp;lt;&amp;lt;endl;//4，5，4，5 从右往左算，符号在前的先输出，符号在后的最后输出，    98   -97  2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-9">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/CSAPP-9/index.html">
+<meta property="og:title" content="C++散知识点">
+<meta property="og:url" content="http://yoursite.com/2019/03/04/C-散知识点/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
+<meta property="og:description" content="回文数：数字反向读方法 1m=m*10+i%10;  123int i=5;cout&amp;lt;&amp;lt;i++&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;++i&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;i--&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;--i&amp;lt;&amp;lt;endl;//4，5，4，5 从右往左算，符号在前的先输出，符号在后的最后输出，    98   -97  2">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
-<meta property="og:updated_time" content="2019-02-27T15:09:41.274Z">
+<meta property="og:updated_time" content="2019-03-12T10:53:51.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-9">
-<meta name="twitter:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
+<meta name="twitter:title" content="C++散知识点">
+<meta name="twitter:description" content="回文数：数字反向读方法 1m=m*10+i%10;  123int i=5;cout&amp;lt;&amp;lt;i++&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;++i&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;i--&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;--i&amp;lt;&amp;lt;endl;//4，5，4，5 从右往左算，符号在前的先输出，符号在后的最后输出，    98   -97  2">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/CSAPP-9/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/04/C-散知识点/">
 
 
 
 
 
-  <title>CSAPP-9 | Cloyee's blog</title>
+  <title>C++散知识点 | Cloyee's blog</title>
   
 
 
@@ -276,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/CSAPP-9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/C-散知识点/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -293,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-9</h1>
+          <h1 class="post-title" itemprop="name headline">C++散知识点</h1>
         
 
         <div class="post-meta">
@@ -305,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T22:58:12+08:00">
-                2019-02-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T22:18:07+08:00">
+                2019-03-04
               </time>
             
 
@@ -343,39 +341,16 @@
       
 
       
-        <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
+        <ol>
+<li><p>回文数：数字反向读方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m=m*<span class="number">10</span>+i%<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">5</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;i++&lt;&lt;<span class="string">","</span>&lt;&lt;++i&lt;&lt;<span class="string">","</span>&lt;&lt;i--&lt;&lt;<span class="string">","</span>&lt;&lt;--i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//4，5，4，5</span></span><br></pre></td></tr></table></figure>
+<p>从右往左算，符号在前的先输出，符号在后的最后输出，</p>
 </li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
-</li>
+<li></li>
 </ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+<p>98   -97  2</p>
 
       
     </div>
@@ -400,8 +375,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/17/CSAPP-8/" rel="next" title="CSAPP-8">
-                <i class="fa fa-chevron-left"></i> CSAPP-8
+              <a href="/2019/03/04/C-2/" rel="next" title="函数">
+                <i class="fa fa-chevron-left"></i> 函数
               </a>
             
           </div>
@@ -410,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/23/CSAPP-10/" rel="prev" title="CSAPP-10">
-                CSAPP-10 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/05/C-类与对象/" rel="prev" title="C++类与对象">
+                C++类与对象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -464,17 +439,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -518,22 +484,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧的结构"><span class="nav-number">1.1.</span> <span class="nav-text">栈帧的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程的实现"><span class="nav-number">1.2.</span> <span class="nav-text">过程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程相关指令-call、leave、ret"><span class="nav-number">1.3.</span> <span class="nav-text">过程相关指令:call、leave、ret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器的使用规则"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器的使用规则</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

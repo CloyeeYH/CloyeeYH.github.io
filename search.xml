@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[fatal-unable-to-auto-detect-email-address]]></title>
+    <url>%2F2019%2F08%2F19%2Ffatal-unable-to-auto-detect-email-address%2F</url>
+    <content type="text"><![CDATA[五个月没开博客，我的git他有了自己的想法。。。 git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;) 解决方法： 1$ git config --global user.email &quot;you@example.com&quot; 1$ git config --local -l]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[JAVA一丢丢]]></title>
     <url>%2F2019%2F08%2F19%2FJAVA%E4%B8%80%E4%B8%A2%E4%B8%A2%2F</url>
     <content type="text"><![CDATA[这就开始学习了？？ 暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟ 基本数据类型 ‘syso‘ ’alt‘+’/‘&#10233;System.out.println(); Float.MAX_VALUE获取float max println：输出后自动换行，print：输出后不换行 数组定义： 12int[] a; a = new int[5]; public static final 则为常量 1970年1月1日 8点0分0秒开始 extends继承 短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高） 不短路与（&amp;）：第一个false，第二个也要执行 面向对象1234Person zhangsan; //定义一个对象zhangsan=person();//实例化对象zhangsan.name="zhangsan";//给对象的属性赋值zangsan.age=23; 快捷方式 ‘syso‘ ’ALT‘+’/‘&#10233;System.out.println(); 选中 CTRL + SHIFYT + / &#10233;多行注释 ‘main’ ‘ALT’ + ‘/‘&#10233;public static void main(String []args) ‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包 ‘’CTRL’ + ‘1’ &#10233;接口实现 多线程继承线程类首先准备一个独立的线程类，（继承thread） 重写run方法，启动线程用start；机制视频9：00 实现Runnable接口一个类，实现runnable接口，因为没继承thread，所以没有start方法 所以要创建一个thread对象，把battle1作为thread对象的参数扔进去 匿名类]]></content>

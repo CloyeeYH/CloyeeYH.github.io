@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java 二丢丢]]></title>
+    <url>%2F2019%2F08%2F20%2FJava-%E4%BA%8C%E4%B8%A2%E4%B8%A2%2F</url>
+    <content type="text"><![CDATA[数组数组也可以用引用类型 数组类型[]数组名 数组遍历 1234int[] num=new int[]&#123;1,2,3,4&#125;;for(int num1:num)&#123; System.out.println(num1);&#125; 数组必须初始化 ✪动态初始化 （指定数组长度） 数组类型[]数组名=new 数组类型[数组长度]; 1int[] arr = new int[5]; 数组类型[]数组名； 数组名=new数组类型[数组长度]; 静态初始化 （不指定数组长度，直接赋值） 数组类型 []数组名=new 数组类型[] {数据值…} 数据类型[] 数组名 = {数据值…}、 局部变量在栈里，new出来的东西在堆里 方法 定义：把一堆要重复执行的代码封装起来，如果别的程序要用到这段代码，直接调用这个方法名即可 如何？ 1234567访问修饰符 返回值类型 方法名（参数类型 参数名）&#123;代码块;return 返回值;&#125; 访问修饰符：格式是固定的 返回值类型：方法最终返回数据类型 方法名：首字母小写 参数类型：进入方法的数据类型 return：返回值返回给调用值 返回值：方法最终产生的结果]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[fatal-unable-to-auto-detect-email-address]]></title>
     <url>%2F2019%2F08%2F19%2Ffatal-unable-to-auto-detect-email-address%2F</url>
     <content type="text"><![CDATA[五个月没开博客，我的git他有了自己的想法。。。 git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;) 解决方法： 1$ git config --global user.email &quot;you@example.com&quot; 1$ git config --local -l]]></content>
@@ -8,7 +13,7 @@
   <entry>
     <title><![CDATA[JAVA一丢丢]]></title>
     <url>%2F2019%2F08%2F19%2FJAVA%E4%B8%80%E4%B8%A2%E4%B8%A2%2F</url>
-    <content type="text"><![CDATA[这就开始学习了？？ 暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟ 零散知识点 ‘syso‘ ’alt‘+’/‘&#10233;System.out.println(); Float.MAX_VALUE获取float max println：输出后自动换行，print：输出后不换行 数组定义： 12int[] a; a = new int[5]; public static final 则为常量 1970年1月1日 8点0分0秒开始 extends继承 /**+ENTER 多行注释 类名。接口名首字母大写 函数名，变量名首字母小写 常量首字母大写 单引号字符，双引号字符串 基本数据类型在栈，引用数据类型在堆里 main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里 整数类型：byte（-128~127） short int long (long num=12L 必须带L) 数据类型转换：隐式类型转换，short转int；强制转换 12int i=10;short s2=(short)i; String 转成int(前提：string内容是数字) 12String str="123";int i2= Integer.parseInt(str); int转String 12int i3=12;string str=i3+""; 短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高） 不短路与（&amp;）：第一个false，第二个也要执行 面向对象1234Person zhangsan; //定义一个对象zhangsan=person();//实例化对象zhangsan.name="zhangsan";//给对象的属性赋值zangsan.age=23; 快捷方式 ‘syso‘ ’ALT‘+’/‘&#10233;System.out.println(); 选中 CTRL + SHIFYT + / &#10233;多行注释 ‘main’ ‘ALT’ + ‘/‘&#10233;public static void main(String []args) ‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包 ‘’CTRL’ + ‘1’ &#10233;接口实现 多线程继承线程类首先准备一个独立的线程类，（继承thread） 重写run方法，启动线程用start；机制视频9：00 实现Runnable接口一个类，实现runnable接口，因为没继承thread，所以没有start方法 所以要创建一个thread对象，把battle1作为thread对象的参数扔进去 匿名类]]></content>
+    <content type="text"><![CDATA[这就开始学习了？？ 暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟ 零散知识点 ‘syso‘ ’alt‘+’/‘&#10233;System.out.println(); Float.MAX_VALUE获取float max println：输出后自动换行，print：输出后不换行 数组定义： 12int[] a; a = new int[5]; public static final 则为常量 1970年1月1日 8点0分0秒开始 extends继承 /**+ENTER 多行注释 类名。接口名首字母大写 函数名，变量名首字母小写 常量首字母大写 单引号字符，双引号字符串 基本数据类型在栈，引用数据类型在堆里 main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里 整数类型：byte（-128~127） short int long (long num=12L 必须带L) 数据类型转换：隐式类型转换，short转int；强制转换 12int i=10;short s2=(short)i; String 转成int(前提：string内容是数字) 12String str="123";int i2= Integer.parseInt(str); int转String 12int i3=12;string str=i3+""; boolean类型默认false 在静态static方法内部只能调用static方法或static变量 短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高） 不短路与（&amp;）：第一个false，第二个也要执行 面向对象1234Person zhangsan; //定义一个对象zhangsan=person();//实例化对象zhangsan.name="zhangsan";//给对象的属性赋值zangsan.age=23; 快捷方式 ‘syso‘ ’ALT‘+’/‘&#10233;System.out.println(); 选中 CTRL + SHIFYT + / &#10233;多行注释 ‘main’ ‘ALT’ + ‘/‘&#10233;public static void main(String []args) ‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包 ‘’CTRL’ + ‘1’ &#10233;接口实现 多线程继承线程类首先准备一个独立的线程类，（继承thread） 重写run方法，启动线程用start；机制视频9：00 实现Runnable接口一个类，实现runnable接口，因为没继承thread，所以没有start方法 所以要创建一个thread对象，把battle1作为thread对象的参数扔进去 匿名类]]></content>
   </entry>
   <entry>
     <title><![CDATA[Bomb Lab]]></title>

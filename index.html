@@ -439,6 +439,105 @@
 <h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>重载和返回类型无关</p>
 <p>方法名必须相同，参数列表必须不同</p>
 <p>参数个数不同，参数类型不同，参数类型顺序不同</p>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>一个类不能直接使用，类似一个汽车图纸不能直接跑</p>
+<p>需要根据这个类创建一个真正的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
+<p>如果成员变量没有赋值，会有默认值</p>
+<p><strong>成员变量，局部变量区别</strong></p>
+<ol>
+<li>成员变量在堆里，局部变量在栈里</li>
+<li>成员变量声明在类内部，方法外部，局部变量在方法内部</li>
+<li>成员变量有默认值，局部变量没有默认值</li>
+<li>局部变量和成员变量重名时，方法会根据就近原则使用局部变量，为了区分，用this关键字（this关键字可以理解为当前使用或正在创建的对象）</li>
+<li></li>
+</ol>
+<h2 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>当我创建好对象以后，如果直接用对象名.属性的方式给属性赋值的话，可能会出现一些不符合实际的情况，所以不考虑“对象名.属性”的方法进行赋值</p>
+<ol>
+<li>属性私有化</li>
+<li>提供公用的get set 方法实现调用</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>类内部</th>
+<th>同一个包</th>
+<th>子类</th>
+<th>任何地方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>缺省</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<p><strong>构造方法：</strong></p>
+<ol>
+<li><p>用来创建对象</p>
+</li>
+<li><p>有参构造方法可以直接给属性赋值</p>
+<p>定义构造函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> 构造方法名（参数）&#123;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//注意（1.）没有返回值（2.）构造方法名必须和类名完全一致</span></span><br></pre></td></tr></table></figure>
+<p> 构造方法是一个方法，可以重载；</p>
+<p>注意：构造方法如果没有自己定义，系统会自动提供一个无参构造方法；如果自己定义了构造方法，系统不再提供构造方法</p>
+</li>
+</ol>
+<p>super（）指向离自己最近的父类</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<li><p>定义父类</p>
+</li>
+<li><p>定义子类   extends</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类继承父类之后，可以继承父类所有的属性和方法；</p>
+</li>
+<li><p>子类除了通过继承获取父类属性和方法外，还可以定义自己独有的属性和方法</p>
+</li>
+<li><p>一个子类只能有一个父类，一个父类可以有多个子类</p>
+</li>
+<li><p>重写：子类继承父类之后，如果父类方法满足不了子类要求，子类可以对父类进行重写。</p>
+<ul>
+<li>子类的方法名，返回值类型，参数列表必须和父类一样</li>
+<li>子类的访问修饰符权限不能小于父类的访问修饰符权限</li>
+<li>子类和父类必须同时为“static”或者非“static”</li>
+</ul>
+</li>
+</ol>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态就是一个对象的多种形态</p>
+<p>使用多态的前提是有继承或接口的实现</p>
+<ol>
+<li><p>方法的重载和重写是多态</p>
+</li>
+<li><p>子类对象的多态性：父类引用指向子类对象（子类必须重写父类方法，而且子类继承了父类）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person p2 = <span class="keyword">new</span> Man();</span><br><span class="line">p2.eat(); <span class="comment">//√</span></span><br><span class="line">p2.sleep();<span class="comment">//✕</span></span><br><span class="line"><span class="comment">//通过p2调用man的eat,但不能调用子类独有的方法（编译期间，程序会把p2看成是person类型，而person类种没有子类独有方法，编译不通过，也不能运行）</span></span><br><span class="line"><span class="comment">//对多态来说，第一行编译看左边，运行看右边</span></span><br><span class="line"><span class="comment">//如果要调用。需要类型转换</span></span><br><span class="line">Man m1=(Man)p2;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
           
         
@@ -642,7 +741,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/JAVA一丢丢/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/Java一丢丢/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -661,7 +760,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/19/JAVA一丢丢/" itemprop="url">JAVA一丢丢</a></h1>
+                <a class="post-title-link" href="/2019/08/19/Java一丢丢/" itemprop="url">Java一丢丢</a></h1>
         
 
         <div class="post-meta">
@@ -788,11 +887,15 @@
 <li><p>int转String </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
+<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
+</li>
 <li><p>boolean类型默认false</p>
 </li>
+<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
+</li>
 <li><p>在静态static方法内部只能调用static方法或static变量</p>
+</li>
+<li><p>new 后面的是构造方法</p>
 </li>
 <li><ul>
 <li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>

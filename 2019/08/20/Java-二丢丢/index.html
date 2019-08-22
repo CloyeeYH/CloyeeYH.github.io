@@ -112,10 +112,14 @@
 <meta property="og:site_name" content="Cloyee&#39;s blog">
 <meta property="og:description" content="数组数组也可以用引用类型 数组类型[]数组名 数组遍历 1234int[] num=new int[]&amp;#123;1,2,3,4&amp;#125;;for(int num1:num)&amp;#123;	System.out.println(num1);&amp;#125; 数组必须初始化  ✪动态初始化 （指定数组长度）  数组类型[]数组名=new 数组类型[数组长度]; 1int[] arr = new int[">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-21T03:51:39.881Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g68hll7bwcj30ap082wfy.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g68jpsgezej30jo06ggnw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g68jrh5t2hj30ki06f0w0.jpg">
+<meta property="og:updated_time" content="2019-08-22T09:00:34.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 二丢丢">
 <meta name="twitter:description" content="数组数组也可以用引用类型 数组类型[]数组名 数组遍历 1234int[] num=new int[]&amp;#123;1,2,3,4&amp;#125;;for(int num1:num)&amp;#123;	System.out.println(num1);&amp;#125; 数组必须初始化  ✪动态初始化 （指定数组长度）  数组类型[]数组名=new 数组类型[数组长度]; 1int[] arr = new int[">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g68hll7bwcj30ap082wfy.jpg">
 
 
 
@@ -398,7 +402,7 @@
       
 
       
-        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组也可以用引用类型</p>
+        <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组也可以用引用类型</p>
 <p>数组类型[]数组名</p>
 <p>数组遍历</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> num1:num)&#123;</span><br><span class="line">	System.out.println(num1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -422,7 +426,7 @@
 </li>
 </ol>
 <p>局部变量在栈里，new出来的东西在堆里</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
 <li><p><strong>定义</strong>：把一堆要重复执行的代码封装起来，如果别的程序要用到这段代码，直接调用这个方法名即可</p>
 </li>
 <li><p><strong>如何？</strong></p>
@@ -435,10 +439,10 @@
 <p>返回值：方法最终产生的结果</p>
 </li>
 </ol>
-<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><p>重载和返回类型无关</p>
+<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载和返回类型无关</p>
 <p>方法名必须相同，参数列表必须不同</p>
 <p>参数个数不同，参数类型不同，参数类型顺序不同</p>
-<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>一个类不能直接使用，类似一个汽车图纸不能直接跑</p>
+<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><p>一个类不能直接使用，类似一个汽车图纸不能直接跑</p>
 <p>需要根据这个类创建一个真正的对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
 <p>如果成员变量没有赋值，会有默认值</p>
@@ -450,7 +454,7 @@
 <li>局部变量和成员变量重名时，方法会根据就近原则使用局部变量，为了区分，用this关键字（this关键字可以理解为当前使用或正在创建的对象）</li>
 <li></li>
 </ol>
-<h2 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>当我创建好对象以后，如果直接用对象名.属性的方式给属性赋值的话，可能会出现一些不符合实际的情况，所以不考虑“对象名.属性”的方法进行赋值</p>
+<h1 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当我创建好对象以后，如果直接用对象名.属性的方式给属性赋值的话，可能会出现一些不符合实际的情况，所以不考虑“对象名.属性”的方法进行赋值</p>
 <ol>
 <li>属性私有化</li>
 <li>提供公用的get set 方法实现调用</li>
@@ -508,7 +512,7 @@
 </li>
 </ol>
 <p>super（）指向离自己最近的父类</p>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><ol>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
 <li><p>定义父类</p>
 </li>
 <li><p>定义子类   extends</p>
@@ -537,6 +541,78 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person p2 = <span class="keyword">new</span> Man();</span><br><span class="line">p2.eat(); <span class="comment">//√</span></span><br><span class="line">p2.sleep();<span class="comment">//✕</span></span><br><span class="line"><span class="comment">//通过p2调用man的eat,但不能调用子类独有的方法（编译期间，程序会把p2看成是person类型，而person类种没有子类独有方法，编译不通过，也不能运行）</span></span><br><span class="line"><span class="comment">//对多态来说，第一行编译看左边，运行看右边</span></span><br><span class="line"><span class="comment">//如果要调用。需要类型转换</span></span><br><span class="line">Man m1=(Man)p2;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>成员变量：**如果成员变量加了static，那么这个变量不属于对象，属于类本身，实现多个对象之间的数据共享</p>
+<p><strong>方法：</strong>普通方法需要创建对象才能用，静态方法不用创建对象就可使用；静态方法不能访问非静态成员变量和非静态成员方法，成员方法可以访问静态成员变量</p>
+<h1 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h1><p>如果父类的方法必须被子类重写的话，可以把父类方法定义成抽象方法</p>
+<h2 id="抽象方法，抽象类"><a href="#抽象方法，抽象类" class="headerlink" title="抽象方法，抽象类"></a>抽象方法，抽象类</h2><p>动物吃饭</p>
+<p><strong>特点：</strong></p>
+<ol>
+<li>只有方法定义，没有方法体、</li>
+<li>抽象方法必须在抽象类里</li>
+<li>抽象类不能实例化</li>
+<li>如果想实现抽象类，必须创建一个子类去继承他</li>
+<li>子类继承一个抽象类，必须重写抽象类里所有的抽象方法</li>
+<li>抽象类里可以定义普通方法，</li>
+<li>抽象类里可以定义构造方法</li>
+</ol>
+<h2 id="接口（一个特殊的抽象类）"><a href="#接口（一个特殊的抽象类）" class="headerlink" title="接口（一个特殊的抽象类）"></a>接口（一个特殊的抽象类）</h2><p>接口就是多个类的共用规范</p>
+<ol>
+<li><p>接口里面的方法<strong>都是</strong>抽象方法</p>
+</li>
+<li><p>接口中没有变量，<strong>都是</strong>常量，默认被public static 修饰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//以上都是一样的，接口中抽象方法默认被public abstract修饰</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口不能实例化，如果用接口，实现接口</p>
+</li>
+<li><p>要实现一个接口，必须重写接口里的所有抽象方法</p>
+</li>
+<li><p><strong>父类和接口区别</strong>：一个类可以实现多个接口，但是只能继承一个类</p>
+</li>
+<li><p>接口里不能定义普通方法，也不能定义构造方法</p>
+</li>
+<li><p>接口可以继承接口，并且可以继承多个接口</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Traffic tr = <span class="keyword">new</span> ElectricVehicle();<span class="comment">//推荐这种多态，更安全</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Java常用类"><a href="#Java常用类" class="headerlink" title="Java常用类"></a>Java常用类</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>所有类的父类</p>
+<h4 id="equals和"><a href="#equals和" class="headerlink" title="equals和=="></a>equals和==</h4><p><strong>==：</strong>判断<strong>基本数据类型</strong>值是否相等那个，相等返回true，不相等返回false，在Object类中比较的是地址值</p>
+<p><strong>equals：</strong>只用在<strong>引用数据类型</strong>，在Object类中比较的也是地址值，String类重写了Object的equal方法，比较的是值</p>
+<h4 id="tostring"><a href="#tostring" class="headerlink" title="tostring()"></a>tostring()</h4><p>String类也重写了tostring（）方法</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p><strong><code>length()</code></strong>:返回字符串长度</p>
+<p><strong><code>substring（int startpoint）</code></strong>：根据startpoint的值截取字符串，截取后面的所有从0开始</p>
+<p><strong><code>substring(int start,int end)</code></strong>:根据start位置开始，直到end结束 ，截取的字符串包含start不包含end</p>
+<p><strong><code>replace（char oldchar，char newchar）</code></strong>：把oldchar替换成newchar</p>
+<p><strong><code>split(String regex)</code>:</strong>把一个字符串根据regex拆分成多个字符串，返回值为数组（可以用for-each读出）</p>
+<h2 id="封装类"><a href="#封装类" class="headerlink" title="封装类"></a>封装类</h2><p>八种基本数据类型对应的类</p>
+<p>主要进行数据类型转成包装类</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68hll7bwcj30ap082wfy.jpg" alt=""></p>
+<h4 id="基本数据类型和包装类互换"><a href="#基本数据类型和包装类互换" class="headerlink" title="基本数据类型和包装类互换"></a>基本数据类型和包装类互换</h4><p><strong>装箱：</strong>基本数据类型→ 包装类</p>
+<p><strong>拆箱：</strong>包装类→ 基本数据类型</p>
+<h4 id="基本数据类型、包装类→-String"><a href="#基本数据类型、包装类→-String" class="headerlink" title="基本数据类型、包装类→ String"></a>基本数据类型、包装类→ String</h4><ul>
+<li>第一种（最简单）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">String str = a + <span class="string">" "</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第二种</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str1 = String.valueOf(a);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="String→基本数据类型、包装类"><a href="#String→基本数据类型、包装类" class="headerlink" title="String→基本数据类型、包装类"></a>String→基本数据类型、包装类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str2 = <span class="string">"1123"</span>;</span><br><span class="line"><span class="keyword">int</span> b=Integer.parseInt(str2);</span><br></pre></td></tr></table></figure>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>获取当前系统时间，有数据库，用<code>java.sql</code></p>
+<p><code>SimpleDateFormat（&quot;yyyy-MM-dd HH:mm:ss&quot;）</code>对日期进行格式化</p>
+<p>format(date):把日期转成字符串</p>
+<h1 id="集合框架（升级版数组）"><a href="#集合框架（升级版数组）" class="headerlink" title="集合框架（升级版数组）"></a>集合框架（升级版数组）</h1><ol>
+<li>存多个对象：数组，集合框架</li>
+<li>数组特点：<code>Student[] stu = new Student[10];</code>一旦创建，数组长度不可改变</li>
+<li>集合有collection接口和map接口<img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jpsgezej30jo06ggnw.jpg" alt=""></li>
+</ol>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jrh5t2hj30ki06f0w0.jpg" alt=""></p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p><code>void add(int index, Object ele)</code>：<strong>添</strong>加元素</p>
+<p><code>Object get(int index)</code>:根据index<strong>查</strong>找元素</p>
+<p><code>Object remove(int index)</code>：根据index<strong>删</strong>除指定元素，返回值为删除的内容</p>
+<p><code>Object set(int index,Object ele)</code>:根据坐标修<strong>改</strong>内容值，返回值为被修改原内容</p>
+<p><code>size()</code>:获取集合长度</p>
 
       
     </div>
@@ -703,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载"><span class="nav-number">3.</span> <span class="nav-text">重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类和对象"><span class="nav-number">4.</span> <span class="nav-text">类和对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象的三大特性"><span class="nav-number">5.</span> <span class="nav-text">面向对象的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">5.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">5.2.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">6.</span> <span class="nav-text">多态</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载"><span class="nav-number">3.</span> <span class="nav-text">重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和对象"><span class="nav-number">4.</span> <span class="nav-text">类和对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的三大特性"><span class="nav-number">5.</span> <span class="nav-text">面向对象的三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">5.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">5.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">5.3.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#static关键字"><span class="nav-number">5.3.1.</span> <span class="nav-text">static关键字</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#抽象类和接口"><span class="nav-number">6.</span> <span class="nav-text">抽象类和接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象方法，抽象类"><span class="nav-number">6.1.</span> <span class="nav-text">抽象方法，抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（一个特殊的抽象类）"><span class="nav-number">6.2.</span> <span class="nav-text">接口（一个特殊的抽象类）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java常用类"><span class="nav-number">7.</span> <span class="nav-text">Java常用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">7.1.</span> <span class="nav-text">Object</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#equals和"><span class="nav-number">7.1.0.1.</span> <span class="nav-text">equals和==</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#tostring"><span class="nav-number">7.1.0.2.</span> <span class="nav-text">tostring()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">7.2.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装类"><span class="nav-number">7.3.</span> <span class="nav-text">封装类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型和包装类互换"><span class="nav-number">7.3.0.1.</span> <span class="nav-text">基本数据类型和包装类互换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型、包装类→-String"><span class="nav-number">7.3.0.2.</span> <span class="nav-text">基本数据类型、包装类→ String</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String→基本数据类型、包装类"><span class="nav-number">7.3.0.3.</span> <span class="nav-text">String→基本数据类型、包装类</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">7.4.</span> <span class="nav-text">Date</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合框架（升级版数组）"><span class="nav-number">8.</span> <span class="nav-text">集合框架（升级版数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">8.1.</span> <span class="nav-text">List</span></a></li></ol></li></div>
             
 
           </div>

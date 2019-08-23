@@ -8,7 +8,7 @@
   <entry>
     <title><![CDATA[fatal-unable-to-auto-detect-email-address]]></title>
     <url>%2F2019%2F08%2F19%2Ffatal-unable-to-auto-detect-email-address%2F</url>
-    <content type="text"><![CDATA[五个月没开博客，我的git他有了自己的想法。。。 git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;) 解决方法： 1$ git config --global user.email &quot;you@example.com&quot; 1$ git config --local -l]]></content>
+    <content type="text"><![CDATA[五个月没开博客，我的git他有了自己的想法。。。 git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;) 解决方法： 1$ git config --global user.email &quot;you@example.com&quot; 1$ git config --local -l 我的git……他还是有自己的想法]]></content>
   </entry>
   <entry>
     <title><![CDATA[Java一丢丢]]></title>

@@ -297,6 +297,231 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/CSAPP-8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/17/CSAPP-8/" itemprop="url">CSAPP-8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-17T22:34:33+08:00">
+                2019-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>接上一篇说最复杂的条件码寄存器组合</p>
+<p>所有组合都是基于a-b的前提。</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>逻辑运算（值为1）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e</td>
+<td>ZF</td>
+<td>相等。此时ZF为1，a-b=0，相等</td>
+</tr>
+<tr>
+<td>ne</td>
+<td>~ZF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>s</td>
+<td>SF</td>
+<td>负数。SF为1，设b=0，即a&lt;0</td>
+</tr>
+<tr>
+<td>ns</td>
+<td>~SF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>l</td>
+<td>SF^OF</td>
+<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
+</tr>
+<tr>
+<td>le</td>
+<td>(SF^OF)\</td>
+<td>ZF</td>
+<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
+</tr>
+<tr>
+<td>g</td>
+<td>(SF^OF)&amp;~ZF</td>
+<td>有符号的大于。小于且不等于</td>
+</tr>
+<tr>
+<td>ge</td>
+<td>~(SF^OF)</td>
+<td>有符号的大于等于。不小于</td>
+</tr>
+<tr>
+<td>b</td>
+<td>CF</td>
+<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
+</tr>
+<tr>
+<td>be</td>
+<td>CF\</td>
+<td>ZF</td>
+<td>无符号的小于等于。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>~CF&amp; ~ZF</td>
+<td>无符号的大于。无符号大于等于且不等于</td>
+</tr>
+<tr>
+<td>ae</td>
+<td>~CF</td>
+<td>s无符号大于等于</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/CSAPP-7/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2218,7 +2443,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

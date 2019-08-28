@@ -112,10 +112,12 @@
 <meta property="og:site_name" content="Cloyee&#39;s blog">
 <meta property="og:description" content="Java DataBase Connectivity    Java数据库连接，访问数据库的一种技术 JDBC编程步骤  加载注册驱动类Driver 建立连接 操作数据 释放资源   Connection:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码 Statement：执行对象，负责发送sql语句，用它执行需要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-26T09:29:07.419Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg">
+<meta property="og:updated_time" content="2019-08-27T07:34:13.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC">
 <meta name="twitter:description" content="Java DataBase Connectivity    Java数据库连接，访问数据库的一种技术 JDBC编程步骤  加载注册驱动类Driver 建立连接 操作数据 释放资源   Connection:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码 Statement：执行对象，负责发送sql语句，用它执行需要">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg">
 
 
 
@@ -410,8 +412,28 @@
 <li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
 <li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
 <li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
 
       
     </div>
@@ -518,8 +540,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -536,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -563,6 +594,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#三层架构"><span class="nav-number">1.</span> <span class="nav-text">三层架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分包"><span class="nav-number">1.1.</span> <span class="nav-text">分包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库连接池"><span class="nav-number">2.</span> <span class="nav-text">数据库连接池</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

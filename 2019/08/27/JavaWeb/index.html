@@ -114,7 +114,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g6fn0u77csj30ea0473z6.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g6fntwf9zdj30i805qjuh.jpg">
-<meta property="og:updated_time" content="2019-08-28T12:46:51.175Z">
+<meta property="og:updated_time" content="2019-09-03T00:54:11.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaWeb">
 <meta name="twitter:description" content="软件两大架构 B/S    C/SC/SC:客户端   S:服务器   eg：QQ，LOL，WPS，就是桌面应用程序 特点  软件使用前必须安装 软件更新时，客户端和服务端也要更新 不能跨平台，就类似于手机版qq不能在电脑上安装 cs软件通信采用自有协议，比较安全  B/SB：浏览器， s 服务器  eg：淘宝网,京东网等网站 特点：  软件使用前不需要安装 软件更新时，只是服务端进行更新 能跨平">
@@ -447,12 +447,21 @@
 <h3 id="config接口"><a href="#config接口" class="headerlink" title="config接口"></a>config接口</h3><p>servletConfig接口，代表当前servlet，可以获取当前servlet所有配置信息</p>
 <ul>
 <li>getServletName():获取注册名</li>
-<li>getServletContext()：一般做全局数据共享，必须由servletConfig来获取</li>
+<li>getServletContext()：一般做全局数据共享，必须由servletConfig来获取，一个项目就一个context实例，每个servlet都可以访问到它</li>
 </ul>
 <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6fntwf9zdj30i805qjuh.jpg" alt=""></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"init.........."</span>);</span><br><span class="line">		<span class="comment">//ServletConfig:代表当前servlet，可以获取当前servlet所有配置信息</span></span><br><span class="line">		<span class="comment">//1.getServletName()    获取当前Servlet在web.xml中配置的名字</span></span><br><span class="line">		System.out.println(config.getServletName());</span><br><span class="line">		<span class="comment">//✪2.getServletContext()   获取代表当前web应用的ServletContext对象</span></span><br><span class="line">		ServletContext cxt=config.getServletContext();</span><br><span class="line">		System.out.println(cxt.getContextPath());<span class="comment">//获取当前web应用的根目录</span></span><br><span class="line">		<span class="comment">//3.getInitParameter(String)   获取当前Servlet指定名称的初始化参数的值</span></span><br><span class="line">		System.out.println(config.getInitParameter(<span class="string">"username"</span>));</span><br><span class="line">		<span class="comment">//4.getInitParameterNames()  获取当前Servlet所有初始化参数的名字组成的枚举</span></span><br><span class="line">		Enumeration&lt;String&gt; names=config.getInitParameterNames();</span><br><span class="line">		<span class="keyword">while</span>(names.hasMoreElements())&#123;</span><br><span class="line">			<span class="comment">//获取初始化参数名</span></span><br><span class="line">			String name=names.nextElement();</span><br><span class="line">			String value=config.getInitParameter(name);</span><br><span class="line">			System.out.println(name+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h3><ol>
 <li><p>url格式：/aaa和*.aaa或者 /aaa/星，其中星代表所有字符</p>
+</li>
+<li><p><strong>./</strong> <strong>：代表文件所在的目录（可以省略不写）</strong></p>
+<p><strong>../</strong> <strong>：代表文件所在的父级目录</strong></p>
+<p><strong>../../</strong> <strong>：代表文件所在的父级目录的父级目录</strong></p>
+<p><strong>/</strong> <strong>：代表文件所在的根目录</strong></p>
+</li>
+<li><p>相对路径变绝对路径：<code>request.getContextPath()+&quot;admin/main.jsp&#39;;&quot;</code></p>
+</li>
+<li><p>项目中路径写绝对路径</p>
 </li>
 <li><p>初始化参数在loadup标签前面</p>
 </li>
@@ -473,7 +482,74 @@
 <p><strong>body</strong>：页面显示内容</p>
 <p><strong>h2</strong>:标题</p>
 </li>
-<li></li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用来表明当前页面的相对路径所使用的根路径的。</p>
+</li>
+</ol>
+<h3 id="httpservlet-不需要配置文件实现servlet"><a href="#httpservlet-不需要配置文件实现servlet" class="headerlink" title="httpservlet-不需要配置文件实现servlet"></a>httpservlet-不需要配置文件实现servlet</h3><p>action：发送数据的服务器地址,method 默认get</p>
+<p>id作用：正则表达式，判断用户输入的用户名是否符合规则，通过属性写正则表达式</p>
+<h4 id="三大域对象"><a href="#三大域对象" class="headerlink" title="三大域对象"></a>三大域对象</h4><p>✪把值存在域对象里，在别的页面通过域对象的方法获取域对象的值</p>
+<p>获取web应用的初始化参数</p>
+<p>获取项目的真实路径</p>
+<p>✪作为域对象，保护多个用户共享的数据</p>
+<h5 id="1-少）servletcontext：同一项目"><a href="#1-少）servletcontext：同一项目" class="headerlink" title="1.(少）servletcontext：同一项目"></a>1.(少）servletcontext：同一项目</h5><p>类似一个全局变量，服务器开始就存在，服务器关闭才释放，一个项目就一个servletContext实例</p>
+<p><code>ServletContext cxt = getServletContext();</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//ServletCOntext:代表当前web应用，相当于这个项目的全局变量</span></span><br><span class="line">	ServletContext con=getServletContext();</span><br><span class="line">	<span class="comment">//获取真实路径</span></span><br><span class="line">	System.out.println(con.getRealPath(<span class="string">"/"</span>));</span><br><span class="line">	<span class="comment">//获取项目的上下文，一般用来获取项目名</span></span><br><span class="line">	System.out.println(con.getContextPath());</span><br></pre></td></tr></table></figure>
+<p>​    getContextPath()一般用于获取当前项目名</p>
+<h5 id="2-httpsession：在同一次会话中"><a href="#2-httpsession：在同一次会话中" class="headerlink" title="2.httpsession：在同一次会话中"></a>2.httpsession：在同一次会话中</h5><h5 id="3-httpservletrequest：在同一次请求中"><a href="#3-httpservletrequest：在同一次请求中" class="headerlink" title="3.httpservletrequest：在同一次请求中"></a>3.httpservletrequest：在同一次请求中</h5><p>httpservletrequest是servletrequest（🙅‍获取http）的子接口</p>
+<h5 id="域对象三方法"><a href="#域对象三方法" class="headerlink" title="域对象三方法"></a>域对象三方法</h5><p>setAttriubute（）：放一个数据到servlContext中，便于后面取出</p>
+<p>getAttriubute()：根据域对象名获取值</p>
+<p>removeAttriubute()：根据域对象名删除值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//创建servletContext</span></span><br><span class="line">	ServletContext cxt=getServletContext();</span><br><span class="line">	<span class="comment">//获取域对象值</span></span><br><span class="line">	Object obj=cxt.getAttribute(<span class="string">"count"</span>);</span><br><span class="line">	<span class="comment">//如果是第一次访问，设置访问量为1</span></span><br><span class="line">	<span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//保存访问量</span></span><br><span class="line">	<span class="keyword">if</span>(obj==<span class="keyword">null</span>)&#123;</span><br><span class="line">		count=<span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//不是第一次。加1</span></span><br><span class="line">		count=((<span class="keyword">int</span>)obj)+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置域对象值</span></span><br><span class="line">	cxt.setAttribute(<span class="string">"count"</span>, count);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	response.getWriter().write(<span class="string">"访问量："</span>+count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="request和response"><a href="#request和response" class="headerlink" title="request和response"></a>request和response</h1><p>两种请求方式：</p>
+<p>get方式（默认）<br>1.以地址栏的方式传输<br>2.会把用户输入的值显示在地址栏，不安全<br>3.速度快 查询用get()</p>
+<p>post</p>
+<p>1.文件形式传输<br>2.安全，传输数据大，增删改用post()</p>
+<p>doget和dopost被service方法调用</p>
+<p>两个方法改变了参数，针对http请求</p>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>获取用户参数，转发，作为域对象也可以存放数据</p>
+<p><strong>getParameter（String）</strong>：根据参数获取值，返回类型为String[]</p>
+<p><strong>getparameterValues(String)</strong>:根据名获取一组值,返回类型为String[]</p>
+<p><strong>getParameterNames</strong> ()方法 :获取所有参数的名字，返回类型为Enumeration</p>
+<p><strong>setCharacterEncoding(“utf-8”);</strong></p>
+<p><strong>getContextPath()</strong> </p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p><code>getWriter()</code>：输出对象</p>
+<p><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);</code></p>
+<h2 id="输出对象"><a href="#输出对象" class="headerlink" title="输出对象"></a>输出对象</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">out.write();</span><br></pre></td></tr></table></figure>
+<p>把内容输出到浏览器上</p>
+<h2 id="servlet对象"><a href="#servlet对象" class="headerlink" title="servlet对象"></a>servlet对象</h2><p><strong>Request</strong>和<strong>response</strong>在每一次访问时都被创建。由容器创建的</p>
+<p><strong>Serlvet</strong>只会被创建一次，由用户来开发，由容器来创建，单一的实例。</p>
+<p><strong>ServletConfig</strong>会为每一个Servlet创建一个Config对象，且由Servlet维护。就是声明成了成员变量。</p>
+<p><strong>ServletContext</strong>对象，代表web应用，这一个项目就只有一个此对象。</p>
+<h3 id="解决乱码问题："><a href="#解决乱码问题：" class="headerlink" title="解决乱码问题："></a>解决乱码问题：</h3><p>页面，类，浏览器，tomcat编码格式必须相同</p>
+<h4 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h4><p>针对于get和post</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="built_in">String</span> name=request.getParameter(<span class="string">"name"</span>);<span class="comment">//name是iso-8859-1格式</span></span><br><span class="line">		byte[] byte1=name.getBytes(<span class="string">"iso-8859-1"</span>);<span class="comment">//把name转成字节码</span></span><br><span class="line">		<span class="built_in">String</span> name1=<span class="keyword">new</span> <span class="built_in">String</span>(byte1,<span class="string">"utf-8"</span>);</span><br><span class="line">		out.write(<span class="string">"姓名："</span>+name1);</span><br></pre></td></tr></table></figure>
+<h4 id="第二种（推荐"><a href="#第二种（推荐" class="headerlink" title="第二种（推荐)"></a>第二种（推荐)</h4><p>只对post有效</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);<span class="comment">//必须放在接受参数之前</span></span><br><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">String name=request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">out.write(<span class="string">"姓名："</span>+name);</span><br></pre></td></tr></table></figure>
+<p>对于get方式，tomcat8.0默认配置转成UTF-8，8.0之前，默认ISO-8859-1，在改端口号的两个server.xml中的Connector节点加入<code>URIEncoding=utf-8</code></p>
+<h3 id="✪请求转发，请求重定向"><a href="#✪请求转发，请求重定向" class="headerlink" title="✪请求转发，请求重定向"></a>✪请求转发，请求重定向</h3><ol>
+<li><p>请求转发：地址栏还是初次请求的地址栏，</p>
+<p>请求重定向：地址栏是最后一次响应的地址栏</p>
+</li>
+<li><p>本质区别：请求转发只发送一次一次请求，而重定向发送多次</p>
+</li>
+<li><p>请求转发：在最终的servlet中，request和中转的request是同一个request</p>
+<p>重定向：不是同一个request</p>
+</li>
+<li><p>请求转发：/代表的是当前web应用的根目录，代表绝对路径<a href="http://localhost:8080/servlet02" target="_blank" rel="noopener">http://localhost:8080/servlet02</a></p>
+<p>请求重定向：/代表的是当前web站点的根目录<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
+</li>
+<li><p>请求转发只能转发内部资源，请求重定向可以转发外部资源</p>
+</li>
+<li><p>外包是转发，还给服务器并告诉服务器谁可以完成任务为重定向</p>
+</li>
+</ol>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><ol>
+<li>一次会话：浏览器打开到浏览器关闭</li>
+<li>在服务器端保持http状态信息的方案</li>
+<li>客户请求里是否包含session标识表明是否是第一次访问</li>
+<li>如果当前已经创建了session，则直接返回，如果没有创建，就创建一个session</li>
+<li>数据共享：在同一个会话中</li>
 </ol>
 
       
@@ -526,6 +602,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/30/JSP/" rel="prev" title="JSP">
+                JSP <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -604,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -641,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件两大架构-B-S-C-S"><span class="nav-number">1.</span> <span class="nav-text">软件两大架构 B/S    C/S</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-S"><span class="nav-number">1.1.</span> <span class="nav-text">C/S</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-S"><span class="nav-number">1.2.</span> <span class="nav-text">B/S</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat"><span class="nav-number">2.</span> <span class="nav-text">Tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javaWeb"><span class="nav-number">3.</span> <span class="nav-text">javaWeb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#servelet"><span class="nav-number">4.</span> <span class="nav-text">servelet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workset结构"><span class="nav-number">4.0.1.</span> <span class="nav-text">workset结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个servlet"><span class="nav-number">4.0.2.</span> <span class="nav-text">实现一个servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现servlet接口"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">实现servlet接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">4.0.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config接口"><span class="nav-number">4.0.4.</span> <span class="nav-text">config接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#零散知识点"><span class="nav-number">4.0.5.</span> <span class="nav-text">零散知识点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件两大架构-B-S-C-S"><span class="nav-number">1.</span> <span class="nav-text">软件两大架构 B/S    C/S</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-S"><span class="nav-number">1.1.</span> <span class="nav-text">C/S</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-S"><span class="nav-number">1.2.</span> <span class="nav-text">B/S</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tomcat"><span class="nav-number">2.</span> <span class="nav-text">Tomcat</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javaWeb"><span class="nav-number">3.</span> <span class="nav-text">javaWeb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#servelet"><span class="nav-number">4.</span> <span class="nav-text">servelet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#workset结构"><span class="nav-number">4.0.1.</span> <span class="nav-text">workset结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现一个servlet"><span class="nav-number">4.0.2.</span> <span class="nav-text">实现一个servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现servlet接口"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">实现servlet接口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-number">4.0.3.</span> <span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#config接口"><span class="nav-number">4.0.4.</span> <span class="nav-text">config接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#零散知识点"><span class="nav-number">4.0.5.</span> <span class="nav-text">零散知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#httpservlet-不需要配置文件实现servlet"><span class="nav-number">4.0.6.</span> <span class="nav-text">httpservlet-不需要配置文件实现servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大域对象"><span class="nav-number">4.0.6.1.</span> <span class="nav-text">三大域对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-少）servletcontext：同一项目"><span class="nav-number">4.0.6.1.1.</span> <span class="nav-text">1.(少）servletcontext：同一项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-httpsession：在同一次会话中"><span class="nav-number">4.0.6.1.2.</span> <span class="nav-text">2.httpsession：在同一次会话中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-httpservletrequest：在同一次请求中"><span class="nav-number">4.0.6.1.3.</span> <span class="nav-text">3.httpservletrequest：在同一次请求中</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#域对象三方法"><span class="nav-number">4.0.6.1.4.</span> <span class="nav-text">域对象三方法</span></a></li></ol></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#request和response"><span class="nav-number">5.</span> <span class="nav-text">request和response</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#request"><span class="nav-number">5.1.</span> <span class="nav-text">request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response"><span class="nav-number">5.2.</span> <span class="nav-text">response</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出对象"><span class="nav-number">5.3.</span> <span class="nav-text">输出对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet对象"><span class="nav-number">5.4.</span> <span class="nav-text">servlet对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决乱码问题："><span class="nav-number">5.4.1.</span> <span class="nav-text">解决乱码问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一种"><span class="nav-number">5.4.1.1.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二种（推荐"><span class="nav-number">5.4.1.2.</span> <span class="nav-text">第二种（推荐)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✪请求转发，请求重定向"><span class="nav-number">5.4.2.</span> <span class="nav-text">✪请求转发，请求重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session"><span class="nav-number">5.4.3.</span> <span class="nav-text">session</span></a></li></ol></li></ol></li></div>
             
 
           </div>

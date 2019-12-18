@@ -105,17 +105,14 @@
 
 
 
-<meta name="description" content="接上一篇说最复杂的条件码寄存器组合 所有组合都是基于a-b的前提。    后缀 逻辑运算（值为1） 描述     e ZF 相等。此时ZF为1，a-b=0，相等   ne ~ZF 反之   s SF 负数。SF为1，设b=0，即a&amp;lt;0   ns ~SF 反之   l SF^OF 有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&amp;lt;0，也就是a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-8">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/CSAPP-8/index.html">
+<meta property="og:title" content="csapp_bombLab">
+<meta property="og:url" content="http://yoursite.com/2019/12/18/postcsapp-bombLab/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="接上一篇说最复杂的条件码寄存器组合 所有组合都是基于a-b的前提。    后缀 逻辑运算（值为1） 描述     e ZF 相等。此时ZF为1，a-b=0，相等   ne ~ZF 反之   s SF 负数。SF为1，设b=0，即a&amp;lt;0   ns ~SF 反之   l SF^OF 有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&amp;lt;0，也就是a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T15:09:50.905Z">
+<meta property="og:updated_time" content="2019-12-18T05:48:32.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-8">
-<meta name="twitter:description" content="接上一篇说最复杂的条件码寄存器组合 所有组合都是基于a-b的前提。    后缀 逻辑运算（值为1） 描述     e ZF 相等。此时ZF为1，a-b=0，相等   ne ~ZF 反之   s SF 负数。SF为1，设b=0，即a&amp;lt;0   ns ~SF 反之   l SF^OF 有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&amp;lt;0，也就是a">
+<meta name="twitter:title" content="csapp_bombLab">
 
 
 
@@ -145,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/CSAPP-8/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/18/postcsapp-bombLab/">
 
 
 
 
 
-  <title>CSAPP-8 | Cloyee's blog</title>
+  <title>csapp_bombLab | Cloyee's blog</title>
   
 
 
@@ -300,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/CSAPP-8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/postcsapp-bombLab/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -317,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-8</h1>
+          <h1 class="post-title" itemprop="name headline">csapp_bombLab</h1>
         
 
         <div class="post-meta">
@@ -329,8 +326,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-17T22:34:33+08:00">
-                2019-02-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T13:47:45+08:00">
+                2019-12-18
               </time>
             
 
@@ -398,82 +395,7 @@
       
 
       
-        <p>接上一篇说最复杂的条件码寄存器组合</p>
-<p>所有组合都是基于a-b的前提。</p>
-<table>
-<thead>
-<tr>
-<th>后缀</th>
-<th>逻辑运算（值为1）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>e</td>
-<td>ZF</td>
-<td>相等。此时ZF为1，a-b=0，相等</td>
-</tr>
-<tr>
-<td>ne</td>
-<td>~ZF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>s</td>
-<td>SF</td>
-<td>负数。SF为1，设b=0，即a&lt;0</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>~SF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>l</td>
-<td>SF^OF</td>
-<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
-</tr>
-<tr>
-<td>le</td>
-<td>(SF^OF)\</td>
-<td>ZF</td>
-<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
-</tr>
-<tr>
-<td>g</td>
-<td>(SF^OF)&amp;~ZF</td>
-<td>有符号的大于。小于且不等于</td>
-</tr>
-<tr>
-<td>ge</td>
-<td>~(SF^OF)</td>
-<td>有符号的大于等于。不小于</td>
-</tr>
-<tr>
-<td>b</td>
-<td>CF</td>
-<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
-</tr>
-<tr>
-<td>be</td>
-<td>CF\</td>
-<td>ZF</td>
-<td>无符号的小于等于。</td>
-</tr>
-<tr>
-<td>a</td>
-<td>~CF&amp; ~ZF</td>
-<td>无符号的大于。无符号大于等于且不等于</td>
-</tr>
-<tr>
-<td>ae</td>
-<td>~CF</td>
-<td>s无符号大于等于</td>
-</tr>
-</tbody>
-</table>
-
+        
       
     </div>
     
@@ -493,7 +415,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="http://yoursite.com/2019/02/17/CSAPP-8/" title="CSAPP-8">http://yoursite.com/2019/02/17/CSAPP-8/</a>
+    <a href="http://yoursite.com/2019/12/18/postcsapp-bombLab/" title="csapp_bombLab">http://yoursite.com/2019/12/18/postcsapp-bombLab/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -515,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/17/CSAPP-7/" rel="next" title="CSAPP-7">
-                <i class="fa fa-chevron-left"></i> CSAPP-7
+              <a href="/2019/09/09/123/" rel="next" title="123">
+                <i class="fa fa-chevron-left"></i> 123
               </a>
             
           </div>
@@ -525,8 +447,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/21/CSAPP-9/" rel="prev" title="CSAPP-9">
-                CSAPP-9 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/18/csapp-bombLab/" rel="prev" title="csapp_bombLab">
+                csapp_bombLab <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

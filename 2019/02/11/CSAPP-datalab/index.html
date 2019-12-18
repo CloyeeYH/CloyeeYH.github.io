@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="Cloyee&#39;s blog">
 <meta property="og:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-13T10:13:57.851Z">
+<meta property="og:updated_time" content="2019-11-01T15:09:16.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-datalab">
 <meta name="twitter:description" content="看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab bitAnd题目：只能用～和|来实现位的与操作。  bitAnd - x&amp;amp;y using only ~ and |  Example: bitAnd(6, 5) = 4 Legal ops: ~ | Max ops: 8 Rating: 1    思路：~x：非x">
@@ -412,8 +412,7 @@
 </ul>
 <p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int bitAnd(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x|~y));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>getByte</p>
-<p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
+<h3 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h3><p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
 <ul>
 <li>getByte - Extract byte n from word x</li>
 <li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
@@ -470,8 +469,7 @@
 </ul>
 <p>思路：这不就是返回一个确定的值吗？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int tmin(void)</span><br><span class="line">&#123;</span><br><span class="line">    return 0x80 &lt;&lt; 24;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>fitsBits</p>
-<p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
+<h3 id="fitsBits"><a href="#fitsBits" class="headerlink" title="fitsBits"></a>fitsBits</h3><p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
 <ul>
 <li>fitsBits - return 1 if x can be represented as an</li>
 <li>n-bit, two’s complement integer.</li>
@@ -505,8 +503,7 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int negate(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return ((~x)+1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>isPositive</p>
-<p>题目:判断x是不是正数</p>
+<h3 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h3><p>题目:判断x是不是正数</p>
 <ul>
 <li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
 <li>Example: isPositive(-1) = 0.</li>
@@ -528,8 +525,7 @@
 </ul>
 <p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int isLessOrEqual(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">   int signx = (x &gt;&gt; 31);</span><br><span class="line">   int signy = (y &gt;&gt; 31);</span><br><span class="line">   int isSameSign=!(signx^signy) ;</span><br><span class="line">   int p=!(((~x)+1+y)&gt;&gt;31);</span><br><span class="line">   int ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>ilog2</p>
-<p>题目：求整数的log(x)。</p>
+<h3 id="ilog2"><a href="#ilog2" class="headerlink" title="ilog2"></a>ilog2</h3><p>题目：求整数的log(x)。</p>
 <ul>
 <li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
 <li>Example: ilog2(16) = 4</li>
@@ -716,7 +712,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -753,7 +749,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#bitAnd"><span class="nav-number">1.</span> <span class="nav-text">bitAnd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logicalShift"><span class="nav-number">2.</span> <span class="nav-text">logicalShift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitCount"><span class="nav-number">3.</span> <span class="nav-text">bitCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bang"><span class="nav-number">4.</span> <span class="nav-text">bang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmin"><span class="nav-number">5.</span> <span class="nav-text">tmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#divpwr2"><span class="nav-number">6.</span> <span class="nav-text">divpwr2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negate"><span class="nav-number">7.</span> <span class="nav-text">negate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLessOrEqual"><span class="nav-number">8.</span> <span class="nav-text">isLessOrEqual</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-neg"><span class="nav-number">9.</span> <span class="nav-text">float_neg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-i2f"><span class="nav-number">10.</span> <span class="nav-text">float_i2f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-twice"><span class="nav-number">11.</span> <span class="nav-text">float_twice</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#bitAnd"><span class="nav-number">1.</span> <span class="nav-text">bitAnd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getByte"><span class="nav-number">2.</span> <span class="nav-text">getByte</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logicalShift"><span class="nav-number">3.</span> <span class="nav-text">logicalShift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bitCount"><span class="nav-number">4.</span> <span class="nav-text">bitCount</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bang"><span class="nav-number">5.</span> <span class="nav-text">bang</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tmin"><span class="nav-number">6.</span> <span class="nav-text">tmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fitsBits"><span class="nav-number">7.</span> <span class="nav-text">fitsBits</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#divpwr2"><span class="nav-number">8.</span> <span class="nav-text">divpwr2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#negate"><span class="nav-number">9.</span> <span class="nav-text">negate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isPositive"><span class="nav-number">10.</span> <span class="nav-text">isPositive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isLessOrEqual"><span class="nav-number">11.</span> <span class="nav-text">isLessOrEqual</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ilog2"><span class="nav-number">12.</span> <span class="nav-text">ilog2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-neg"><span class="nav-number">13.</span> <span class="nav-text">float_neg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-i2f"><span class="nav-number">14.</span> <span class="nav-text">float_i2f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#float-twice"><span class="nav-number">15.</span> <span class="nav-text">float_twice</span></a></li></ol></div>
             
 
           </div>

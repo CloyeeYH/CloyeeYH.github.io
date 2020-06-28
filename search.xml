@@ -10,6 +10,9 @@
 <h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
 <p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP_1</title>
@@ -70,6 +73,9 @@
 <h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
 <p>eg：addl $4,%ecx</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP_2</title>
@@ -136,6 +142,9 @@
 <p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
 <p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-5</title>
@@ -239,6 +248,9 @@
 <p>弹出四字节：读出数据，加上8</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP_3</title>
@@ -271,6 +283,9 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-12</title>
@@ -309,6 +324,9 @@
 <p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
 <p>随即访问储存器只有一个地址输入和一个数据输出</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-4（浮点数）</title>
@@ -336,6 +354,9 @@
 </ul>
 <h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-6</title>
@@ -352,6 +373,9 @@
 <p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
 <h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-8</title>
@@ -432,6 +456,9 @@
 </tbody>
 </table>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-7</title>
@@ -490,6 +517,9 @@
 <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
 <p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-9</title>
@@ -528,6 +558,9 @@
 <h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
 <p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>JDBC</title>
@@ -567,6 +600,9 @@
 <p>c3p0-config.xml必须放在src下，而且名字不能变</p>
 <p>一个事务要么全成功要么全失败</p>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>CSAPP-datalab</title>
@@ -753,6 +789,9 @@
 </ul>
 <p>嘤嘤嘤~浮点数真令人头大</p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>Java 二丢丢</title>
@@ -989,6 +1028,9 @@
 <p><code>get(key)</code>:根据key<strong>查</strong>询value</p>
 <p><code>entryset()</code>:获取所有entry返回到set里</p>
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2>]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>JSP</title>
@@ -1081,6 +1123,9 @@
 <p>controller：servlet</p>
 <p>view和controller加起来是三层架构的view</p>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>Java一丢丢</title>
@@ -1164,6 +1209,9 @@
 <h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
 <p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
 <h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>JavaWeb</title>
@@ -1319,6 +1367,9 @@
 <li>数据共享：在同一个会话中</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>ss科学上网</title>
@@ -1368,6 +1419,9 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Others</category>
+      </categories>
   </entry>
   <entry>
     <title>matlab基本语法</title>
@@ -1419,6 +1473,9 @@
 </li>
 </ol>
 ]]></content>
+      <categories>
+        <category>MATLAB</category>
+      </categories>
   </entry>
   <entry>
     <title>fatal-unable-to-auto-detect-email-address</title>
@@ -1490,6 +1547,9 @@
 <p>至此所有的炸弹都拆完了。</p>
 <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ga0trryshej30g8064mxx.jpg" alt="1576641101(1).png"></p>
 ]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
   </entry>
   <entry>
     <title>分页查询</title>
@@ -1507,6 +1567,9 @@
 <p>当前页码：就是用户传递</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>事务</title>
@@ -1528,6 +1591,9 @@
 <p><code>rollback;</code></p>
 <p>事务处理放在service</p>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>数据库</title>
@@ -1648,5 +1714,8 @@
 <p>左外和右外例子效果相同</p>
 <p>尽量使用左外连接替代右外连接（大型数据库DB2只支持左外连接，不支持右外连接）</p>
 ]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
   </entry>
 </search>

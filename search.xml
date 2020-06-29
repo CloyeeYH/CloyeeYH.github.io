@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSAPP_1</title>
+    <url>/2019/01/27/CSAPP-1/</url>
+    <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
+<ol>
+<li><strong>硬件</strong><ul>
+<li>总线：贯穿整个系统的电子管道</li>
+<li>I/O设备：系统和外部联系的通道</li>
+<li>主存：执行程序时，存放相关数据</li>
+<li>处理器：解释或执行储存在主存中指令中的引擎</li>
+</ul>
+</li>
+<li><strong>软件</strong><ul>
+<li>应用程序</li>
+<li>操作系统</li>
+</ul>
+</li>
+</ol>
+<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
+<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
+<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
+<li><strong>共享库</strong></li>
+<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
+<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
+</ol>
+<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
+<li>并发：同时有多个活动的系统</li>
+<li>并行：用并发使一个系统运行更快</li>
+</ol>
+<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
+<li>文件是对I/O设备的抽象</li>
+<li>虚拟内存是对主存和磁盘的抽象</li>
+<li>进程是对正在运行的程序的抽象</li>
+<li>虚拟机是对整个计算机的抽象</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP-10</title>
-    <url>/cloyeeyh.github.io/2019/02/23/CSAPP-10/</url>
+    <url>/2019/02/23/CSAPP-10/</url>
     <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
@@ -16,7 +56,7 @@
   </entry>
   <entry>
     <title>CSAPP-11</title>
-    <url>/cloyeeyh.github.io/2019/02/25/CSAPP-11/</url>
+    <url>/2019/02/25/CSAPP-11/</url>
     <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
 <h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
 <p>halt：终止指令的执行</p>
@@ -39,7 +79,7 @@
   </entry>
   <entry>
     <title>CSAPP_2</title>
-    <url>/cloyeeyh.github.io/2019/01/30/CSAPP-2/</url>
+    <url>/2019/01/30/CSAPP-2/</url>
     <content><![CDATA[<h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
 <li>小端法：最低有效字节在最前面</li>
 <li>大端法：最高有效字节在最前面</li>
@@ -107,48 +147,8 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP_1</title>
-    <url>/cloyeeyh.github.io/2019/01/27/CSAPP-1/</url>
-    <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
-<ol>
-<li><strong>硬件</strong><ul>
-<li>总线：贯穿整个系统的电子管道</li>
-<li>I/O设备：系统和外部联系的通道</li>
-<li>主存：执行程序时，存放相关数据</li>
-<li>处理器：解释或执行储存在主存中指令中的引擎</li>
-</ul>
-</li>
-<li><strong>软件</strong><ul>
-<li>应用程序</li>
-<li>操作系统</li>
-</ul>
-</li>
-</ol>
-<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
-<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
-<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
-<li><strong>共享库</strong></li>
-<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
-<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
-</ol>
-<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
-<li>并发：同时有多个活动的系统</li>
-<li>并行：用并发使一个系统运行更快</li>
-</ol>
-<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
-<li>文件是对I/O设备的抽象</li>
-<li>虚拟内存是对主存和磁盘的抽象</li>
-<li>进程是对正在运行的程序的抽象</li>
-<li>虚拟机是对整个计算机的抽象</li>
-</ol>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-12</title>
-    <url>/cloyeeyh.github.io/2019/02/27/CSAPP-12/</url>
+    <url>/2019/02/27/CSAPP-12/</url>
     <content><![CDATA[<h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
 <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lc2ailk2j30ez0430u8.jpg" alt=""></p>
 <p>一个逻辑门计算一位</p>
@@ -189,7 +189,7 @@
   </entry>
   <entry>
     <title>CSAPP_3</title>
-    <url>/cloyeeyh.github.io/2019/02/01/CSAPP-3/</url>
+    <url>/2019/02/01/CSAPP-3/</url>
     <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
 <p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
 <ul>
@@ -223,38 +223,8 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-4（浮点数）</title>
-    <url>/cloyeeyh.github.io/2019/02/11/CSAPP-4/</url>
-    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
-<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
-<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
-<li>向零舍入：正数向下舍入，负数向上舍入</li>
-<li>向上舍入：大于该数的最小整数</li>
-<li>向下舍入：不大于该数的最大整数</li>
-</ul>
-<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
-<ul>
-<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
-</li>
-<li><p>规格化的值</p>
-<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
-</li>
-<li><p>非规格化的值</p>
-<p>阶码域全为0，E=1-Bias</p>
-</li>
-<li><p>特殊值</p>
-<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
-</li>
-</ul>
-<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-5</title>
-    <url>/cloyeeyh.github.io/2019/02/13/CSAPP-5/</url>
+    <url>/2019/02/13/CSAPP-5/</url>
     <content><![CDATA[<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h2 id="机器代码"><a href="#机器代码" class="headerlink" title="机器代码"></a>机器代码</h2><ul>
 <li><p>程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址</p>
 </li>
@@ -359,8 +329,38 @@
       </categories>
   </entry>
   <entry>
+    <title>CSAPP-4（浮点数）</title>
+    <url>/2019/02/11/CSAPP-4/</url>
+    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
+<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
+<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
+<li>向零舍入：正数向下舍入，负数向上舍入</li>
+<li>向上舍入：大于该数的最小整数</li>
+<li>向下舍入：不大于该数的最大整数</li>
+</ul>
+<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
+<ul>
+<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
+</li>
+<li><p>规格化的值</p>
+<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
+</li>
+<li><p>非规格化的值</p>
+<p>阶码域全为0，E=1-Bias</p>
+</li>
+<li><p>特殊值</p>
+<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
+</li>
+</ul>
+<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP-6</title>
-    <url>/cloyeeyh.github.io/2019/02/15/CSAPP-6/</url>
+    <url>/2019/02/15/CSAPP-6/</url>
     <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
 <h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
 <h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
@@ -379,7 +379,7 @@
   </entry>
   <entry>
     <title>CSAPP-7</title>
-    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-7/</url>
+    <url>/2019/02/17/CSAPP-7/</url>
     <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
 <h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
 <thead>
@@ -440,7 +440,7 @@
   </entry>
   <entry>
     <title>CSAPP-8</title>
-    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-8/</url>
+    <url>/2019/02/17/CSAPP-8/</url>
     <content><![CDATA[<p>接上一篇说最复杂的条件码寄存器组合</p>
 <p>所有组合都是基于a-b的前提。</p>
 <table>
@@ -523,7 +523,7 @@
   </entry>
   <entry>
     <title>CSAPP-datalab</title>
-    <url>/cloyeeyh.github.io/2019/02/11/CSAPP-datalab/</url>
+    <url>/2019/02/11/CSAPP-datalab/</url>
     <content><![CDATA[<p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
 <h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
 <ul>
@@ -712,7 +712,7 @@
   </entry>
   <entry>
     <title>CSAPP-9</title>
-    <url>/cloyeeyh.github.io/2019/02/21/CSAPP-9/</url>
+    <url>/2019/02/21/CSAPP-9/</url>
     <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
 <p>起始地址：储存在%ebp寄存器（桢指针）</p>
 <p>结束地址：储存在%esp寄存器（栈顶指针）</p>
@@ -752,8 +752,50 @@
       </categories>
   </entry>
   <entry>
+    <title>JDBC</title>
+    <url>/2019/08/26/JDBC/</url>
+    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>加载注册驱动类Driver</li>
+<li>建立连接</li>
+<li>操作数据</li>
+<li>释放资源</li>
+</ol>
+<ol>
+<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
+<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
+<li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>JSP</title>
-    <url>/cloyeeyh.github.io/2019/08/30/JSP/</url>
+    <url>/2019/08/30/JSP/</url>
     <content><![CDATA[<p>html不能写java代码</p>
 <p>JSP看起来是HTML，本质是servlet</p>
 <p>java代码写在&lt;%%&gt;中称为脚本片段，最终在service方法里运行，❗但不要在JSP里写java代码</p>
@@ -847,50 +889,8 @@
       </categories>
   </entry>
   <entry>
-    <title>JDBC</title>
-    <url>/cloyeeyh.github.io/2019/08/26/JDBC/</url>
-    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
-<p><strong>JDBC编程步骤</strong></p>
-<ol>
-<li>加载注册驱动类Driver</li>
-<li>建立连接</li>
-<li>操作数据</li>
-<li>释放资源</li>
-</ol>
-<ol>
-<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
-<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
-<li><code>DriverManager</code>： 创建连接对象</li>
-<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
-<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
-<li></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
-<p><strong>执行语句</strong></p>
-<p>增删改：executeUpdate（）</p>
-<p>查：executeQuery()</p>
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
-<p>业务逻辑层services：关键业务处理和数据处理</p>
-<p>（持久层）数据访问层 dao：从数据库获取数据</p>
-<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
-<p>dao：</p>
-<p>services：</p>
-<p>impl：接口，implements</p>
-<p>view：</p>
-<p>util：公用类，很多要用</p>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
-<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
-<p>一个事务要么全成功要么全失败</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JavaWeb</title>
-    <url>/cloyeeyh.github.io/2019/08/27/JavaWeb/</url>
+    <url>/2019/08/27/JavaWeb/</url>
     <content><![CDATA[<h1 id="软件两大架构-B-S-C-S"><a href="#软件两大架构-B-S-C-S" class="headerlink" title="软件两大架构 B/S    C/S"></a>软件两大架构 B/S    C/S</h1><h2 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h2><p>C:客户端   S:服务器   eg：QQ，LOL，WPS，就是桌面应用程序</p>
 <p><strong>特点</strong></p>
 <ol>
@@ -1047,8 +1047,94 @@
       </categories>
   </entry>
   <entry>
+    <title>Java一丢丢</title>
+    <url>/2019/08/19/Java%E4%B8%80%E4%B8%A2%E4%B8%A2/</url>
+    <content><![CDATA[<p>这就开始学习了？？</p>
+<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
+<hr>
+<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
+<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
+</li>
+<li><p><code>Float.MAX_VALUE</code>获取float max</p>
+</li>
+<li><p>println：输出后自动换行，print：输出后不换行</p>
+</li>
+<li><p>数组定义：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>public static final 则为常量</p>
+</li>
+<li><p>1970年1月1日 8点0分0秒开始</p>
+</li>
+<li><p><code>extends</code>继承</p>
+</li>
+<li><p><code>/**</code>+ENTER 多行注释</p>
+</li>
+<li><p>类名。接口名首字母大写</p>
+</li>
+<li><p>函数名，变量名首字母小写</p>
+</li>
+<li><p>常量首字母大写</p>
+</li>
+<li><p>单引号字符，双引号字符串</p>
+</li>
+<li><p>基本数据类型在栈，引用数据类型在堆里</p>
+</li>
+<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
+</li>
+<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
+</li>
+<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String 转成int(前提：string内容是数字)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int转String </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
+</li>
+<li><p>boolean类型默认false</p>
+</li>
+<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
+</li>
+<li><p>在静态static方法内部只能调用static方法或static变量</p>
+</li>
+<li><p>new 后面的是构造方法</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><ul>
+<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
+</li>
+<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
+<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
+<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
+<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
+<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
+<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
+</ul>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
+<p>重写run方法，启动线程用start；机制视频9：00</p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
+<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
+<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Java 二丢丢</title>
-    <url>/cloyeeyh.github.io/2019/08/20/Java-%E4%BA%8C%E4%B8%A2%E4%B8%A2/</url>
+    <url>/2019/08/20/Java-%E4%BA%8C%E4%B8%A2%E4%B8%A2/</url>
     <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组也可以用引用类型</p>
 <p>数组类型[]数组名</p>
 <p>数组遍历</p>
@@ -1286,94 +1372,20 @@
       </categories>
   </entry>
   <entry>
-    <title>Java一丢丢</title>
-    <url>/cloyeeyh.github.io/2019/08/19/Java%E4%B8%80%E4%B8%A2%E4%B8%A2/</url>
-    <content><![CDATA[<p>这就开始学习了？？</p>
-<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
+    <title>fatal-unable-to-auto-detect-email-address</title>
+    <url>/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
+    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
+<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --local -l</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
-<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
-</li>
-<li><p><code>Float.MAX_VALUE</code>获取float max</p>
-</li>
-<li><p>println：输出后自动换行，print：输出后不换行</p>
-</li>
-<li><p>数组定义：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>public static final 则为常量</p>
-</li>
-<li><p>1970年1月1日 8点0分0秒开始</p>
-</li>
-<li><p><code>extends</code>继承</p>
-</li>
-<li><p><code>/**</code>+ENTER 多行注释</p>
-</li>
-<li><p>类名。接口名首字母大写</p>
-</li>
-<li><p>函数名，变量名首字母小写</p>
-</li>
-<li><p>常量首字母大写</p>
-</li>
-<li><p>单引号字符，双引号字符串</p>
-</li>
-<li><p>基本数据类型在栈，引用数据类型在堆里</p>
-</li>
-<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
-</li>
-<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
-</li>
-<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>String 转成int(前提：string内容是数字)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>int转String </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
-</li>
-<li><p>boolean类型默认false</p>
-</li>
-<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
-</li>
-<li><p>在静态static方法内部只能调用static方法或static变量</p>
-</li>
-<li><p>new 后面的是构造方法</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><ul>
-<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
-</li>
-<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
-<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
-<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
-<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
-<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
-<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
-</ul>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
-<p>重写run方法，启动线程用start；机制视频9：00</p>
-<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
-<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
-<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
+<p>我的git……他还是有自己的想法</p>
+]]></content>
   </entry>
   <entry>
     <title>csapp_bombLab</title>
-    <url>/cloyeeyh.github.io/2019/12/18/csapp-bombLab/</url>
+    <url>/2019/12/18/csapp-bombLab/</url>
     <content><![CDATA[<h1 id="phase-1"><a href="#phase-1" class="headerlink" title="phase_1"></a>phase_1</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">08048b30 &lt;phase_1&gt;:</span><br><span class="line"> 8048b30:	55                   	push   %ebp</span><br><span class="line"> 8048b31:	89 e5                	mov    %esp,%ebp</span><br><span class="line"> 8048b33:	83 ec 10             	sub    $0x10,%esp</span><br><span class="line"> 8048b36:	68 24 a1 04 08       	push   $0x804a124</span><br><span class="line"> 8048b3b:	ff 75 08             	pushl  0x8(%ebp)</span><br><span class="line"> 8048b3e:	e8 63 05 00 00       	call   80490a6 &lt;strings_not_equal&gt;</span><br><span class="line"> 8048b43:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 8048b46:	85 c0                	test   %eax,%eax</span><br><span class="line"> 8048b48:	74 05                	je     8048b4f &lt;phase_1+0x1f&gt;</span><br><span class="line"> 8048b4a:	e8 5a 06 00 00       	call   80491a9 &lt;explode_bomb&gt;</span><br><span class="line"> 8048b4f:	c9                   	leave  </span><br><span class="line"> 8048b50:	c3                   	ret</span><br></pre></td></tr></table></figure>
 <p>直接查看0x804a124地址里的值</p>
 <p>Border relations with Canada have never been better.</p>
@@ -1434,8 +1446,80 @@
       </categories>
   </entry>
   <entry>
+    <title>ss科学上网</title>
+    <url>/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
+<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
+<p>前两个就不细说了</p>
+<p>Server Location: sydney</p>
+<p>Server Type：centos7 x64</p>
+<p>Server Size: 按实际需要选</p>
+<p>Deploy Now</p>
+<p>接下来是漫长的等待……</p>
+<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
+<p>之后有一个要输入yes</p>
+<p>之后是密码</p>
+<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<p>之后按照提示输入IP、端口、密码、加密方式</p>
+<p>出现红框框的时候，恭喜，快要成功了……</p>
+<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
+<p><strong>bingo~</strong></p>
+<hr>
+<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
+<li><p>准备</p>
+<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
+</li>
+<li><p>具体步骤</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
+<p>安装程序光盘映像文件，找到下载的路径</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
+<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
+<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
+<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
+<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
+<p>完成之后就可以打开虚拟机了</p>
+<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
+<p>选择语言（ENGLISH）</p>
+<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
+<p>之后设置root和新建用户</p>
+<p>这次是非常漫长的等待……</p>
+<p>reboot!</p>
+<p>设置网络，登陆，bingo~</p>
+<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
+<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
+<p>##同时用到的对防火墙的操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Others</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>分页查询</title>
+    <url>/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
+<p>（页数-1）*要显示的条数，要显示的条数</p>
+<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
+<p>每页的数量：程序员设置</p>
+<p>总条数：<code>select count(*) from表名</code></p>
+<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
+<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
+<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
+<p>上一页：是否等于首页？无效：页码-1</p>
+<p>下一页：是否等于尾页？无效：页码+1</p>
+<p>当前页码：就是用户传递</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>matlab基本语法</title>
-    <url>/cloyeeyh.github.io/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <url>/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<ol>
 <li><p>加；表示不输出，不加表示输出</p>
 </li>
@@ -1488,20 +1572,8 @@
       </categories>
   </entry>
   <entry>
-    <title>fatal-unable-to-auto-detect-email-address</title>
-    <url>/cloyeeyh.github.io/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
-    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
-<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
-<p>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --local -l</span><br></pre></td></tr></table></figure>
-<hr>
-<p>我的git……他还是有自己的想法</p>
-]]></content>
-  </entry>
-  <entry>
     <title>事务</title>
-    <url>/cloyeeyh.github.io/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
+    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
     <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
 <p>myisam:速度快，不安全,不支持事务，不支持外键</p>
 <p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
@@ -1524,60 +1596,8 @@
       </categories>
   </entry>
   <entry>
-    <title>ss科学上网</title>
-    <url>/cloyeeyh.github.io/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
-<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
-<p>前两个就不细说了</p>
-<p>Server Location: sydney</p>
-<p>Server Type：centos7 x64</p>
-<p>Server Size: 按实际需要选</p>
-<p>Deploy Now</p>
-<p>接下来是漫长的等待……</p>
-<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
-<p>之后有一个要输入yes</p>
-<p>之后是密码</p>
-<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
-<p>之后按照提示输入IP、端口、密码、加密方式</p>
-<p>出现红框框的时候，恭喜，快要成功了……</p>
-<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
-<p><strong>bingo~</strong></p>
-<hr>
-<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
-<li><p>准备</p>
-<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
-</li>
-<li><p>具体步骤</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
-<p>安装程序光盘映像文件，找到下载的路径</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
-<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
-<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
-<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
-<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
-<p>完成之后就可以打开虚拟机了</p>
-<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
-<p>选择语言（ENGLISH）</p>
-<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
-<p>之后设置root和新建用户</p>
-<p>这次是非常漫长的等待……</p>
-<p>reboot!</p>
-<p>设置网络，登陆，bingo~</p>
-<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
-<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
-<p>##同时用到的对防火墙的操作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Others</category>
-      </categories>
-  </entry>
-  <entry>
     <title>数据库</title>
-    <url>/cloyeeyh.github.io/2019/08/26/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <url>/2019/08/26/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
     <content><![CDATA[<p>登陆</p>
 <p>进入MySQL的bin目录下</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -hlocalhost -uroot -p</span><br></pre></td></tr></table></figure>
@@ -1696,26 +1716,6 @@
 ]]></content>
       <categories>
         <category>数据库</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>分页查询</title>
-    <url>/cloyeeyh.github.io/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
-<p>（页数-1）*要显示的条数，要显示的条数</p>
-<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
-<p>每页的数量：程序员设置</p>
-<p>总条数：<code>select count(*) from表名</code></p>
-<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
-<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
-<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
-<p>上一页：是否等于首页？无效：页码-1</p>
-<p>下一页：是否等于尾页？无效：页码+1</p>
-<p>当前页码：就是用户传递</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
 </search>

@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSAPP_1</title>
+    <url>/cloyeeyh.github.io/2019/01/27/CSAPP-1/</url>
+    <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
+<ol>
+<li><strong>硬件</strong><ul>
+<li>总线：贯穿整个系统的电子管道</li>
+<li>I/O设备：系统和外部联系的通道</li>
+<li>主存：执行程序时，存放相关数据</li>
+<li>处理器：解释或执行储存在主存中指令中的引擎</li>
+</ul>
+</li>
+<li><strong>软件</strong><ul>
+<li>应用程序</li>
+<li>操作系统</li>
+</ul>
+</li>
+</ol>
+<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
+<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
+<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
+<li><strong>共享库</strong></li>
+<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
+<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
+</ol>
+<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
+<li>并发：同时有多个活动的系统</li>
+<li>并行：用并发使一个系统运行更快</li>
+</ol>
+<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
+<li>文件是对I/O设备的抽象</li>
+<li>虚拟内存是对主存和磁盘的抽象</li>
+<li>进程是对正在运行的程序的抽象</li>
+<li>虚拟机是对整个计算机的抽象</li>
+</ol>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP-10</title>
     <url>/cloyeeyh.github.io/2019/02/23/CSAPP-10/</url>
     <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
@@ -9,6 +49,29 @@
 <p>头大……</p>
 <h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
 <p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-11</title>
+    <url>/cloyeeyh.github.io/2019/02/25/CSAPP-11/</url>
+    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
+<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
+<p>halt：终止指令的执行</p>
+<p>nop：占位指令，不做任何事</p>
+<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
+<p>opl：操作指令</p>
+<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
+<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
+<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
+<p>push与pop：入栈和出栈操作</p>
+<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
+<p>寄存器的表示：4个二进制位</p>
+<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
+<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
+<p>eg：addl $4,%ecx</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -50,46 +113,6 @@
 <p>寄存器文件和随即访问储存器有读写操作，时钟寄存器没有读写。</p>
 <p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
 <p>随即访问储存器只有一个地址输入和一个数据输出</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP_1</title>
-    <url>/cloyeeyh.github.io/2019/01/27/CSAPP-1/</url>
-    <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
-<ol>
-<li><strong>硬件</strong><ul>
-<li>总线：贯穿整个系统的电子管道</li>
-<li>I/O设备：系统和外部联系的通道</li>
-<li>主存：执行程序时，存放相关数据</li>
-<li>处理器：解释或执行储存在主存中指令中的引擎</li>
-</ul>
-</li>
-<li><strong>软件</strong><ul>
-<li>应用程序</li>
-<li>操作系统</li>
-</ul>
-</li>
-</ol>
-<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
-<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
-<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
-<li><strong>共享库</strong></li>
-<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
-<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
-</ol>
-<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
-<li>并发：同时有多个活动的系统</li>
-<li>并行：用并发使一个系统运行更快</li>
-</ol>
-<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
-<li>文件是对I/O设备的抽象</li>
-<li>虚拟内存是对主存和磁盘的抽象</li>
-<li>进程是对正在运行的程序的抽象</li>
-<li>虚拟机是对整个计算机的抽象</li>
-</ol>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -165,29 +188,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-11</title>
-    <url>/cloyeeyh.github.io/2019/02/25/CSAPP-11/</url>
-    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
-<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
-<p>halt：终止指令的执行</p>
-<p>nop：占位指令，不做任何事</p>
-<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
-<p>opl：操作指令</p>
-<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
-<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
-<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
-<p>push与pop：入栈和出栈操作</p>
-<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
-<p>寄存器的表示：4个二进制位</p>
-<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
-<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
-<p>eg：addl $4,%ecx</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP_3</title>
     <url>/cloyeeyh.github.io/2019/02/01/CSAPP-3/</url>
     <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
@@ -217,6 +217,36 @@
 <li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-4（浮点数）</title>
+    <url>/cloyeeyh.github.io/2019/02/11/CSAPP-4/</url>
+    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
+<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
+<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
+<li>向零舍入：正数向下舍入，负数向上舍入</li>
+<li>向上舍入：大于该数的最小整数</li>
+<li>向下舍入：不大于该数的最大整数</li>
+</ul>
+<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
+<ul>
+<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
+</li>
+<li><p>规格化的值</p>
+<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
+</li>
+<li><p>非规格化的值</p>
+<p>阶码域全为0，E=1-Bias</p>
+</li>
+<li><p>特殊值</p>
+<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
+</li>
+</ul>
+<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -329,36 +359,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-4（浮点数）</title>
-    <url>/cloyeeyh.github.io/2019/02/11/CSAPP-4/</url>
-    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
-<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
-<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
-<li>向零舍入：正数向下舍入，负数向上舍入</li>
-<li>向上舍入：大于该数的最小整数</li>
-<li>向下舍入：不大于该数的最大整数</li>
-</ul>
-<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
-<ul>
-<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
-</li>
-<li><p>规格化的值</p>
-<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
-</li>
-<li><p>非规格化的值</p>
-<p>阶码域全为0，E=1-Bias</p>
-</li>
-<li><p>特殊值</p>
-<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
-</li>
-</ul>
-<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-6</title>
     <url>/cloyeeyh.github.io/2019/02/15/CSAPP-6/</url>
     <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
@@ -372,6 +372,67 @@
 <p>右移：SAR左边填符号位。SHR左边填0</p>
 <p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
 <h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-7</title>
+    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-7/</url>
+    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
+<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
+<thead>
+<tr>
+<th>条件码寄存器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CF</td>
+<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
+</tr>
+<tr>
+<td>OF</td>
+<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>条件码寄存器大多数时候是被动改变</li>
+</ul>
+<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
+<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
+<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
+<p>二者都需加数据格式后缀</p>
+<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
+<li>根据条件码组合，将一个字节设置为0，1</li>
+<li>条件跳转到程序的某个其他部分</li>
+<li>有条件的传送数据</li>
+</ul>
+<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
+<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
+<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
+<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
+<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
+<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
+<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -455,67 +516,6 @@
 </tr>
 </tbody>
 </table>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-7</title>
-    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-7/</url>
-    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
-<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
-<thead>
-<tr>
-<th>条件码寄存器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CF</td>
-<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
-</tr>
-<tr>
-<td>OF</td>
-<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>条件码寄存器大多数时候是被动改变</li>
-</ul>
-<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
-<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
-<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
-<p>二者都需加数据格式后缀</p>
-<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
-<li>根据条件码组合，将一个字节设置为0，1</li>
-<li>条件跳转到程序的某个其他部分</li>
-<li>有条件的传送数据</li>
-</ul>
-<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
-<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
-<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
-<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>汇编代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
-<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -749,6 +749,48 @@
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JDBC</title>
+    <url>/cloyeeyh.github.io/2019/08/26/JDBC/</url>
+    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>加载注册驱动类Driver</li>
+<li>建立连接</li>
+<li>操作数据</li>
+<li>释放资源</li>
+</ol>
+<ol>
+<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
+<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
+<li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
   <entry>
@@ -1086,48 +1128,6 @@
       </categories>
   </entry>
   <entry>
-    <title>JDBC</title>
-    <url>/cloyeeyh.github.io/2019/08/26/JDBC/</url>
-    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
-<p><strong>JDBC编程步骤</strong></p>
-<ol>
-<li>加载注册驱动类Driver</li>
-<li>建立连接</li>
-<li>操作数据</li>
-<li>释放资源</li>
-</ol>
-<ol>
-<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
-<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
-<li><code>DriverManager</code>： 创建连接对象</li>
-<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
-<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
-<li></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
-<p><strong>执行语句</strong></p>
-<p>增删改：executeUpdate（）</p>
-<p>查：executeQuery()</p>
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
-<p>业务逻辑层services：关键业务处理和数据处理</p>
-<p>（持久层）数据访问层 dao：从数据库获取数据</p>
-<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
-<p>dao：</p>
-<p>services：</p>
-<p>impl：接口，implements</p>
-<p>view：</p>
-<p>util：公用类，很多要用</p>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
-<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
-<p>一个事务要么全成功要么全失败</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JavaWeb</title>
     <url>/cloyeeyh.github.io/2019/08/27/JavaWeb/</url>
     <content><![CDATA[<h1 id="软件两大架构-B-S-C-S"><a href="#软件两大架构-B-S-C-S" class="headerlink" title="软件两大架构 B/S    C/S"></a>软件两大架构 B/S    C/S</h1><h2 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h2><p>C:客户端   S:服务器   eg：QQ，LOL，WPS，就是桌面应用程序</p>
@@ -1446,6 +1446,58 @@
       </categories>
   </entry>
   <entry>
+    <title>ss科学上网</title>
+    <url>/cloyeeyh.github.io/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
+<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
+<p>前两个就不细说了</p>
+<p>Server Location: sydney</p>
+<p>Server Type：centos7 x64</p>
+<p>Server Size: 按实际需要选</p>
+<p>Deploy Now</p>
+<p>接下来是漫长的等待……</p>
+<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
+<p>之后有一个要输入yes</p>
+<p>之后是密码</p>
+<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<p>之后按照提示输入IP、端口、密码、加密方式</p>
+<p>出现红框框的时候，恭喜，快要成功了……</p>
+<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
+<p><strong>bingo~</strong></p>
+<hr>
+<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
+<li><p>准备</p>
+<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
+</li>
+<li><p>具体步骤</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
+<p>安装程序光盘映像文件，找到下载的路径</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
+<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
+<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
+<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
+<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
+<p>完成之后就可以打开虚拟机了</p>
+<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
+<p>选择语言（ENGLISH）</p>
+<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
+<p>之后设置root和新建用户</p>
+<p>这次是非常漫长的等待……</p>
+<p>reboot!</p>
+<p>设置网络，登陆，bingo~</p>
+<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
+<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
+<p>##同时用到的对防火墙的操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Others</category>
+      </categories>
+  </entry>
+  <entry>
     <title>matlab基本语法</title>
     <url>/cloyeeyh.github.io/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<ol>
@@ -1500,78 +1552,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ss科学上网</title>
-    <url>/cloyeeyh.github.io/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
-<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
-<p>前两个就不细说了</p>
-<p>Server Location: sydney</p>
-<p>Server Type：centos7 x64</p>
-<p>Server Size: 按实际需要选</p>
-<p>Deploy Now</p>
-<p>接下来是漫长的等待……</p>
-<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
-<p>之后有一个要输入yes</p>
-<p>之后是密码</p>
-<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
-<p>之后按照提示输入IP、端口、密码、加密方式</p>
-<p>出现红框框的时候，恭喜，快要成功了……</p>
-<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
-<p><strong>bingo~</strong></p>
-<hr>
-<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
-<li><p>准备</p>
-<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
-</li>
-<li><p>具体步骤</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
-<p>安装程序光盘映像文件，找到下载的路径</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
-<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
-<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
-<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
-<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
-<p>完成之后就可以打开虚拟机了</p>
-<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
-<p>选择语言（ENGLISH）</p>
-<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
-<p>之后设置root和新建用户</p>
-<p>这次是非常漫长的等待……</p>
-<p>reboot!</p>
-<p>设置网络，登陆，bingo~</p>
-<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
-<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
-<p>##同时用到的对防火墙的操作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Others</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>分页查询</title>
-    <url>/cloyeeyh.github.io/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
-<p>（页数-1）*要显示的条数，要显示的条数</p>
-<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
-<p>每页的数量：程序员设置</p>
-<p>总条数：<code>select count(*) from表名</code></p>
-<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
-<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
-<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
-<p>上一页：是否等于首页？无效：页码-1</p>
-<p>下一页：是否等于尾页？无效：页码+1</p>
-<p>当前页码：就是用户传递</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>事务</title>
     <url>/cloyeeyh.github.io/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
     <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
@@ -1590,6 +1570,26 @@
 <p>回滚事务，回到未修改前</p>
 <p><code>rollback;</code></p>
 <p>事务处理放在service</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>分页查询</title>
+    <url>/cloyeeyh.github.io/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
+<p>（页数-1）*要显示的条数，要显示的条数</p>
+<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
+<p>每页的数量：程序员设置</p>
+<p>总条数：<code>select count(*) from表名</code></p>
+<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
+<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
+<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
+<p>上一页：是否等于首页？无效：页码-1</p>
+<p>下一页：是否等于尾页？无效：页码+1</p>
+<p>当前页码：就是用户传递</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>

@@ -223,6 +223,55 @@
       </categories>
   </entry>
   <entry>
+    <title>CSAPP-4（浮点数）</title>
+    <url>/2019/02/11/CSAPP-4/</url>
+    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
+<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
+<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
+<li>向零舍入：正数向下舍入，负数向上舍入</li>
+<li>向上舍入：大于该数的最小整数</li>
+<li>向下舍入：不大于该数的最大整数</li>
+</ul>
+<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
+<ul>
+<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
+</li>
+<li><p>规格化的值</p>
+<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
+</li>
+<li><p>非规格化的值</p>
+<p>阶码域全为0，E=1-Bias</p>
+</li>
+<li><p>特殊值</p>
+<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
+</li>
+</ul>
+<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-6</title>
+    <url>/2019/02/15/CSAPP-6/</url>
+    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
+<p>二元：俩个操作数</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
+<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
+<p>高位被忽略，eg：salb移7位……</p>
+<p>左移：SAL、SHL右边都是填0</p>
+<p>右移：SAR左边填符号位。SHR左边填0</p>
+<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP-5</title>
     <url>/2019/02/13/CSAPP-5/</url>
     <content><![CDATA[<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h2 id="机器代码"><a href="#机器代码" class="headerlink" title="机器代码"></a>机器代码</h2><ul>
@@ -323,55 +372,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subq $8,%rsp</span><br><span class="line">movq %rbp,(%rsp)</span><br></pre></td></tr></table></figure>
 <p>弹出四字节：读出数据，加上8</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-4（浮点数）</title>
-    <url>/2019/02/11/CSAPP-4/</url>
-    <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
-<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
-<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
-<li>向零舍入：正数向下舍入，负数向上舍入</li>
-<li>向上舍入：大于该数的最小整数</li>
-<li>向下舍入：不大于该数的最大整数</li>
-</ul>
-<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
-<ul>
-<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
-</li>
-<li><p>规格化的值</p>
-<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
-</li>
-<li><p>非规格化的值</p>
-<p>阶码域全为0，E=1-Bias</p>
-</li>
-<li><p>特殊值</p>
-<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
-</li>
-</ul>
-<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-6</title>
-    <url>/2019/02/15/CSAPP-6/</url>
-    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
-<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
-<p>二元：俩个操作数</p>
-<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
-<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
-<p>高位被忽略，eg：salb移7位……</p>
-<p>左移：SAL、SHL右边都是填0</p>
-<p>右移：SAR左边填符号位。SHR左边填0</p>
-<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
-<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -519,6 +519,184 @@
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-9</title>
+    <url>/2019/02/21/CSAPP-9/</url>
+    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+<p>起始地址：储存在%ebp寄存器（桢指针）</p>
+<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
+<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
+<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
+<li><p>备份原来指针</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给临时变量分配预留内存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值压入栈顶（备份）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用建立好的栈帧，mov,push,pop</p>
+</li>
+<li><p>从栈帧中将备份的值恢复到寄存器</p>
+</li>
+<li><p>释放被调用的栈帧，栈指针增大</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+</li>
+</ol>
+<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
+<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
+<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
+<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
+<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JDBC</title>
+    <url>/2019/08/26/JDBC/</url>
+    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>加载注册驱动类Driver</li>
+<li>建立连接</li>
+<li>操作数据</li>
+<li>释放资源</li>
+</ol>
+<ol>
+<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
+<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
+<li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JSP</title>
+    <url>/2019/08/30/JSP/</url>
+    <content><![CDATA[<p>html不能写java代码</p>
+<p>JSP看起来是HTML，本质是servlet</p>
+<p>java代码写在&lt;%%&gt;中称为脚本片段，最终在service方法里运行，❗但不要在JSP里写java代码</p>
+<p>jsp声明：&lt;%!  %&gt;里面可以写方法</p>
+<p>jsp注释：&lt;%– –%&gt;</p>
+<p>输出到浏览器&lt;%=  &gt;</p>
+<h1 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h1><p>不需要声明可以直接用的对象</p>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>httpservletRequest对象，代表客户端请求</p>
+<p>域范围：同一个请求</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(<span class="string">"name:"</span>+name);</span><br></pre></td></tr></table></figure>
+<h2 id="response（不常用）"><a href="#response（不常用）" class="headerlink" title="response（不常用）"></a>response（不常用）</h2><p>httpservletResponse对象，代表服务器响应</p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>域范围：同一会话</p>
+<p>代表一次会话</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"sessionid="</span>+session.getId());</span><br></pre></td></tr></table></figure>
+<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p>ServletContext对象，代表当前web应用</p>
+<p>域范围：同一web应用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(application.getInitParameter(<span class="string">"name"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="out（不常用）"><a href="#out（不常用）" class="headerlink" title="out（不常用）"></a>out（不常用）</h2><p>JSPWrite对象，把结果输出到浏览器</p>
+<h2 id="config（不常用）"><a href="#config（不常用）" class="headerlink" title="config（不常用）"></a>config（不常用）</h2><p>ServletConfig对象，代表当前servlet</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(<span class="string">"servlet注册名："</span>+config.getServletName());</span><br></pre></td></tr></table></figure>
+<h2 id="page（不常用）"><a href="#page（不常用）" class="headerlink" title="page（不常用）"></a>page（不常用）</h2><p>指的是jsp对应的servlet对象，也就是代表页面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"page:"</span>+page);</span><br></pre></td></tr></table></figure>
+<h2 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h2><p>页面上下文，可以获取其他八个内置对象，域范围：当前页面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(pageContext.getRequest()==request);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="exception（不常用）"><a href="#exception（不常用）" class="headerlink" title="exception（不常用）"></a>exception（不常用）</h2><p>异常对象</p>
+<p>剩下四个常用的是jsp的四大域对象</p>
+<p>路径写绝对路径</p>
+<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><p>从域对象里取值</p>
+<p>el表达式没有遍历功能</p>
+<p>表单回显：点击提交后用户名输入框依旧显示输入内容</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;!-- 麻烦--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=&lt;%=request.getParameter(<span class="string">"username"</span>)==<span class="keyword">null</span>?<span class="string">""</span>:request.getParameter(<span class="string">"username"</span>) %&gt; &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">&lt;%=request.getParameter(<span class="string">"username"</span>) %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 简单el--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=<span class="string">"$&#123;param.username &#125;"</span> &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">$&#123;param.username &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;% out.print(request.getAttribute(<span class="string">"name"</span>)); %&gt;</span><br><span class="line">&lt;!-- 被以下方式替换了 --&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;!--又被以下El表达式替换了 --&gt;</span><br><span class="line">$&#123;name&#125;</span><br></pre></td></tr></table></figure>
+<p>从某一个范围中根据域对象名name去取值，如果没有指定从那个域对象里取，默认从小到大取，也就是先从pageContext里取，如果想从指定的域中取，name前面加上、pageScope、requestScope、sessionScope、applicationScope</p>
+<p><code>${sessionScope.name  }</code></p>
+<p>如果域名叫user.name ：</p>
+<p>不加括号：会在request域中找user对象，在user对象中找name对象，在name对象中找name属性</p>
+<p>使用括号：[“user.name”].name</p>
+<p><code>${pageContext.request.contextPath }</code>获取当前web应用根目录</p>
+<p>el表达式可以自动类型转换</p>
+<h1 id="JSTL标签"><a href="#JSTL标签" class="headerlink" title="JSTL标签"></a>JSTL标签</h1><p>导入jstl标签库</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><code>c:out</code></strong>value=${}：值 default=” “默认值     把结果输出到浏览器，可以解析特殊字符</p>
+<p><code>c:set</code> scope=“ ”:指定域对象，var=“ ”：名字value=“ ”：值</p>
+<p><code>c:remove</code>:  var=” “ value=” “</p>
+<p><code>c:if</code> :不能实现else</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;param.age&lt;20 &#125;"</span>&gt;</span><br><span class="line">  太小了，未到达法定结婚年龄！</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
+<p><code>c:choose</code>判断，相当于if elseif else</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&lt;20&#125;"</span>&gt; </span><br><span class="line">    小于<span class="number">20</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&gt;=20 &amp;&amp; param.age&lt;=100&#125;"</span>&gt;</span><br><span class="line">    <span class="number">20</span>~<span class="number">100</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:otherwise&gt;</span><br><span class="line">    大于<span class="number">100</span>...</span><br><span class="line">  &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+<p><code>c:foreach</code>遍历</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>要被循环的信息</td>
+</tr>
+<tr>
+<td>begin</td>
+<td>开始的元素（0=第一个元素，1=第二个元素）</td>
+</tr>
+<tr>
+<td>end</td>
+<td>最后一个元素（0=第一个元素，1=第二个元素）</td>
+</tr>
+<tr>
+<td>step</td>
+<td>每一次迭代的步长</td>
+</tr>
+<tr>
+<td>var</td>
+<td>代表当前条目的变量名称</td>
+</tr>
+<tr>
+<td>varStatus</td>
+<td>代表循环状态的变量名称   .count   表示迭代计数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h1><p>model：应用程序核心，数据库记录列表，bean，封装书库  service和dao</p>
+<p>view：显示数据，jsp/html</p>
+<p>controller：servlet</p>
+<p>view和controller加起来是三层架构的view</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
   <entry>
@@ -711,179 +889,240 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-9</title>
-    <url>/2019/02/21/CSAPP-9/</url>
-    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
+    <title>Java 二丢丢</title>
+    <url>/2019/08/20/Java-%E4%BA%8C%E4%B8%A2%E4%B8%A2/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组也可以用引用类型</p>
+<p>数组类型[]数组名</p>
+<p>数组遍历</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> num1:num)&#123;</span><br><span class="line">	System.out.println(num1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数组必须初始化</p>
+<ol>
+<li><p>✪动态初始化 （指定数组长度）</p>
+<ul>
+<li><p>数组类型[]数组名=new 数组类型[数组长度];</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
+<li><p>数组类型[]数组名；</p>
+<p>数组名=new数组类型[数组长度];</p>
 </li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
+</ul>
 </li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+<li><p>静态初始化 （不指定数组长度，直接赋值）</p>
+<ul>
+<li>数组类型 []数组名=new 数组类型[] {数据值…}</li>
+<li>数据类型[] 数组名 = {数据值…}、</li>
+</ul>
 </li>
 </ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JDBC</title>
-    <url>/2019/08/26/JDBC/</url>
-    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
-<p><strong>JDBC编程步骤</strong></p>
-<ol>
-<li>加载注册驱动类Driver</li>
-<li>建立连接</li>
-<li>操作数据</li>
-<li>释放资源</li>
+<p>局部变量在栈里，new出来的东西在堆里</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
+<li><p><strong>定义</strong>：把一堆要重复执行的代码封装起来，如果别的程序要用到这段代码，直接调用这个方法名即可</p>
+</li>
+<li><p><strong>如何？</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回值类型 方法名（参数类型 参数名）&#123;</span><br><span class="line"></span><br><span class="line">代码块;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> 返回值;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>访问修饰符：格式是固定的</p>
+<p>返回值类型：方法最终返回数据类型</p>
+<p>方法名：首字母小写</p>
+<p>参数类型：进入方法的数据类型</p>
+<p>return：返回值返回给调用值</p>
+<p>返回值：方法最终产生的结果</p>
+</li>
 </ol>
+<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载和返回类型无关</p>
+<p>方法名必须相同，参数列表必须不同</p>
+<p>参数个数不同，参数类型不同，参数类型顺序不同</p>
+<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><p>一个类不能直接使用，类似一个汽车图纸不能直接跑</p>
+<p>需要根据这个类创建一个真正的对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
+<p>如果成员变量没有赋值，会有默认值</p>
+<p><strong>成员变量，局部变量区别</strong></p>
 <ol>
-<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
-<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
-<li><code>DriverManager</code>： 创建连接对象</li>
-<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
-<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li>成员变量在堆里，局部变量在栈里</li>
+<li>成员变量声明在类内部，方法外部，局部变量在方法内部</li>
+<li>成员变量有默认值，局部变量没有默认值</li>
+<li>局部变量和成员变量重名时，方法会根据就近原则使用局部变量，为了区分，用this关键字（this关键字可以理解为当前使用或正在创建的对象）</li>
 <li></li>
 </ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
-<p><strong>执行语句</strong></p>
-<p>增删改：executeUpdate（）</p>
-<p>查：executeQuery()</p>
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
-<p>业务逻辑层services：关键业务处理和数据处理</p>
-<p>（持久层）数据访问层 dao：从数据库获取数据</p>
-<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
-<p>dao：</p>
-<p>services：</p>
-<p>impl：接口，implements</p>
-<p>view：</p>
-<p>util：公用类，很多要用</p>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
-<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
-<p>一个事务要么全成功要么全失败</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JSP</title>
-    <url>/2019/08/30/JSP/</url>
-    <content><![CDATA[<p>html不能写java代码</p>
-<p>JSP看起来是HTML，本质是servlet</p>
-<p>java代码写在&lt;%%&gt;中称为脚本片段，最终在service方法里运行，❗但不要在JSP里写java代码</p>
-<p>jsp声明：&lt;%!  %&gt;里面可以写方法</p>
-<p>jsp注释：&lt;%– –%&gt;</p>
-<p>输出到浏览器&lt;%=  &gt;</p>
-<h1 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h1><p>不需要声明可以直接用的对象</p>
-<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>httpservletRequest对象，代表客户端请求</p>
-<p>域范围：同一个请求</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(<span class="string">"name:"</span>+name);</span><br></pre></td></tr></table></figure>
-<h2 id="response（不常用）"><a href="#response（不常用）" class="headerlink" title="response（不常用）"></a>response（不常用）</h2><p>httpservletResponse对象，代表服务器响应</p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>域范围：同一会话</p>
-<p>代表一次会话</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"sessionid="</span>+session.getId());</span><br></pre></td></tr></table></figure>
-<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p>ServletContext对象，代表当前web应用</p>
-<p>域范围：同一web应用</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(application.getInitParameter(<span class="string">"name"</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="out（不常用）"><a href="#out（不常用）" class="headerlink" title="out（不常用）"></a>out（不常用）</h2><p>JSPWrite对象，把结果输出到浏览器</p>
-<h2 id="config（不常用）"><a href="#config（不常用）" class="headerlink" title="config（不常用）"></a>config（不常用）</h2><p>ServletConfig对象，代表当前servlet</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(<span class="string">"servlet注册名："</span>+config.getServletName());</span><br></pre></td></tr></table></figure>
-<h2 id="page（不常用）"><a href="#page（不常用）" class="headerlink" title="page（不常用）"></a>page（不常用）</h2><p>指的是jsp对应的servlet对象，也就是代表页面</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"page:"</span>+page);</span><br></pre></td></tr></table></figure>
-<h2 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h2><p>页面上下文，可以获取其他八个内置对象，域范围：当前页面</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(pageContext.getRequest()==request);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="exception（不常用）"><a href="#exception（不常用）" class="headerlink" title="exception（不常用）"></a>exception（不常用）</h2><p>异常对象</p>
-<p>剩下四个常用的是jsp的四大域对象</p>
-<p>路径写绝对路径</p>
-<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><p>从域对象里取值</p>
-<p>el表达式没有遍历功能</p>
-<p>表单回显：点击提交后用户名输入框依旧显示输入内容</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;!-- 麻烦--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=&lt;%=request.getParameter(<span class="string">"username"</span>)==<span class="keyword">null</span>?<span class="string">""</span>:request.getParameter(<span class="string">"username"</span>) %&gt; &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">&lt;%=request.getParameter(<span class="string">"username"</span>) %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 简单el--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=<span class="string">"$&#123;param.username &#125;"</span> &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">$&#123;param.username &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;% out.print(request.getAttribute(<span class="string">"name"</span>)); %&gt;</span><br><span class="line">&lt;!-- 被以下方式替换了 --&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;!--又被以下El表达式替换了 --&gt;</span><br><span class="line">$&#123;name&#125;</span><br></pre></td></tr></table></figure>
-<p>从某一个范围中根据域对象名name去取值，如果没有指定从那个域对象里取，默认从小到大取，也就是先从pageContext里取，如果想从指定的域中取，name前面加上、pageScope、requestScope、sessionScope、applicationScope</p>
-<p><code>${sessionScope.name  }</code></p>
-<p>如果域名叫user.name ：</p>
-<p>不加括号：会在request域中找user对象，在user对象中找name对象，在name对象中找name属性</p>
-<p>使用括号：[“user.name”].name</p>
-<p><code>${pageContext.request.contextPath }</code>获取当前web应用根目录</p>
-<p>el表达式可以自动类型转换</p>
-<h1 id="JSTL标签"><a href="#JSTL标签" class="headerlink" title="JSTL标签"></a>JSTL标签</h1><p>导入jstl标签库</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
-<p><strong><code>c:out</code></strong>value=${}：值 default=” “默认值     把结果输出到浏览器，可以解析特殊字符</p>
-<p><code>c:set</code> scope=“ ”:指定域对象，var=“ ”：名字value=“ ”：值</p>
-<p><code>c:remove</code>:  var=” “ value=” “</p>
-<p><code>c:if</code> :不能实现else</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;param.age&lt;20 &#125;"</span>&gt;</span><br><span class="line">  太小了，未到达法定结婚年龄！</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
-<p><code>c:choose</code>判断，相当于if elseif else</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&lt;20&#125;"</span>&gt; </span><br><span class="line">    小于<span class="number">20</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&gt;=20 &amp;&amp; param.age&lt;=100&#125;"</span>&gt;</span><br><span class="line">    <span class="number">20</span>~<span class="number">100</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:otherwise&gt;</span><br><span class="line">    大于<span class="number">100</span>...</span><br><span class="line">  &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
-<p><code>c:foreach</code>遍历</p>
+<h1 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当我创建好对象以后，如果直接用对象名.属性的方式给属性赋值的话，可能会出现一些不符合实际的情况，所以不考虑“对象名.属性”的方法进行赋值</p>
+<ol>
+<li>属性私有化</li>
+<li>提供公用的get set 方法实现调用</li>
+</ol>
 <table>
 <thead>
 <tr>
-<th>属性</th>
-<th>描述</th>
+<th>修饰符</th>
+<th>类内部</th>
+<th>同一个包</th>
+<th>子类</th>
+<th>任何地方</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>items</td>
-<td>要被循环的信息</td>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>begin</td>
-<td>开始的元素（0=第一个元素，1=第二个元素）</td>
+<td>缺省</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
-<td>end</td>
-<td>最后一个元素（0=第一个元素，1=第二个元素）</td>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
 </tr>
 <tr>
-<td>step</td>
-<td>每一次迭代的步长</td>
-</tr>
-<tr>
-<td>var</td>
-<td>代表当前条目的变量名称</td>
-</tr>
-<tr>
-<td>varStatus</td>
-<td>代表循环状态的变量名称   .count   表示迭代计数</td>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
 </tr>
 </tbody>
 </table>
-<h1 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h1><p>model：应用程序核心，数据库记录列表，bean，封装书库  service和dao</p>
-<p>view：显示数据，jsp/html</p>
-<p>controller：servlet</p>
-<p>view和controller加起来是三层架构的view</p>
-]]></content>
+<p><strong>构造方法：</strong></p>
+<ol>
+<li><p>用来创建对象</p>
+</li>
+<li><p>有参构造方法可以直接给属性赋值</p>
+<p>定义构造函数</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> 构造方法名（参数）&#123;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//注意（1.）没有返回值（2.）构造方法名必须和类名完全一致</span></span><br></pre></td></tr></table></figure>
+<p> 构造方法是一个方法，可以重载；</p>
+<p>注意：构造方法如果没有自己定义，系统会自动提供一个无参构造方法；如果自己定义了构造方法，系统不再提供构造方法</p>
+</li>
+</ol>
+<p>super（）指向离自己最近的父类</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
+<li><p>定义父类</p>
+</li>
+<li><p>定义子类   extends</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类继承父类之后，可以继承父类所有的属性和方法；</p>
+</li>
+<li><p>子类除了通过继承获取父类属性和方法外，还可以定义自己独有的属性和方法</p>
+</li>
+<li><p>一个子类只能有一个父类，一个父类可以有多个子类</p>
+</li>
+<li><p>重写：子类继承父类之后，如果父类方法满足不了子类要求，子类可以对父类进行重写。</p>
+<ul>
+<li>子类的方法名，返回值类型，参数列表必须和父类一样</li>
+<li>子类的访问修饰符权限不能小于父类的访问修饰符权限</li>
+<li>子类和父类必须同时为“static”或者非“static”</li>
+</ul>
+</li>
+</ol>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态就是一个对象的多种形态</p>
+<p>使用多态的前提是有继承或接口的实现</p>
+<ol>
+<li><p>方法的重载和重写是多态</p>
+</li>
+<li><p>子类对象的多态性：父类引用指向子类对象（子类必须重写父类方法，而且子类继承了父类）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person p2 = <span class="keyword">new</span> Man();</span><br><span class="line">p2.eat(); <span class="comment">//√</span></span><br><span class="line">p2.sleep();<span class="comment">//✕</span></span><br><span class="line"><span class="comment">//通过p2调用man的eat,但不能调用子类独有的方法（编译期间，程序会把p2看成是person类型，而person类种没有子类独有方法，编译不通过，也不能运行）</span></span><br><span class="line"><span class="comment">//对多态来说，第一行编译看左边，运行看右边</span></span><br><span class="line"><span class="comment">//如果要调用。需要类型转换</span></span><br><span class="line">Man m1=(Man)p2;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>成员变量：**如果成员变量加了static，那么这个变量不属于对象，属于类本身，实现多个对象之间的数据共享</p>
+<p><strong>方法：</strong>普通方法需要创建对象才能用，静态方法不用创建对象就可使用；静态方法不能访问非静态成员变量和非静态成员方法，成员方法可以访问静态成员变量</p>
+<h1 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h1><p>如果父类的方法必须被子类重写的话，可以把父类方法定义成抽象方法</p>
+<h2 id="抽象方法，抽象类"><a href="#抽象方法，抽象类" class="headerlink" title="抽象方法，抽象类"></a>抽象方法，抽象类</h2><p>动物吃饭</p>
+<p><strong>特点：</strong></p>
+<ol>
+<li>只有方法定义，没有方法体、</li>
+<li>抽象方法必须在抽象类里</li>
+<li>抽象类不能实例化</li>
+<li>如果想实现抽象类，必须创建一个子类去继承他</li>
+<li>子类继承一个抽象类，必须重写抽象类里所有的抽象方法</li>
+<li>抽象类里可以定义普通方法，</li>
+<li>抽象类里可以定义构造方法</li>
+</ol>
+<h2 id="接口（一个特殊的抽象类）"><a href="#接口（一个特殊的抽象类）" class="headerlink" title="接口（一个特殊的抽象类）"></a>接口（一个特殊的抽象类）</h2><p>接口就是多个类的共用规范</p>
+<ol>
+<li><p>接口里面的方法<strong>都是</strong>抽象方法</p>
+</li>
+<li><p>接口中没有变量，<strong>都是</strong>常量，默认被public static 修饰</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//以上都是一样的，接口中抽象方法默认被public abstract修饰</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接口不能实例化，如果用接口，实现接口</p>
+</li>
+<li><p>要实现一个接口，必须重写接口里的所有抽象方法</p>
+</li>
+<li><p><strong>父类和接口区别</strong>：一个类可以实现多个接口，但是只能继承一个类</p>
+</li>
+<li><p>接口里不能定义普通方法，也不能定义构造方法</p>
+</li>
+<li><p>接口可以继承接口，并且可以继承多个接口</p>
+</li>
+<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Traffic tr = <span class="keyword">new</span> ElectricVehicle();<span class="comment">//推荐这种多态，更安全</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Java常用类"><a href="#Java常用类" class="headerlink" title="Java常用类"></a>Java常用类</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>所有类的父类</p>
+<h4 id="equals和"><a href="#equals和" class="headerlink" title="equals和=="></a>equals和==</h4><p><strong>==：</strong>判断<strong>基本数据类型</strong>值是否相等那个，相等返回true，不相等返回false，在Object类中比较的是地址值</p>
+<p><strong>equals：</strong>只用在<strong>引用数据类型</strong>，在Object类中比较的也是地址值，String类重写了Object的equal方法，比较的是值</p>
+<h4 id="tostring"><a href="#tostring" class="headerlink" title="tostring()"></a>tostring()</h4><p>String类也重写了tostring（）方法</p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p><strong><code>length()</code></strong>:返回字符串长度</p>
+<p><strong><code>substring（int startpoint）</code></strong>：根据startpoint的值截取字符串，截取后面的所有从0开始</p>
+<p><strong><code>substring(int start,int end)</code></strong>:根据start位置开始，直到end结束 ，截取的字符串包含start不包含end</p>
+<p><strong><code>replace（char oldchar，char newchar）</code></strong>：把oldchar替换成newchar</p>
+<p><strong><code>split(String regex)</code>:</strong>把一个字符串根据regex拆分成多个字符串，返回值为数组（可以用for-each读出）</p>
+<h2 id="封装类"><a href="#封装类" class="headerlink" title="封装类"></a>封装类</h2><p>八种基本数据类型对应的类</p>
+<p>主要进行数据类型转成包装类</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68hll7bwcj30ap082wfy.jpg" alt=""></p>
+<h4 id="基本数据类型和包装类互换"><a href="#基本数据类型和包装类互换" class="headerlink" title="基本数据类型和包装类互换"></a>基本数据类型和包装类互换</h4><p><strong>装箱：</strong>基本数据类型→ 包装类</p>
+<p><strong>拆箱：</strong>包装类→ 基本数据类型</p>
+<h4 id="基本数据类型、包装类→-String"><a href="#基本数据类型、包装类→-String" class="headerlink" title="基本数据类型、包装类→ String"></a>基本数据类型、包装类→ String</h4><ul>
+<li>第一种（最简单）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">String str = a + <span class="string">" "</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>第二种</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str1 = String.valueOf(a);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="String→基本数据类型、包装类"><a href="#String→基本数据类型、包装类" class="headerlink" title="String→基本数据类型、包装类"></a>String→基本数据类型、包装类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str2 = <span class="string">"1123"</span>;</span><br><span class="line"><span class="keyword">int</span> b=Integer.parseInt(str2);</span><br></pre></td></tr></table></figure>
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>获取当前系统时间，有数据库，用<code>java.sql</code></p>
+<p><code>SimpleDateFormat（&quot;yyyy-MM-dd HH:mm:ss&quot;）</code>对日期进行格式化</p>
+<p>format(date):把日期转成字符串</p>
+<h1 id="集合框架（升级版数组）"><a href="#集合框架（升级版数组）" class="headerlink" title="集合框架（升级版数组）"></a>集合框架（升级版数组）</h1><ol>
+<li>存多个对象：数组，集合框架</li>
+<li>集合只能存对象</li>
+<li>数组特点：<code>Student[] stu = new Student[10];</code>一旦创建，数组长度不可改变</li>
+<li>集合有collection接口和map接口<img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jpsgezej30jo06ggnw.jpg" alt=""></li>
+</ol>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jrh5t2hj30ki06f0w0.jpg" alt=""></p>
+<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p><code>void add(int index, Object ele)</code>：<strong>添</strong>加元素</p>
+<p><code>Object get(int index)</code>:根据index<strong>查</strong>找元素</p>
+<p><code>Object remove(int index)</code>：根据index<strong>删</strong>除指定元素，返回值为删除的内容</p>
+<p><code>Object set(int index,Object ele)</code>:根据坐标修<strong>改</strong>内容值，返回值为被修改原内容</p>
+<p><code>size()</code>:获取集合长度</p>
+<h2 id="map接口"><a href="#map接口" class="headerlink" title="map接口"></a>map接口</h2><ol>
+<li><p>key-value的形式存储，二者什么类型都可</p>
+</li>
+<li><p>key不可重复，value可以重复，如果key重复，会<strong>覆盖</strong>之前的数据</p>
+</li>
+<li><p>一个key-value称为一个Entry，Entry是<strong>不可重复的，无序的</strong>，如果键出现重复，会把上一个覆盖掉</p>
+</li>
+<li><p>key重写了equals方法，保存的内容，不是地址所以</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.put(<span class="keyword">new</span> String(<span class="string">"aaa"</span>), <span class="string">"bbb"</span>);</span><br><span class="line">map.put(<span class="keyword">new</span> String(<span class="string">"aaa"</span>), <span class="string">"bbb"</span>);</span><br><span class="line"><span class="comment">//也会覆盖</span></span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<p>主要实现类：</p>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p><code>Object put (key,value)</code>:键值对的方式向map集合中<strong>添</strong>加元素</p>
+<p><code>Object remove(key)</code>：根据key<strong>删</strong>除map元素；</p>
+<p><code>Set keyset()</code>:<strong>查</strong>询所有的key</p>
+<p><code>Collection values()</code>:<strong>查</strong>询所有value</p>
+<p><code>get(key)</code>:根据key<strong>查</strong>询value</p>
+<p><code>entryset()</code>:获取所有entry返回到set里</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2>]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
       </categories>
@@ -1133,242 +1372,109 @@
       </categories>
   </entry>
   <entry>
-    <title>Java 二丢丢</title>
-    <url>/2019/08/20/Java-%E4%BA%8C%E4%B8%A2%E4%B8%A2/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组也可以用引用类型</p>
-<p>数组类型[]数组名</p>
-<p>数组遍历</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> num1:num)&#123;</span><br><span class="line">	System.out.println(num1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>数组必须初始化</p>
-<ol>
-<li><p>✪动态初始化 （指定数组长度）</p>
-<ul>
-<li><p>数组类型[]数组名=new 数组类型[数组长度];</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+    <title>matlab基本语法</title>
+    <url>/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<ol>
+<li><p>加；表示不输出，不加表示输出</p>
 </li>
-<li><p>数组类型[]数组名；</p>
-<p>数组名=new数组类型[数组长度];</p>
+<li><p>ctrl+R 注释  ctrl+T 取消注释</p>
 </li>
-</ul>
+<li><p><code>disp（）</code>输出函数，不受；影响</p>
 </li>
-<li><p>静态初始化 （不指定数组长度，直接赋值）</p>
-<ul>
-<li>数组类型 []数组名=new 数组类型[] {数据值…}</li>
-<li>数据类型[] 数组名 = {数据值…}、</li>
-</ul>
+<li><p>向量 <code>a=[1 2 3]</code>   ；隔开表示列向量</p>
 </li>
-</ol>
-<p>局部变量在栈里，new出来的东西在堆里</p>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
-<li><p><strong>定义</strong>：把一堆要重复执行的代码封装起来，如果别的程序要用到这段代码，直接调用这个方法名即可</p>
+<li><p><code>strcat(字符串1,字符串2)</code> 合并字符串</p>
+<p><code>[字符串1 字符串2</code></p>
 </li>
-<li><p><strong>如何？</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">访问修饰符 返回值类型 方法名（参数类型 参数名）&#123;</span><br><span class="line"></span><br><span class="line">代码块;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> 返回值;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>访问修饰符：格式是固定的</p>
-<p>返回值类型：方法最终返回数据类型</p>
-<p>方法名：首字母小写</p>
-<p>参数类型：进入方法的数据类型</p>
-<p>return：返回值返回给调用值</p>
-<p>返回值：方法最终产生的结果</p>
+<li><p><code>num2str()</code> 数字转换成字符串</p>
 </li>
-</ol>
-<h1 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h1><p>重载和返回类型无关</p>
-<p>方法名必须相同，参数列表必须不同</p>
-<p>参数个数不同，参数类型不同，参数类型顺序不同</p>
-<h1 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h1><p>一个类不能直接使用，类似一个汽车图纸不能直接跑</p>
-<p>需要根据这个类创建一个真正的对象</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br></pre></td></tr></table></figure>
-<p>如果成员变量没有赋值，会有默认值</p>
-<p><strong>成员变量，局部变量区别</strong></p>
-<ol>
-<li>成员变量在堆里，局部变量在栈里</li>
-<li>成员变量声明在类内部，方法外部，局部变量在方法内部</li>
-<li>成员变量有默认值，局部变量没有默认值</li>
-<li>局部变量和成员变量重名时，方法会根据就近原则使用局部变量，为了区分，用this关键字（this关键字可以理解为当前使用或正在创建的对象）</li>
-<li></li>
-</ol>
-<h1 id="面向对象的三大特性"><a href="#面向对象的三大特性" class="headerlink" title="面向对象的三大特性"></a>面向对象的三大特性</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>当我创建好对象以后，如果直接用对象名.属性的方式给属性赋值的话，可能会出现一些不符合实际的情况，所以不考虑“对象名.属性”的方法进行赋值</p>
-<ol>
-<li>属性私有化</li>
-<li>提供公用的get set 方法实现调用</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>修饰符</th>
-<th>类内部</th>
-<th>同一个包</th>
-<th>子类</th>
-<th>任何地方</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>private</td>
-<td>√</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>缺省</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>protected</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td></td>
-</tr>
-<tr>
-<td>public</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-</tr>
-</tbody>
-</table>
-<p><strong>构造方法：</strong></p>
-<ol>
-<li><p>用来创建对象</p>
+<li><p><code>input(提示符)</code>  </p>
 </li>
-<li><p>有参构造方法可以直接给属性赋值</p>
-<p>定义构造函数</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> 构造方法名（参数）&#123;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//注意（1.）没有返回值（2.）构造方法名必须和类名完全一致</span></span><br></pre></td></tr></table></figure>
-<p> 构造方法是一个方法，可以重载；</p>
-<p>注意：构造方法如果没有自己定义，系统会自动提供一个无参构造方法；如果自己定义了构造方法，系统不再提供构造方法</p>
+<li><p><code>sum()</code>   <code>sum(E,1)</code>按列求和   <code>sum(E,2)</code>按行求和  <code>sum(E(:))</code>  求全部和</p>
+</li>
+<li><p><code>E(2,:)</code>   提取第二行的所有元素</p>
+<p><code>E([2,5],:)</code> 提取第二行和第五行的元素</p>
+<p><code>E(2:5,:)</code>    提取第2-5行</p>
+<p><code>E(2:end,:)</code>  提取第二行到最后一行的所有元素</p>
+<p><code>E(:)</code>  所有元素按列排</p>
+</li>
+<li><p>2:3:8   从2开始以3为差的等差数列</p>
+</li>
+<li><p><code>size(E)</code>    输出a  b有几行几列</p>
+</li>
+<li><p><code>repeat(A,m,n)</code>  把A 复制成m*n块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">E =</span><br><span class="line">     1     2     3</span><br><span class="line">     4     5     6</span><br><span class="line">repmat(E,3,2)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵乘法<em> 除法/，`A/B=A</em>inv（B）<code></code>inv(B)` 逆矩阵</p>
+</li>
+<li><p>元素乘除乘方：  .*   ./   .^</p>
+</li>
+<li><p>Inf 表示无穷</p>
+</li>
+<li><p><code>eig(A)</code> 特征值构成的列向量</p>
+<p><code>[V,D]=eig(A)</code>   V是特征向量，D是特征值</p>
+</li>
+<li><p><code>find()</code> f返回矩阵中不为0 的位置的索引（竖着数）</p>
+<p><code>[r,c]=find(A)</code>  按照行列表示索引</p>
+</li>
+<li><p>if 要有end 而且 注意缩进</p>
 </li>
 </ol>
-<p>super（）指向离自己最近的父类</p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ol>
-<li><p>定义父类</p>
-</li>
-<li><p>定义子类   extends</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子类继承父类之后，可以继承父类所有的属性和方法；</p>
-</li>
-<li><p>子类除了通过继承获取父类属性和方法外，还可以定义自己独有的属性和方法</p>
-</li>
-<li><p>一个子类只能有一个父类，一个父类可以有多个子类</p>
-</li>
-<li><p>重写：子类继承父类之后，如果父类方法满足不了子类要求，子类可以对父类进行重写。</p>
-<ul>
-<li>子类的方法名，返回值类型，参数列表必须和父类一样</li>
-<li>子类的访问修饰符权限不能小于父类的访问修饰符权限</li>
-<li>子类和父类必须同时为“static”或者非“static”</li>
-</ul>
-</li>
-</ol>
-<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态就是一个对象的多种形态</p>
-<p>使用多态的前提是有继承或接口的实现</p>
-<ol>
-<li><p>方法的重载和重写是多态</p>
-</li>
-<li><p>子类对象的多态性：父类引用指向子类对象（子类必须重写父类方法，而且子类继承了父类）</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person p2 = <span class="keyword">new</span> Man();</span><br><span class="line">p2.eat(); <span class="comment">//√</span></span><br><span class="line">p2.sleep();<span class="comment">//✕</span></span><br><span class="line"><span class="comment">//通过p2调用man的eat,但不能调用子类独有的方法（编译期间，程序会把p2看成是person类型，而person类种没有子类独有方法，编译不通过，也不能运行）</span></span><br><span class="line"><span class="comment">//对多态来说，第一行编译看左边，运行看右边</span></span><br><span class="line"><span class="comment">//如果要调用。需要类型转换</span></span><br><span class="line">Man m1=(Man)p2;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h3><p>成员变量：**如果成员变量加了static，那么这个变量不属于对象，属于类本身，实现多个对象之间的数据共享</p>
-<p><strong>方法：</strong>普通方法需要创建对象才能用，静态方法不用创建对象就可使用；静态方法不能访问非静态成员变量和非静态成员方法，成员方法可以访问静态成员变量</p>
-<h1 id="抽象类和接口"><a href="#抽象类和接口" class="headerlink" title="抽象类和接口"></a>抽象类和接口</h1><p>如果父类的方法必须被子类重写的话，可以把父类方法定义成抽象方法</p>
-<h2 id="抽象方法，抽象类"><a href="#抽象方法，抽象类" class="headerlink" title="抽象方法，抽象类"></a>抽象方法，抽象类</h2><p>动物吃饭</p>
-<p><strong>特点：</strong></p>
-<ol>
-<li>只有方法定义，没有方法体、</li>
-<li>抽象方法必须在抽象类里</li>
-<li>抽象类不能实例化</li>
-<li>如果想实现抽象类，必须创建一个子类去继承他</li>
-<li>子类继承一个抽象类，必须重写抽象类里所有的抽象方法</li>
-<li>抽象类里可以定义普通方法，</li>
-<li>抽象类里可以定义构造方法</li>
-</ol>
-<h2 id="接口（一个特殊的抽象类）"><a href="#接口（一个特殊的抽象类）" class="headerlink" title="接口（一个特殊的抽象类）"></a>接口（一个特殊的抽象类）</h2><p>接口就是多个类的共用规范</p>
-<ol>
-<li><p>接口里面的方法<strong>都是</strong>抽象方法</p>
-</li>
-<li><p>接口中没有变量，<strong>都是</strong>常量，默认被public static 修饰</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">//以上都是一样的，接口中抽象方法默认被public abstract修饰</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>接口不能实例化，如果用接口，实现接口</p>
-</li>
-<li><p>要实现一个接口，必须重写接口里的所有抽象方法</p>
-</li>
-<li><p><strong>父类和接口区别</strong>：一个类可以实现多个接口，但是只能继承一个类</p>
-</li>
-<li><p>接口里不能定义普通方法，也不能定义构造方法</p>
-</li>
-<li><p>接口可以继承接口，并且可以继承多个接口</p>
-</li>
-<li><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Traffic tr = <span class="keyword">new</span> ElectricVehicle();<span class="comment">//推荐这种多态，更安全</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h1 id="Java常用类"><a href="#Java常用类" class="headerlink" title="Java常用类"></a>Java常用类</h1><h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><p>所有类的父类</p>
-<h4 id="equals和"><a href="#equals和" class="headerlink" title="equals和=="></a>equals和==</h4><p><strong>==：</strong>判断<strong>基本数据类型</strong>值是否相等那个，相等返回true，不相等返回false，在Object类中比较的是地址值</p>
-<p><strong>equals：</strong>只用在<strong>引用数据类型</strong>，在Object类中比较的也是地址值，String类重写了Object的equal方法，比较的是值</p>
-<h4 id="tostring"><a href="#tostring" class="headerlink" title="tostring()"></a>tostring()</h4><p>String类也重写了tostring（）方法</p>
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p><strong><code>length()</code></strong>:返回字符串长度</p>
-<p><strong><code>substring（int startpoint）</code></strong>：根据startpoint的值截取字符串，截取后面的所有从0开始</p>
-<p><strong><code>substring(int start,int end)</code></strong>:根据start位置开始，直到end结束 ，截取的字符串包含start不包含end</p>
-<p><strong><code>replace（char oldchar，char newchar）</code></strong>：把oldchar替换成newchar</p>
-<p><strong><code>split(String regex)</code>:</strong>把一个字符串根据regex拆分成多个字符串，返回值为数组（可以用for-each读出）</p>
-<h2 id="封装类"><a href="#封装类" class="headerlink" title="封装类"></a>封装类</h2><p>八种基本数据类型对应的类</p>
-<p>主要进行数据类型转成包装类</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68hll7bwcj30ap082wfy.jpg" alt=""></p>
-<h4 id="基本数据类型和包装类互换"><a href="#基本数据类型和包装类互换" class="headerlink" title="基本数据类型和包装类互换"></a>基本数据类型和包装类互换</h4><p><strong>装箱：</strong>基本数据类型→ 包装类</p>
-<p><strong>拆箱：</strong>包装类→ 基本数据类型</p>
-<h4 id="基本数据类型、包装类→-String"><a href="#基本数据类型、包装类→-String" class="headerlink" title="基本数据类型、包装类→ String"></a>基本数据类型、包装类→ String</h4><ul>
-<li>第一种（最简单）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">10</span>;</span><br><span class="line">String str = a + <span class="string">" "</span>;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>第二种</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str1 = String.valueOf(a);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="String→基本数据类型、包装类"><a href="#String→基本数据类型、包装类" class="headerlink" title="String→基本数据类型、包装类"></a>String→基本数据类型、包装类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str2 = <span class="string">"1123"</span>;</span><br><span class="line"><span class="keyword">int</span> b=Integer.parseInt(str2);</span><br></pre></td></tr></table></figure>
-<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><p>获取当前系统时间，有数据库，用<code>java.sql</code></p>
-<p><code>SimpleDateFormat（&quot;yyyy-MM-dd HH:mm:ss&quot;）</code>对日期进行格式化</p>
-<p>format(date):把日期转成字符串</p>
-<h1 id="集合框架（升级版数组）"><a href="#集合框架（升级版数组）" class="headerlink" title="集合框架（升级版数组）"></a>集合框架（升级版数组）</h1><ol>
-<li>存多个对象：数组，集合框架</li>
-<li>集合只能存对象</li>
-<li>数组特点：<code>Student[] stu = new Student[10];</code>一旦创建，数组长度不可改变</li>
-<li>集合有collection接口和map接口<img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jpsgezej30jo06ggnw.jpg" alt=""></li>
-</ol>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g68jrh5t2hj30ki06f0w0.jpg" alt=""></p>
-<h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><p><code>void add(int index, Object ele)</code>：<strong>添</strong>加元素</p>
-<p><code>Object get(int index)</code>:根据index<strong>查</strong>找元素</p>
-<p><code>Object remove(int index)</code>：根据index<strong>删</strong>除指定元素，返回值为删除的内容</p>
-<p><code>Object set(int index,Object ele)</code>:根据坐标修<strong>改</strong>内容值，返回值为被修改原内容</p>
-<p><code>size()</code>:获取集合长度</p>
-<h2 id="map接口"><a href="#map接口" class="headerlink" title="map接口"></a>map接口</h2><ol>
-<li><p>key-value的形式存储，二者什么类型都可</p>
-</li>
-<li><p>key不可重复，value可以重复，如果key重复，会<strong>覆盖</strong>之前的数据</p>
-</li>
-<li><p>一个key-value称为一个Entry，Entry是<strong>不可重复的，无序的</strong>，如果键出现重复，会把上一个覆盖掉</p>
-</li>
-<li><p>key重写了equals方法，保存的内容，不是地址所以</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">map.put(<span class="keyword">new</span> String(<span class="string">"aaa"</span>), <span class="string">"bbb"</span>);</span><br><span class="line">map.put(<span class="keyword">new</span> String(<span class="string">"aaa"</span>), <span class="string">"bbb"</span>);</span><br><span class="line"><span class="comment">//也会覆盖</span></span><br></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ol>
-<p>主要实现类：</p>
-<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p><code>Object put (key,value)</code>:键值对的方式向map集合中<strong>添</strong>加元素</p>
-<p><code>Object remove(key)</code>：根据key<strong>删</strong>除map元素；</p>
-<p><code>Set keyset()</code>:<strong>查</strong>询所有的key</p>
-<p><code>Collection values()</code>:<strong>查</strong>询所有value</p>
-<p><code>get(key)</code>:根据key<strong>查</strong>询value</p>
-<p><code>entryset()</code>:获取所有entry返回到set里</p>
-<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2>]]></content>
+]]></content>
       <categories>
-        <category>Java-Web&amp;Java</category>
+        <category>MATLAB</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ss科学上网</title>
+    <url>/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
+    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
+<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
+<p>前两个就不细说了</p>
+<p>Server Location: sydney</p>
+<p>Server Type：centos7 x64</p>
+<p>Server Size: 按实际需要选</p>
+<p>Deploy Now</p>
+<p>接下来是漫长的等待……</p>
+<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
+<p>之后有一个要输入yes</p>
+<p>之后是密码</p>
+<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
+<p>之后按照提示输入IP、端口、密码、加密方式</p>
+<p>出现红框框的时候，恭喜，快要成功了……</p>
+<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
+<p><strong>bingo~</strong></p>
+<hr>
+<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
+<li><p>准备</p>
+<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
+</li>
+<li><p>具体步骤</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
+<p>安装程序光盘映像文件，找到下载的路径</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
+<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
+<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
+<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
+<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
+<p>完成之后就可以打开虚拟机了</p>
+<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
+<p>选择语言（ENGLISH）</p>
+<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
+<p>之后设置root和新建用户</p>
+<p>这次是非常漫长的等待……</p>
+<p>reboot!</p>
+<p>设置网络，登陆，bingo~</p>
+<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
+<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
+<p>##同时用到的对防火墙的操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Others</category>
       </categories>
   </entry>
   <entry>
@@ -1382,6 +1488,30 @@
 <hr>
 <p>我的git……他还是有自己的想法</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>事务</title>
+    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
+<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
+<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
+<p><strong>事务</strong>：</p>
+<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
+<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
+<p>一致性：事务发生前后，总金额依然匹配</p>
+<p>持久性：事务产生的影响是不能撤销的</p>
+<p>开启事务</p>
+<p><code>START TRANSACTIOON</code></p>
+<p><code>set autocommit=0</code></p>
+<p>提交事务</p>
+<p><code>commit;</code></p>
+<p>回滚事务，回到未修改前</p>
+<p><code>rollback;</code></p>
+<p>事务处理放在service</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
   </entry>
   <entry>
     <title>csapp_bombLab</title>
@@ -1446,58 +1576,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ss科学上网</title>
-    <url>/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
-    <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
-<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
-<p>前两个就不细说了</p>
-<p>Server Location: sydney</p>
-<p>Server Type：centos7 x64</p>
-<p>Server Size: 按实际需要选</p>
-<p>Deploy Now</p>
-<p>接下来是漫长的等待……</p>
-<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh root@IP</span><br></pre></td></tr></table></figure>
-<p>之后有一个要输入yes</p>
-<p>之后是密码</p>
-<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
-<p>之后按照提示输入IP、端口、密码、加密方式</p>
-<p>出现红框框的时候，恭喜，快要成功了……</p>
-<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
-<p><strong>bingo~</strong></p>
-<hr>
-<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
-<li><p>准备</p>
-<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
-</li>
-<li><p>具体步骤</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
-<p>安装程序光盘映像文件，找到下载的路径</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
-<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
-<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
-<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
-<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
-<p>完成之后就可以打开虚拟机了</p>
-<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
-<p>选择语言（ENGLISH）</p>
-<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
-<p>之后设置root和新建用户</p>
-<p>这次是非常漫长的等待……</p>
-<p>reboot!</p>
-<p>设置网络，登陆，bingo~</p>
-<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent   //--zone :作用域 80/tcp:端口/传输协议  --permanent：没有这个重启以后还得再来一遍</span><br><span class="line">firewall-cmd --reload</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure>
-<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
-<p>##同时用到的对防火墙的操作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd    --state  //查看防火墙状态</span><br><span class="line">systemctl  stop   firewalld.service   //关闭防火墙</span><br><span class="line">systemctl  start   firewalld.service   //开启防火墙</span><br><span class="line">systemctl disable firewalld.service       //禁止firewall开机启动</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Others</category>
-      </categories>
-  </entry>
-  <entry>
     <title>分页查询</title>
     <url>/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
@@ -1512,84 +1590,6 @@
 <p>下一页：是否等于尾页？无效：页码+1</p>
 <p>当前页码：就是用户传递</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>matlab基本语法</title>
-    <url>/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<ol>
-<li><p>加；表示不输出，不加表示输出</p>
-</li>
-<li><p>ctrl+R 注释  ctrl+T 取消注释</p>
-</li>
-<li><p><code>disp（）</code>输出函数，不受；影响</p>
-</li>
-<li><p>向量 <code>a=[1 2 3]</code>   ；隔开表示列向量</p>
-</li>
-<li><p><code>strcat(字符串1,字符串2)</code> 合并字符串</p>
-<p><code>[字符串1 字符串2</code></p>
-</li>
-<li><p><code>num2str()</code> 数字转换成字符串</p>
-</li>
-<li><p><code>input(提示符)</code>  </p>
-</li>
-<li><p><code>sum()</code>   <code>sum(E,1)</code>按列求和   <code>sum(E,2)</code>按行求和  <code>sum(E(:))</code>  求全部和</p>
-</li>
-<li><p><code>E(2,:)</code>   提取第二行的所有元素</p>
-<p><code>E([2,5],:)</code> 提取第二行和第五行的元素</p>
-<p><code>E(2:5,:)</code>    提取第2-5行</p>
-<p><code>E(2:end,:)</code>  提取第二行到最后一行的所有元素</p>
-<p><code>E(:)</code>  所有元素按列排</p>
-</li>
-<li><p>2:3:8   从2开始以3为差的等差数列</p>
-</li>
-<li><p><code>size(E)</code>    输出a  b有几行几列</p>
-</li>
-<li><p><code>repeat(A,m,n)</code>  把A 复制成m*n块</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">E =</span><br><span class="line">     1     2     3</span><br><span class="line">     4     5     6</span><br><span class="line">repmat(E,3,2)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br><span class="line">     1     2     3     1     2     3</span><br><span class="line">     4     5     6     4     5     6</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>矩阵乘法<em> 除法/，`A/B=A</em>inv（B）<code></code>inv(B)` 逆矩阵</p>
-</li>
-<li><p>元素乘除乘方：  .*   ./   .^</p>
-</li>
-<li><p>Inf 表示无穷</p>
-</li>
-<li><p><code>eig(A)</code> 特征值构成的列向量</p>
-<p><code>[V,D]=eig(A)</code>   V是特征向量，D是特征值</p>
-</li>
-<li><p><code>find()</code> f返回矩阵中不为0 的位置的索引（竖着数）</p>
-<p><code>[r,c]=find(A)</code>  按照行列表示索引</p>
-</li>
-<li><p>if 要有end 而且 注意缩进</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>MATLAB</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>事务</title>
-    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
-<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
-<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
-<p><strong>事务</strong>：</p>
-<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
-<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
-<p>一致性：事务发生前后，总金额依然匹配</p>
-<p>持久性：事务产生的影响是不能撤销的</p>
-<p>开启事务</p>
-<p><code>START TRANSACTIOON</code></p>
-<p><code>set autocommit=0</code></p>
-<p>提交事务</p>
-<p><code>commit;</code></p>
-<p>回滚事务，回到未修改前</p>
-<p><code>rollback;</code></p>
-<p>事务处理放在service</p>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>

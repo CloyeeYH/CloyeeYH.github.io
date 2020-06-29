@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CSAPP-10</title>
+    <url>/cloyeeyh.github.io/2019/02/23/CSAPP-10/</url>
+    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<p>头大……</p>
+<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
+<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-12</title>
+    <url>/cloyeeyh.github.io/2019/02/27/CSAPP-12/</url>
+    <content><![CDATA[<h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lc2ailk2j30ez0430u8.jpg" alt=""></p>
+<p>一个逻辑门计算一位</p>
+<p>组合电路需要遵循的原则</p>
+<ul>
+<li>两个逻辑门的输出不能连到一起。</li>
+<li>组合的电路必须是无环的。输出不能再当输入</li>
+</ul>
+<p>HCL表达式与C表达式区分</p>
+<ul>
+<li>逻辑门是持续输出的，但C语言表达式是执行到的时候才会求值。这个区别可以把逻辑门当成一个电路来看，电路是不能断电的，电流会一直存在。</li>
+<li>C语言中输出可以是任意整数，而HCL只能是1和0。这点比较好理解。</li>
+<li>对于a &amp;&amp; b这个符号来说，C语言中的规定是如果前者为假，则后者不会再计算。而HCL当中没有这种说法。</li>
+</ul>
+<h3 id="按位计算"><a href="#按位计算" class="headerlink" title="按位计算"></a>按位计算</h3><p>位相等：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcm9qhfkj30al05ot8s.jpg" alt=""></p>
+<p>位多路复用器：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcmx9gyqj30a705qdfw.jpg" alt=""></p>
+<p>多位运算就是多个一位一起运算</p>
+<p>32位看是否相等：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcrkg0qjj30ij0feq47.jpg" alt=""></p>
+<p>s的not被多次用到，否则需要32个not门。</p>
+<p>HCL条件选择表达式的条件不需要互斥，按照优先顺序依次选取</p>
+<p>集合形式的HCL表达式，需要一个输入信号与某些值匹配</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcsezf60j30au06nmxc.jpg" alt=""></p>
+<h3 id="储存器和时钟"><a href="#储存器和时钟" class="headerlink" title="储存器和时钟"></a>储存器和时钟</h3><p>储存器一般两种：</p>
+<ol>
+<li>时钟寄存器。储存单个位或单个字，时钟信号控制是否加载输入的值</li>
+<li>随机访问储存器。储存多个字，地址来选择</li>
+</ol>
+<p>寄存器文件和随即访问储存器有读写操作，时钟寄存器没有读写。</p>
+<p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
+<p>随即访问储存器只有一个地址输入和一个数据输出</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP_1</title>
     <url>/cloyeeyh.github.io/2019/01/27/CSAPP-1/</url>
     <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
@@ -35,158 +90,6 @@
 <li>进程是对正在运行的程序的抽象</li>
 <li>虚拟机是对整个计算机的抽象</li>
 </ol>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-10</title>
-    <url>/cloyeeyh.github.io/2019/02/23/CSAPP-10/</url>
-    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<p>头大……</p>
-<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
-<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-11</title>
-    <url>/cloyeeyh.github.io/2019/02/25/CSAPP-11/</url>
-    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
-<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
-<p>halt：终止指令的执行</p>
-<p>nop：占位指令，不做任何事</p>
-<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
-<p>opl：操作指令</p>
-<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
-<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
-<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
-<p>push与pop：入栈和出栈操作</p>
-<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
-<p>寄存器的表示：4个二进制位</p>
-<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
-<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
-<p>eg：addl $4,%ecx</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-6</title>
-    <url>/cloyeeyh.github.io/2019/02/15/CSAPP-6/</url>
-    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
-<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
-<p>二元：俩个操作数</p>
-<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
-<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
-<p>高位被忽略，eg：salb移7位……</p>
-<p>左移：SAL、SHL右边都是填0</p>
-<p>右移：SAR左边填符号位。SHR左边填0</p>
-<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
-<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP_3</title>
-    <url>/cloyeeyh.github.io/2019/02/01/CSAPP-3/</url>
-    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
-<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
-<ul>
-<li>无符号数编码唯一性</li>
-<li>双射</li>
-</ul>
-<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
-<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
-<li><p>原码</p>
-<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
-<p>+：0</p>
-<p>—：1</p>
-</li>
-<li><p>反码</p>
-<p>符号位不变，其他取反</p>
-</li>
-<li><p>补码</p>
-<p>负数：反码末尾加一</p>
-<p>正数：本身</p>
-</li>
-</ul>
-<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
-<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
-</li>
-<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-7</title>
-    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-7/</url>
-    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
-<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
-<thead>
-<tr>
-<th>条件码寄存器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CF</td>
-<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
-</tr>
-<tr>
-<td>OF</td>
-<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>条件码寄存器大多数时候是被动改变</li>
-</ul>
-<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
-<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
-<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
-<p>二者都需加数据格式后缀</p>
-<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
-<li>根据条件码组合，将一个字节设置为0，1</li>
-<li>条件跳转到程序的某个其他部分</li>
-<li>有条件的传送数据</li>
-</ul>
-<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
-<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
-<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
-<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>汇编代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
-<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -262,41 +165,58 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-12</title>
-    <url>/cloyeeyh.github.io/2019/02/27/CSAPP-12/</url>
-    <content><![CDATA[<h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lc2ailk2j30ez0430u8.jpg" alt=""></p>
-<p>一个逻辑门计算一位</p>
-<p>组合电路需要遵循的原则</p>
+    <title>CSAPP-11</title>
+    <url>/cloyeeyh.github.io/2019/02/25/CSAPP-11/</url>
+    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
+<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
+<p>halt：终止指令的执行</p>
+<p>nop：占位指令，不做任何事</p>
+<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
+<p>opl：操作指令</p>
+<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
+<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
+<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
+<p>push与pop：入栈和出栈操作</p>
+<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
+<p>寄存器的表示：4个二进制位</p>
+<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
+<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
+<p>eg：addl $4,%ecx</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP_3</title>
+    <url>/cloyeeyh.github.io/2019/02/01/CSAPP-3/</url>
+    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
+<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
 <ul>
-<li>两个逻辑门的输出不能连到一起。</li>
-<li>组合的电路必须是无环的。输出不能再当输入</li>
+<li>无符号数编码唯一性</li>
+<li>双射</li>
 </ul>
-<p>HCL表达式与C表达式区分</p>
-<ul>
-<li>逻辑门是持续输出的，但C语言表达式是执行到的时候才会求值。这个区别可以把逻辑门当成一个电路来看，电路是不能断电的，电流会一直存在。</li>
-<li>C语言中输出可以是任意整数，而HCL只能是1和0。这点比较好理解。</li>
-<li>对于a &amp;&amp; b这个符号来说，C语言中的规定是如果前者为假，则后者不会再计算。而HCL当中没有这种说法。</li>
+<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
+<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
+<li><p>原码</p>
+<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
+<p>+：0</p>
+<p>—：1</p>
+</li>
+<li><p>反码</p>
+<p>符号位不变，其他取反</p>
+</li>
+<li><p>补码</p>
+<p>负数：反码末尾加一</p>
+<p>正数：本身</p>
+</li>
 </ul>
-<h3 id="按位计算"><a href="#按位计算" class="headerlink" title="按位计算"></a>按位计算</h3><p>位相等：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcm9qhfkj30al05ot8s.jpg" alt=""></p>
-<p>位多路复用器：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcmx9gyqj30a705qdfw.jpg" alt=""></p>
-<p>多位运算就是多个一位一起运算</p>
-<p>32位看是否相等：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcrkg0qjj30ij0feq47.jpg" alt=""></p>
-<p>s的not被多次用到，否则需要32个not门。</p>
-<p>HCL条件选择表达式的条件不需要互斥，按照优先顺序依次选取</p>
-<p>集合形式的HCL表达式，需要一个输入信号与某些值匹配</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcsezf60j30au06nmxc.jpg" alt=""></p>
-<h3 id="储存器和时钟"><a href="#储存器和时钟" class="headerlink" title="储存器和时钟"></a>储存器和时钟</h3><p>储存器一般两种：</p>
-<ol>
-<li>时钟寄存器。储存单个位或单个字，时钟信号控制是否加载输入的值</li>
-<li>随机访问储存器。储存多个字，地址来选择</li>
-</ol>
-<p>寄存器文件和随即访问储存器有读写操作，时钟寄存器没有读写。</p>
-<p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
-<p>随即访问储存器只有一个地址输入和一个数据输出</p>
+<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
+<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
+</li>
+<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -433,6 +353,210 @@
 </li>
 </ul>
 <h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-6</title>
+    <url>/cloyeeyh.github.io/2019/02/15/CSAPP-6/</url>
+    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
+<p>二元：俩个操作数</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
+<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
+<p>高位被忽略，eg：salb移7位……</p>
+<p>左移：SAL、SHL右边都是填0</p>
+<p>右移：SAR左边填符号位。SHR左边填0</p>
+<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-8</title>
+    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-8/</url>
+    <content><![CDATA[<p>接上一篇说最复杂的条件码寄存器组合</p>
+<p>所有组合都是基于a-b的前提。</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>逻辑运算（值为1）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e</td>
+<td>ZF</td>
+<td>相等。此时ZF为1，a-b=0，相等</td>
+</tr>
+<tr>
+<td>ne</td>
+<td>~ZF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>s</td>
+<td>SF</td>
+<td>负数。SF为1，设b=0，即a&lt;0</td>
+</tr>
+<tr>
+<td>ns</td>
+<td>~SF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>l</td>
+<td>SF^OF</td>
+<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
+</tr>
+<tr>
+<td>le</td>
+<td>(SF^OF)\</td>
+<td>ZF</td>
+<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
+</tr>
+<tr>
+<td>g</td>
+<td>(SF^OF)&amp;~ZF</td>
+<td>有符号的大于。小于且不等于</td>
+</tr>
+<tr>
+<td>ge</td>
+<td>~(SF^OF)</td>
+<td>有符号的大于等于。不小于</td>
+</tr>
+<tr>
+<td>b</td>
+<td>CF</td>
+<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
+</tr>
+<tr>
+<td>be</td>
+<td>CF\</td>
+<td>ZF</td>
+<td>无符号的小于等于。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>~CF&amp; ~ZF</td>
+<td>无符号的大于。无符号大于等于且不等于</td>
+</tr>
+<tr>
+<td>ae</td>
+<td>~CF</td>
+<td>s无符号大于等于</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-7</title>
+    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-7/</url>
+    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
+<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
+<thead>
+<tr>
+<th>条件码寄存器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CF</td>
+<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
+</tr>
+<tr>
+<td>OF</td>
+<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>条件码寄存器大多数时候是被动改变</li>
+</ul>
+<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
+<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
+<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
+<p>二者都需加数据格式后缀</p>
+<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
+<li>根据条件码组合，将一个字节设置为0，1</li>
+<li>条件跳转到程序的某个其他部分</li>
+<li>有条件的传送数据</li>
+</ul>
+<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
+<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
+<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
+<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
+<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
+<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
+<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-9</title>
+    <url>/cloyeeyh.github.io/2019/02/21/CSAPP-9/</url>
+    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+<p>起始地址：储存在%ebp寄存器（桢指针）</p>
+<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
+<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
+<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
+<li><p>备份原来指针</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给临时变量分配预留内存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值压入栈顶（备份）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用建立好的栈帧，mov,push,pop</p>
+</li>
+<li><p>从栈帧中将备份的值恢复到寄存器</p>
+</li>
+<li><p>释放被调用的栈帧，栈指针增大</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+</li>
+</ol>
+<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
+<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
+<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
+<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
+<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -628,130 +752,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-9</title>
-    <url>/cloyeeyh.github.io/2019/02/21/CSAPP-9/</url>
-    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
-</li>
-</ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-8</title>
-    <url>/cloyeeyh.github.io/2019/02/17/CSAPP-8/</url>
-    <content><![CDATA[<p>接上一篇说最复杂的条件码寄存器组合</p>
-<p>所有组合都是基于a-b的前提。</p>
-<table>
-<thead>
-<tr>
-<th>后缀</th>
-<th>逻辑运算（值为1）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>e</td>
-<td>ZF</td>
-<td>相等。此时ZF为1，a-b=0，相等</td>
-</tr>
-<tr>
-<td>ne</td>
-<td>~ZF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>s</td>
-<td>SF</td>
-<td>负数。SF为1，设b=0，即a&lt;0</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>~SF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>l</td>
-<td>SF^OF</td>
-<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
-</tr>
-<tr>
-<td>le</td>
-<td>(SF^OF)\</td>
-<td>ZF</td>
-<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
-</tr>
-<tr>
-<td>g</td>
-<td>(SF^OF)&amp;~ZF</td>
-<td>有符号的大于。小于且不等于</td>
-</tr>
-<tr>
-<td>ge</td>
-<td>~(SF^OF)</td>
-<td>有符号的大于等于。不小于</td>
-</tr>
-<tr>
-<td>b</td>
-<td>CF</td>
-<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
-</tr>
-<tr>
-<td>be</td>
-<td>CF\</td>
-<td>ZF</td>
-<td>无符号的小于等于。</td>
-</tr>
-<tr>
-<td>a</td>
-<td>~CF&amp; ~ZF</td>
-<td>无符号的大于。无符号大于等于且不等于</td>
-</tr>
-<tr>
-<td>ae</td>
-<td>~CF</td>
-<td>s无符号大于等于</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>JSP</title>
     <url>/cloyeeyh.github.io/2019/08/30/JSP/</url>
     <content><![CDATA[<p>html不能写java代码</p>
@@ -841,206 +841,6 @@
 <p>view：显示数据，jsp/html</p>
 <p>controller：servlet</p>
 <p>view和controller加起来是三层架构的view</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JDBC</title>
-    <url>/cloyeeyh.github.io/2019/08/26/JDBC/</url>
-    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
-<p><strong>JDBC编程步骤</strong></p>
-<ol>
-<li>加载注册驱动类Driver</li>
-<li>建立连接</li>
-<li>操作数据</li>
-<li>释放资源</li>
-</ol>
-<ol>
-<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
-<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
-<li><code>DriverManager</code>： 创建连接对象</li>
-<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
-<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
-<li></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
-<p><strong>执行语句</strong></p>
-<p>增删改：executeUpdate（）</p>
-<p>查：executeQuery()</p>
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
-<p>业务逻辑层services：关键业务处理和数据处理</p>
-<p>（持久层）数据访问层 dao：从数据库获取数据</p>
-<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
-<p>dao：</p>
-<p>services：</p>
-<p>impl：接口，implements</p>
-<p>view：</p>
-<p>util：公用类，很多要用</p>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
-<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
-<p>一个事务要么全成功要么全失败</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JavaWeb</title>
-    <url>/cloyeeyh.github.io/2019/08/27/JavaWeb/</url>
-    <content><![CDATA[<h1 id="软件两大架构-B-S-C-S"><a href="#软件两大架构-B-S-C-S" class="headerlink" title="软件两大架构 B/S    C/S"></a>软件两大架构 B/S    C/S</h1><h2 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h2><p>C:客户端   S:服务器   eg：QQ，LOL，WPS，就是桌面应用程序</p>
-<p><strong>特点</strong></p>
-<ol>
-<li>软件使用前必须安装</li>
-<li>软件更新时，客户端和服务端也要更新</li>
-<li>不能跨平台，就类似于手机版qq不能在电脑上安装</li>
-<li>cs软件通信采用自有协议，比较安全</li>
-</ol>
-<h2 id="B-S"><a href="#B-S" class="headerlink" title="B/S"></a>B/S</h2><p>B：浏览器， s 服务器  eg：淘宝网,京东网等网站</p>
-<p>特点：</p>
-<ol>
-<li>软件使用前不需要安装</li>
-<li>软件更新时，只是服务端进行更新</li>
-<li>能跨平台，必须有浏览器</li>
-<li>bs软件通信采用的是通用的HTTP协议，相对不安全</li>
-</ol>
-<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p>D:\apache-tomcat-8.0.21\conf\server.xml 可以修改端口号（默认8080），还要改eclipse→servers文件夹→server.xml </p>
-<p>startup.bat 运行（前提是环境变量里有jAVA_HOME）</p>
-<h1 id="javaWeb"><a href="#javaWeb" class="headerlink" title="javaWeb"></a>javaWeb</h1><p>tomcat 放到javaweb中</p>
-<p>首先javaEE→server →new→server→tomcat 8.0→tomcat根目录→finish</p>
-<p>打开:start</p>
-<p>错误404：找不到资源</p>
-<p>错误500：服务器程序出错（空指针）</p>
-<h1 id="servelet"><a href="#servelet" class="headerlink" title="servelet"></a>servelet</h1><p><strong>功能</strong></p>
-<ol>
-<li>接收用户请求的http协议，解析</li>
-<li>返回一个http的响应协议，让浏览器去解析</li>
-<li><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6fn0u77csj30ea0473z6.jpg" alt=""></li>
-</ol>
-<h3 id="workset结构"><a href="#workset结构" class="headerlink" title="workset结构"></a>workset结构</h3><p>src放类</p>
-<p>WebContent放页面，html，图片，js</p>
-<p>WEB_INF受保护文件，配置文件，不能放页面文件</p>
-<h3 id="实现一个servlet"><a href="#实现一个servlet" class="headerlink" title="实现一个servlet"></a>实现一个servlet</h3><h4 id="实现servlet接口"><a href="#实现servlet接口" class="headerlink" title="实现servlet接口"></a>实现servlet接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.servelet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Enumeration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.Servlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContext;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span></span>&#123;</span><br><span class="line">	<span class="comment">//构造；第一次请求执行，只执行一次</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HelloServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"HelloServlet..."</span>);		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//注销：执行一次，当servlet所在项目被卸载或者服务器被关闭时执行，用于释放资源</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"destory..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//初始化；第一次请求执行，只执行一次</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig arg0)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"init.........."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//多次被调用。每次请求都会执行service方法，实际用于获取请求响应结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest arg0, ServletResponse arg1)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"service..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>映射</strong>：让一个类在浏览器中运行，配置和映射servlet，给servlet一个浏览器的地址，方法如下（以后🙅‍自己配）：</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--  配置和映射servelet --&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!--  注册一个servelet --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注册名 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 全类名，不要手敲，ctrl+c,v --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.hpe.servelet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 指定servlet的一个创建时机 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 映射servelet --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 下方name必须和注册名相同 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 浏览器访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>运行过程：</strong>访问路径→映射的访问地址→映射的name→注册名→全类名</p>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
-<li>加载阶段：若是第一次请求加载并实例化（创建servlet实例）</li>
-<li>初始化阶段：若是第一次请求，调用init（）方法</li>
-<li>响应客户请求阶段：无论第几次请求都调用service（），实际用于获取请求响应结果</li>
-<li>终止阶段：destory（），当servlet所在项目被卸载或者服务器被关闭时执行，用于释放资源</li>
-</ol>
-<p><code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>0和正数，加载的时候就创建实例，执行初始化，多个servlet时，数字越小，越先创建；负数，第一次访问时再创建实例初始化</p>
-<h3 id="config接口"><a href="#config接口" class="headerlink" title="config接口"></a>config接口</h3><p>servletConfig接口，代表当前servlet，可以获取当前servlet所有配置信息</p>
-<ul>
-<li>getServletName():获取注册名</li>
-<li>getServletContext()：一般做全局数据共享，必须由servletConfig来获取，一个项目就一个context实例，每个servlet都可以访问到它</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6fntwf9zdj30i805qjuh.jpg" alt=""></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"init.........."</span>);</span><br><span class="line">		<span class="comment">//ServletConfig:代表当前servlet，可以获取当前servlet所有配置信息</span></span><br><span class="line">		<span class="comment">//1.getServletName()    获取当前Servlet在web.xml中配置的名字</span></span><br><span class="line">		System.out.println(config.getServletName());</span><br><span class="line">		<span class="comment">//✪2.getServletContext()   获取代表当前web应用的ServletContext对象</span></span><br><span class="line">		ServletContext cxt=config.getServletContext();</span><br><span class="line">		System.out.println(cxt.getContextPath());<span class="comment">//获取当前web应用的根目录</span></span><br><span class="line">		<span class="comment">//3.getInitParameter(String)   获取当前Servlet指定名称的初始化参数的值</span></span><br><span class="line">		System.out.println(config.getInitParameter(<span class="string">"username"</span>));</span><br><span class="line">		<span class="comment">//4.getInitParameterNames()  获取当前Servlet所有初始化参数的名字组成的枚举</span></span><br><span class="line">		Enumeration&lt;String&gt; names=config.getInitParameterNames();</span><br><span class="line">		<span class="keyword">while</span>(names.hasMoreElements())&#123;</span><br><span class="line">			<span class="comment">//获取初始化参数名</span></span><br><span class="line">			String name=names.nextElement();</span><br><span class="line">			String value=config.getInitParameter(name);</span><br><span class="line">			System.out.println(name+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h3><ol>
-<li><p>url格式：/aaa和*.aaa或者 /aaa/星，其中星代表所有字符</p>
-</li>
-<li><p><strong>./</strong> <strong>：代表文件所在的目录（可以省略不写）</strong></p>
-<p><strong>../</strong> <strong>：代表文件所在的父级目录</strong></p>
-<p><strong>../../</strong> <strong>：代表文件所在的父级目录的父级目录</strong></p>
-<p><strong>/</strong> <strong>：代表文件所在的根目录</strong></p>
-</li>
-<li><p>相对路径变绝对路径：<code>request.getContextPath()+&quot;admin/main.jsp&#39;;&quot;</code></p>
-</li>
-<li><p>项目中路径写绝对路径</p>
-</li>
-<li><p>初始化参数在loadup标签前面</p>
-</li>
-<li><p>创建的项目是项目，没有添加到workset里</p>
-<p><strong>workset中添加项目</strong>：右键workset→proper…→选择→add→OK</p>
-</li>
-<li><p>浏览器访问地址以/开头</p>
-</li>
-<li><p>servlet是单例的，只创建一次实例</p>
-</li>
-<li><p>配置文件改了，就必须重启服务器</p>
-</li>
-<li><p>加入jar包：项目右键→build path→library→add library→sever runtime→tomcat…→finish</p>
-</li>
-<li><p><strong>html</strong>是根标签，所有的都在html中</p>
-<p><strong>title</strong>：浏览器上面的小框框的内容</p>
-<p><strong>head</strong>：帮浏览器解析整个页面</p>
-<p><strong>body</strong>：页面显示内容</p>
-<p><strong>h2</strong>:标题</p>
-</li>
-<li><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>用来表明当前页面的相对路径所使用的根路径的。</p>
-</li>
-</ol>
-<h3 id="httpservlet-不需要配置文件实现servlet"><a href="#httpservlet-不需要配置文件实现servlet" class="headerlink" title="httpservlet-不需要配置文件实现servlet"></a>httpservlet-不需要配置文件实现servlet</h3><p>action：发送数据的服务器地址,method 默认get</p>
-<p>id作用：正则表达式，判断用户输入的用户名是否符合规则，通过属性写正则表达式</p>
-<h4 id="三大域对象"><a href="#三大域对象" class="headerlink" title="三大域对象"></a>三大域对象</h4><p>✪把值存在域对象里，在别的页面通过域对象的方法获取域对象的值</p>
-<p>获取web应用的初始化参数</p>
-<p>获取项目的真实路径</p>
-<p>✪作为域对象，保护多个用户共享的数据</p>
-<h5 id="1-少）servletcontext：同一项目"><a href="#1-少）servletcontext：同一项目" class="headerlink" title="1.(少）servletcontext：同一项目"></a>1.(少）servletcontext：同一项目</h5><p>类似一个全局变量，服务器开始就存在，服务器关闭才释放，一个项目就一个servletContext实例</p>
-<p><code>ServletContext cxt = getServletContext();</code></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//ServletCOntext:代表当前web应用，相当于这个项目的全局变量</span></span><br><span class="line">	ServletContext con=getServletContext();</span><br><span class="line">	<span class="comment">//获取真实路径</span></span><br><span class="line">	System.out.println(con.getRealPath(<span class="string">"/"</span>));</span><br><span class="line">	<span class="comment">//获取项目的上下文，一般用来获取项目名</span></span><br><span class="line">	System.out.println(con.getContextPath());</span><br></pre></td></tr></table></figure>
-<p>​    getContextPath()一般用于获取当前项目名</p>
-<h5 id="2-httpsession：在同一次会话中"><a href="#2-httpsession：在同一次会话中" class="headerlink" title="2.httpsession：在同一次会话中"></a>2.httpsession：在同一次会话中</h5><h5 id="3-httpservletrequest：在同一次请求中"><a href="#3-httpservletrequest：在同一次请求中" class="headerlink" title="3.httpservletrequest：在同一次请求中"></a>3.httpservletrequest：在同一次请求中</h5><p>httpservletrequest是servletrequest（🙅‍获取http）的子接口</p>
-<h5 id="域对象三方法"><a href="#域对象三方法" class="headerlink" title="域对象三方法"></a>域对象三方法</h5><p>setAttriubute（）：放一个数据到servlContext中，便于后面取出</p>
-<p>getAttriubute()：根据域对象名获取值</p>
-<p>removeAttriubute()：根据域对象名删除值</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//创建servletContext</span></span><br><span class="line">	ServletContext cxt=getServletContext();</span><br><span class="line">	<span class="comment">//获取域对象值</span></span><br><span class="line">	Object obj=cxt.getAttribute(<span class="string">"count"</span>);</span><br><span class="line">	<span class="comment">//如果是第一次访问，设置访问量为1</span></span><br><span class="line">	<span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//保存访问量</span></span><br><span class="line">	<span class="keyword">if</span>(obj==<span class="keyword">null</span>)&#123;</span><br><span class="line">		count=<span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//不是第一次。加1</span></span><br><span class="line">		count=((<span class="keyword">int</span>)obj)+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置域对象值</span></span><br><span class="line">	cxt.setAttribute(<span class="string">"count"</span>, count);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	response.getWriter().write(<span class="string">"访问量："</span>+count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="request和response"><a href="#request和response" class="headerlink" title="request和response"></a>request和response</h1><p>两种请求方式：</p>
-<p>get方式（默认）<br>1.以地址栏的方式传输<br>2.会把用户输入的值显示在地址栏，不安全<br>3.速度快 查询用get()</p>
-<p>post</p>
-<p>1.文件形式传输<br>2.安全，传输数据大，增删改用post()</p>
-<p>doget和dopost被service方法调用</p>
-<p>两个方法改变了参数，针对http请求</p>
-<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>获取用户参数，转发，作为域对象也可以存放数据</p>
-<p><strong>getParameter（String）</strong>：根据参数获取值，返回类型为String[]</p>
-<p><strong>getparameterValues(String)</strong>:根据名获取一组值,返回类型为String[]</p>
-<p><strong>getParameterNames</strong> ()方法 :获取所有参数的名字，返回类型为Enumeration</p>
-<p><strong>setCharacterEncoding(“utf-8”);</strong></p>
-<p><strong>getContextPath()</strong> </p>
-<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p><code>getWriter()</code>：输出对象</p>
-<p><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);</code></p>
-<h2 id="输出对象"><a href="#输出对象" class="headerlink" title="输出对象"></a>输出对象</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">out.write();</span><br></pre></td></tr></table></figure>
-<p>把内容输出到浏览器上</p>
-<h2 id="servlet对象"><a href="#servlet对象" class="headerlink" title="servlet对象"></a>servlet对象</h2><p><strong>Request</strong>和<strong>response</strong>在每一次访问时都被创建。由容器创建的</p>
-<p><strong>Serlvet</strong>只会被创建一次，由用户来开发，由容器来创建，单一的实例。</p>
-<p><strong>ServletConfig</strong>会为每一个Servlet创建一个Config对象，且由Servlet维护。就是声明成了成员变量。</p>
-<p><strong>ServletContext</strong>对象，代表web应用，这一个项目就只有一个此对象。</p>
-<h3 id="解决乱码问题："><a href="#解决乱码问题：" class="headerlink" title="解决乱码问题："></a>解决乱码问题：</h3><p>页面，类，浏览器，tomcat编码格式必须相同</p>
-<h4 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h4><p>针对于get和post</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="built_in">String</span> name=request.getParameter(<span class="string">"name"</span>);<span class="comment">//name是iso-8859-1格式</span></span><br><span class="line">		byte[] byte1=name.getBytes(<span class="string">"iso-8859-1"</span>);<span class="comment">//把name转成字节码</span></span><br><span class="line">		<span class="built_in">String</span> name1=<span class="keyword">new</span> <span class="built_in">String</span>(byte1,<span class="string">"utf-8"</span>);</span><br><span class="line">		out.write(<span class="string">"姓名："</span>+name1);</span><br></pre></td></tr></table></figure>
-<h4 id="第二种（推荐"><a href="#第二种（推荐" class="headerlink" title="第二种（推荐)"></a>第二种（推荐)</h4><p>只对post有效</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);<span class="comment">//必须放在接受参数之前</span></span><br><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">String name=request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">out.write(<span class="string">"姓名："</span>+name);</span><br></pre></td></tr></table></figure>
-<p>对于get方式，tomcat8.0默认配置转成UTF-8，8.0之前，默认ISO-8859-1，在改端口号的两个server.xml中的Connector节点加入<code>URIEncoding=utf-8</code></p>
-<h3 id="✪请求转发，请求重定向"><a href="#✪请求转发，请求重定向" class="headerlink" title="✪请求转发，请求重定向"></a>✪请求转发，请求重定向</h3><ol>
-<li><p>请求转发：地址栏还是初次请求的地址栏，</p>
-<p>请求重定向：地址栏是最后一次响应的地址栏</p>
-</li>
-<li><p>本质区别：请求转发只发送一次一次请求，而重定向发送多次</p>
-</li>
-<li><p>请求转发：在最终的servlet中，request和中转的request是同一个request</p>
-<p>重定向：不是同一个request</p>
-</li>
-<li><p>请求转发：/代表的是当前web应用的根目录，代表绝对路径<a href="http://localhost:8080/servlet02" target="_blank" rel="noopener">http://localhost:8080/servlet02</a></p>
-<p>请求重定向：/代表的是当前web站点的根目录<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
-</li>
-<li><p>请求转发只能转发内部资源，请求重定向可以转发外部资源</p>
-</li>
-<li><p>外包是转发，还给服务器并告诉服务器谁可以完成任务为重定向</p>
-</li>
-</ol>
-<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><ol>
-<li>一次会话：浏览器打开到浏览器关闭</li>
-<li>在服务器端保持http状态信息的方案</li>
-<li>客户请求里是否包含session标识表明是否是第一次访问</li>
-<li>如果当前已经创建了session，则直接返回，如果没有创建，就创建一个session</li>
-<li>数据共享：在同一个会话中</li>
-</ol>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
@@ -1286,6 +1086,206 @@
       </categories>
   </entry>
   <entry>
+    <title>JDBC</title>
+    <url>/cloyeeyh.github.io/2019/08/26/JDBC/</url>
+    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>加载注册驱动类Driver</li>
+<li>建立连接</li>
+<li>操作数据</li>
+<li>释放资源</li>
+</ol>
+<ol>
+<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
+<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
+<li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JavaWeb</title>
+    <url>/cloyeeyh.github.io/2019/08/27/JavaWeb/</url>
+    <content><![CDATA[<h1 id="软件两大架构-B-S-C-S"><a href="#软件两大架构-B-S-C-S" class="headerlink" title="软件两大架构 B/S    C/S"></a>软件两大架构 B/S    C/S</h1><h2 id="C-S"><a href="#C-S" class="headerlink" title="C/S"></a>C/S</h2><p>C:客户端   S:服务器   eg：QQ，LOL，WPS，就是桌面应用程序</p>
+<p><strong>特点</strong></p>
+<ol>
+<li>软件使用前必须安装</li>
+<li>软件更新时，客户端和服务端也要更新</li>
+<li>不能跨平台，就类似于手机版qq不能在电脑上安装</li>
+<li>cs软件通信采用自有协议，比较安全</li>
+</ol>
+<h2 id="B-S"><a href="#B-S" class="headerlink" title="B/S"></a>B/S</h2><p>B：浏览器， s 服务器  eg：淘宝网,京东网等网站</p>
+<p>特点：</p>
+<ol>
+<li>软件使用前不需要安装</li>
+<li>软件更新时，只是服务端进行更新</li>
+<li>能跨平台，必须有浏览器</li>
+<li>bs软件通信采用的是通用的HTTP协议，相对不安全</li>
+</ol>
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><p>D:\apache-tomcat-8.0.21\conf\server.xml 可以修改端口号（默认8080），还要改eclipse→servers文件夹→server.xml </p>
+<p>startup.bat 运行（前提是环境变量里有jAVA_HOME）</p>
+<h1 id="javaWeb"><a href="#javaWeb" class="headerlink" title="javaWeb"></a>javaWeb</h1><p>tomcat 放到javaweb中</p>
+<p>首先javaEE→server →new→server→tomcat 8.0→tomcat根目录→finish</p>
+<p>打开:start</p>
+<p>错误404：找不到资源</p>
+<p>错误500：服务器程序出错（空指针）</p>
+<h1 id="servelet"><a href="#servelet" class="headerlink" title="servelet"></a>servelet</h1><p><strong>功能</strong></p>
+<ol>
+<li>接收用户请求的http协议，解析</li>
+<li>返回一个http的响应协议，让浏览器去解析</li>
+<li><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6fn0u77csj30ea0473z6.jpg" alt=""></li>
+</ol>
+<h3 id="workset结构"><a href="#workset结构" class="headerlink" title="workset结构"></a>workset结构</h3><p>src放类</p>
+<p>WebContent放页面，html，图片，js</p>
+<p>WEB_INF受保护文件，配置文件，不能放页面文件</p>
+<h3 id="实现一个servlet"><a href="#实现一个servlet" class="headerlink" title="实现一个servlet"></a>实现一个servlet</h3><h4 id="实现servlet接口"><a href="#实现servlet接口" class="headerlink" title="实现servlet接口"></a>实现servlet接口</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.servelet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Enumeration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.Servlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletContext;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloServlet</span> <span class="keyword">implements</span> <span class="title">Servlet</span></span>&#123;</span><br><span class="line">	<span class="comment">//构造；第一次请求执行，只执行一次</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HelloServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"HelloServlet..."</span>);		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//注销：执行一次，当servlet所在项目被卸载或者服务器被关闭时执行，用于释放资源</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"destory..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//初始化；第一次请求执行，只执行一次</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig arg0)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"init.........."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//多次被调用。每次请求都会执行service方法，实际用于获取请求响应结果</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest arg0, ServletResponse arg1)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"service..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>映射</strong>：让一个类在浏览器中运行，配置和映射servlet，给servlet一个浏览器的地址，方法如下（以后🙅‍自己配）：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--  配置和映射servelet --&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">&lt;!--  注册一个servelet --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 注册名 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 全类名，不要手敲，ctrl+c,v --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.hpe.servelet.HelloServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 指定servlet的一个创建时机 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 映射servelet --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 下方name必须和注册名相同 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 浏览器访问地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/hello<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>运行过程：</strong>访问路径→映射的访问地址→映射的name→注册名→全类名</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ol>
+<li>加载阶段：若是第一次请求加载并实例化（创建servlet实例）</li>
+<li>初始化阶段：若是第一次请求，调用init（）方法</li>
+<li>响应客户请求阶段：无论第几次请求都调用service（），实际用于获取请求响应结果</li>
+<li>终止阶段：destory（），当servlet所在项目被卸载或者服务器被关闭时执行，用于释放资源</li>
+</ol>
+<p><code>&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</code>0和正数，加载的时候就创建实例，执行初始化，多个servlet时，数字越小，越先创建；负数，第一次访问时再创建实例初始化</p>
+<h3 id="config接口"><a href="#config接口" class="headerlink" title="config接口"></a>config接口</h3><p>servletConfig接口，代表当前servlet，可以获取当前servlet所有配置信息</p>
+<ul>
+<li>getServletName():获取注册名</li>
+<li>getServletContext()：一般做全局数据共享，必须由servletConfig来获取，一个项目就一个context实例，每个servlet都可以访问到它</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6fntwf9zdj30i805qjuh.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"init.........."</span>);</span><br><span class="line">		<span class="comment">//ServletConfig:代表当前servlet，可以获取当前servlet所有配置信息</span></span><br><span class="line">		<span class="comment">//1.getServletName()    获取当前Servlet在web.xml中配置的名字</span></span><br><span class="line">		System.out.println(config.getServletName());</span><br><span class="line">		<span class="comment">//✪2.getServletContext()   获取代表当前web应用的ServletContext对象</span></span><br><span class="line">		ServletContext cxt=config.getServletContext();</span><br><span class="line">		System.out.println(cxt.getContextPath());<span class="comment">//获取当前web应用的根目录</span></span><br><span class="line">		<span class="comment">//3.getInitParameter(String)   获取当前Servlet指定名称的初始化参数的值</span></span><br><span class="line">		System.out.println(config.getInitParameter(<span class="string">"username"</span>));</span><br><span class="line">		<span class="comment">//4.getInitParameterNames()  获取当前Servlet所有初始化参数的名字组成的枚举</span></span><br><span class="line">		Enumeration&lt;String&gt; names=config.getInitParameterNames();</span><br><span class="line">		<span class="keyword">while</span>(names.hasMoreElements())&#123;</span><br><span class="line">			<span class="comment">//获取初始化参数名</span></span><br><span class="line">			String name=names.nextElement();</span><br><span class="line">			String value=config.getInitParameter(name);</span><br><span class="line">			System.out.println(name+<span class="string">":"</span>+value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h3><ol>
+<li><p>url格式：/aaa和*.aaa或者 /aaa/星，其中星代表所有字符</p>
+</li>
+<li><p><strong>./</strong> <strong>：代表文件所在的目录（可以省略不写）</strong></p>
+<p><strong>../</strong> <strong>：代表文件所在的父级目录</strong></p>
+<p><strong>../../</strong> <strong>：代表文件所在的父级目录的父级目录</strong></p>
+<p><strong>/</strong> <strong>：代表文件所在的根目录</strong></p>
+</li>
+<li><p>相对路径变绝对路径：<code>request.getContextPath()+&quot;admin/main.jsp&#39;;&quot;</code></p>
+</li>
+<li><p>项目中路径写绝对路径</p>
+</li>
+<li><p>初始化参数在loadup标签前面</p>
+</li>
+<li><p>创建的项目是项目，没有添加到workset里</p>
+<p><strong>workset中添加项目</strong>：右键workset→proper…→选择→add→OK</p>
+</li>
+<li><p>浏览器访问地址以/开头</p>
+</li>
+<li><p>servlet是单例的，只创建一次实例</p>
+</li>
+<li><p>配置文件改了，就必须重启服务器</p>
+</li>
+<li><p>加入jar包：项目右键→build path→library→add library→sever runtime→tomcat…→finish</p>
+</li>
+<li><p><strong>html</strong>是根标签，所有的都在html中</p>
+<p><strong>title</strong>：浏览器上面的小框框的内容</p>
+<p><strong>head</strong>：帮浏览器解析整个页面</p>
+<p><strong>body</strong>：页面显示内容</p>
+<p><strong>h2</strong>:标题</p>
+</li>
+<li><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"&lt;%=request.getContextPath()%&gt;/"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用来表明当前页面的相对路径所使用的根路径的。</p>
+</li>
+</ol>
+<h3 id="httpservlet-不需要配置文件实现servlet"><a href="#httpservlet-不需要配置文件实现servlet" class="headerlink" title="httpservlet-不需要配置文件实现servlet"></a>httpservlet-不需要配置文件实现servlet</h3><p>action：发送数据的服务器地址,method 默认get</p>
+<p>id作用：正则表达式，判断用户输入的用户名是否符合规则，通过属性写正则表达式</p>
+<h4 id="三大域对象"><a href="#三大域对象" class="headerlink" title="三大域对象"></a>三大域对象</h4><p>✪把值存在域对象里，在别的页面通过域对象的方法获取域对象的值</p>
+<p>获取web应用的初始化参数</p>
+<p>获取项目的真实路径</p>
+<p>✪作为域对象，保护多个用户共享的数据</p>
+<h5 id="1-少）servletcontext：同一项目"><a href="#1-少）servletcontext：同一项目" class="headerlink" title="1.(少）servletcontext：同一项目"></a>1.(少）servletcontext：同一项目</h5><p>类似一个全局变量，服务器开始就存在，服务器关闭才释放，一个项目就一个servletContext实例</p>
+<p><code>ServletContext cxt = getServletContext();</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//ServletCOntext:代表当前web应用，相当于这个项目的全局变量</span></span><br><span class="line">	ServletContext con=getServletContext();</span><br><span class="line">	<span class="comment">//获取真实路径</span></span><br><span class="line">	System.out.println(con.getRealPath(<span class="string">"/"</span>));</span><br><span class="line">	<span class="comment">//获取项目的上下文，一般用来获取项目名</span></span><br><span class="line">	System.out.println(con.getContextPath());</span><br></pre></td></tr></table></figure>
+<p>​    getContextPath()一般用于获取当前项目名</p>
+<h5 id="2-httpsession：在同一次会话中"><a href="#2-httpsession：在同一次会话中" class="headerlink" title="2.httpsession：在同一次会话中"></a>2.httpsession：在同一次会话中</h5><h5 id="3-httpservletrequest：在同一次请求中"><a href="#3-httpservletrequest：在同一次请求中" class="headerlink" title="3.httpservletrequest：在同一次请求中"></a>3.httpservletrequest：在同一次请求中</h5><p>httpservletrequest是servletrequest（🙅‍获取http）的子接口</p>
+<h5 id="域对象三方法"><a href="#域对象三方法" class="headerlink" title="域对象三方法"></a>域对象三方法</h5><p>setAttriubute（）：放一个数据到servlContext中，便于后面取出</p>
+<p>getAttriubute()：根据域对象名获取值</p>
+<p>removeAttriubute()：根据域对象名删除值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">	<span class="comment">//创建servletContext</span></span><br><span class="line">	ServletContext cxt=getServletContext();</span><br><span class="line">	<span class="comment">//获取域对象值</span></span><br><span class="line">	Object obj=cxt.getAttribute(<span class="string">"count"</span>);</span><br><span class="line">	<span class="comment">//如果是第一次访问，设置访问量为1</span></span><br><span class="line">	<span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//保存访问量</span></span><br><span class="line">	<span class="keyword">if</span>(obj==<span class="keyword">null</span>)&#123;</span><br><span class="line">		count=<span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//不是第一次。加1</span></span><br><span class="line">		count=((<span class="keyword">int</span>)obj)+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//设置域对象值</span></span><br><span class="line">	cxt.setAttribute(<span class="string">"count"</span>, count);</span><br><span class="line">	response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">	response.getWriter().write(<span class="string">"访问量："</span>+count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="request和response"><a href="#request和response" class="headerlink" title="request和response"></a>request和response</h1><p>两种请求方式：</p>
+<p>get方式（默认）<br>1.以地址栏的方式传输<br>2.会把用户输入的值显示在地址栏，不安全<br>3.速度快 查询用get()</p>
+<p>post</p>
+<p>1.文件形式传输<br>2.安全，传输数据大，增删改用post()</p>
+<p>doget和dopost被service方法调用</p>
+<p>两个方法改变了参数，针对http请求</p>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>获取用户参数，转发，作为域对象也可以存放数据</p>
+<p><strong>getParameter（String）</strong>：根据参数获取值，返回类型为String[]</p>
+<p><strong>getparameterValues(String)</strong>:根据名获取一组值,返回类型为String[]</p>
+<p><strong>getParameterNames</strong> ()方法 :获取所有参数的名字，返回类型为Enumeration</p>
+<p><strong>setCharacterEncoding(“utf-8”);</strong></p>
+<p><strong>getContextPath()</strong> </p>
+<h2 id="response"><a href="#response" class="headerlink" title="response"></a>response</h2><p><code>getWriter()</code>：输出对象</p>
+<p><code>response.setContentType(&quot;text/html;charset=utf-8&quot;);</code></p>
+<h2 id="输出对象"><a href="#输出对象" class="headerlink" title="输出对象"></a>输出对象</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">out.write();</span><br></pre></td></tr></table></figure>
+<p>把内容输出到浏览器上</p>
+<h2 id="servlet对象"><a href="#servlet对象" class="headerlink" title="servlet对象"></a>servlet对象</h2><p><strong>Request</strong>和<strong>response</strong>在每一次访问时都被创建。由容器创建的</p>
+<p><strong>Serlvet</strong>只会被创建一次，由用户来开发，由容器来创建，单一的实例。</p>
+<p><strong>ServletConfig</strong>会为每一个Servlet创建一个Config对象，且由Servlet维护。就是声明成了成员变量。</p>
+<p><strong>ServletContext</strong>对象，代表web应用，这一个项目就只有一个此对象。</p>
+<h3 id="解决乱码问题："><a href="#解决乱码问题：" class="headerlink" title="解决乱码问题："></a>解决乱码问题：</h3><p>页面，类，浏览器，tomcat编码格式必须相同</p>
+<h4 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h4><p>针对于get和post</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line"><span class="built_in">String</span> name=request.getParameter(<span class="string">"name"</span>);<span class="comment">//name是iso-8859-1格式</span></span><br><span class="line">		byte[] byte1=name.getBytes(<span class="string">"iso-8859-1"</span>);<span class="comment">//把name转成字节码</span></span><br><span class="line">		<span class="built_in">String</span> name1=<span class="keyword">new</span> <span class="built_in">String</span>(byte1,<span class="string">"utf-8"</span>);</span><br><span class="line">		out.write(<span class="string">"姓名："</span>+name1);</span><br></pre></td></tr></table></figure>
+<h4 id="第二种（推荐"><a href="#第二种（推荐" class="headerlink" title="第二种（推荐)"></a>第二种（推荐)</h4><p>只对post有效</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);<span class="comment">//必须放在接受参数之前</span></span><br><span class="line">PrintWriter out = response.getWriter();</span><br><span class="line">String name=request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">out.write(<span class="string">"姓名："</span>+name);</span><br></pre></td></tr></table></figure>
+<p>对于get方式，tomcat8.0默认配置转成UTF-8，8.0之前，默认ISO-8859-1，在改端口号的两个server.xml中的Connector节点加入<code>URIEncoding=utf-8</code></p>
+<h3 id="✪请求转发，请求重定向"><a href="#✪请求转发，请求重定向" class="headerlink" title="✪请求转发，请求重定向"></a>✪请求转发，请求重定向</h3><ol>
+<li><p>请求转发：地址栏还是初次请求的地址栏，</p>
+<p>请求重定向：地址栏是最后一次响应的地址栏</p>
+</li>
+<li><p>本质区别：请求转发只发送一次一次请求，而重定向发送多次</p>
+</li>
+<li><p>请求转发：在最终的servlet中，request和中转的request是同一个request</p>
+<p>重定向：不是同一个request</p>
+</li>
+<li><p>请求转发：/代表的是当前web应用的根目录，代表绝对路径<a href="http://localhost:8080/servlet02" target="_blank" rel="noopener">http://localhost:8080/servlet02</a></p>
+<p>请求重定向：/代表的是当前web站点的根目录<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a></p>
+</li>
+<li><p>请求转发只能转发内部资源，请求重定向可以转发外部资源</p>
+</li>
+<li><p>外包是转发，还给服务器并告诉服务器谁可以完成任务为重定向</p>
+</li>
+</ol>
+<h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><ol>
+<li>一次会话：浏览器打开到浏览器关闭</li>
+<li>在服务器端保持http状态信息的方案</li>
+<li>客户请求里是否包含session标识表明是否是第一次访问</li>
+<li>如果当前已经创建了session，则直接返回，如果没有创建，就创建一个session</li>
+<li>数据共享：在同一个会话中</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Java一丢丢</title>
     <url>/cloyeeyh.github.io/2019/08/19/Java%E4%B8%80%E4%B8%A2%E4%B8%A2/</url>
     <content><![CDATA[<p>这就开始学习了？？</p>
@@ -1372,6 +1372,18 @@
       </categories>
   </entry>
   <entry>
+    <title>fatal-unable-to-auto-detect-email-address</title>
+    <url>/cloyeeyh.github.io/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
+    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
+<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --local -l</span><br></pre></td></tr></table></figure>
+<hr>
+<p>我的git……他还是有自己的想法</p>
+]]></content>
+  </entry>
+  <entry>
     <title>csapp_bombLab</title>
     <url>/cloyeeyh.github.io/2019/12/18/csapp-bombLab/</url>
     <content><![CDATA[<h1 id="phase-1"><a href="#phase-1" class="headerlink" title="phase_1"></a>phase_1</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">08048b30 &lt;phase_1&gt;:</span><br><span class="line"> 8048b30:	55                   	push   %ebp</span><br><span class="line"> 8048b31:	89 e5                	mov    %esp,%ebp</span><br><span class="line"> 8048b33:	83 ec 10             	sub    $0x10,%esp</span><br><span class="line"> 8048b36:	68 24 a1 04 08       	push   $0x804a124</span><br><span class="line"> 8048b3b:	ff 75 08             	pushl  0x8(%ebp)</span><br><span class="line"> 8048b3e:	e8 63 05 00 00       	call   80490a6 &lt;strings_not_equal&gt;</span><br><span class="line"> 8048b43:	83 c4 10             	add    $0x10,%esp</span><br><span class="line"> 8048b46:	85 c0                	test   %eax,%eax</span><br><span class="line"> 8048b48:	74 05                	je     8048b4f &lt;phase_1+0x1f&gt;</span><br><span class="line"> 8048b4a:	e8 5a 06 00 00       	call   80491a9 &lt;explode_bomb&gt;</span><br><span class="line"> 8048b4f:	c9                   	leave  </span><br><span class="line"> 8048b50:	c3                   	ret</span><br></pre></td></tr></table></figure>
@@ -1434,30 +1446,6 @@
       </categories>
   </entry>
   <entry>
-    <title>事务</title>
-    <url>/cloyeeyh.github.io/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
-<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
-<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
-<p><strong>事务</strong>：</p>
-<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
-<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
-<p>一致性：事务发生前后，总金额依然匹配</p>
-<p>持久性：事务产生的影响是不能撤销的</p>
-<p>开启事务</p>
-<p><code>START TRANSACTIOON</code></p>
-<p><code>set autocommit=0</code></p>
-<p>提交事务</p>
-<p><code>commit;</code></p>
-<p>回滚事务，回到未修改前</p>
-<p><code>rollback;</code></p>
-<p>事务处理放在service</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>matlab基本语法</title>
     <url>/cloyeeyh.github.io/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<ol>
@@ -1510,18 +1498,6 @@
       <categories>
         <category>MATLAB</category>
       </categories>
-  </entry>
-  <entry>
-    <title>fatal-unable-to-auto-detect-email-address</title>
-    <url>/cloyeeyh.github.io/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
-    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
-<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
-<p>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git config --local -l</span><br></pre></td></tr></table></figure>
-<hr>
-<p>我的git……他还是有自己的想法</p>
-]]></content>
   </entry>
   <entry>
     <title>ss科学上网</title>
@@ -1590,6 +1566,30 @@
 <p>下一页：是否等于尾页？无效：页码+1</p>
 <p>当前页码：就是用户传递</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>事务</title>
+    <url>/cloyeeyh.github.io/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
+<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
+<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
+<p><strong>事务</strong>：</p>
+<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
+<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
+<p>一致性：事务发生前后，总金额依然匹配</p>
+<p>持久性：事务产生的影响是不能撤销的</p>
+<p>开启事务</p>
+<p><code>START TRANSACTIOON</code></p>
+<p><code>set autocommit=0</code></p>
+<p>提交事务</p>
+<p><code>commit;</code></p>
+<p>回滚事务，回到未修改前</p>
+<p><code>rollback;</code></p>
+<p>事务处理放在service</p>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>

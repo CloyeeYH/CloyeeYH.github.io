@@ -41,6 +41,89 @@
       </categories>
   </entry>
   <entry>
+    <title>CSAPP-10</title>
+    <url>/2019/02/23/CSAPP-10/</url>
+    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<p>头大……</p>
+<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
+<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP_2</title>
+    <url>/2019/01/30/CSAPP-2/</url>
+    <content><![CDATA[<h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
+<li>小端法：最低有效字节在最前面</li>
+<li>大端法：最高有效字节在最前面</li>
+<li>浮点型和整型数据有不同的字节模式</li>
+<li>二进制代码不兼容</li>
+</ol>
+<h4 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">布尔运算</th>
+<th style="text-align:center">逻辑运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~</td>
+<td style="text-align:center">NOT</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">AND</td>
+</tr>
+<tr>
+<td style="text-align:center">单竖线</td>
+<td style="text-align:center">OR</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">异或（不同为1，相同为0）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左</li>
+<li>布尔环</li>
+</ul>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：右端补k个0，移位之后符号为不变，将一个整数左移1位相当于乘以2</p>
+<p>逻辑右移：左端补k个0</p>
+<p>算术右移：左端补k个最高有效位的值</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x&gt;&gt;k</td>
+<td style="text-align:center">x右移k位</td>
+</tr>
+<tr>
+<td style="text-align:center">x&lt;&lt;k</td>
+<td style="text-align:center">x左移k位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>转换为二进制进行运算，之后转回相应进制</p>
+<p><strong>掩码运算</strong></p>
+<p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
+<p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSAPP-12</title>
     <url>/2019/02/27/CSAPP-12/</url>
     <content><![CDATA[<h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
@@ -82,20 +165,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-10</title>
-    <url>/2019/02/23/CSAPP-10/</url>
-    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<p>头大……</p>
-<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
-<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-11</title>
     <url>/2019/02/25/CSAPP-11/</url>
     <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
@@ -113,6 +182,41 @@
 <h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
 <h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
 <p>eg：addl $4,%ecx</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP_3</title>
+    <url>/2019/02/01/CSAPP-3/</url>
+    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
+<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
+<ul>
+<li>无符号数编码唯一性</li>
+<li>双射</li>
+</ul>
+<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
+<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
+<li><p>原码</p>
+<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
+<p>+：0</p>
+<p>—：1</p>
+</li>
+<li><p>反码</p>
+<p>符号位不变，其他取反</p>
+</li>
+<li><p>补码</p>
+<p>负数：反码末尾加一</p>
+<p>正数：本身</p>
+</li>
+</ul>
+<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
+<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
+</li>
+<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -225,41 +329,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP_3</title>
-    <url>/2019/02/01/CSAPP-3/</url>
-    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
-<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
-<ul>
-<li>无符号数编码唯一性</li>
-<li>双射</li>
-</ul>
-<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
-<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
-<li><p>原码</p>
-<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
-<p>+：0</p>
-<p>—：1</p>
-</li>
-<li><p>反码</p>
-<p>符号位不变，其他取反</p>
-</li>
-<li><p>补码</p>
-<p>负数：反码末尾加一</p>
-<p>正数：本身</p>
-</li>
-</ul>
-<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
-<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
-</li>
-<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-4（浮点数）</title>
     <url>/2019/02/11/CSAPP-4/</url>
     <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
@@ -290,69 +359,19 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP_2</title>
-    <url>/2019/01/30/CSAPP-2/</url>
-    <content><![CDATA[<h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
-<li>小端法：最低有效字节在最前面</li>
-<li>大端法：最高有效字节在最前面</li>
-<li>浮点型和整型数据有不同的字节模式</li>
-<li>二进制代码不兼容</li>
-</ol>
-<h4 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">布尔运算</th>
-<th style="text-align:center">逻辑运算</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">~</td>
-<td style="text-align:center">NOT</td>
-</tr>
-<tr>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">AND</td>
-</tr>
-<tr>
-<td style="text-align:center">单竖线</td>
-<td style="text-align:center">OR</td>
-</tr>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:center">异或（不同为1，相同为0）</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左</li>
-<li>布尔环</li>
-</ul>
-<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：右端补k个0，移位之后符号为不变，将一个整数左移1位相当于乘以2</p>
-<p>逻辑右移：左端补k个0</p>
-<p>算术右移：左端补k个最高有效位的值</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">表示</th>
-<th style="text-align:center">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x&gt;&gt;k</td>
-<td style="text-align:center">x右移k位</td>
-</tr>
-<tr>
-<td style="text-align:center">x&lt;&lt;k</td>
-<td style="text-align:center">x左移k位</td>
-</tr>
-</tbody>
-</table>
-<h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>转换为二进制进行运算，之后转回相应进制</p>
-<p><strong>掩码运算</strong></p>
-<p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
-<p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
+    <title>CSAPP-6</title>
+    <url>/2019/02/15/CSAPP-6/</url>
+    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
+<p>二元：俩个操作数</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
+<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
+<p>高位被忽略，eg：salb移7位……</p>
+<p>左移：SAL、SHL右边都是填0</p>
+<p>右移：SAR左边填符号位。SHR左边填0</p>
+<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -455,25 +474,6 @@
 <p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
 <h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
 <p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSAPP-6</title>
-    <url>/2019/02/15/CSAPP-6/</url>
-    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
-<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
-<p>二元：俩个操作数</p>
-<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
-<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
-<p>高位被忽略，eg：salb移7位……</p>
-<p>左移：SAL、SHL右边都是填0</p>
-<p>右移：SAR左边填符号位。SHR左边填0</p>
-<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
-<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -789,6 +789,92 @@
 <p>c3p0-config.xml必须放在src下，而且名字不能变</p>
 <p>一个事务要么全成功要么全失败</p>
 ]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java一丢丢</title>
+    <url>/2019/08/19/Java%E4%B8%80%E4%B8%A2%E4%B8%A2/</url>
+    <content><![CDATA[<p>这就开始学习了？？</p>
+<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
+<hr>
+<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
+<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
+</li>
+<li><p><code>Float.MAX_VALUE</code>获取float max</p>
+</li>
+<li><p>println：输出后自动换行，print：输出后不换行</p>
+</li>
+<li><p>数组定义：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>public static final 则为常量</p>
+</li>
+<li><p>1970年1月1日 8点0分0秒开始</p>
+</li>
+<li><p><code>extends</code>继承</p>
+</li>
+<li><p><code>/**</code>+ENTER 多行注释</p>
+</li>
+<li><p>类名。接口名首字母大写</p>
+</li>
+<li><p>函数名，变量名首字母小写</p>
+</li>
+<li><p>常量首字母大写</p>
+</li>
+<li><p>单引号字符，双引号字符串</p>
+</li>
+<li><p>基本数据类型在栈，引用数据类型在堆里</p>
+</li>
+<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
+</li>
+<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
+</li>
+<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String 转成int(前提：string内容是数字)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int转String </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
+</li>
+<li><p>boolean类型默认false</p>
+</li>
+<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
+</li>
+<li><p>在静态static方法内部只能调用static方法或static变量</p>
+</li>
+<li><p>new 后面的是构造方法</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><ul>
+<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
+</li>
+<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
+<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
+<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
+<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
+<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
+<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
+</ul>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
+<p>重写run方法，启动线程用start；机制视频9：00</p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
+<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
+<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
       </categories>
@@ -1286,87 +1372,37 @@
       </categories>
   </entry>
   <entry>
-    <title>Java一丢丢</title>
-    <url>/2019/08/19/Java%E4%B8%80%E4%B8%A2%E4%B8%A2/</url>
-    <content><![CDATA[<p>这就开始学习了？？</p>
-<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
+    <title>fatal-unable-to-auto-detect-email-address</title>
+    <url>/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
+    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
+<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
+<p>解决方法：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"you@example.com"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--local -l</span><br></pre></td></tr></table></figure>
 <hr>
-<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
-<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
-</li>
-<li><p><code>Float.MAX_VALUE</code>获取float max</p>
-</li>
-<li><p>println：输出后自动换行，print：输出后不换行</p>
-</li>
-<li><p>数组定义：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>public static final 则为常量</p>
-</li>
-<li><p>1970年1月1日 8点0分0秒开始</p>
-</li>
-<li><p><code>extends</code>继承</p>
-</li>
-<li><p><code>/**</code>+ENTER 多行注释</p>
-</li>
-<li><p>类名。接口名首字母大写</p>
-</li>
-<li><p>函数名，变量名首字母小写</p>
-</li>
-<li><p>常量首字母大写</p>
-</li>
-<li><p>单引号字符，双引号字符串</p>
-</li>
-<li><p>基本数据类型在栈，引用数据类型在堆里</p>
-</li>
-<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
-</li>
-<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
-</li>
-<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>String 转成int(前提：string内容是数字)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>int转String </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
-</li>
-<li><p>boolean类型默认false</p>
-</li>
-<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
-</li>
-<li><p>在静态static方法内部只能调用static方法或static变量</p>
-</li>
-<li><p>new 后面的是构造方法</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><ul>
-<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
-</li>
-<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
-<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
-<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
-<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
-<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
-<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
-</ul>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
-<p>重写run方法，启动线程用start；机制视频9：00</p>
-<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
-<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
-<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>]]></content>
+<p>我的git……他还是有自己的想法</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>事务</title>
+    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
+<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
+<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
+<p><strong>事务</strong>：</p>
+<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
+<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
+<p>一致性：事务发生前后，总金额依然匹配</p>
+<p>持久性：事务产生的影响是不能撤销的</p>
+<p>开启事务</p>
+<p><code>START TRANSACTIOON</code></p>
+<p><code>set autocommit=0</code></p>
+<p>提交事务</p>
+<p><code>commit;</code></p>
+<p>回滚事务，回到未修改前</p>
+<p><code>rollback;</code></p>
+<p>事务处理放在service</p>
+]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
       </categories>
@@ -1421,6 +1457,80 @@
 ]]></content>
       <categories>
         <category>Others</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>matlab基本语法</title>
+    <url>/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<ol>
+<li><p>加；表示不输出，不加表示输出</p>
+</li>
+<li><p>ctrl+R 注释  ctrl+T 取消注释</p>
+</li>
+<li><p><code>disp（）</code>输出函数，不受；影响</p>
+</li>
+<li><p>向量 <code>a=[1 2 3]</code>   ；隔开表示列向量</p>
+</li>
+<li><p><code>strcat(字符串1,字符串2)</code> 合并字符串</p>
+<p><code>[字符串1 字符串2</code></p>
+</li>
+<li><p><code>num2str()</code> 数字转换成字符串</p>
+</li>
+<li><p><code>input(提示符)</code>  </p>
+</li>
+<li><p><code>sum()</code>   <code>sum(E,1)</code>按列求和   <code>sum(E,2)</code>按行求和  <code>sum(E(:))</code>  求全部和</p>
+</li>
+<li><p><code>E(2,:)</code>   提取第二行的所有元素</p>
+<p><code>E([2,5],:)</code> 提取第二行和第五行的元素</p>
+<p><code>E(2:5,:)</code>    提取第2-5行</p>
+<p><code>E(2:end,:)</code>  提取第二行到最后一行的所有元素</p>
+<p><code>E(:)</code>  所有元素按列排</p>
+</li>
+<li><p>2:3:8   从2开始以3为差的等差数列</p>
+</li>
+<li><p><code>size(E)</code>    输出a  b有几行几列</p>
+</li>
+<li><p><code>repeat(A,m,n)</code>  把A 复制成m*n块</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">E =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">repmat(E,<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵乘法<em> 除法/，`A/B=A</em>inv（B）<code></code>inv(B)` 逆矩阵</p>
+</li>
+<li><p>元素乘除乘方：  .*   ./   .^</p>
+</li>
+<li><p>Inf 表示无穷</p>
+</li>
+<li><p><code>eig(A)</code> 特征值构成的列向量</p>
+<p><code>[V,D]=eig(A)</code>   V是特征向量，D是特征值</p>
+</li>
+<li><p><code>find()</code> f返回矩阵中不为0 的位置的索引（竖着数）</p>
+<p><code>[r,c]=find(A)</code>  按照行列表示索引</p>
+</li>
+<li><p>if 要有end 而且 注意缩进</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>MATLAB</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>分页查询</title>
+    <url>/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
+    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
+<p>（页数-1）*要显示的条数，要显示的条数</p>
+<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
+<p>每页的数量：程序员设置</p>
+<p>总条数：<code>select count(*) from表名</code></p>
+<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
+<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
+<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
+<p>上一页：是否等于首页？无效：页码-1</p>
+<p>下一页：是否等于尾页？无效：页码+1</p>
+<p>当前页码：就是用户传递</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
   <entry>
@@ -1483,96 +1593,6 @@
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>fatal-unable-to-auto-detect-email-address</title>
-    <url>/2019/08/19/fatal-unable-to-auto-detect-email-address/</url>
-    <content><![CDATA[<p>五个月没开博客，我的git他有了自己的想法。。。</p>
-<p><code>git: fatal unable to auto-detect email address (got &quot;some wrong email&quot;)</code></p>
-<p>解决方法：</p>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--global user.email <span class="string">"you@example.com"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">$ git<span class="built_in"> config </span>--local -l</span><br></pre></td></tr></table></figure>
-<hr>
-<p>我的git……他还是有自己的想法</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>matlab基本语法</title>
-    <url>/2020/02/07/matlab%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<ol>
-<li><p>加；表示不输出，不加表示输出</p>
-</li>
-<li><p>ctrl+R 注释  ctrl+T 取消注释</p>
-</li>
-<li><p><code>disp（）</code>输出函数，不受；影响</p>
-</li>
-<li><p>向量 <code>a=[1 2 3]</code>   ；隔开表示列向量</p>
-</li>
-<li><p><code>strcat(字符串1,字符串2)</code> 合并字符串</p>
-<p><code>[字符串1 字符串2</code></p>
-</li>
-<li><p><code>num2str()</code> 数字转换成字符串</p>
-</li>
-<li><p><code>input(提示符)</code>  </p>
-</li>
-<li><p><code>sum()</code>   <code>sum(E,1)</code>按列求和   <code>sum(E,2)</code>按行求和  <code>sum(E(:))</code>  求全部和</p>
-</li>
-<li><p><code>E(2,:)</code>   提取第二行的所有元素</p>
-<p><code>E([2,5],:)</code> 提取第二行和第五行的元素</p>
-<p><code>E(2:5,:)</code>    提取第2-5行</p>
-<p><code>E(2:end,:)</code>  提取第二行到最后一行的所有元素</p>
-<p><code>E(:)</code>  所有元素按列排</p>
-</li>
-<li><p>2:3:8   从2开始以3为差的等差数列</p>
-</li>
-<li><p><code>size(E)</code>    输出a  b有几行几列</p>
-</li>
-<li><p><code>repeat(A,m,n)</code>  把A 复制成m*n块</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">E =</span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">repmat(E,<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">ans =</span><br><span class="line"></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br><span class="line">     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span>     <span class="number">1</span>     <span class="number">2</span>     <span class="number">3</span></span><br><span class="line">     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span>     <span class="number">4</span>     <span class="number">5</span>     <span class="number">6</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>矩阵乘法<em> 除法/，`A/B=A</em>inv（B）<code></code>inv(B)` 逆矩阵</p>
-</li>
-<li><p>元素乘除乘方：  .*   ./   .^</p>
-</li>
-<li><p>Inf 表示无穷</p>
-</li>
-<li><p><code>eig(A)</code> 特征值构成的列向量</p>
-<p><code>[V,D]=eig(A)</code>   V是特征向量，D是特征值</p>
-</li>
-<li><p><code>find()</code> f返回矩阵中不为0 的位置的索引（竖着数）</p>
-<p><code>[r,c]=find(A)</code>  按照行列表示索引</p>
-</li>
-<li><p>if 要有end 而且 注意缩进</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>MATLAB</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>事务</title>
-    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
-<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
-<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
-<p><strong>事务</strong>：</p>
-<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
-<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
-<p>一致性：事务发生前后，总金额依然匹配</p>
-<p>持久性：事务产生的影响是不能撤销的</p>
-<p>开启事务</p>
-<p><code>START TRANSACTIOON</code></p>
-<p><code>set autocommit=0</code></p>
-<p>提交事务</p>
-<p><code>commit;</code></p>
-<p>回滚事务，回到未修改前</p>
-<p><code>rollback;</code></p>
-<p>事务处理放在service</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
   <entry>
@@ -1696,26 +1716,6 @@
 ]]></content>
       <categories>
         <category>数据库</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>分页查询</title>
-    <url>/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
-    <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
-<p>（页数-1）*要显示的条数，要显示的条数</p>
-<p><strong>分页内容：</strong>上一页，下一页，首页，尾页，跳转页，总页数，当前页，每页的数量</p>
-<p>每页的数量：程序员设置</p>
-<p>总条数：<code>select count(*) from表名</code></p>
-<p>总页数：总条数%每页的数量==0？（总条数%每页条数）：（总条数%每页条数+1）</p>
-<p>首页： 判断当前页是否为第一页，如果是，超连接无效</p>
-<p>尾页：判断当前页是否等于总页数，如果是，超链接无效</p>
-<p>上一页：是否等于首页？无效：页码-1</p>
-<p>下一页：是否等于尾页？无效：页码+1</p>
-<p>当前页码：就是用户传递</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">	&lt;td <span class="class"><span class="keyword">class</span></span>=<span class="string">"line_table"</span> align=<span class="string">"center"</span> colspan=<span class="string">"11"</span> height=<span class="string">"20"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"left_bt2"</span>&gt;第$&#123;page.curPage &#125;页 &amp;nbsp;&amp;nbsp;共$&#123;page.totalPage &#125;页</span><br><span class="line">	&lt;/span&gt;&amp;nbsp;&amp;nbsp; </span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[首页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=1&#125;"&gt;[首页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[尾页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.totalPage&#125;"&gt;[尾页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[上一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage-1&#125;"&gt;[上一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line">								</span><br><span class="line">	&lt;c:choose&gt;</span><br><span class="line">	&lt;c:when test=<span class="string">"$&#123;page.curPage eq page.totalPage &#125;"</span>&gt;</span><br><span class="line">	&lt;span style="font-size: 12px; color:gray"&gt;[下一页]&lt;/span&gt;</span><br><span class="line">	&lt;/c:when&gt;</span><br><span class="line">	&lt;c:otherwise&gt;</span><br><span class="line">	&lt;a href="$&#123;#&amp;&amp;curPage=$&#123;page.curPage+1&#125;&amp;&amp;userid=$&#123;requestScope.ordersInfo.userid&#125;"&gt;[下一页]&lt;/a&gt;</span><br><span class="line">	&lt;/c:otherwise&gt;	</span><br><span class="line">	&lt;/c:choose&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/td</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
       </categories>
   </entry>
 </search>

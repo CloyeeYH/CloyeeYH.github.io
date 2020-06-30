@@ -487,8 +487,8 @@ pre,
   margin: 20px 0;
   padding: 0;
   font-size: 13px;
-  color: #c5c8c6;
-  background: #1d1f21;
+  color: #ccc;
+  background: #2d2d2d;
   line-height: 1.6;
 }
 pre,
@@ -508,7 +508,7 @@ pre {
 }
 pre code {
   padding: 0;
-  color: #c5c8c6;
+  color: #ccc;
   background: none;
   text-shadow: none;
 }
@@ -531,7 +531,7 @@ pre code {
 }
 .highlight figcaption {
   font-size: 1em;
-  color: #c5c8c6;
+  color: #ccc;
   line-height: 1em;
   margin-bottom: 1em;
 }
@@ -545,23 +545,23 @@ pre code {
 }
 .highlight figcaption a {
   float: right;
-  color: #c5c8c6;
+  color: #ccc;
 }
 .highlight figcaption a:hover {
-  border-bottom-color: #c5c8c6;
+  border-bottom-color: #ccc;
 }
 .highlight .gutter pre {
   padding-left: 10px;
   padding-right: 10px;
-  color: #888f96;
+  color: #999;
   text-align: right;
-  background-color: #000;
+  background-color: #1b1b1b;
 }
 .highlight .code pre {
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #1d1f21;
+  background-color: #2d2d2d;
 }
 .highlight .line {
   height: 20px;
@@ -585,10 +585,10 @@ pre .addition {
   background: #800000;
 }
 pre .meta {
-  color: #b294bb;
+  color: #c9c;
 }
 pre .comment {
-  color: #969896;
+  color: #999;
 }
 pre .variable,
 pre .attribute,
@@ -602,7 +602,7 @@ pre .html .doctype,
 pre .css .id,
 pre .css .class,
 pre .css .pseudo {
-  color: #c66;
+  color: #f2777a;
 }
 pre .number,
 pre .preprocessor,
@@ -611,7 +611,7 @@ pre .literal,
 pre .params,
 pre .constant,
 pre .command {
-  color: #de935f;
+  color: #f99157;
 }
 pre .ruby .class .title,
 pre .css .rules .attribute,
@@ -624,11 +624,11 @@ pre .xml .cdata,
 pre .special,
 pre .number,
 pre .formula {
-  color: #b5bd68;
+  color: #9c9;
 }
 pre .title,
 pre .css .hexcolor {
-  color: #8abeb7;
+  color: #6cc;
 }
 pre .function,
 pre .python .decorator,
@@ -638,11 +638,11 @@ pre .ruby .title .keyword,
 pre .perl .sub,
 pre .javascript .title,
 pre .coffeescript .title {
-  color: #81a2be;
+  color: #69c;
 }
 pre .keyword,
 pre .javascript .function {
-  color: #b294bb;
+  color: #c9c;
 }
 .full-image.full-image.full-image.full-image {
   border: none;
@@ -1253,6 +1253,14 @@ pre .javascript .function {
   -o-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+}
+.post-body p a:hover {
+  color: #ff106c;
+  text-decoration: underline;
+}
 .use-motion .post-block,
 .use-motion .pagination,
 .use-motion .comments {
@@ -1460,8 +1468,6 @@ pre .javascript .function {
 }
 .posts-expand .post-title-link {
   display: inline-block;
-  position: relative;
-  color: #555;
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1927,7 +1933,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff821d;
+  background: #633791;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2714,7 +2720,7 @@ img:hover {
   overflow: hidden;
   padding: 0;
   width: 240px;
-  background: #fff;
+  background: rgba(255,255,255,0.7);
   box-shadow: initial;
   border-radius: initial;
 }
@@ -2773,7 +2779,7 @@ img:hover {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: #fff;
+  background: rgba(255,255,255,0.7);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
@@ -2798,7 +2804,7 @@ img:hover {
   float: left;
   margin-top: 300px;
   width: 240px;
-  background: #f5f7f9;
+  background: rgba(255,255,255,0.7);
   box-shadow: none;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2955,7 +2961,7 @@ img:hover {
   box-sizing: border-box;
   width: 240px;
   color: #555;
-  background: #fff;
+  background: rgba(255,255,255,0.7);
   box-shadow: initial;
   border-radius: initial;
   opacity: 0;
@@ -3088,11 +3094,24 @@ img:hover {
     text-align: justify;
   }
 }
+body {
+  background: url("/images/background.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+@media (max-width: 767px) {
+  body {
+    background: url("/images/background.jpg");
+    background-size: cover;
+  }
+}
 #heart {
   animation: heartAnimate 1s infinite;
 }
 .with-love {
-  color: #ff71a8;
+  color: #d00;
 }
 .posts-expand .post-tags a {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -3106,18 +3125,17 @@ img:hover {
 .posts-expand .post-tags a:hover {
   color: #0684bd;
 }
-body {
-  background-image: url("/images/background.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
+.content-wrap {
+  opacity: 0.85;
 }
-@media (max-width: 767px) {
-  body {
-    background-image: url("https://cloyeeyh.github.io/images/bg_cell.png");
-    background-size: cover;
-  }
+.sidebar {
+  opacity: 0.85;
+}
+.header-inner {
+  background: rgba(255,255,255,0.85);
+}
+.popup {
+  opacity: 0.9;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {

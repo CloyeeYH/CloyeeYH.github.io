@@ -2121,10 +2121,10 @@
 <li><p>虚拟地址（64位）的高十六位必须设置为0</p>
 </li>
 <li><p>查看汇编代码（—&gt;test.s)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -S test.c</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -S <span class="keyword">test</span>.c</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编译并汇编该代码(—&gt;test.o)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -c test.c</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -<span class="keyword">c</span> test.<span class="keyword">c</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>GCC产生的汇编代码指令上有后缀，而反汇编代码没有，x86-64的内存引用都是四字长寄存器给出。</p>
 </li>
@@ -2132,7 +2132,7 @@
 <p>查看机器代码文件的内容：</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; objdump -d matore.o</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">linux</span>&gt; <span class="selector-tag">objdump</span> <span class="selector-tag">-d</span> <span class="selector-tag">matore</span><span class="selector-class">.o</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0jz3cqxd9j30nt07pdkr.jpg" alt=""></li>
 </ul>
@@ -2204,9 +2204,9 @@
 <p>popq：弹出数据</p>
 <p>%rsp：栈指针，保存栈顶元素地址</p>
 <p>压入四字节：先减去8(栈倒过来放），然后将值写入新的栈顶地址。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subq $8,%rsp</span><br><span class="line">movq %rbp,(%rsp)</span><br></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subq $8,%rsp</span><br><span class="line">movq %rbp,(%rsp)</span><br></pre></td></tr></table></figure>
 <p>弹出四字节：读出数据，加上8</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
 
           
         

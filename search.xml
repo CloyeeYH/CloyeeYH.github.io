@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSAPP-10</title>
-    <url>/2019/02/23/CSAPP-10/</url>
-    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<p>头大……</p>
-<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
-<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP_1</title>
     <url>/2019/01/27/CSAPP-1/</url>
     <content><![CDATA[<h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
@@ -55,23 +41,14 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-11</title>
-    <url>/2019/02/25/CSAPP-11/</url>
-    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
-<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
-<p>halt：终止指令的执行</p>
-<p>nop：占位指令，不做任何事</p>
-<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
-<p>opl：操作指令</p>
-<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
-<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
-<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
-<p>push与pop：入栈和出栈操作</p>
-<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
-<p>寄存器的表示：4个二进制位</p>
-<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
-<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
-<p>eg：addl $4,%ecx</p>
+    <title>CSAPP-10</title>
+    <url>/2019/02/23/CSAPP-10/</url>
+    <content><![CDATA[<h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<p>头大……</p>
+<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
+<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -188,41 +165,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP_3</title>
-    <url>/2019/02/01/CSAPP-3/</url>
-    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
-<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
-<ul>
-<li>无符号数编码唯一性</li>
-<li>双射</li>
-</ul>
-<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
-<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
-<li><p>原码</p>
-<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
-<p>+：0</p>
-<p>—：1</p>
-</li>
-<li><p>反码</p>
-<p>符号位不变，其他取反</p>
-</li>
-<li><p>补码</p>
-<p>负数：反码末尾加一</p>
-<p>正数：本身</p>
-</li>
-</ul>
-<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
-<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
-</li>
-<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>计算机系统基础</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSAPP-4（浮点数）</title>
     <url>/2019/02/11/CSAPP-4/</url>
     <content><![CDATA[<p>bomb lab题目都找不到……所以，又回来啃书了……</p>
@@ -253,80 +195,58 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-6</title>
-    <url>/2019/02/15/CSAPP-6/</url>
-    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
-<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
-<p>二元：俩个操作数</p>
-<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
-<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
-<p>高位被忽略，eg：salb移7位……</p>
-<p>左移：SAL、SHL右边都是填0</p>
-<p>右移：SAR左边填符号位。SHR左边填0</p>
-<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
-<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+    <title>CSAPP-11</title>
+    <url>/2019/02/25/CSAPP-11/</url>
+    <content><![CDATA[<h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
+<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
+<p>halt：终止指令的执行</p>
+<p>nop：占位指令，不做任何事</p>
+<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
+<p>opl：操作指令</p>
+<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
+<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
+<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
+<p>push与pop：入栈和出栈操作</p>
+<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
+<p>寄存器的表示：4个二进制位</p>
+<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
+<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
+<p>eg：addl $4,%ecx</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-7</title>
-    <url>/2019/02/17/CSAPP-7/</url>
-    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
-<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
-<thead>
-<tr>
-<th>条件码寄存器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CF</td>
-<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
-</tr>
-<tr>
-<td>OF</td>
-<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
-</tr>
-</tbody>
-</table>
+    <title>CSAPP_3</title>
+    <url>/2019/02/01/CSAPP-3/</url>
+    <content><![CDATA[<h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
+<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
 <ul>
-<li>条件码寄存器大多数时候是被动改变</li>
+<li>无符号数编码唯一性</li>
+<li>双射</li>
 </ul>
-<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
-<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
-<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
-<p>二者都需加数据格式后缀</p>
-<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
-<li>根据条件码组合，将一个字节设置为0，1</li>
-<li>条件跳转到程序的某个其他部分</li>
-<li>有条件的传送数据</li>
+<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
+<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
+<li><p>原码</p>
+<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
+<p>+：0</p>
+<p>—：1</p>
+</li>
+<li><p>反码</p>
+<p>符号位不变，其他取反</p>
+</li>
+<li><p>补码</p>
+<p>负数：反码末尾加一</p>
+<p>正数：本身</p>
+</li>
 </ul>
-<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
-<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
-<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
-<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>汇编代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
-<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
+<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
+<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
+</li>
+<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -439,41 +359,80 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-9</title>
-    <url>/2019/02/21/CSAPP-9/</url>
-    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
-</li>
-</ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+    <title>CSAPP-6</title>
+    <url>/2019/02/15/CSAPP-6/</url>
+    <content><![CDATA[<h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
+<p>二元：俩个操作数</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
+<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
+<p>高位被忽略，eg：salb移7位……</p>
+<p>左移：SAL、SHL右边都是填0</p>
+<p>右移：SAR左边填符号位。SHR左边填0</p>
+<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
+<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-7</title>
+    <url>/2019/02/17/CSAPP-7/</url>
+    <content><![CDATA[<h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
+<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
+<thead>
+<tr>
+<th>条件码寄存器</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CF</td>
+<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
+</tr>
+<tr>
+<td>ZF</td>
+<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
+</tr>
+<tr>
+<td>SF</td>
+<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
+</tr>
+<tr>
+<td>OF</td>
+<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>条件码寄存器大多数时候是被动改变</li>
+</ul>
+<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
+<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
+<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
+<p>二者都需加数据格式后缀</p>
+<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
+<li>根据条件码组合，将一个字节设置为0，1</li>
+<li>条件跳转到程序的某个其他部分</li>
+<li>有条件的传送数据</li>
+</ul>
+<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
+<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
+<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
+<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
+<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
+<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
+<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
@@ -563,284 +522,83 @@
       </categories>
   </entry>
   <entry>
-    <title>CSAPP-datalab</title>
-    <url>/2019/02/11/CSAPP-datalab/</url>
-    <content><![CDATA[<p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
-<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
-<ul>
-<li><p>bitAnd - x&amp;y using only ~ and |</p>
-<ul>
-<li>Example: bitAnd(6, 5) = 4</li>
-<li>Legal ops: ~ |</li>
-<li>Max ops: 8</li>
-<li>Rating: 1</li>
-</ul>
+    <title>CSAPP-9</title>
+    <url>/2019/02/21/CSAPP-9/</url>
+    <content><![CDATA[<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+<p>起始地址：储存在%ebp寄存器（桢指针）</p>
+<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
+<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
+<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
+<li><p>备份原来指针</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> bit<span class="constructor">And(<span class="params">int</span> <span class="params">x</span>,<span class="params">int</span> <span class="params">y</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x<span class="pattern-match">|~y));</span></span><br><span class="line"><span class="pattern-match">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h3><p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
-<ul>
-<li>getByte - Extract byte n from word x</li>
-<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
-<li>Examples: getByte(0x12345678,1) = 0x56</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 6</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
-<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> getByte(<span class="type">int</span> x,<span class="type">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> <span class="keyword">temp</span>=x&gt;&gt;((n)&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">temp</span>=<span class="keyword">temp</span>&amp;<span class="number">0xFF</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">temp</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
-<ul>
-<li>logicalShift - shift x to the right by n, using a logical shift<ul>
-<li>Can assume that 0 &lt;= n &lt;= 31</li>
-<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 20</li>
-<li>Rating: 3</li>
-</ul>
+<li><p>给临时变量分配预留内存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：</p>
-<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> logicalShift(<span class="built_in">int</span> x,<span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> x1=x&gt;&gt;n;</span><br><span class="line">	<span class="built_in">int</span> mask=(~（<span class="number">1</span>&lt;&lt;<span class="number">31</span>)&gt;&gt;n&lt;&lt;<span class="number">1</span>)+<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
-<ul>
-<li><p>bitCount - returns count of number of 1’s in word</p>
-<ul>
-<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 40</li>
-<li>Rating: 4</li>
-</ul>
+<li><p>值压入栈顶（备份）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
-<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
-<ul>
-<li>bang - Compute !x without using !</li>
-<li>Examples: bang(3) = 0, bang(0) = 1</li>
-<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 12</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
-<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">int bang(int <span class="keyword">x</span>)</span><br><span class="line">&#123;</span><br><span class="line">	int <span class="keyword">x</span><span class="number">1</span>=~<span class="keyword">x</span>+<span class="number">1</span><span class="comment">;</span></span><br><span class="line"><span class="comment">	x=x|x1;</span></span><br><span class="line"><span class="comment">	x=x&gt;&gt;31;</span></span><br><span class="line"><span class="comment">	x=x+1；</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
-<ul>
-<li>tmin - return minimum two’s complement integer</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 4</li>
-<li>Rating: 1</li>
-</ul>
-<p>思路：这不就是返回一个确定的值吗？</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> tmin(<span class="built_in">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0x80</span> &lt;&lt; <span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="fitsBits"><a href="#fitsBits" class="headerlink" title="fitsBits"></a>fitsBits</h3><p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
-<ul>
-<li>fitsBits - return 1 if x can be represented as an</li>
-<li>n-bit, two’s complement integer.</li>
-<li>1 &lt;= n &lt;= 32</li>
-<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> fitsBits(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> x1 =~((~n)+<span class="number">1</span>);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   <span class="built_in">int</span> ans=(!tmpx|!(tmpx+<span class="number">1</span>));</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
-<ul>
-<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
-<li>Round toward zero</li>
-<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> divpwr2(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> tmp = (~( (x &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>) )+<span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">int</span> q= ~((~<span class="number">0</span>)&lt;&lt;n);</span><br><span class="line">    <span class="built_in">int</span> ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
-<ul>
-<li>negate - return -x <ul>
-<li>Example: negate(1) = -1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 5</li>
-<li>Rating: 2</li>
-</ul>
+<li><p>使用建立好的栈帧，mov,push,pop</p>
 </li>
-</ul>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> negate(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> ((~x)+<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h3><p>题目:判断x是不是正数</p>
-<ul>
-<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
-<li>Example: isPositive(-1) = 0.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 8</li>
-<li>Rating: 3</li>
-</ul>
+<li><p>从栈帧中将备份的值恢复到寄存器</p>
 </li>
-</ul>
-<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> isPositive(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> !(!x|(x&gt;&gt;<span class="number">31</span>)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
-<ul>
-<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
-<li>Example: isLessOrEqual(4,5) = 1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 24</li>
-<li>Rating: 3</li>
-</ul>
-<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> isLessOrEqual(<span class="built_in">int</span> x, <span class="built_in">int</span> y)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> signx = (x &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> signy = (y &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> isSameSign=!(signx^signy) ;</span><br><span class="line">   <span class="built_in">int</span> p=!(((~x)+<span class="number">1</span>+y)&gt;&gt;<span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ilog2"><a href="#ilog2" class="headerlink" title="ilog2"></a>ilog2</h3><p>题目：求整数的log(x)。</p>
-<ul>
-<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
-<li>Example: ilog2(16) = 4</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 90</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
-<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> ilog2(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">num</span>=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">num</span>=(!!(x&gt;&gt;<span class="number">16</span>))&lt;&lt;<span class="number">4</span>;</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">8</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">4</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">2</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">1</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">num</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
-<ul>
-<li>float_neg - Return bit-level equivalent of expression -f for</li>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representations of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 10</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_neg</span><span class="params">(<span class="keyword">unsigned</span> uf)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> result;</span><br><span class="line">    <span class="keyword">unsigned</span> tmp;</span><br><span class="line">    result=uf^<span class="number">0x80000000</span>;</span><br><span class="line">    tmp=uf&amp;<span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">if</span>(tmp&gt;<span class="number">0x7f800000</span>) result=uf;</span><br><span class="line">    <span class="keyword">return</span>  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
-<ul>
-<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
-<li>Result is returned as unsigned int, but</li>
-<li>it is to be interpreted as the bit-level representation of a</li>
-<li>single-precision floating point values.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
-<p>如果是0，直接返回即可</p>
-<p>如果是0x80000000,返回0xcf000000</p>
-<p>如果负数：变为整正数之后按照正数计算</p>
-<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
-<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
-<ul>
-<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representation of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
+<li><p>释放被调用的栈帧，栈指针增大</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>嘤嘤嘤~浮点数真令人头大</p>
+<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+</li>
+</ol>
+<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
+<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
+<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
+<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
+<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 ]]></content>
       <categories>
         <category>计算机系统基础</category>
       </categories>
   </entry>
   <entry>
-    <title>JSP</title>
-    <url>/2019/08/30/JSP/</url>
-    <content><![CDATA[<p>html不能写java代码</p>
-<p>JSP看起来是HTML，本质是servlet</p>
-<p>java代码写在&lt;%%&gt;中称为脚本片段，最终在service方法里运行，❗但不要在JSP里写java代码</p>
-<p>jsp声明：&lt;%!  %&gt;里面可以写方法</p>
-<p>jsp注释：&lt;%– –%&gt;</p>
-<p>输出到浏览器&lt;%=  &gt;</p>
-<h1 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h1><p>不需要声明可以直接用的对象</p>
-<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>httpservletRequest对象，代表客户端请求</p>
-<p>域范围：同一个请求</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(<span class="string">"name:"</span>+name);</span><br></pre></td></tr></table></figure>
-<h2 id="response（不常用）"><a href="#response（不常用）" class="headerlink" title="response（不常用）"></a>response（不常用）</h2><p>httpservletResponse对象，代表服务器响应</p>
-<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>域范围：同一会话</p>
-<p>代表一次会话</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"sessionid="</span>+session.getId());</span><br></pre></td></tr></table></figure>
-<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p>ServletContext对象，代表当前web应用</p>
-<p>域范围：同一web应用</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(application.getInitParameter(<span class="string">"name"</span>));</span><br></pre></td></tr></table></figure>
-<h2 id="out（不常用）"><a href="#out（不常用）" class="headerlink" title="out（不常用）"></a>out（不常用）</h2><p>JSPWrite对象，把结果输出到浏览器</p>
-<h2 id="config（不常用）"><a href="#config（不常用）" class="headerlink" title="config（不常用）"></a>config（不常用）</h2><p>ServletConfig对象，代表当前servlet</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(<span class="string">"servlet注册名："</span>+config.getServletName());</span><br></pre></td></tr></table></figure>
-<h2 id="page（不常用）"><a href="#page（不常用）" class="headerlink" title="page（不常用）"></a>page（不常用）</h2><p>指的是jsp对应的servlet对象，也就是代表页面</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"page:"</span>+page);</span><br></pre></td></tr></table></figure>
-<h2 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h2><p>页面上下文，可以获取其他八个内置对象，域范围：当前页面</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(pageContext.getRequest()==request);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h2 id="exception（不常用）"><a href="#exception（不常用）" class="headerlink" title="exception（不常用）"></a>exception（不常用）</h2><p>异常对象</p>
-<p>剩下四个常用的是jsp的四大域对象</p>
-<p>路径写绝对路径</p>
-<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><p>从域对象里取值</p>
-<p>el表达式没有遍历功能</p>
-<p>表单回显：点击提交后用户名输入框依旧显示输入内容</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;!-- 麻烦--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=&lt;%=request.getParameter(<span class="string">"username"</span>)==<span class="keyword">null</span>?<span class="string">""</span>:request.getParameter(<span class="string">"username"</span>) %&gt; &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">&lt;%=request.getParameter(<span class="string">"username"</span>) %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 简单el--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=<span class="string">"$&#123;param.username &#125;"</span> &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">$&#123;param.username &#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;% out.print(request.getAttribute(<span class="string">"name"</span>)); %&gt;</span><br><span class="line">&lt;!-- 被以下方式替换了 --&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;!--又被以下El表达式替换了 --&gt;</span><br><span class="line">$&#123;name&#125;</span><br></pre></td></tr></table></figure>
-<p>从某一个范围中根据域对象名name去取值，如果没有指定从那个域对象里取，默认从小到大取，也就是先从pageContext里取，如果想从指定的域中取，name前面加上、pageScope、requestScope、sessionScope、applicationScope</p>
-<p><code>${sessionScope.name  }</code></p>
-<p>如果域名叫user.name ：</p>
-<p>不加括号：会在request域中找user对象，在user对象中找name对象，在name对象中找name属性</p>
-<p>使用括号：[“user.name”].name</p>
-<p><code>${pageContext.request.contextPath }</code>获取当前web应用根目录</p>
-<p>el表达式可以自动类型转换</p>
-<h1 id="JSTL标签"><a href="#JSTL标签" class="headerlink" title="JSTL标签"></a>JSTL标签</h1><p>导入jstl标签库</p>
-<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
-<p><strong><code>c:out</code></strong>value=${}：值 default=” “默认值     把结果输出到浏览器，可以解析特殊字符</p>
-<p><code>c:set</code> scope=“ ”:指定域对象，var=“ ”：名字value=“ ”：值</p>
-<p><code>c:remove</code>:  var=” “ value=” “</p>
-<p><code>c:if</code> :不能实现else</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;param.age&lt;20 &#125;"</span>&gt;</span><br><span class="line">  太小了，未到达法定结婚年龄！</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
-<p><code>c:choose</code>判断，相当于if elseif else</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&lt;20&#125;"</span>&gt; </span><br><span class="line">    小于<span class="number">20</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&gt;=20 &amp;&amp; param.age&lt;=100&#125;"</span>&gt;</span><br><span class="line">    <span class="number">20</span>~<span class="number">100</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:otherwise&gt;</span><br><span class="line">    大于<span class="number">100</span>...</span><br><span class="line">  &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
-<p><code>c:foreach</code>遍历</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>items</td>
-<td>要被循环的信息</td>
-</tr>
-<tr>
-<td>begin</td>
-<td>开始的元素（0=第一个元素，1=第二个元素）</td>
-</tr>
-<tr>
-<td>end</td>
-<td>最后一个元素（0=第一个元素，1=第二个元素）</td>
-</tr>
-<tr>
-<td>step</td>
-<td>每一次迭代的步长</td>
-</tr>
-<tr>
-<td>var</td>
-<td>代表当前条目的变量名称</td>
-</tr>
-<tr>
-<td>varStatus</td>
-<td>代表循环状态的变量名称   .count   表示迭代计数</td>
-</tr>
-</tbody>
-</table>
-<h1 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h1><p>model：应用程序核心，数据库记录列表，bean，封装书库  service和dao</p>
-<p>view：显示数据，jsp/html</p>
-<p>controller：servlet</p>
-<p>view和controller加起来是三层架构的view</p>
+    <title>JDBC</title>
+    <url>/2019/08/26/JDBC/</url>
+    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
+<p><strong>JDBC编程步骤</strong></p>
+<ol>
+<li>加载注册驱动类Driver</li>
+<li>建立连接</li>
+<li>操作数据</li>
+<li>释放资源</li>
+</ol>
+<ol>
+<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
+<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
+<li><code>DriverManager</code>： 创建连接对象</li>
+<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
+<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
+<li></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
+<p><strong>执行语句</strong></p>
+<p>增删改：executeUpdate（）</p>
+<p>查：executeQuery()</p>
+<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
+<p>业务逻辑层services：关键业务处理和数据处理</p>
+<p>（持久层）数据访问层 dao：从数据库获取数据</p>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
+<p>dao：</p>
+<p>services：</p>
+<p>impl：接口，implements</p>
+<p>view：</p>
+<p>util：公用类，很多要用</p>
+<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
+<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
+<p>一个事务要么全成功要么全失败</p>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
@@ -1086,45 +844,287 @@
       </categories>
   </entry>
   <entry>
-    <title>JDBC</title>
-    <url>/2019/08/26/JDBC/</url>
-    <content><![CDATA[<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity    Java数据库连接，访问数据库的一种技术</p>
-<p><strong>JDBC编程步骤</strong></p>
-<ol>
-<li>加载注册驱动类Driver</li>
-<li>建立连接</li>
-<li>操作数据</li>
-<li>释放资源</li>
-</ol>
-<ol>
-<li><code>Connection</code>:连接对象，负责应用程序和数据库建立连接，连接成功之后才能向数据库发送命令，但是在创建连接之前，需要知道指定数据的地址，用户名和密码</li>
-<li><code>Statement</code>：执行对象，负责发送<code>sql</code>语句，用它执行需要拼接<code>sql</code>,比较繁琐，容易出错，容易引起<code>sql</code>注入</li>
-<li><code>DriverManager</code>： 创建连接对象</li>
-<li><code>PreparedStatement</code>预编译执行对象，是statement的一个子接口，把sql语句预编译并存储到PreparedStatement对象中，允许sql语句使用占位符，占位符坐标从一开始</li>
-<li><code>ReultSet</code>结果集对象，执行查询后，数据库返回的结果就是结果集，通常会把结果集中的数据保存到list中</li>
-<li></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hpe.jdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//创建连接对象</span></span><br><span class="line">		Connection conn=<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//执行对象</span></span><br><span class="line">		Statement st =<span class="keyword">null</span>;</span><br><span class="line">		<span class="comment">//创建一个变量，接收数据库返回的结果、</span></span><br><span class="line">		<span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="comment">//1.加载驱动</span></span><br><span class="line">		Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">		<span class="comment">//2.建立连接</span></span><br><span class="line">		<span class="comment">//数据库连接地址，用户名，密码</span></span><br><span class="line">		String url=<span class="string">"jdbc:mysql://localhost:3306/test"</span>;</span><br><span class="line">		String user=<span class="string">"root"</span>;</span><br><span class="line">		String pwd=<span class="string">"root"</span>;</span><br><span class="line">		conn=DriverManager.getConnection(url, user, pwd);</span><br><span class="line">		<span class="comment">//System.out.println(conn);</span></span><br><span class="line">		<span class="comment">//创建执行对象</span></span><br><span class="line">		<span class="comment">//根据id删除</span></span><br><span class="line">		String id = <span class="string">"121"</span>;</span><br><span class="line">		String sql=<span class="string">"delete from stu where stuid ="</span>+id;</span><br><span class="line">		st=conn.createStatement();</span><br><span class="line">		<span class="comment">//4.执行</span></span><br><span class="line">		result=st.executeUpdate(sql);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e)&#123;<span class="comment">//增删改</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="comment">//5.关闭资源</span></span><br><span class="line">			<span class="keyword">try</span>&#123;</span><br><span class="line">				st.close();</span><br><span class="line">			&#125;<span class="keyword">catch</span>(SQLException e)&#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(result&gt;<span class="number">0</span>)&#123;</span><br><span class="line">				System.out.println(<span class="string">"删除成功"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>实体类</strong>：对应数据库中的表，表中有什么属性，实体类就定义什么属性，属性名和类型必须和表的字段和类型保持一致，一个无参构造方法，一个没有主键 的有参构造方法，主键没有自增，有一个有参构造方法，三个构造方法</p>
-<p><strong>执行语句</strong></p>
-<p>增删改：executeUpdate（）</p>
-<p>查：executeQuery()</p>
-<h1 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h1><p>表示层view：为用户提供交互操作页面</p>
-<p>业务逻辑层services：关键业务处理和数据处理</p>
-<p>（持久层）数据访问层 dao：从数据库获取数据</p>
-<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><p>entity：实体类</p>
-<p>dao：</p>
-<p>services：</p>
-<p>impl：接口，implements</p>
-<p>view：</p>
-<p>util：公用类，很多要用</p>
-<h1 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h1><p>连接对象都放在这里，要用就从这里拿，用完放回</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g6e21mt5kyj30he06ngor.jpg" alt=""></p>
-<p>c3p0-config.xml必须放在src下，而且名字不能变</p>
-<p>一个事务要么全成功要么全失败</p>
+    <title>JSP</title>
+    <url>/2019/08/30/JSP/</url>
+    <content><![CDATA[<p>html不能写java代码</p>
+<p>JSP看起来是HTML，本质是servlet</p>
+<p>java代码写在&lt;%%&gt;中称为脚本片段，最终在service方法里运行，❗但不要在JSP里写java代码</p>
+<p>jsp声明：&lt;%!  %&gt;里面可以写方法</p>
+<p>jsp注释：&lt;%– –%&gt;</p>
+<p>输出到浏览器&lt;%=  &gt;</p>
+<h1 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h1><p>不需要声明可以直接用的对象</p>
+<h2 id="request"><a href="#request" class="headerlink" title="request"></a>request</h2><p>httpservletRequest对象，代表客户端请求</p>
+<p>域范围：同一个请求</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">System.out.println(<span class="string">"name:"</span>+name);</span><br></pre></td></tr></table></figure>
+<h2 id="response（不常用）"><a href="#response（不常用）" class="headerlink" title="response（不常用）"></a>response（不常用）</h2><p>httpservletResponse对象，代表服务器响应</p>
+<h2 id="session"><a href="#session" class="headerlink" title="session"></a>session</h2><p>域范围：同一会话</p>
+<p>代表一次会话</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"sessionid="</span>+session.getId());</span><br></pre></td></tr></table></figure>
+<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p>ServletContext对象，代表当前web应用</p>
+<p>域范围：同一web应用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(application.getInitParameter(<span class="string">"name"</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="out（不常用）"><a href="#out（不常用）" class="headerlink" title="out（不常用）"></a>out（不常用）</h2><p>JSPWrite对象，把结果输出到浏览器</p>
+<h2 id="config（不常用）"><a href="#config（不常用）" class="headerlink" title="config（不常用）"></a>config（不常用）</h2><p>ServletConfig对象，代表当前servlet</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.print(<span class="string">"servlet注册名："</span>+config.getServletName());</span><br></pre></td></tr></table></figure>
+<h2 id="page（不常用）"><a href="#page（不常用）" class="headerlink" title="page（不常用）"></a>page（不常用）</h2><p>指的是jsp对应的servlet对象，也就是代表页面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(<span class="string">"page:"</span>+page);</span><br></pre></td></tr></table></figure>
+<h2 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h2><p>页面上下文，可以获取其他八个内置对象，域范围：当前页面</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(pageContext.getRequest()==request);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h2 id="exception（不常用）"><a href="#exception（不常用）" class="headerlink" title="exception（不常用）"></a>exception（不常用）</h2><p>异常对象</p>
+<p>剩下四个常用的是jsp的四大域对象</p>
+<p>路径写绝对路径</p>
+<h1 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h1><p>从域对象里取值</p>
+<p>el表达式没有遍历功能</p>
+<p>表单回显：点击提交后用户名输入框依旧显示输入内容</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;!-- 麻烦--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=&lt;%=request.getParameter(<span class="string">"username"</span>)==<span class="keyword">null</span>?<span class="string">""</span>:request.getParameter(<span class="string">"username"</span>) %&gt; &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">&lt;%=request.getParameter(<span class="string">"username"</span>) %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 简单el--&gt;</span><br><span class="line">username:&lt;input type=<span class="string">"text"</span> name=<span class="string">"username"</span> value=<span class="string">"$&#123;param.username &#125;"</span> &gt;</span><br><span class="line">&lt;!--  打印输入用户名 --&gt;</span><br><span class="line">$&#123;param.username &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;% out.print(request.getAttribute(<span class="string">"name"</span>)); %&gt;</span><br><span class="line">&lt;!-- 被以下方式替换了 --&gt;</span><br><span class="line">&lt;%=request.getAttribute(<span class="string">"name"</span>)%&gt;</span><br><span class="line">&lt;!--又被以下El表达式替换了 --&gt;</span><br><span class="line">$&#123;name&#125;</span><br></pre></td></tr></table></figure>
+<p>从某一个范围中根据域对象名name去取值，如果没有指定从那个域对象里取，默认从小到大取，也就是先从pageContext里取，如果想从指定的域中取，name前面加上、pageScope、requestScope、sessionScope、applicationScope</p>
+<p><code>${sessionScope.name  }</code></p>
+<p>如果域名叫user.name ：</p>
+<p>不加括号：会在request域中找user对象，在user对象中找name对象，在name对象中找name属性</p>
+<p>使用括号：[“user.name”].name</p>
+<p><code>${pageContext.request.contextPath }</code>获取当前web应用根目录</p>
+<p>el表达式可以自动类型转换</p>
+<h1 id="JSTL标签"><a href="#JSTL标签" class="headerlink" title="JSTL标签"></a>JSTL标签</h1><p>导入jstl标签库</p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%<span class="meta">@taglib</span> prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br></pre></td></tr></table></figure>
+<p><strong><code>c:out</code></strong>value=${}：值 default=” “默认值     把结果输出到浏览器，可以解析特殊字符</p>
+<p><code>c:set</code> scope=“ ”:指定域对象，var=“ ”：名字value=“ ”：值</p>
+<p><code>c:remove</code>:  var=” “ value=” “</p>
+<p><code>c:if</code> :不能实现else</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;param.age&lt;20 &#125;"</span>&gt;</span><br><span class="line">  太小了，未到达法定结婚年龄！</span><br><span class="line">&lt;/c:if&gt;</span><br></pre></td></tr></table></figure>
+<p><code>c:choose</code>判断，相当于if elseif else</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&lt;20&#125;"</span>&gt; </span><br><span class="line">    小于<span class="number">20</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:when test=<span class="string">"$&#123;param.age&gt;=20 &amp;&amp; param.age&lt;=100&#125;"</span>&gt;</span><br><span class="line">    <span class="number">20</span>~<span class="number">100</span>...</span><br><span class="line">  &lt;/c:when&gt;</span><br><span class="line">  &lt;c:otherwise&gt;</span><br><span class="line">    大于<span class="number">100</span>...</span><br><span class="line">  &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+<p><code>c:foreach</code>遍历</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>items</td>
+<td>要被循环的信息</td>
+</tr>
+<tr>
+<td>begin</td>
+<td>开始的元素（0=第一个元素，1=第二个元素）</td>
+</tr>
+<tr>
+<td>end</td>
+<td>最后一个元素（0=第一个元素，1=第二个元素）</td>
+</tr>
+<tr>
+<td>step</td>
+<td>每一次迭代的步长</td>
+</tr>
+<tr>
+<td>var</td>
+<td>代表当前条目的变量名称</td>
+</tr>
+<tr>
+<td>varStatus</td>
+<td>代表循环状态的变量名称   .count   表示迭代计数</td>
+</tr>
+</tbody>
+</table>
+<h1 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h1><p>model：应用程序核心，数据库记录列表，bean，封装书库  service和dao</p>
+<p>view：显示数据，jsp/html</p>
+<p>controller：servlet</p>
+<p>view和controller加起来是三层架构的view</p>
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSAPP-datalab</title>
+    <url>/2019/02/11/CSAPP-datalab/</url>
+    <content><![CDATA[<p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
+<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
+<ul>
+<li><p>bitAnd - x&amp;y using only ~ and |</p>
+<ul>
+<li>Example: bitAnd(6, 5) = 4</li>
+<li>Legal ops: ~ |</li>
+<li>Max ops: 8</li>
+<li>Rating: 1</li>
+</ul>
+</li>
+</ul>
+<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> bit<span class="constructor">And(<span class="params">int</span> <span class="params">x</span>,<span class="params">int</span> <span class="params">y</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x<span class="pattern-match">|~y));</span></span><br><span class="line"><span class="pattern-match">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h3><p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
+<ul>
+<li>getByte - Extract byte n from word x</li>
+<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
+<li>Examples: getByte(0x12345678,1) = 0x56</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 6</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
+<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> getByte(<span class="type">int</span> x,<span class="type">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> <span class="keyword">temp</span>=x&gt;&gt;((n)&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">temp</span>=<span class="keyword">temp</span>&amp;<span class="number">0xFF</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">temp</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
+<ul>
+<li>logicalShift - shift x to the right by n, using a logical shift<ul>
+<li>Can assume that 0 &lt;= n &lt;= 31</li>
+<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 20</li>
+<li>Rating: 3</li>
+</ul>
+</li>
+</ul>
+<p>思路：</p>
+<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> logicalShift(<span class="built_in">int</span> x,<span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> x1=x&gt;&gt;n;</span><br><span class="line">	<span class="built_in">int</span> mask=(~（<span class="number">1</span>&lt;&lt;<span class="number">31</span>)&gt;&gt;n&lt;&lt;<span class="number">1</span>)+<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
+<ul>
+<li><p>bitCount - returns count of number of 1’s in word</p>
+<ul>
+<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 40</li>
+<li>Rating: 4</li>
+</ul>
+</li>
+</ul>
+<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
+<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
+<ul>
+<li>bang - Compute !x without using !</li>
+<li>Examples: bang(3) = 0, bang(0) = 1</li>
+<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 12</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">int bang(int <span class="keyword">x</span>)</span><br><span class="line">&#123;</span><br><span class="line">	int <span class="keyword">x</span><span class="number">1</span>=~<span class="keyword">x</span>+<span class="number">1</span><span class="comment">;</span></span><br><span class="line"><span class="comment">	x=x|x1;</span></span><br><span class="line"><span class="comment">	x=x&gt;&gt;31;</span></span><br><span class="line"><span class="comment">	x=x+1；</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
+<ul>
+<li>tmin - return minimum two’s complement integer</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 4</li>
+<li>Rating: 1</li>
+</ul>
+<p>思路：这不就是返回一个确定的值吗？</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> tmin(<span class="built_in">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0x80</span> &lt;&lt; <span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="fitsBits"><a href="#fitsBits" class="headerlink" title="fitsBits"></a>fitsBits</h3><p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
+<ul>
+<li>fitsBits - return 1 if x can be represented as an</li>
+<li>n-bit, two’s complement integer.</li>
+<li>1 &lt;= n &lt;= 32</li>
+<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 15</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> fitsBits(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> x1 =~((~n)+<span class="number">1</span>);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   <span class="built_in">int</span> ans=(!tmpx|!(tmpx+<span class="number">1</span>));</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
+<ul>
+<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
+<li>Round toward zero</li>
+<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 15</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> divpwr2(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> tmp = (~( (x &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>) )+<span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">int</span> q= ~((~<span class="number">0</span>)&lt;&lt;n);</span><br><span class="line">    <span class="built_in">int</span> ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
+<ul>
+<li>negate - return -x <ul>
+<li>Example: negate(1) = -1.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 5</li>
+<li>Rating: 2</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> negate(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> ((~x)+<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h3><p>题目:判断x是不是正数</p>
+<ul>
+<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
+<li>Example: isPositive(-1) = 0.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 8</li>
+<li>Rating: 3</li>
+</ul>
+</li>
+</ul>
+<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> isPositive(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> !(!x|(x&gt;&gt;<span class="number">31</span>)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
+<ul>
+<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
+<li>Example: isLessOrEqual(4,5) = 1.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 24</li>
+<li>Rating: 3</li>
+</ul>
+<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> isLessOrEqual(<span class="built_in">int</span> x, <span class="built_in">int</span> y)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> signx = (x &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> signy = (y &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> isSameSign=!(signx^signy) ;</span><br><span class="line">   <span class="built_in">int</span> p=!(((~x)+<span class="number">1</span>+y)&gt;&gt;<span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ilog2"><a href="#ilog2" class="headerlink" title="ilog2"></a>ilog2</h3><p>题目：求整数的log(x)。</p>
+<ul>
+<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
+<li>Example: ilog2(16) = 4</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 90</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="built_in">int</span> ilog2(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">num</span>=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">num</span>=(!!(x&gt;&gt;<span class="number">16</span>))&lt;&lt;<span class="number">4</span>;</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">8</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">4</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">2</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">1</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">num</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
+<ul>
+<li>float_neg - Return bit-level equivalent of expression -f for</li>
+<li>floating point argument f.</li>
+<li>Both the argument and result are passed as unsigned int’s, but</li>
+<li>they are to be interpreted as the bit-level representations of</li>
+<li>single-precision floating point values.</li>
+<li>When argument is NaN, return argument.</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 10</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_neg</span><span class="params">(<span class="keyword">unsigned</span> uf)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> result;</span><br><span class="line">    <span class="keyword">unsigned</span> tmp;</span><br><span class="line">    result=uf^<span class="number">0x80000000</span>;</span><br><span class="line">    tmp=uf&amp;<span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">if</span>(tmp&gt;<span class="number">0x7f800000</span>) result=uf;</span><br><span class="line">    <span class="keyword">return</span>  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
+<ul>
+<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
+<li>Result is returned as unsigned int, but</li>
+<li>it is to be interpreted as the bit-level representation of a</li>
+<li>single-precision floating point values.</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 30</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
+<p>如果是0，直接返回即可</p>
+<p>如果是0x80000000,返回0xcf000000</p>
+<p>如果负数：变为整正数之后按照正数计算</p>
+<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
+<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
+<ul>
+<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
+<li>floating point argument f.</li>
+<li>Both the argument and result are passed as unsigned int’s, but</li>
+<li>they are to be interpreted as the bit-level representation of</li>
+<li>single-precision floating point values.</li>
+<li>When argument is NaN, return argument</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 30</li>
+<li>Rating: 4</li>
+</ul>
+</li>
+</ul>
+<p>嘤嘤嘤~浮点数真令人头大</p>
+]]></content>
+      <categories>
+        <category>计算机系统基础</category>
       </categories>
   </entry>
   <entry>
@@ -1500,6 +1500,30 @@
       </categories>
   </entry>
   <entry>
+    <title>事务</title>
+    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
+<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
+<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
+<p><strong>事务</strong>：</p>
+<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
+<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
+<p>一致性：事务发生前后，总金额依然匹配</p>
+<p>持久性：事务产生的影响是不能撤销的</p>
+<p>开启事务</p>
+<p><code>START TRANSACTIOON</code></p>
+<p><code>set autocommit=0</code></p>
+<p>提交事务</p>
+<p><code>commit;</code></p>
+<p>回滚事务，回到未修改前</p>
+<p><code>rollback;</code></p>
+<p>事务处理放在service</p>
+]]></content>
+      <categories>
+        <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ss科学上网</title>
     <url>/2019/01/26/ss%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>
     <content><![CDATA[<p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
@@ -1552,41 +1576,6 @@
       </categories>
   </entry>
   <entry>
-    <title>事务</title>
-    <url>/2019/09/06/%E4%BA%8B%E5%8A%A1/</url>
-    <content><![CDATA[<p>数据库对同样的数据有不同的存储方式和管理方式，在mysql中称为存储引擎</p>
-<p>myisam:速度快，不安全,不支持事务，不支持外键</p>
-<p>InnoDB：速度慢，安全，如果支持事务，必须用InnoDB</p>
-<p><strong>事务</strong>：</p>
-<p>原子性：一组操作，要么全部执行成功要么全部执行失败</p>
-<p>隔离性：一组操作未完成之前其他会话不能看到中间过程</p>
-<p>一致性：事务发生前后，总金额依然匹配</p>
-<p>持久性：事务产生的影响是不能撤销的</p>
-<p>开启事务</p>
-<p><code>START TRANSACTIOON</code></p>
-<p><code>set autocommit=0</code></p>
-<p>提交事务</p>
-<p><code>commit;</code></p>
-<p>回滚事务，回到未修改前</p>
-<p><code>rollback;</code></p>
-<p>事务处理放在service</p>
-]]></content>
-      <categories>
-        <category>Java-Web&amp;Java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>信号与系统论文</title>
-    <url>/2020/06/30/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87/</url>
-    <content><![CDATA[<p>因为疫情期末考核变为论文，题目为 “基于傅里叶变换的图像去噪和图像增强”</p>
-<p>文件见下（论文+matlab代码）</p>
-<p>链接：<a href="https://pan.baidu.com/s/1QjwzEv705Vg2x5ydjLXB2A" target="_blank" rel="noopener">https://pan.baidu.com/s/1QjwzEv705Vg2x5ydjLXB2A</a><br>提取码：ua5s</p>
-]]></content>
-      <categories>
-        <category>信号与系统</category>
-      </categories>
-  </entry>
-  <entry>
     <title>分页查询</title>
     <url>/2019/09/04/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/</url>
     <content><![CDATA[<p><code>select * from 表名 limit 0，2;;</code></p>
@@ -1604,6 +1593,44 @@
 ]]></content>
       <categories>
         <category>Java-Web&amp;Java</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>信号与系统论文</title>
+    <url>/2020/06/30/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%AE%BA%E6%96%87/</url>
+    <content><![CDATA[<p>因为疫情期末考核变为论文，题目为 “基于傅里叶变换的图像去噪和图像增强”</p>
+<p>文件见下（论文+matlab代码）</p>
+<p>链接：<a href="https://pan.baidu.com/s/1QjwzEv705Vg2x5ydjLXB2A" target="_blank" rel="noopener">https://pan.baidu.com/s/1QjwzEv705Vg2x5ydjLXB2A</a><br>提取码：ua5s</p>
+]]></content>
+      <categories>
+        <category>信号与系统</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>图论总结</title>
+    <url>/2020/06/30/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="第七章-图"><a href="#第七章-图" class="headerlink" title="第七章 图"></a>第七章 图</h1><p>7.1 零图，基图，标定图，关联，相邻，关联集，邻域，点v的度数，出度，入度，孤立点，G的最大（小）度，握手定理（有向图和无向图），度数列，可简单图化的判断及画图，图的同构定义，必要条件；简单图，平凡图，竞赛图，k-正则图，n阶无向完全图Kn，n阶有向完全图，彼得森图，二部图（偶图，不含有奇圈），完全二部图，二部图的充要条件，子图，生成子图，，同构定义及必要条件，自补图，图的运算（边的收缩，加新边，G1∪G2，G1∩G2，G1-G2，环和G1⊕G2，</p>
+<p>7.2 通路，回路，路径，圈，周长，围长，直径，扩大路径法（证明圈的存在），</p>
+<p>7.3 连通图，不连通图，连通分支，连通分支数p(G), </p>
+<p>7.4 点连通度，最小点割集V’，边连通度，最小边割集E’，断集E’’, p(G-V’)&gt;=2, p(G-E’)=2, p(G-E’’)&gt;=2, 扇形割集, Whitney定理，Th7.14，不含割点（2-连通）的无向图的充要条件，不含割边（2-边连通）的图的充要条件，块，含有割点的图的充要条件，含割边的图的充要条件，</p>
+<p>7.5 可达，短程线，弱连通，单向连通，强连通</p>
+<h1 id="第8章-欧拉图和哈密顿图"><a href="#第8章-欧拉图和哈密顿图" class="headerlink" title="第8章 欧拉图和哈密顿图"></a>第8章 欧拉图和哈密顿图</h1><p>8.1<strong>（半）欧拉图</strong>：定义（必须是连通图）；充要条件（通过度数，或圈）；如何将非（半）欧拉图通过添边的方式改成（半）欧拉图；列出欧拉图的欧拉回路；欧拉图与中国邮递员问题的联系；轮盘设计中的欧拉图。欧拉图中的圈，欧拉回路与连通度，连通性的联系；</p>
+<p>8.2<strong>（半）哈密顿图</strong>：定义（必须是连通图）；充分条件，必要条件；棋盘走马，旅行商问题。</p>
+<h1 id="第9章-树"><a href="#第9章-树" class="headerlink" title="第9章 树"></a>第9章 树</h1><p>9.1 无向树的6个等价定义的内容；树的边数和点数的关系m=n-1；树中不相邻结点间添加任意一条新边，均产生一个唯一的圈；非平凡树至少含有两片树叶；星形图；</p>
+<p>9.2 生成树与连通图的联系，树枝，余树，弦，n阶连通图的边数m&gt;=n-1, 其生成树含n-1条边，余树的边（弦）m-n+1条；基本回路，基本回路系统；基本割集，基本割集系统；连通图中所有不同的生成树，不同生成树的个数计算；</p>
+<p>9.3-9.4 环路，环路空间；断集，断集空间；</p>
+<p>9.5有向树，根树，数额，分支点，层高，树高，r叉完全正则有序树，根树的前（中，后）序遍历，Huffman编码，平均码字长度；</p>
+<h1 id="第十章、图的矩阵表示"><a href="#第十章、图的矩阵表示" class="headerlink" title="第十章、图的矩阵表示"></a>第十章、图的矩阵表示</h1><p>10.1 有向图关联矩阵求法、性质；无向图关联矩阵求法、性质；结合点合并运算；关联矩阵的秩；基本关联矩阵以及生成树的求法</p>
+<p>10.2邻接矩阵、可达矩阵、相邻矩阵、连通矩阵的求法及性质</p>
+<h1 id="第十一章、平面图"><a href="#第十一章、平面图" class="headerlink" title="第十一章、平面图"></a>第十一章、平面图</h1><p>平面图证明两种方法；约当定理；球面嵌入与曲面嵌入；面；平面图里的”握手定理”；极大平面图；技校非平面图（G5，G3，3）；一些计算的性质；对偶图及其性质；外平面图及其证明；极大外平面图；</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h1><p>（1）用图论的语言描述问题和解决问题，</p>
+<p>（2）建模过程中，G=&lt;V,E&gt;，V的定义，E的定义，是否有（无）向图，简单图，二部图。</p>
+<p>（3）学习中总结图论的实际应用，和重要算法。</p>
+<p>（4）若证明某个点不是割点，可以通过证明该点在回路上（如欧拉回路，哈密顿回路，圈等），或者证明该点是生成树的树叶（不是生成树的分支点）</p>
+<p>（5）证明某边不是割边，可通过证明该边在回路上，或不是该连通图生成树的树枝。</p>
+<h3 id="啊不想写了。"><a href="#啊不想写了。" class="headerlink" title="啊不想写了。"></a>啊不想写了。</h3>]]></content>
+      <categories>
+        <category>离散数学</category>
       </categories>
   </entry>
   <entry>
@@ -1727,33 +1754,6 @@
 ]]></content>
       <categories>
         <category>数据库</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>图论总结</title>
-    <url>/2020/06/30/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="第七章-图"><a href="#第七章-图" class="headerlink" title="第七章 图"></a>第七章 图</h1><p>7.1 零图，基图，标定图，关联，相邻，关联集，邻域，点v的度数，出度，入度，孤立点，G的最大（小）度，握手定理（有向图和无向图），度数列，可简单图化的判断及画图，图的同构定义，必要条件；简单图，平凡图，竞赛图，k-正则图，n阶无向完全图Kn，n阶有向完全图，彼得森图，二部图（偶图，不含有奇圈），完全二部图，二部图的充要条件，子图，生成子图，，同构定义及必要条件，自补图，图的运算（边的收缩，加新边，G1∪G2，G1∩G2，G1-G2，环和G1⊕G2，</p>
-<p>7.2 通路，回路，路径，圈，周长，围长，直径，扩大路径法（证明圈的存在），</p>
-<p>7.3 连通图，不连通图，连通分支，连通分支数p(G), </p>
-<p>7.4 点连通度，最小点割集V’，边连通度，最小边割集E’，断集E’’, p(G-V’)&gt;=2, p(G-E’)=2, p(G-E’’)&gt;=2, 扇形割集, Whitney定理，Th7.14，不含割点（2-连通）的无向图的充要条件，不含割边（2-边连通）的图的充要条件，块，含有割点的图的充要条件，含割边的图的充要条件，</p>
-<p>7.5 可达，短程线，弱连通，单向连通，强连通</p>
-<h1 id="第8章-欧拉图和哈密顿图"><a href="#第8章-欧拉图和哈密顿图" class="headerlink" title="第8章 欧拉图和哈密顿图"></a>第8章 欧拉图和哈密顿图</h1><p>8.1<strong>（半）欧拉图</strong>：定义（必须是连通图）；充要条件（通过度数，或圈）；如何将非（半）欧拉图通过添边的方式改成（半）欧拉图；列出欧拉图的欧拉回路；欧拉图与中国邮递员问题的联系；轮盘设计中的欧拉图。欧拉图中的圈，欧拉回路与连通度，连通性的联系；</p>
-<p>8.2<strong>（半）哈密顿图</strong>：定义（必须是连通图）；充分条件，必要条件；棋盘走马，旅行商问题。</p>
-<h1 id="第9章-树"><a href="#第9章-树" class="headerlink" title="第9章 树"></a>第9章 树</h1><p>9.1 无向树的6个等价定义的内容；树的边数和点数的关系m=n-1；树中不相邻结点间添加任意一条新边，均产生一个唯一的圈；非平凡树至少含有两片树叶；星形图；</p>
-<p>9.2 生成树与连通图的联系，树枝，余树，弦，n阶连通图的边数m&gt;=n-1, 其生成树含n-1条边，余树的边（弦）m-n+1条；基本回路，基本回路系统；基本割集，基本割集系统；连通图中所有不同的生成树，不同生成树的个数计算；</p>
-<p>9.3-9.4 环路，环路空间；断集，断集空间；</p>
-<p>9.5有向树，根树，数额，分支点，层高，树高，r叉完全正则有序树，根树的前（中，后）序遍历，Huffman编码，平均码字长度；</p>
-<h1 id="第十章、图的矩阵表示"><a href="#第十章、图的矩阵表示" class="headerlink" title="第十章、图的矩阵表示"></a>第十章、图的矩阵表示</h1><p>10.1 有向图关联矩阵求法、性质；无向图关联矩阵求法、性质；结合点合并运算；关联矩阵的秩；基本关联矩阵以及生成树的求法</p>
-<p>10.2邻接矩阵、可达矩阵、相邻矩阵、连通矩阵的求法及性质</p>
-<h1 id="第十一章、平面图"><a href="#第十一章、平面图" class="headerlink" title="第十一章、平面图"></a>第十一章、平面图</h1><p>平面图证明两种方法；约当定理；球面嵌入与曲面嵌入；面；平面图里的”握手定理”；极大平面图；技校非平面图（G5，G3，3）；一些计算的性质；对偶图及其性质；外平面图及其证明；极大外平面图；</p>
-<h1 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h1><p>（1）用图论的语言描述问题和解决问题，</p>
-<p>（2）建模过程中，G=&lt;V,E&gt;，V的定义，E的定义，是否有（无）向图，简单图，二部图。</p>
-<p>（3）学习中总结图论的实际应用，和重要算法。</p>
-<p>（4）若证明某个点不是割点，可以通过证明该点在回路上（如欧拉回路，哈密顿回路，圈等），或者证明该点是生成树的树叶（不是生成树的分支点）</p>
-<p>（5）证明某边不是割边，可通过证明该边在回路上，或不是该连通图生成树的树枝。</p>
-<h3 id="啊不想写了。"><a href="#啊不想写了。" class="headerlink" title="啊不想写了。"></a>啊不想写了。</h3>]]></content>
-      <categories>
-        <category>离散数学</category>
       </categories>
   </entry>
   <entry>

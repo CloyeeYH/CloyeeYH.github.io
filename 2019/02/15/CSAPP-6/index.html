@@ -105,19 +105,19 @@
 
 
 
-<meta name="description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
+<meta name="description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、 区别于mov！！！！ 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP-6">
 <meta property="og:url" content="https://yoursite.com/2019/02/15/CSAPP-6/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
+<meta property="og:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、 区别于mov！！！！ 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg">
-<meta property="og:updated_time" content="2020-06-28T11:01:48.494Z">
+<meta property="og:updated_time" content="2020-07-04T02:56:46.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-6">
-<meta name="twitter:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指令既可以用于无符号运算，">
+<meta name="twitter:description" content="算术和逻辑操作 加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、 区别于mov！！！！ 一元和二元操作一元：一个操作数 二元：俩个操作数 移位操作移位量，要移位的数。 移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置 高位被忽略，eg：salb移7位…… 左移：SAL、SHL右边都是填0 右移：SAR左边填符号位。SHR左边填0 大多数指">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg">
 
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  187 字
+                  191 字
                 </span>
               
 
@@ -442,7 +442,8 @@
 
       
         <h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器</p>
+<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、</p>
+<p>区别于mov！！！！</p>
 <h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
 <p>二元：俩个操作数</p>
 <h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
@@ -569,7 +570,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -580,7 +581,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -668,7 +669,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 22.7k 字</span>
+  <span class="post-count">博客全站共 23k 字</span>
 </div>
 
 

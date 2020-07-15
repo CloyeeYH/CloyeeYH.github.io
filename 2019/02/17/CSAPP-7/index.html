@@ -105,20 +105,20 @@
 
 
 
-<meta name="description" content="控制真的是看的很懵，很多地方理解不了…… 条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cm">
+<meta name="description" content="控制条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cmp和test是唯二可以主动设置条件码寄">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSAPP-7">
 <meta property="og:url" content="https://yoursite.com/2019/02/17/CSAPP-7/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="控制真的是看的很懵，很多地方理解不了…… 条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cm">
+<meta property="og:description" content="控制条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cmp和test是唯二可以主动设置条件码寄">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg">
-<meta property="og:updated_time" content="2020-06-28T11:01:59.453Z">
+<meta property="og:updated_time" content="2020-07-04T02:57:44.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-7">
-<meta name="twitter:description" content="控制真的是看的很懵，很多地方理解不了…… 条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cm">
+<meta name="twitter:description" content="控制条件码寄存器   条件码寄存器 描述     CF 进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1   ZF 零标志寄存器。最近的操作得出的结果是0时为1   SF 符号标志寄存器。最近的操作得到的结果为负数时为1   OF 溢出标志寄存器。最近的操作导致一个补码溢出时为1     条件码寄存器大多数时候是被动改变  特殊的测试指令cmp和test是唯二可以主动设置条件码寄">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg">
 
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  928 字
+                  893 字
                 </span>
               
 
@@ -442,8 +442,7 @@
       
 
       
-        <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
-<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
+        <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
 <thead>
 <tr>
 <th>条件码寄存器</th>
@@ -482,7 +481,6 @@
 <li>有条件的传送数据</li>
 </ul>
 <p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
 <h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
 <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
 <h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
@@ -612,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -623,7 +621,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -658,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制"><span class="nav-number">1.</span> <span class="nav-text">控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件码寄存器"><span class="nav-number">1.0.1.</span> <span class="nav-text">条件码寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊的测试指令"><span class="nav-number">1.0.2.</span> <span class="nav-text">特殊的测试指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问条件码寄存器"><span class="nav-number">1.0.3.</span> <span class="nav-text">访问条件码寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件码寄存器的组合"><span class="nav-number">1.0.4.</span> <span class="nav-text">条件码寄存器的组合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SET指令"><span class="nav-number">1.0.5.</span> <span class="nav-text">SET指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跳转指令"><span class="nav-number">1.0.6.</span> <span class="nav-text">跳转指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程控制"><span class="nav-number">1.0.7.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmov指令"><span class="nav-number">1.0.8.</span> <span class="nav-text">cmov指令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制"><span class="nav-number">1.</span> <span class="nav-text">控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件码寄存器"><span class="nav-number">1.0.1.</span> <span class="nav-text">条件码寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊的测试指令"><span class="nav-number">1.0.2.</span> <span class="nav-text">特殊的测试指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问条件码寄存器"><span class="nav-number">1.0.3.</span> <span class="nav-text">访问条件码寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SET指令"><span class="nav-number">1.0.4.</span> <span class="nav-text">SET指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跳转指令"><span class="nav-number">1.0.5.</span> <span class="nav-text">跳转指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#流程控制"><span class="nav-number">1.0.6.</span> <span class="nav-text">流程控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cmov指令"><span class="nav-number">1.0.7.</span> <span class="nav-text">cmov指令</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -711,7 +709,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 22.7k 字</span>
+  <span class="post-count">博客全站共 23k 字</span>
 </div>
 
 

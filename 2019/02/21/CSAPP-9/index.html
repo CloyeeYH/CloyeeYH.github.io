@@ -113,7 +113,7 @@
 <meta property="og:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg">
-<meta property="og:updated_time" content="2020-06-28T11:02:19.449Z">
+<meta property="og:updated_time" content="2020-07-04T02:59:00.604Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSAPP-9">
 <meta name="twitter:description" content="过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。 起始地址：储存在%ebp寄存器（桢指针） 结束地址：储存在%esp寄存器（栈顶指针） 栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。  过程的实现 备份原来指针 12pushl %ebpmovl %esp, %ebp  给临时变量分配预留内存 1sub">
@@ -440,7 +440,7 @@
       
 
       
-        <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+        <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
 <p>起始地址：储存在%ebp寄存器（桢指针）</p>
 <p>结束地址：储存在%esp寄存器（栈顶指针）</p>
 <p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
@@ -472,7 +472,7 @@
 <p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
 <p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
 <h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+<p>%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 
       
     </div>
@@ -590,7 +590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -601,7 +601,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -636,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧的结构"><span class="nav-number">1.1.</span> <span class="nav-text">栈帧的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程的实现"><span class="nav-number">1.2.</span> <span class="nav-text">过程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程相关指令-call、leave、ret"><span class="nav-number">1.3.</span> <span class="nav-text">过程相关指令:call、leave、ret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器的使用规则"><span class="nav-number">1.4.</span> <span class="nav-text">寄存器的使用规则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#过程"><span class="nav-number">1.</span> <span class="nav-text">过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈帧的结构"><span class="nav-number">1.0.1.</span> <span class="nav-text">栈帧的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程的实现"><span class="nav-number">1.0.2.</span> <span class="nav-text">过程的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程相关指令-call、leave、ret"><span class="nav-number">1.0.3.</span> <span class="nav-text">过程相关指令:call、leave、ret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器的使用规则"><span class="nav-number">1.0.4.</span> <span class="nav-text">寄存器的使用规则</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -689,7 +689,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 22.7k 字</span>
+  <span class="post-count">博客全站共 23k 字</span>
 </div>
 
 

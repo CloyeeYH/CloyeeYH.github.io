@@ -305,6 +305,303 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/08/26/数据库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/26/数据库/" itemprop="url">数据库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-26T18:56:51+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/26/数据库/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/26/数据库/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  978 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>登陆</p>
+<p>进入MySQL的bin目录下</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mysql -hlocalhost -uroot -p</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g69gnlc4joj30lm07m4o8.jpg" alt=""></p>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p>数据库是一个二维表，每行是一个实体，列叫字段</p>
+<p>decimal小数更精确</p>
+<p>Varchar：变长字符串</p>
+<p>date：YYYY-MM-DD</p>
+<p>time：HH：MM：SS</p>
+<p>datetime：YYYY-MM-DD HH：MM：SS</p>
+<p>整型 int</p>
+<p>不是很精确的 double</p>
+<p>时间 datetime</p>
+<p>字符串 varchar</p>
+<p>表的约束：主键，非空，自增</p>
+<p>主键唯一（内容不能重复），不能为空，一个表只能有一个主键</p>
+<p>数据库不区分大小写</p>
+<h2 id="增删改查语句"><a href="#增删改查语句" class="headerlink" title="增删改查语句"></a>增删改查语句</h2><p>–（空格） ：注释</p>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO 表名 VALUS（不指定列名按照表的顺序写）;</span><br><span class="line">-- 推荐下面的（指定列名）</span><br><span class="line">INSERT INTO stu(stuid,stuname,age,tel,address) VALUES(1001,&apos;lisi&apos;,12,&apos;1233&apos;,&apos;buxiang&apos;)</span><br><span class="line">	,(1010.......);</span><br><span class="line">-- 自增</span><br><span class="line">INSERT INTO stu (stuname,age,tel,address) VALUES(&apos;lisi&apos;,13,&apos;779&apos;,&apos;buxiang&apos;);</span><br></pre></td></tr></table></figure>
+<p>指定列名，可以省略自增的列名，可以实行添加多条，逗号隔开</p>
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM stu;</span><br><span class="line">UPDATE stu SET stuname=&apos;liwu&apos;，address=&apos;shandong&apos;WHERE stuid=1001;</span><br></pre></td></tr></table></figure>
+<p>可以更新主键（一般不要更新），要保证更新后不会出现重复</p>
+<p>*代表所有列</p>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DELETE FROM stu WHERE stuid=1001;</span><br></pre></td></tr></table></figure>
+<p>where后面一般是主键</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g69nzjsul8j30fr02ygnf.jpg" alt=""></p>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><h4 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a><strong>单表查询</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名 FROM 表名;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>列名之间用  , </p>
+</li>
+<li><p>*代表所有列</p>
+</li>
+<li><p>DISTINCT：对查询结果去重</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT DISTINCT cid FROM student;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以进行+ - * / </p>
+</li>
+<li><p>给列起别名，（as和  ）之后只能用换后的名字：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT socre as 加分前的成绩, socre+5 加分后的成绩 FROM score;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>select五种子句</p>
+<p>| 子句     | 描述     |<br>| ——– | ——– |<br>| WHERE    | 条件查询 |<br>| group by | 分组     |<br>| having   | 筛选     |<br>| order by | 排序     |<br>| limit    | 截取     |</p>
+<p><strong>where</strong></p>
+<p>=，&gt;，&lt;，&lt;=，&gt;=，</p>
+<p>between…and…   包含边界，日期加‘ ’</p>
+<p>in（集合），满足集合中一个值即可</p>
+<p>not 取反 ，</p>
+<p>like 模糊查询  ‘%字符%’，_代表一个字符，%代表多个字符</p>
+<p>is NULL</p>
+<p><strong>聚合函数</strong></p>
+<p>AVG（）平均值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(socre) 平均成绩 FROM score WHERE subid=1;</span><br></pre></td></tr></table></figure>
+<p>COUNT() 数据的数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) FROM score WHERE subid=1;</span><br></pre></td></tr></table></figure>
+<p>SUM（）求和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT SUM(socre) FROM score;</span><br></pre></td></tr></table></figure>
+<p>MAX（）MIN（）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT MAX(socre) from score;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>分组group by</strong></p>
+<p>每    各    要分组</p>
+<p>带聚合函数 一般都要分组</p>
+<p><code>SELECT...FROM....WHERE...GRUP BY 列名</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT AVG(socre) FROM score GROUP BY subid;</span><br><span class="line"></span><br><span class="line">-- sqlserver</span><br><span class="line">SELECT AVG(socre),subid FROM score GROUP BY subid;</span><br></pre></td></tr></table></figure>
+<p><strong>having</strong></p>
+<p>where 针对表中真正存在的列</p>
+<p>having 针对查询结果，但是在<code>group by</code>之后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- where （✕）</span><br><span class="line">SELECT stuid,socre+5 加分后的成绩 FROM score WHERE 加分后的成绩&lt;60;    </span><br><span class="line">-- having（√）</span><br><span class="line">SELECT stuid,socre+5 加分后的成绩 FROM score HAVING 加分后的成绩&lt;60;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- sqlserver</span><br><span class="line">-- having必须和group by一起用</span><br></pre></td></tr></table></figure>
+<p><strong>order by</strong></p>
+<p><code>asc</code>升序，默认</p>
+<p><code>desc</code>降序</p>
+<p>在select语句结尾</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student ORDER BY 字段1,字段2, ... ASC;</span><br></pre></td></tr></table></figure>
+<p>根据字段一进行排，排完基础上根据字段2进行排……</p>
+<p><strong>limit</strong></p>
+<p>limit    数据的坐标，显示的条数;</p>
+<p>数据的坐标从0开始</p>
+<p>常用在分页</p>
+<h4 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h4><p><strong>等值连接</strong></p>
+<p>两个表有相同字段</p>
+<p>eg：查询李四所在班级，显示班级编号，姓名，班级名</p>
+<ol>
+<li><p>把两个表连成一个大表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student,classinfo;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确定连接条件(用表名加以区分)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">student.cid=classinfo.cid</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确定其他筛选条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AND name=&quot;李四&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>内连接</strong></p>
+<p>查询李四所考科目的平均成绩，显示姓名，平均成绩</p>
+<ol>
+<li><p>把两个表连成一个大表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM student INNER JOIN score</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>连接条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ON student.stuid=score.stuid</span><br></pre></td></tr></table></figure>
+<p>可以多次重复上述两步以实现多张表相连</p>
+</li>
+<li><p>筛选条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE `name`=&apos;李四&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>左外连接</strong></p>
+<p>以左表为主，去右表找匹配数据，如果找不到就用null填充，也就是说，左表的数据必须被查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT student.stuid,`name`,sex,subid,socre FROM student LEFT JOIN score</span><br><span class="line">ON student.stuid=score.stuid;</span><br></pre></td></tr></table></figure>
+<p><strong>右外连接</strong></p>
+<p>与左外连接相反</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT student.stuid,`name`,sex,subid,socre FROM score LEFT JOIN student</span><br><span class="line">ON student.stuid=score.stuid;</span><br></pre></td></tr></table></figure>
+<p>左外和右外例子效果相同</p>
+<p>尽量使用左外连接替代右外连接（大型数据库DB2只支持左外连接，不支持右外连接）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/08/26/JDBC/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1868,7 +2165,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  358 字
+                  346 字
                 </span>
               
 
@@ -1907,10 +2204,8 @@
       
         
           
-            <h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><p>动态数组…咋就那么复杂</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<p>头大……</p>
 <h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
 <p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
 
@@ -2095,7 +2390,7 @@
       
         
           
-            <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+            <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
 <p>起始地址：储存在%ebp寄存器（桢指针）</p>
 <p>结束地址：储存在%esp寄存器（栈顶指针）</p>
 <p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
@@ -2127,7 +2422,7 @@
 <p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
 <p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
 <h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>　　%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+<p>%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
 
           
         
@@ -2420,241 +2715,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/17/CSAPP-7/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/17/CSAPP-7/" itemprop="url">CSAPP-7</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-17T14:43:16+08:00">
-                2019-02-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/17/CSAPP-7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/17/CSAPP-7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  928 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  3 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><p>真的是看的很懵，很多地方理解不了……</p>
-<h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
-<thead>
-<tr>
-<th>条件码寄存器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CF</td>
-<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
-</tr>
-<tr>
-<td>OF</td>
-<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>条件码寄存器大多数时候是被动改变</li>
-</ul>
-<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
-<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
-<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
-<p>二者都需加数据格式后缀</p>
-<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
-<li>根据条件码组合，将一个字节设置为0，1</li>
-<li>条件跳转到程序的某个其他部分</li>
-<li>有条件的传送数据</li>
-</ul>
-<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="条件码寄存器的组合"><a href="#条件码寄存器的组合" class="headerlink" title="条件码寄存器的组合"></a>条件码寄存器的组合</h4><p>这块好难啊……下一篇再细说</p>
-<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
-<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
-<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>汇编代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
-<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2707,7 +2767,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2718,7 +2778,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2790,7 +2850,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 22.7k 字</span>
+  <span class="post-count">博客全站共 23k 字</span>
 </div>
 
 

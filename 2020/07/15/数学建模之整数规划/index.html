@@ -105,21 +105,19 @@
 
 
 
-<meta name="description" content="代码机器代码 程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址  整数寄存器文件包含16个命名的位置，储存地址或者整数数据。  条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。  一组向量寄存器可以存放一个或多个整数或浮点数值  虚拟地址（64位）的高十六位必须设置为0  查看汇编代码（—&amp;gt;test.s) 1linux&amp;gt; gcc -Og">
+<meta name="description" content="0-1型整数规划二进制变量 相互排斥的约束条件让未选中的约束条件恒成立$$y_i=\begin{cases}1,第i个约束起作用\                0,第i个约束不起作用, i = 1,2,…,m,    \end{cases}$$加一个充分大的常数M$$a_{i1}x_1+…+a_{in}x_n\leq b_i+(1-y_i)M,i=1,2,…,m,\y_1+y_2+…+y_m=1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP-5">
-<meta property="og:url" content="https://yoursite.com/2019/02/13/CSAPP-5/index.html">
+<meta property="og:title" content="数学建模之整数规划">
+<meta property="og:url" content="https://yoursite.com/2020/07/15/数学建模之整数规划/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="代码机器代码 程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址  整数寄存器文件包含16个命名的位置，储存地址或者整数数据。  条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。  一组向量寄存器可以存放一个或多个整数或浮点数值  虚拟地址（64位）的高十六位必须设置为0  查看汇编代码（—&amp;gt;test.s) 1linux&amp;gt; gcc -Og">
+<meta property="og:description" content="0-1型整数规划二进制变量 相互排斥的约束条件让未选中的约束条件恒成立$$y_i=\begin{cases}1,第i个约束起作用\                0,第i个约束不起作用, i = 1,2,…,m,    \end{cases}$$加一个充分大的常数M$$a_{i1}x_1+…+a_{in}x_n\leq b_i+(1-y_i)M,i=1,2,…,m,\y_1+y_2+…+y_m=1">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0jz3cqxd9j30nt07pdkr.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0ctdymy4kj30lq0oetyj.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0csjo1b7wj30oz0angww.jpg">
-<meta property="og:updated_time" content="2020-07-04T02:56:00.543Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrtuc8cglj30on08bdha.jpg">
+<meta property="og:updated_time" content="2020-07-15T10:24:46.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSAPP-5">
-<meta name="twitter:description" content="代码机器代码 程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址  整数寄存器文件包含16个命名的位置，储存地址或者整数数据。  条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。  一组向量寄存器可以存放一个或多个整数或浮点数值  虚拟地址（64位）的高十六位必须设置为0  查看汇编代码（—&amp;gt;test.s) 1linux&amp;gt; gcc -Og">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1g0jz3cqxd9j30nt07pdkr.jpg">
+<meta name="twitter:title" content="数学建模之整数规划">
+<meta name="twitter:description" content="0-1型整数规划二进制变量 相互排斥的约束条件让未选中的约束条件恒成立$$y_i=\begin{cases}1,第i个约束起作用\                0,第i个约束不起作用, i = 1,2,…,m,    \end{cases}$$加一个充分大的常数M$$a_{i1}x_1+…+a_{in}x_n\leq b_i+(1-y_i)M,i=1,2,…,m,\y_1+y_2+…+y_m=1">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrtuc8cglj30on08bdha.jpg">
 
 
 
@@ -153,7 +151,7 @@
 
 
 
-  <title>CSAPP-5 | Cloyee's blog</title>
+  <title>数学建模之整数规划 | Cloyee's blog</title>
   
 
 
@@ -312,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/13/CSAPP-5/">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2020/07/15/数学建模之整数规划/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -329,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CSAPP-5</h1>
+          <h1 class="post-title" itemprop="name headline">数学建模之整数规划</h1>
         
 
         <div class="post-meta">
@@ -341,8 +339,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T23:11:52+08:00">
-                2019-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-15T17:20:42+08:00">
+                2020-07-15
               </time>
             
 
@@ -364,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
+                  <a href="/categories/数学建模/" itemprop="url" rel="index">
+                    <span itemprop="name">数学建模</span>
                   </a>
                 </span>
 
@@ -382,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/13/CSAPP-5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/13/CSAPP-5/" itemprop="commentCount"></span>
+                <a href="/2020/07/15/数学建模之整数规划/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/15/数学建模之整数规划/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -405,7 +403,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  567 字
+                  398 字
                 </span>
               
 
@@ -421,7 +419,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2 mins
+                  1 mins
                 </span>
               
             </div>
@@ -442,103 +440,16 @@
       
 
       
-        <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h2 id="机器代码"><a href="#机器代码" class="headerlink" title="机器代码"></a>机器代码</h2><ul>
-<li><p>程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址</p>
-</li>
-<li><p>整数寄存器文件包含16个命名的位置，储存地址或者整数数据。</p>
-</li>
-<li><p>条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。</p>
-</li>
-<li><p>一组向量寄存器可以存放一个或多个整数或浮点数值</p>
-</li>
-<li><p>虚拟地址（64位）的高十六位必须设置为0</p>
-</li>
-<li><p>查看汇编代码（—&gt;test.s)</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -S <span class="keyword">test</span>.c</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译并汇编该代码(—&gt;test.o)</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -<span class="keyword">c</span> test.<span class="keyword">c</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GCC产生的汇编代码指令上有后缀，而反汇编代码没有，x86-64的内存引用都是四字长寄存器给出。</p>
-</li>
-<li><p>反汇编器：根据机器代码生成一种类似于汇编代码的格式。</p>
-<p>查看机器代码文件的内容：</p>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">linux</span>&gt; <span class="selector-tag">objdump</span> <span class="selector-tag">-d</span> <span class="selector-tag">matore</span><span class="selector-class">.o</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0jz3cqxd9j30nt07pdkr.jpg" alt=""></li>
-</ul>
-<h2 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h2><p>整数寄存器：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0ctdymy4kj30lq0oetyj.jpg" alt=""></p>
-<h4 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h4><p>立即数：常数 ($(C常数表示法))</p>
-<p>寄存器：某个寄存器的内容</p>
-<p>内存引用：根据计算出的地址，访问地址</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0csjo1b7wj30oz0angww.jpg" alt=""></p>
-<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><p>MOV类：把数据从源位置复制到目的位置</p>
-<p>源操作数是一个储存在寄存器或者内存中的立即数</p>
-<p>目的操作数是个寄存器或者内存地址（位置），不能是立即数寻址</p>
-<p>x86-64:两操作数不能都指向内存位置。</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>movb（8）</td>
-<td>传送字节</td>
-</tr>
-<tr>
-<td>movw（16）</td>
-<td>传送字</td>
-</tr>
-<tr>
-<td>movl（32）</td>
-<td>传送双字，以寄存器为目的时，把寄存器高位4字节设置为0</td>
-</tr>
-<tr>
-<td>movq（64）</td>
-<td>传送四字</td>
-</tr>
-<tr>
-<td>movabsq</td>
-<td>传送绝对的四字</td>
-</tr>
-</tbody>
-</table>
-<p><strong>字节传送指令比较（16进制）</strong></p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>movb</td>
-<td>不改变其他字节</td>
-</tr>
-<tr>
-<td>movsbq</td>
-<td>把其他字节设为FF</td>
-</tr>
-<tr>
-<td>movzbq</td>
-<td>把其他字节设为00</td>
-</tr>
-</tbody>
-</table>
-<h4 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h4><p>pushq：把数据压入到栈上</p>
-<p>popq：弹出数据</p>
-<p>%rsp：栈指针，保存栈顶元素地址</p>
-<p>压入四字节：先减去8(栈倒过来放），然后将值写入新的栈顶地址。</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subq $8,%rsp</span><br><span class="line">movq %rbp,(%rsp)</span><br></pre></td></tr></table></figure>
-<p>弹出四字节：读出数据，加上8</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
+        <h1 id="0-1型整数规划"><a href="#0-1型整数规划" class="headerlink" title="0-1型整数规划"></a>0-1型整数规划</h1><p>二进制变量</p>
+<h2 id="相互排斥的约束条件"><a href="#相互排斥的约束条件" class="headerlink" title="相互排斥的约束条件"></a>相互排斥的约束条件</h2><p><strong>让未选中的约束条件恒成立</strong><br>$$<br>y_i=\begin{cases}1,第i个约束起作用\<br>                0,第i个约束不起作用, i = 1,2,…,m,<br>    \end{cases}<br>$$<br>加一个充分大的常数M<br>$$<br>a_{i1}x_1+…+a_{in}x_n\leq b_i+(1-y_i)M,i=1,2,…,m,\<br>y_1+y_2+…+y_m=1<br>$$</p>
+<h2 id="固定费用问题"><a href="#固定费用问题" class="headerlink" title="固定费用问题"></a>固定费用问题</h2><p>用<br>$$<br>y_j\varepsilon \leq x_j \leq y_jM ,\varepsilon是充分小的正常数，M是充分大的正常数<br>$$<br>代替上面的yi，之后照旧</p>
+<h2 id="指派问题"><a href="#指派问题" class="headerlink" title="指派问题"></a>指派问题</h2><p>$$<br>min \sum_{i=1}^n\sum_{j=1}^nc_{ij}x{ij},\<br>s.t.\begin{cases}<br>\sum_{j=1}^nx_{ij}=1,i=1,…,n,\<br>\sum_{i=1}^nx_{ij}=1,i=1,…,n,\<br>x_{ij}=0或1,i,j=1,…,n.<br>\end{cases}<br>$$</p>
+<p>cij:第i个人去做第j项工作需花费cij单位时间</p>
+<p>系数矩阵，匈牙利算法。</p>
+<h1 id="蒙特卡洛法（随机取样）"><a href="#蒙特卡洛法（随机取样）" class="headerlink" title="蒙特卡洛法（随机取样）"></a>蒙特卡洛法（随机取样）</h1><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrtuc8cglj30on08bdha.jpg" alt="$W2U{1H1@V{[75]`{Q@F7JH.png"></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%mente.m</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[f,g]</span> = <span class="title">mente</span><span class="params">(x)</span>;</span></span><br><span class="line">f=x(<span class="number">1</span>)^<span class="number">2</span>+x(<span class="number">2</span>)^<span class="number">2</span>+<span class="number">3</span>*x(<span class="number">3</span>)^<span class="number">2</span>+<span class="number">4</span>*x(<span class="number">4</span>)^<span class="number">2</span>+<span class="number">2</span>*x(<span class="number">5</span>)^<span class="number">2</span><span class="number">-8</span>*x(<span class="number">1</span>)<span class="number">-2</span>*x(<span class="number">2</span>)<span class="number">-3</span>*x(<span class="number">3</span>)-x(<span class="number">4</span>)<span class="number">-2</span>*x(<span class="number">5</span>);</span><br><span class="line">g=[sum(x)<span class="number">-400</span></span><br><span class="line">    x(<span class="number">1</span>)+<span class="number">2</span>*x(<span class="number">2</span>)+<span class="number">2</span>*x(<span class="number">3</span>)+x(<span class="number">4</span>)+<span class="number">6</span>*x(<span class="number">5</span>)<span class="number">-800</span></span><br><span class="line">    <span class="number">2</span>*x(<span class="number">1</span>)+x(<span class="number">2</span>)+<span class="number">6</span>*x(<span class="number">3</span>)<span class="number">-200</span></span><br><span class="line">    x(<span class="number">3</span>)+x(<span class="number">4</span>)+<span class="number">5</span>*x(<span class="number">5</span>)<span class="number">-200</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">%function.m</span></span><br><span class="line"><span class="built_in">rand</span>(<span class="string">'state'</span>,sum(clock));  <span class="comment">%初始化随机数发生器</span></span><br><span class="line">p0=<span class="number">0</span>;</span><br><span class="line">tic;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="number">10</span>^<span class="number">6</span> </span><br><span class="line">    x=randi([<span class="number">0</span>,<span class="number">99</span>],<span class="number">1</span>,<span class="number">5</span>);  <span class="comment">%产生一行五列的区间[0,99]的随机整数</span></span><br><span class="line">    [f,g]=mente(x);</span><br><span class="line">    <span class="keyword">if</span> all(g&lt;=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> p0&lt;f</span><br><span class="line">            x0=x;p0=f;  <span class="comment">%记录下当前较好的解</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x0,p0</span><br><span class="line">toc</span><br></pre></td></tr></table></figure>
+<h1 id="整数线性规划的计算机求解"><a href="#整数线性规划的计算机求解" class="headerlink" title="整数线性规划的计算机求解"></a>整数线性规划的计算机求解</h1><p>Lingo比MatLab好</p>
+<p>因为matlab必须把所有决策变量变为一维决策向量</p>
 
       
     </div>
@@ -563,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/11/CSAPP-4/" rel="next" title="CSAPP-4（浮点数）">
-                <i class="fa fa-chevron-left"></i> CSAPP-4（浮点数）
+              <a href="/2020/07/15/数学建模之线性规划/" rel="next" title="数学建模之线性规划">
+                <i class="fa fa-chevron-left"></i> 数学建模之线性规划
               </a>
             
           </div>
@@ -573,8 +484,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/15/CSAPP-6/" rel="prev" title="CSAPP-6">
-                CSAPP-6 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/22/数学建模之图与网络模型/" rel="prev" title="数学建模之图与网络模型">
+                数学建模之图与网络模型 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -702,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器代码"><span class="nav-number">2.</span> <span class="nav-text">机器代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问信息"><span class="nav-number">3.</span> <span class="nav-text">访问信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#操作数指示符"><span class="nav-number">3.0.1.</span> <span class="nav-text">操作数指示符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送指令"><span class="nav-number">3.0.2.</span> <span class="nav-text">数据传送指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压入和弹出栈数据"><span class="nav-number">3.0.3.</span> <span class="nav-text">压入和弹出栈数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-1型整数规划"><span class="nav-number">1.</span> <span class="nav-text">0-1型整数规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#相互排斥的约束条件"><span class="nav-number">1.1.</span> <span class="nav-text">相互排斥的约束条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固定费用问题"><span class="nav-number">1.2.</span> <span class="nav-text">固定费用问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指派问题"><span class="nav-number">1.3.</span> <span class="nav-text">指派问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛法（随机取样）"><span class="nav-number">2.</span> <span class="nav-text">蒙特卡洛法（随机取样）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#整数线性规划的计算机求解"><span class="nav-number">3.</span> <span class="nav-text">整数线性规划的计算机求解</span></a></li></ol></div>
             
 
           </div>

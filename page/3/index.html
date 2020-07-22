@@ -305,6 +305,664 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/23/CSAPP-10/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/23/CSAPP-10/" itemprop="url">CSAPP-10</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-23T15:23:56+08:00">
+                2019-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/23/CSAPP-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/23/CSAPP-10/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  346 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
+<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/21/CSAPP-9/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/21/CSAPP-9/" itemprop="url">CSAPP-9</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T22:58:12+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/21/CSAPP-9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/21/CSAPP-9/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  490 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
+<p>起始地址：储存在%ebp寄存器（桢指针）</p>
+<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
+<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
+<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
+<li><p>备份原来指针</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给临时变量分配预留内存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>值压入栈顶（备份）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用建立好的栈帧，mov,push,pop</p>
+</li>
+<li><p>从栈帧中将备份的值恢复到寄存器</p>
+</li>
+<li><p>释放被调用的栈帧，栈指针增大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
+</li>
+</ol>
+<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
+<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
+<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
+<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
+<p>%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/17/CSAPP-8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/17/CSAPP-8/" itemprop="url">CSAPP-8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-17T22:34:33+08:00">
+                2019-02-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/17/CSAPP-8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/17/CSAPP-8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  328 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>接上一篇说最复杂的条件码寄存器组合</p>
+<p>所有组合都是基于a-b的前提。</p>
+<table>
+<thead>
+<tr>
+<th>后缀</th>
+<th>逻辑运算（值为1）</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e</td>
+<td>ZF</td>
+<td>相等。此时ZF为1，a-b=0，相等</td>
+</tr>
+<tr>
+<td>ne</td>
+<td>~ZF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>s</td>
+<td>SF</td>
+<td>负数。SF为1，设b=0，即a&lt;0</td>
+</tr>
+<tr>
+<td>ns</td>
+<td>~SF</td>
+<td>反之</td>
+</tr>
+<tr>
+<td>l</td>
+<td>SF^OF</td>
+<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
+</tr>
+<tr>
+<td>le</td>
+<td>(SF^OF)\</td>
+<td>ZF</td>
+<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
+</tr>
+<tr>
+<td>g</td>
+<td>(SF^OF)&amp;~ZF</td>
+<td>有符号的大于。小于且不等于</td>
+</tr>
+<tr>
+<td>ge</td>
+<td>~(SF^OF)</td>
+<td>有符号的大于等于。不小于</td>
+</tr>
+<tr>
+<td>b</td>
+<td>CF</td>
+<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
+</tr>
+<tr>
+<td>be</td>
+<td>CF\</td>
+<td>ZF</td>
+<td>无符号的小于等于。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>~CF&amp; ~ZF</td>
+<td>无符号的大于。无符号大于等于且不等于</td>
+</tr>
+<tr>
+<td>ae</td>
+<td>~CF</td>
+<td>s无符号大于等于</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/17/CSAPP-7/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2017,451 +2675,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/01/27/CSAPP-1/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/CSAPP-1/" itemprop="url">CSAPP_1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T13:50:46+08:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/27/CSAPP-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/27/CSAPP-1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  274 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h1><p>只由ASCii字符构成的文件称为文本文件，其他为二进制文件。</p>
-<ol>
-<li><strong>硬件</strong><ul>
-<li>总线：贯穿整个系统的电子管道</li>
-<li>I/O设备：系统和外部联系的通道</li>
-<li>主存：执行程序时，存放相关数据</li>
-<li>处理器：解释或执行储存在主存中指令中的引擎</li>
-</ul>
-</li>
-<li><strong>软件</strong><ul>
-<li>应用程序</li>
-<li>操作系统</li>
-</ul>
-</li>
-</ol>
-<h4 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h4><ol>
-<li>C全局变量相对应的数据位紧跟在代码后面，一开始被制订大小</li>
-<li><strong>堆</strong>：紧跟在代码和数据区后面，可动态扩展和收缩</li>
-<li><strong>共享库</strong></li>
-<li><strong>栈</strong>：虚拟地址空间顶部，实现函数调用，可动态扩展收缩</li>
-<li><strong>内核虚拟内存</strong>：地址空间顶部</li>
-</ol>
-<h4 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h4><ol>
-<li>并发：同时有多个活动的系统</li>
-<li>并行：用并发使一个系统运行更快</li>
-</ol>
-<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><ol>
-<li>文件是对I/O设备的抽象</li>
-<li>虚拟内存是对主存和磁盘的抽象</li>
-<li>进程是对正在运行的程序的抽象</li>
-<li>虚拟机是对整个计算机的抽象</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/01/26/ss科学上网/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/26/ss科学上网/" itemprop="url">ss科学上网</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-26T20:00:52+08:00">
-                2019-01-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Others/" itemprop="url" rel="index">
-                    <span itemprop="name">Others</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/26/ss科学上网/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/26/ss科学上网/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  522 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  2 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>嗯……第一次更博，有点晚了，一直在弄，期间走了不少弯路，今天可算是弄好了。</p>
-<h3 id="一、vultr"><a href="#一、vultr" class="headerlink" title="一、vultr"></a>一、vultr</h3><p><strong>注册—&gt;绑定银行卡—&gt;建服务器</strong></p>
-<p>前两个就不细说了</p>
-<p>Server Location: sydney</p>
-<p>Server Type：centos7 x64</p>
-<p>Server Size: 按实际需要选</p>
-<p>Deploy Now</p>
-<p>接下来是漫长的等待……</p>
-<h3 id="二、连接及搭建ss"><a href="#二、连接及搭建ss" class="headerlink" title="二、连接及搭建ss"></a>二、连接及搭建ss</h3><h4 id="连接："><a href="#连接：" class="headerlink" title="连接："></a>连接：</h4><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh root<span class="variable">@IP</span></span><br></pre></td></tr></table></figure>
-<p>之后有一个要输入yes</p>
-<p>之后是密码</p>
-<h4 id="一键搭建ss"><a href="#一键搭建ss" class="headerlink" title="一键搭建ss"></a>一键搭建ss</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/teddysun/shadowsocks_install/master/shadowsocks.<span class="keyword">sh</span></span><br><span class="line">chmod +<span class="keyword">x</span> shadowsocks.<span class="keyword">sh</span></span><br><span class="line">./shadowsocks.<span class="keyword">sh</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee shadowsocks.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<p>之后按照提示输入IP、端口、密码、加密方式</p>
-<p>出现红框框的时候，恭喜，快要成功了……</p>
-<h3 id="三、shadowsocks"><a href="#三、shadowsocks" class="headerlink" title="三、shadowsocks"></a>三、shadowsocks</h3><p>下载shadowsocks，然后打开，填好IP端口密码加密方式，其他默认就好。确定</p>
-<p><strong>bingo~</strong></p>
-<hr>
-<h3 id="以下为我走的弯路学到的知识"><a href="#以下为我走的弯路学到的知识" class="headerlink" title="以下为我走的弯路学到的知识"></a>以下为我走的弯路学到的知识</h3><h4 id="一、新建centos7虚拟机"><a href="#一、新建centos7虚拟机" class="headerlink" title="一、新建centos7虚拟机"></a>一、新建centos7虚拟机</h4><ul>
-<li><p>准备</p>
-<p>VMware workstation 14 、镜像（<a href="https://www.centos.org/download/）" target="_blank" rel="noopener">https://www.centos.org/download/）</a></p>
-</li>
-<li><p>具体步骤</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9r2rc6vj30q20n0tah.jpg" alt=""></p>
-<p>安装程序光盘映像文件，找到下载的路径</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9uivbarj30fp0fbaaa.jpg" alt=""></p>
-<p>命名，选择位置<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9xn7lzpj30fu0fawei.jpg" alt=""></p>
-<p>确定磁盘大小和是否拆分为多个文件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9yvt8zyj30fw0f3t8x.jpg" alt=""></p>
-<p>自定义硬件<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzk9zt3liej30ft0f974h.jpg" alt=""></p>
-<p>选择使用ISO映像文件，并找到映像文件的路径<img src="http://ww1.sinaimg.cn/large/0069QpNUly1fzka09qvwqj30nq0lh0tb.jpg" alt=""></p>
-<p>完成之后就可以打开虚拟机了</p>
-<p>点黑色的地方，用上下键选第一条，漫长的等待……</p>
-<p>选择语言（ENGLISH）</p>
-<p>确定日期和时间，语言，软件选择—&gt;GNOME桌面，开始安装</p>
-<p>之后设置root和新建用户</p>
-<p>这次是非常漫长的等待……</p>
-<p>reboot!</p>
-<p>设置网络，登陆，bingo~</p>
-<h4 id="二、端口放行（操作防火墙）"><a href="#二、端口放行（操作防火墙）" class="headerlink" title="二、端口放行（操作防火墙）"></a>二、端口放行（操作防火墙）</h4><p>主要是三个命令</p>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">zone=public</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span><span class="literal">-</span><span class="comment">port=80/tcp</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">permanent</span>   <span class="comment">//</span><span class="literal">-</span><span class="literal">-</span><span class="comment">zone</span> <span class="comment">:作用域</span> <span class="comment">80/tcp:端口/传输协议</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">permanent：没有这个重启以后还得再来一遍</span></span><br><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">reload</span></span><br><span class="line"><span class="comment">iptables</span><span class="literal">-</span><span class="comment">save</span></span><br></pre></td></tr></table></figure>
-<p>第一条命令是添加端口，第二条命令是重载防火墙，第三条命令是查看开放的端口</p>
-<p>##同时用到的对防火墙的操作</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd    --state  <span class="comment">//查看防火墙状态</span></span><br><span class="line">systemctl  stop   firewalld<span class="selector-class">.service</span>   <span class="comment">//关闭防火墙</span></span><br><span class="line">systemctl  start   firewalld<span class="selector-class">.service</span>   <span class="comment">//开启防火墙</span></span><br><span class="line">systemctl disable firewalld<span class="selector-class">.service</span>       <span class="comment">//禁止firewall开机启动</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2509,7 +2727,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2520,7 +2738,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2592,7 +2810,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 23k 字</span>
+  <span class="post-count">博客全站共 24.8k 字</span>
 </div>
 
 

@@ -105,23 +105,22 @@
 
 
 
-<meta name="description" content="MATLAB求解：1.标准形式 注意是min，而且是小于。 f,x,b,beq,lb,ub为列向量； f:价值向量； b:资源向量； A，Aeq为矩阵。 2.求解线性规划的命令1[x,fval]= linprog(f,A,b,Aeq,beq,lb,ub) 3.例子 (1)化为标准型 ​$$min\space\omega\space=\space -2x_1-3x_2+5x_3 \s.t.\beg">
+<meta name="description" content="一、最短路问题1.两个指定顶点之间的最短路径Dijkstra算法: $(u_0,v_0)$  按照距离$u_0$从近到远的顺序，依次求得$u_0$到G的个顶点的最短路径和距离，直至$v_0$或者G的所有顶点。 MATLAB代码如下（需要改图）： 12345678910111213141516171819202122232425262728293031323334353637383940414243">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学建模之线性规划">
-<meta property="og:url" content="https://yoursite.com/2020/07/15/数学建模之线性规划/index.html">
+<meta property="og:title" content="数学建模之图与网络模型">
+<meta property="og:url" content="https://yoursite.com/2020/07/22/数学建模之图与网络模型/index.html">
 <meta property="og:site_name" content="Cloyee&#39;s blog">
-<meta property="og:description" content="MATLAB求解：1.标准形式 注意是min，而且是小于。 f,x,b,beq,lb,ub为列向量； f:价值向量； b:资源向量； A，Aeq为矩阵。 2.求解线性规划的命令1[x,fval]= linprog(f,A,b,Aeq,beq,lb,ub) 3.例子 (1)化为标准型 ​$$min\space\omega\space=\space -2x_1-3x_2+5x_3 \s.t.\beg">
+<meta property="og:description" content="一、最短路问题1.两个指定顶点之间的最短路径Dijkstra算法: $(u_0,v_0)$  按照距离$u_0$从近到远的顺序，依次求得$u_0$到G的个顶点的最短路径和距离，直至$v_0$或者G的所有顶点。 MATLAB代码如下（需要改图）： 12345678910111213141516171819202122232425262728293031323334353637383940414243">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq24i34qj314y0mawna.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq6213w2j30bo05374y.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq88la73j30ai0593yv.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrs2woucoj30ni0arjt5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrrp8cavaj30gm06maac.jpg">
-<meta property="og:updated_time" content="2020-07-15T09:26:22.420Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggzlsaz4sbj30fa061js4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1gh01uml84tj30s70c27a8.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1gh026gegjqj30ex04sq3f.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1gh028uo82kj30cy042mxu.jpg">
+<meta property="og:updated_time" content="2020-07-22T13:29:24.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学建模之线性规划">
-<meta name="twitter:description" content="MATLAB求解：1.标准形式 注意是min，而且是小于。 f,x,b,beq,lb,ub为列向量； f:价值向量； b:资源向量； A，Aeq为矩阵。 2.求解线性规划的命令1[x,fval]= linprog(f,A,b,Aeq,beq,lb,ub) 3.例子 (1)化为标准型 ​$$min\space\omega\space=\space -2x_1-3x_2+5x_3 \s.t.\beg">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq24i34qj314y0mawna.jpg">
+<meta name="twitter:title" content="数学建模之图与网络模型">
+<meta name="twitter:description" content="一、最短路问题1.两个指定顶点之间的最短路径Dijkstra算法: $(u_0,v_0)$  按照距离$u_0$从近到远的顺序，依次求得$u_0$到G的个顶点的最短路径和距离，直至$v_0$或者G的所有顶点。 MATLAB代码如下（需要改图）： 12345678910111213141516171819202122232425262728293031323334353637383940414243">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0069QpNUly1ggzlsaz4sbj30fa061js4.jpg">
 
 
 
@@ -155,7 +154,7 @@
 
 
 
-  <title>数学建模之线性规划 | Cloyee's blog</title>
+  <title>数学建模之图与网络模型 | Cloyee's blog</title>
   
 
 
@@ -314,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2020/07/15/数学建模之线性规划/">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2020/07/22/数学建模之图与网络模型/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CloyeeYH">
@@ -331,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数学建模之线性规划</h1>
+          <h1 class="post-title" itemprop="name headline">数学建模之图与网络模型</h1>
         
 
         <div class="post-meta">
@@ -343,8 +342,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-15T16:02:25+08:00">
-                2020-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-22T11:00:23+08:00">
+                2020-07-22
               </time>
             
 
@@ -384,8 +383,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/15/数学建模之线性规划/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/15/数学建模之线性规划/" itemprop="commentCount"></span>
+                <a href="/2020/07/22/数学建模之图与网络模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/22/数学建模之图与网络模型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,7 +406,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  282 字
+                  1.2k 字
                 </span>
               
 
@@ -423,7 +422,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 mins
+                  5 mins
                 </span>
               
             </div>
@@ -444,24 +443,50 @@
       
 
       
-        <p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq24i34qj314y0mawna.jpg" alt="TIM图片20200715160824.png"></p>
-<h1 id="MATLAB求解："><a href="#MATLAB求解：" class="headerlink" title="MATLAB求解："></a>MATLAB求解：</h1><h3 id="1-标准形式"><a href="#1-标准形式" class="headerlink" title="1.标准形式"></a>1.标准形式</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq6213w2j30bo05374y.jpg" alt="TIM图片20200715160824.png"></p>
-<p>注意是min，而且是小于。</p>
-<p>f,x,b,beq,lb,ub为列向量；</p>
-<p>f:价值向量；</p>
-<p>b:资源向量；</p>
-<p>A，Aeq为矩阵。</p>
-<h3 id="2-求解线性规划的命令"><a href="#2-求解线性规划的命令" class="headerlink" title="2.求解线性规划的命令"></a>2.求解线性规划的命令</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x,fval]= linprog(f,A,<span class="selector-tag">b</span>,Aeq,beq,lb,ub)</span><br></pre></td></tr></table></figure>
-<h3 id="3-例子"><a href="#3-例子" class="headerlink" title="3.例子"></a>3.例子</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrq88la73j30ai0593yv.jpg" alt="}0W0@1[)AF8P5F]}LAKLE%U.png"></p>
-<p>(1)化为标准型</p>
-<p>​<br>$$<br>min\space\omega\space=\space -2x_1-3x_2+5x_3 \<br>s.t.<br>\begin{cases}<br>    \left[<br>    \begin{matrix}<br>       -2 &amp; 5 &amp; -1 \<br>        1 &amp; 3 &amp; 1 \<br>    \end{matrix}<br>    \right]<br>    \times<br>    \left[<br>    \begin{matrix}<br>    x_1\<br>    x_2\<br>    x_3<br>    \end{matrix}<br>    \right]<br>    \leq\left[\begin{matrix}<br>    -10\<br>    12<br>    \end{matrix}<br>    \right],\<br>    \left[\begin{matrix}1,1,1\end{matrix}\right]·\left[\begin{matrix}x_1,x_2,x_3\end{matrix}\right]^T=7,\left[\begin{matrix}x_1,x_2,x_3\end{matrix}\right]^T\geq\left[\begin{matrix}0,0,0\end{matrix}\right]^T.<br>\end{cases}<br>$$<br>(2)求解的MATLAB程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clc,clear</span><br><span class="line">f=[-2;-3;5];</span><br><span class="line">a=[-2,5,-1;1,3,1];b=[-10;12];</span><br><span class="line">aeq=[1,1,1];</span><br><span class="line">beq=7;</span><br><span class="line">[x,y]=linprog(f,a,b,aeq,beq,zeros(3,1));</span><br><span class="line">x,y=-y</span><br></pre></td></tr></table></figure>
-<h1 id="绝对值问题"><a href="#绝对值问题" class="headerlink" title="绝对值问题"></a>绝对值问题</h1><p>变量变换<br>$$<br>u_i=\frac{x_i+|x_i|}{2},v_i=\frac{|x_i|-x_i}{2}<br>$$<br>所以有<br>$$<br>|x_i|=u_i+v_i<br>$$</p>
-<h5 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h5><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrs2woucoj30ni0arjt5.jpg" alt="3`H((1LJJ}VCJWS`3QNA9OB.png"></p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggrrp8cavaj30gm06maac.jpg" alt="VAGBJ$JAE3CDDG8K0K{F)3M.png"></p>
-<p>MATLAB代码：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clc,clear</span><br><span class="line">c=<span class="number">1</span>:<span class="number">4</span>;c=[c,c]';</span><br><span class="line">a=[<span class="number">1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">1</span>;<span class="number">1</span> <span class="number">-1</span> <span class="number">1</span> <span class="number">-1</span>;<span class="number">1</span> <span class="number">-1</span> <span class="number">-2</span> <span class="number">3</span>];</span><br><span class="line">a=[a,-a];</span><br><span class="line">b=[<span class="number">-2</span> <span class="number">-1</span> <span class="number">-1</span>/<span class="number">2</span>]';</span><br><span class="line">[y,z]=linprog(c,a,b,[],[],<span class="built_in">zeros</span>(<span class="number">8</span>,<span class="number">1</span>))</span><br><span class="line">x=y(<span class="number">1</span>:<span class="number">4</span>) -y(<span class="number">5</span>:<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="投资风险"><a href="#投资风险" class="headerlink" title="投资风险"></a>投资风险</h1>
+        <h1 id="一、最短路问题"><a href="#一、最短路问题" class="headerlink" title="一、最短路问题"></a>一、最短路问题</h1><h2 id="1-两个指定顶点之间的最短路径"><a href="#1-两个指定顶点之间的最短路径" class="headerlink" title="1.两个指定顶点之间的最短路径"></a>1.两个指定顶点之间的最短路径</h2><p><strong>Dijkstra算法</strong>: $(u_0,v_0)$  按照距离$u_0$从近到远的顺序，依次求得$u_0$到<em>G</em>的个顶点的最短路径和距离，直至$v_0$或者<em>G</em>的所有顶点。</p>
+<p>MATLAB代码如下（需要改图）：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">tulun1.m</span><br><span class="line">weight=    [<span class="number">0</span>     <span class="number">2</span>     <span class="number">8</span>     <span class="number">1</span>   Inf   Inf   Inf   Inf   Inf   Inf   Inf;</span><br><span class="line">            <span class="number">2</span>     <span class="number">0</span>     <span class="number">6</span>   Inf     <span class="number">1</span>   Inf   Inf   Inf   Inf   Inf   Inf;</span><br><span class="line">            <span class="number">8</span>     <span class="number">6</span>     <span class="number">0</span>     <span class="number">7</span>     <span class="number">5</span>     <span class="number">1</span>     <span class="number">2</span>   Inf   Inf   Inf   Inf;</span><br><span class="line">            <span class="number">1</span>   Inf     <span class="number">7</span>     <span class="number">0</span>   Inf   Inf     <span class="number">9</span>   Inf   Inf   Inf   Inf;</span><br><span class="line">          Inf     <span class="number">1</span>     <span class="number">5</span>   Inf     <span class="number">0</span>     <span class="number">3</span>   Inf     <span class="number">2</span>     <span class="number">9</span>   Inf   Inf;</span><br><span class="line">          Inf   Inf     <span class="number">1</span>   Inf     <span class="number">3</span>     <span class="number">0</span>     <span class="number">4</span>   Inf     <span class="number">6</span>   Inf   Inf;</span><br><span class="line">          Inf   Inf     <span class="number">2</span>     <span class="number">9</span>   Inf     <span class="number">4</span>     <span class="number">0</span>   Inf     <span class="number">3</span>     <span class="number">1</span>   Inf;</span><br><span class="line">          Inf   Inf   Inf   Inf     <span class="number">2</span>   Inf   Inf     <span class="number">0</span>     <span class="number">7</span>   Inf     <span class="number">9</span>;</span><br><span class="line">          Inf   Inf   Inf   Inf     <span class="number">9</span>     <span class="number">6</span>     <span class="number">3</span>     <span class="number">7</span>     <span class="number">0</span>     <span class="number">1</span>     <span class="number">2</span>;</span><br><span class="line">          Inf   Inf   Inf   Inf   Inf   Inf     <span class="number">1</span>   Inf     <span class="number">1</span>     <span class="number">0</span>     <span class="number">4</span>;</span><br><span class="line">          Inf   Inf   Inf   Inf   Inf   Inf   Inf     <span class="number">9</span>     <span class="number">2</span>     <span class="number">4</span>     <span class="number">0</span>;];</span><br><span class="line">[dis, path]=dijkstra(weight,<span class="number">1</span>, <span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dijkstra.m</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[min,path]</span>=<span class="title">dijkstra</span><span class="params">(w,start,terminal)</span></span></span><br><span class="line">n=<span class="built_in">size</span>(w,<span class="number">1</span>); label(start)=<span class="number">0</span>; f(start)=start;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">   <span class="keyword">if</span> <span class="built_in">i</span>~=start</span><br><span class="line">       label(<span class="built_in">i</span>)=<span class="built_in">inf</span>;</span><br><span class="line"><span class="keyword">end</span>, <span class="keyword">end</span></span><br><span class="line">s(<span class="number">1</span>)=start; u=start;</span><br><span class="line"><span class="keyword">while</span> <span class="built_in">length</span>(s)&lt;n</span><br><span class="line">   <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">      ins=<span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">length</span>(s)</span><br><span class="line">         <span class="keyword">if</span> <span class="built_in">i</span>==s(<span class="built_in">j</span>)</span><br><span class="line">            ins=<span class="number">1</span>;</span><br><span class="line">         <span class="keyword">end</span>,  </span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">if</span> ins==<span class="number">0</span></span><br><span class="line">         v=<span class="built_in">i</span>;</span><br><span class="line">         <span class="keyword">if</span> label(v)&gt;(label(u)+w(u,v))</span><br><span class="line">            label(v)=(label(u)+w(u,v)); </span><br><span class="line">         f(v)=u;</span><br><span class="line">         <span class="keyword">end</span>, </span><br><span class="line">      <span class="keyword">end</span>, </span><br><span class="line">   <span class="keyword">end</span>   </span><br><span class="line">v1=<span class="number">0</span>;</span><br><span class="line">   k=<span class="built_in">inf</span>;</span><br><span class="line">   <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">         ins=<span class="number">0</span>;</span><br><span class="line">         <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:<span class="built_in">length</span>(s)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">i</span>==s(<span class="built_in">j</span>)</span><br><span class="line">               ins=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">end</span>, </span><br><span class="line">         <span class="keyword">end</span></span><br><span class="line">         <span class="keyword">if</span> ins==<span class="number">0</span></span><br><span class="line">            v=<span class="built_in">i</span>;</span><br><span class="line">            <span class="keyword">if</span> k&gt;label(v)</span><br><span class="line">               k=label(v);  v1=v;</span><br><span class="line">            <span class="keyword">end</span>,  </span><br><span class="line">         <span class="keyword">end</span>,  </span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   s(<span class="built_in">length</span>(s)+<span class="number">1</span>)=v1;  </span><br><span class="line">   u=v1;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="built_in">min</span>=label(terminal); path(<span class="number">1</span>)=terminal;</span><br><span class="line"><span class="built_in">i</span>=<span class="number">1</span>; </span><br><span class="line"><span class="keyword">while</span> path(<span class="built_in">i</span>)~=start</span><br><span class="line">      path(<span class="built_in">i</span>+<span class="number">1</span>)=f(path(<span class="built_in">i</span>));</span><br><span class="line">      <span class="built_in">i</span>=<span class="built_in">i</span>+<span class="number">1</span> ;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">path(<span class="built_in">i</span>)=start;</span><br><span class="line">L=<span class="built_in">length</span>(path);</span><br><span class="line">path=path(L:<span class="number">-1</span>:<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="2-每对顶点之间的最短路径"><a href="#2-每对顶点之间的最短路径" class="headerlink" title="2.每对顶点之间的最短路径"></a>2.每对顶点之间的最短路径</h2><p>Flord算法：递推产生矩阵序列$A_1,…,A_k,…,A_n$,其中$A_k$的第$i$ 行第 $j$列元素$A_k(i,j)$表示从顶点$v_i$到顶点$v_j$的路径上所经过的顶点序号不大于$k$的最短路径长度。</p>
+<p>MATLAB代码如下：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">a= [ <span class="number">0</span>,<span class="number">50</span>,<span class="built_in">inf</span>,<span class="number">40</span>,<span class="number">25</span>,<span class="number">10</span>;</span><br><span class="line">     <span class="number">50</span>,<span class="number">0</span>,<span class="number">15</span>,<span class="number">20</span>,<span class="built_in">inf</span>,<span class="number">25</span>;</span><br><span class="line">     <span class="built_in">inf</span>,<span class="number">15</span>,<span class="number">0</span>,<span class="number">10</span>,<span class="number">20</span>,<span class="built_in">inf</span>;</span><br><span class="line">     <span class="number">40</span>,<span class="number">20</span>,<span class="number">10</span>,<span class="number">0</span>,<span class="number">10</span>,<span class="number">25</span>;</span><br><span class="line">     <span class="number">25</span>,<span class="built_in">inf</span>,<span class="number">20</span>,<span class="number">10</span>,<span class="number">0</span>,<span class="number">55</span>;</span><br><span class="line">     <span class="number">10</span>,<span class="number">25</span>,<span class="built_in">inf</span>,<span class="number">25</span>,<span class="number">55</span>,<span class="number">0</span>];</span><br><span class="line">[D, path]=floyd(a)</span><br><span class="line"></span><br><span class="line">floyd.m</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[D,path,min1,path1]</span>=<span class="title">floyd</span><span class="params">(a,start,terminal)</span></span></span><br><span class="line">D=a;n=<span class="built_in">size</span>(D,<span class="number">1</span>);path=<span class="built_in">zeros</span>(n,n);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">   <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">      <span class="keyword">if</span> D(<span class="built_in">i</span>,<span class="built_in">j</span>)~=<span class="built_in">inf</span></span><br><span class="line">         path(<span class="built_in">i</span>,<span class="built_in">j</span>)=<span class="built_in">j</span>;</span><br><span class="line">      <span class="keyword">end</span>, </span><br><span class="line">   <span class="keyword">end</span>,</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">for</span> k=<span class="number">1</span>:n</span><br><span class="line">   <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</span><br><span class="line">      <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:n</span><br><span class="line">         <span class="keyword">if</span> D(<span class="built_in">i</span>,k)+D(k,<span class="built_in">j</span>)&lt;D(<span class="built_in">i</span>,<span class="built_in">j</span>)</span><br><span class="line">            D(<span class="built_in">i</span>,<span class="built_in">j</span>)=D(<span class="built_in">i</span>,k)+D(k,<span class="built_in">j</span>);</span><br><span class="line">            path(<span class="built_in">i</span>,<span class="built_in">j</span>)=path(<span class="built_in">i</span>,k);</span><br><span class="line">         <span class="keyword">end</span>, </span><br><span class="line">      <span class="keyword">end</span>, </span><br><span class="line">   <span class="keyword">end</span>,</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">if</span> nargin==<span class="number">3</span></span><br><span class="line">   min1=D(start,terminal);</span><br><span class="line">   m(<span class="number">1</span>)=start;</span><br><span class="line">   <span class="built_in">i</span>=<span class="number">1</span>;</span><br><span class="line">   path1=[ ];   </span><br><span class="line">   <span class="keyword">while</span>   path(m(<span class="built_in">i</span>),terminal)~=terminal</span><br><span class="line">      k=<span class="built_in">i</span>+<span class="number">1</span>;                                </span><br><span class="line">      m(k)=path(m(<span class="built_in">i</span>),terminal);</span><br><span class="line">      <span class="built_in">i</span>=<span class="built_in">i</span>+<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">end</span></span><br><span class="line">   m(<span class="built_in">i</span>+<span class="number">1</span>)=terminal;</span><br><span class="line">   path1=m;</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h1 id="二、网络最大流问题（图-线性规划）"><a href="#二、网络最大流问题（图-线性规划）" class="headerlink" title="二、网络最大流问题（图+线性规划）"></a>二、网络最大流问题（图+线性规划）</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><p>有向图$D=(V,A)$，$A$为弧集，<strong>发点</strong>$v_s$，<strong>收点</strong>$v_t$,其余为<strong>中间点</strong>，$c_{ij}$为弧的<strong>容量</strong>，$f_{ij}$为弧的<strong>流量</strong></p>
+<h2 id="2-最大流问题模型"><a href="#2-最大流问题模型" class="headerlink" title="2.最大流问题模型"></a>2.最大流问题模型</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1ggzlsaz4sbj30fa061js4.jpg" alt="@5~1IVPAP6L9E}(@5J$P(ZA.png"></p>
+<h2 id="3-寻求最大流的标号法（Ford-Fulkerson）"><a href="#3-寻求最大流的标号法（Ford-Fulkerson）" class="headerlink" title="3.寻求最大流的标号法（Ford-Fulkerson）"></a>3.寻求最大流的标号法（Ford-Fulkerson）</h2><h3 id="标号过程："><a href="#标号过程：" class="headerlink" title="标号过程："></a>标号过程：</h3><ol>
+<li>给$v_s$标上$(0,\infty)$</li>
+<li>找以$v_s$为起点的不饱和弧，标记$(v_s,l(v_j)$,$l(v_j)=min[(c_{ij}-f_ij),l(v_s)]$  </li>
+<li>找以$v_s$为终点的非零弧，标记$(-v_s,l(v_j))=min[f_{ij},l(v_i)]$</li>
+<li>重复上述步骤直到不能继续标号或者给所有的点进行标号</li>
+<li>逆向寻找增广链，要求该链的每个顶点的$l(v_j)$都要大于最后一点的$l(v_t)$，可能方向不同</li>
+<li>把该链所有弧±上$l(v_t)$</li>
+<li>检查</li>
+</ol>
+<h3 id="最小费用最大流问题"><a href="#最小费用最大流问题" class="headerlink" title="最小费用最大流问题"></a>最小费用最大流问题</h3><h1 id="三、Matlab工具箱"><a href="#三、Matlab工具箱" class="headerlink" title="三、Matlab工具箱"></a>三、Matlab工具箱</h1><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1gh01uml84tj30s70c27a8.jpg" alt="B6GYITGSARRA{5$QAS23_LU.png"></p>
+<ul>
+<li>要求是下三角矩阵</li>
+<li>求最大流的命令，只能解决权重都为正值，且两个顶点之见不能有两条弧，若有两条弧可以加一个点，用相同的权重</li>
+</ul>
+<h1 id="四、计划评审方法和关键路线法"><a href="#四、计划评审方法和关键路线法" class="headerlink" title="四、计划评审方法和关键路线法"></a>四、计划评审方法和关键路线法</h1><p><strong>作业</strong>：消耗时间或资源的行为</p>
+<p><strong>事件</strong>：作业的开始或结束</p>
+<h2 id="1-时间参数"><a href="#1-时间参数" class="headerlink" title="1.时间参数"></a>1.时间参数</h2><h3 id="1-1事件时间参数"><a href="#1-1事件时间参数" class="headerlink" title="1.1事件时间参数"></a>1.1事件时间参数</h3><ol>
+<li>事件的最早时间：表示以事件$v_j$为始点的各工作最早可能开始的时间</li>
+<li>事件的最迟时间：不影响任务总工期条件下，以事件$v_j$为始点的各工作最迟必须开始的时间</li>
+</ol>
+<h3 id="1-2工作的时间参数"><a href="#1-2工作的时间参数" class="headerlink" title="1.2工作的时间参数"></a>1.2工作的时间参数</h3><ol>
+<li><p>工作的最早可能开工时间   和   工作的最早可能完工时间：</p>
+<p>$t_{ES}：$：最早可能开工时间</p>
+<p>$t_{EF}$:最早可能完工时间</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1gh026gegjqj30ex04sq3f.jpg" alt="05LPE~27E6LQ(Z})G6}1)RC.png"></p>
+</li>
+<li><p>工作最迟必须开工时间  和   工作最迟必须完工时间</p>
+<p>$t_{LS}：$最迟必须开工时间</p>
+<p>$t_{LF}$：最迟必须完工时间</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1gh028uo82kj30cy042mxu.jpg" alt="U8DH)%C7YG(K1GP(R3O457K.png"></p>
+</li>
+</ol>
+<h2 id="2-完成作业期望和实现事件的概率"><a href="#2-完成作业期望和实现事件的概率" class="headerlink" title="2.完成作业期望和实现事件的概率"></a>2.完成作业期望和实现事件的概率</h2><p>$t_{ij}$是完成作业$(i,j)$的实际时间，则数学期望和方差如下：<br>$$<br>E(t_{ij})=\frac{a_{ij}+4m_{ij}+b_{ij}}{6}\<br>Var(t_{ij})=\frac{(b_{ij}-a_{ij})^2}{36}<br>$$<br>$T=\sum_{(i,j)\in关键线路}t_{ij}$</p>
+<p>假设T服从正态分布，规定工期为d，则<br>$$<br>P{T\leq d}=\Phi(\frac{d-\overline T}{S})<br>$$</p>
+<h1 id="五、油管订购和运输"><a href="#五、油管订购和运输" class="headerlink" title="五、油管订购和运输"></a>五、油管订购和运输</h1><p>直接看书QAQ</p>
+
       
     </div>
     
@@ -485,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/30/现代密码学思维导图/" rel="next" title="现代密码学思维导图">
-                <i class="fa fa-chevron-left"></i> 现代密码学思维导图
+              <a href="/2020/07/15/数学建模之整数规划/" rel="next" title="数学建模之整数规划">
+                <i class="fa fa-chevron-left"></i> 数学建模之整数规划
               </a>
             
           </div>
@@ -495,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/07/15/数学建模之整数规划/" rel="prev" title="数学建模之整数规划">
-                数学建模之整数规划 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/22/LaTex数学符号表示/" rel="prev" title="“LaTex数学符号表示”">
+                “LaTex数学符号表示” <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB求解："><span class="nav-number">1.</span> <span class="nav-text">MATLAB求解：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-标准形式"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.标准形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-求解线性规划的命令"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.求解线性规划的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-例子"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.例子</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#绝对值问题"><span class="nav-number">2.</span> <span class="nav-text">绝对值问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例题"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#投资风险"><span class="nav-number">3.</span> <span class="nav-text">投资风险</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、最短路问题"><span class="nav-number">1.</span> <span class="nav-text">一、最短路问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-两个指定顶点之间的最短路径"><span class="nav-number">1.1.</span> <span class="nav-text">1.两个指定顶点之间的最短路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-每对顶点之间的最短路径"><span class="nav-number">1.2.</span> <span class="nav-text">2.每对顶点之间的最短路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、网络最大流问题（图-线性规划）"><span class="nav-number">2.</span> <span class="nav-text">二、网络最大流问题（图+线性规划）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">2.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-最大流问题模型"><span class="nav-number">2.2.</span> <span class="nav-text">2.最大流问题模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-寻求最大流的标号法（Ford-Fulkerson）"><span class="nav-number">2.3.</span> <span class="nav-text">3.寻求最大流的标号法（Ford-Fulkerson）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标号过程："><span class="nav-number">2.3.1.</span> <span class="nav-text">标号过程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小费用最大流问题"><span class="nav-number">2.3.2.</span> <span class="nav-text">最小费用最大流问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、Matlab工具箱"><span class="nav-number">3.</span> <span class="nav-text">三、Matlab工具箱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、计划评审方法和关键路线法"><span class="nav-number">4.</span> <span class="nav-text">四、计划评审方法和关键路线法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-时间参数"><span class="nav-number">4.1.</span> <span class="nav-text">1.时间参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1事件时间参数"><span class="nav-number">4.1.1.</span> <span class="nav-text">1.1事件时间参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2工作的时间参数"><span class="nav-number">4.1.2.</span> <span class="nav-text">1.2工作的时间参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-完成作业期望和实现事件的概率"><span class="nav-number">4.2.</span> <span class="nav-text">2.完成作业期望和实现事件的概率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、油管订购和运输"><span class="nav-number">5.</span> <span class="nav-text">五、油管订购和运输</span></a></li></ol></div>
             
 
           </div>

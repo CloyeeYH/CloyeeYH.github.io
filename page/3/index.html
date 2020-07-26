@@ -439,86 +439,23 @@
       
         
           
-            <p>这就开始学习了？？</p>
-<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
-<hr>
-<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
-<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
-</li>
-<li><p><code>Float.MAX_VALUE</code>获取float max</p>
-</li>
-<li><p>println：输出后自动换行，print：输出后不换行</p>
-</li>
-<li><p>数组定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>public static final 则为常量</p>
-</li>
-<li><p>1970年1月1日 8点0分0秒开始</p>
-</li>
-<li><p><code>extends</code>继承</p>
-</li>
-<li><p><code>/**</code>+ENTER 多行注释</p>
-</li>
-<li><p>类名。接口名首字母大写</p>
-</li>
-<li><p>函数名，变量名首字母小写</p>
-</li>
-<li><p>常量首字母大写</p>
-</li>
-<li><p>单引号字符，双引号字符串</p>
-</li>
-<li><p>基本数据类型在栈，引用数据类型在堆里</p>
-</li>
-<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
-</li>
-<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
-</li>
-<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>String 转成int(前提：string内容是数字)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>int转String </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
-</li>
-<li><p>boolean类型默认false</p>
-</li>
-<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
-</li>
-<li><p>在静态static方法内部只能调用static方法或static变量</p>
-</li>
-<li><p>new 后面的是构造方法</p>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><ul>
-<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
-</li>
-<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
-<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
-<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
-<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
-<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
-<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
-<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
-</ul>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
-<p>重写run方法，启动线程用start；机制视频9：00</p>
-<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
-<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
-<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>
-          
+          这就开始学习了？？
+暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟
+
+零散知识点
+‘syso‘ ’alt‘+’/‘&#10233;System.out.println();
+
+Float.MAX_VALUE获取float max
+
+println：输出后自动换行，print
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/19/Java一丢丢/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -699,41 +636,25 @@
       
         
           
-            <h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lc2ailk2j30ez0430u8.jpg" alt=""></p>
-<p>一个逻辑门计算一位</p>
-<p>组合电路需要遵循的原则</p>
-<ul>
-<li>两个逻辑门的输出不能连到一起。</li>
-<li>组合的电路必须是无环的。输出不能再当输入</li>
-</ul>
-<p>HCL表达式与C表达式区分</p>
-<ul>
-<li>逻辑门是持续输出的，但C语言表达式是执行到的时候才会求值。这个区别可以把逻辑门当成一个电路来看，电路是不能断电的，电流会一直存在。</li>
-<li>C语言中输出可以是任意整数，而HCL只能是1和0。这点比较好理解。</li>
-<li>对于a &amp;&amp; b这个符号来说，C语言中的规定是如果前者为假，则后者不会再计算。而HCL当中没有这种说法。</li>
-</ul>
-<h3 id="按位计算"><a href="#按位计算" class="headerlink" title="按位计算"></a>按位计算</h3><p>位相等：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcm9qhfkj30al05ot8s.jpg" alt=""></p>
-<p>位多路复用器：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcmx9gyqj30a705qdfw.jpg" alt=""></p>
-<p>多位运算就是多个一位一起运算</p>
-<p>32位看是否相等：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcrkg0qjj30ij0feq47.jpg" alt=""></p>
-<p>s的not被多次用到，否则需要32个not门。</p>
-<p>HCL条件选择表达式的条件不需要互斥，按照优先顺序依次选取</p>
-<p>集合形式的HCL表达式，需要一个输入信号与某些值匹配</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcsezf60j30au06nmxc.jpg" alt=""></p>
-<h3 id="储存器和时钟"><a href="#储存器和时钟" class="headerlink" title="储存器和时钟"></a>储存器和时钟</h3><p>储存器一般两种：</p>
-<ol>
-<li>时钟寄存器。储存单个位或单个字，时钟信号控制是否加载输入的值</li>
-<li>随机访问储存器。储存多个字，地址来选择</li>
-</ol>
-<p>寄存器文件和随即访问储存器有读写操作，时钟寄存器没有读写。</p>
-<p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
-<p>随即访问储存器只有一个地址输入和一个数据输出</p>
+          逻辑设计和硬件控制语言HCL逻辑设计逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。
 
-          
+一个逻辑门计算一位
+组合电路需要遵循的原则
+
+两个逻辑门的输出不能连到一起。
+组合的电路必须是无环的。输出不能再当输入
+
+HCL表达式与C表达式区分
+
+逻辑门是持续输
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/27/CSAPP-12/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -914,23 +835,22 @@
       
         
           
-            <h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
-<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
-<p>halt：终止指令的执行</p>
-<p>nop：占位指令，不做任何事</p>
-<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
-<p>opl：操作指令</p>
-<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
-<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
-<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
-<p>push与pop：入栈和出栈操作</p>
-<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
-<p>寄存器的表示：4个二进制位</p>
-<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
-<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
-<p>eg：addl $4,%ecx</p>
-
-          
+          Y86指令体系结构Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态
+Y86指令集
+halt：终止指令的执行
+nop：占位指令，不做任何事
+**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。
+opl：操作指令
+jxx：条件跳转指令，根据后面的条件进行跳转
+cmo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/25/CSAPP-11/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1111,12 +1031,15 @@
       
         
           
-            <h2 id="数组的分配与访问"><a href="#数组的分配与访问" class="headerlink" title="数组的分配与访问"></a>数组的分配与访问</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[n];</span><br><span class="line">    <span class="keyword">int</span> i,sum;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        a[i] = i * <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span> ; i &lt; n; i++)&#123;</span><br><span class="line">        sum += a[i];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	sum</span><br><span class="line">	.type	sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	pushq	%rbp</span><br><span class="line">	.cfi_def_cfa_offset 16</span><br><span class="line">	.cfi_offset 6, -16</span><br><span class="line">	movq	%rsp, %rbp</span><br><span class="line">	.cfi_def_cfa_register 6</span><br><span class="line">	subq	$16, %rsp</span><br><span class="line">	/*栈帧建立，被调用者保存寄存器的备份，栈内存分配*/</span><br><span class="line">	</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	movq	%fs:40, %rcx</span><br><span class="line">	movq	%rcx, -8(%rbp)</span><br><span class="line">	xorl	%ecx, %ecx</span><br><span class="line">	movslq	%edi, %rdx</span><br><span class="line">	leaq	18(,%rdx,4), %rdx</span><br><span class="line">	andq	$-16, %rdx   //分配长度为（18+4n）&amp;（-16）的值</span><br><span class="line">	/*动态数组分配内存*/</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	subq	%rdx, %rsp</span><br><span class="line">	movq	%rsp, %rcx</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L2</span><br><span class="line">.L3:</span><br><span class="line">	leal	(%rdx,%rdx,2), %r8d</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	movl	%r8d, (%rcx,%rsi,4)</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L2:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L3</span><br><span class="line">	movl	$0, %edx</span><br><span class="line">	jmp	.L4</span><br><span class="line">.L5:</span><br><span class="line">	movslq	%edx, %rsi</span><br><span class="line">	addl	(%rcx,%rsi,4), %eax</span><br><span class="line">	addl	$1, %edx</span><br><span class="line">.L4:</span><br><span class="line">	cmpl	%edi, %edx</span><br><span class="line">	jl	.L5</span><br><span class="line">	movq	-8(%rbp), %rcx</span><br><span class="line">	xorq	%fs:40, %rcx</span><br><span class="line">	jne	.L8</span><br><span class="line">	leave</span><br><span class="line">	.cfi_remember_state</span><br><span class="line">	.cfi_def_cfa 7, 8</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	.cfi_restore_state</span><br><span class="line">	call	__stack_chk_fail@PLT</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	sum, .-sum</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h3 id="异质结构与数据对齐"><a href="#异质结构与数据对齐" class="headerlink" title="异质结构与数据对齐"></a>异质结构与数据对齐</h3><p>异质结构：不同数据类型的数组组合</p>
-<p>数据对齐：为了提高数据读取速度，会将数据以2的指数倍对齐，具体数字根据硬件设施和操作系统确定。但浪费了储存空间。</p>
-
-          
+          数组的分配与访问1234567891011int sum(int n)&#123;    int a[n];    int i,sum;    for(i = 0 ; i &lt; n; i++)&#123;        a[i] = i * 3;    &#125;    for(i = 0 ;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/23/CSAPP-10/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1297,41 +1220,21 @@
       
         
           
-            <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><h3 id="栈帧的结构"><a href="#栈帧的结构" class="headerlink" title="栈帧的结构"></a>栈帧的结构</h3><p>栈帧是程序栈的一段，程序栈是储存器的一段。</p>
-<p>起始地址：储存在%ebp寄存器（桢指针）</p>
-<p>结束地址：储存在%esp寄存器（栈顶指针）</p>
-<p>栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k85iekgbj30mx0euq42.jpg" alt=""></p>
-<h3 id="过程的实现"><a href="#过程的实现" class="headerlink" title="过程的实现"></a>过程的实现</h3><ol>
-<li><p>备份原来指针</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebp</span><br><span class="line">movl %esp, %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给临时变量分配预留内存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">subl $16,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>值压入栈顶（备份）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pushl %ebx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用建立好的栈帧，mov,push,pop</p>
-</li>
-<li><p>从栈帧中将备份的值恢复到寄存器</p>
-</li>
-<li><p>释放被调用的栈帧，栈指针增大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">movl %ebp,%esp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调整栈帧两端,第六步调整了栈指针， 只需要将备份的原桢指针弹到%ebp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popl %ebp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>弹出返回地址，跳出当前过程，继续执行调用者的代码。（ret）</p>
-</li>
-</ol>
-<h3 id="过程相关指令-call、leave、ret"><a href="#过程相关指令-call、leave、ret" class="headerlink" title="过程相关指令:call、leave、ret"></a>过程相关指令:call、leave、ret</h3><p>call:将返回地址压入栈顶，将程序跳转到当前调用的方法的起始地址。</p>
-<p>leave：栈指针指向桢指针，弹出备份的原桢指针到%ebp</p>
-<p>ret：栈顶的返回值弹出到PC，按照PC指示的指令地址继续执行程序。</p>
-<h3 id="寄存器的使用规则"><a href="#寄存器的使用规则" class="headerlink" title="寄存器的使用规则"></a>寄存器的使用规则</h3><p>%eax、%edx、%ecx：调用者保存寄存器。这三个寄存器由调用者P来保存，而对于Q来说，Q可以随便使用，用完了就不用再管了。</p>
-<p>%ebx、%esi、%edi：被调用者保存寄存器。这三个寄存器由被调用者Q来保存，Q可以使用这三个寄存器，但是如果里面有P的变量值，Q必须保证使用完以后将这三个寄存器恢复到原来的值，这里的备份，其实就是上面那8个步骤中第3个步骤做的事情。</p>
+          过程栈帧的结构栈帧是程序栈的一段，程序栈是储存器的一段。
+起始地址：储存在%ebp寄存器（桢指针）
+结束地址：储存在%esp寄存器（栈顶指针）
+栈指针会在运行时移动，所以大部分时候，在访问存储器的时候会基于帧指针访问，因为在一直移动的栈指针无法根据偏移量准确的定位一个存储器位置。
 
-          
+过程的实现
+备份
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/21/CSAPP-9/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1512,83 +1415,49 @@
       
         
           
-            <p>接上一篇说最复杂的条件码寄存器组合</p>
-<p>所有组合都是基于a-b的前提。</p>
-<table>
-<thead>
-<tr>
-<th>后缀</th>
-<th>逻辑运算（值为1）</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>e</td>
-<td>ZF</td>
-<td>相等。此时ZF为1，a-b=0，相等</td>
-</tr>
-<tr>
-<td>ne</td>
-<td>~ZF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>s</td>
-<td>SF</td>
-<td>负数。SF为1，设b=0，即a&lt;0</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>~SF</td>
-<td>反之</td>
-</tr>
-<tr>
-<td>l</td>
-<td>SF^OF</td>
-<td>有符号的小于。当OF为0时，则代表没有溢出，此时SF必须为1，SF为1则代表结果为负。即a-b&lt;0，也就是a&lt;b，也就是小于的意思。  当OF为1时，则代表产生了溢出，而此时SF必须为0，也就是说结果最后为正数，那么此时则是负溢出，也可以得到a-b&lt;0，即a&lt;b.</td>
-</tr>
-<tr>
-<td>le</td>
-<td>(SF^OF)\</td>
-<td>ZF</td>
-<td>有符号的小于等于。括号里代表小于，和等于作或运算</td>
-</tr>
-<tr>
-<td>g</td>
-<td>(SF^OF)&amp;~ZF</td>
-<td>有符号的大于。小于且不等于</td>
-</tr>
-<tr>
-<td>ge</td>
-<td>~(SF^OF)</td>
-<td>有符号的大于等于。不小于</td>
-</tr>
-<tr>
-<td>b</td>
-<td>CF</td>
-<td>无符号的小于。无符号减法只有在减出负数的时候才可能溢出，也就是说只要结果溢出了，那么一定有a-b&lt;0</td>
-</tr>
-<tr>
-<td>be</td>
-<td>CF\</td>
-<td>ZF</td>
-<td>无符号的小于等于。</td>
-</tr>
-<tr>
-<td>a</td>
-<td>~CF&amp; ~ZF</td>
-<td>无符号的大于。无符号大于等于且不等于</td>
-</tr>
-<tr>
-<td>ae</td>
-<td>~CF</td>
-<td>s无符号大于等于</td>
-</tr>
-</tbody>
-</table>
+          接上一篇说最复杂的条件码寄存器组合
+所有组合都是基于a-b的前提。
 
-          
+
+
+后缀
+逻辑运算（值为1）
+描述
+
+
+
+
+e
+ZF
+相等。此时ZF为1，a-b=0，相等
+
+
+ne
+~ZF
+反之
+
+
+s
+SF
+负数。SF为1，设b=0，即a&lt;0
+
+
+ns
+~SF
+反之
+
+
+l
+SF^OF
+有符号的小于。
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/17/CSAPP-8/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1769,59 +1638,38 @@
       
         
           
-            <h2 id="控制"><a href="#控制" class="headerlink" title="控制"></a>控制</h2><h4 id="条件码寄存器"><a href="#条件码寄存器" class="headerlink" title="条件码寄存器"></a>条件码寄存器</h4><table>
-<thead>
-<tr>
-<th>条件码寄存器</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CF</td>
-<td>进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1</td>
-</tr>
-<tr>
-<td>ZF</td>
-<td>零标志寄存器。最近的操作得出的结果是0时为1</td>
-</tr>
-<tr>
-<td>SF</td>
-<td>符号标志寄存器。最近的操作得到的结果为负数时为1</td>
-</tr>
-<tr>
-<td>OF</td>
-<td>溢出标志寄存器。最近的操作导致一个补码溢出时为1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>条件码寄存器大多数时候是被动改变</li>
-</ul>
-<h4 id="特殊的测试指令"><a href="#特殊的测试指令" class="headerlink" title="特殊的测试指令"></a>特殊的测试指令</h4><p>cmp和test是唯二可以主动设置条件码寄存器的指令</p>
-<p>cmp S1，S2：基于S1-S2的值来设置条件码</p>
-<p>test S2，S1：基于S2&amp;S1去设置条件码</p>
-<p>二者都需加数据格式后缀</p>
-<h4 id="访问条件码寄存器"><a href="#访问条件码寄存器" class="headerlink" title="访问条件码寄存器"></a>访问条件码寄存器</h4><ul>
-<li>根据条件码组合，将一个字节设置为0，1</li>
-<li>条件跳转到程序的某个其他部分</li>
-<li>有条件的传送数据</li>
-</ul>
-<p>第一种是直接读取条件码寄存器的值，二三种是直接使用，不会显示的读取条件码寄存器的值</p>
-<h4 id="SET指令"><a href="#SET指令" class="headerlink" title="SET指令"></a>SET指令</h4><p>将条件码组合的值设置到指定的目的操作数，目的操作数只能是单字节的寄存器或储存器中单字节的位置</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k541jsvtj30l60cuqb8.jpg" alt=""></p>
-<h4 id="跳转指令"><a href="#跳转指令" class="headerlink" title="跳转指令"></a>跳转指令</h4><p>直接将程序跳转到指定位置，或者根据条件码寄存器的组合进行条件跳转。除了第一个jmp直接跳转指令以及第二个jmp间接跳转指令之外，剩下的12个都是条件跳转指令。</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k549n5x0j30nk0dqdqn.jpg" alt=""></p>
-<p>总的来说，跳转指令包含给出一个偏移量和给出绝对地址两种</p>
-<h4 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h4><p>c代码（随便写的）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">if</span>(a==b) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		a++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (b&lt;<span class="number">10</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		b++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">do</span> </span><br><span class="line">	&#123;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (a&gt;=i);</span><br><span class="line">	<span class="keyword">switch</span> (a)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:a+=<span class="number">10</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:a+=<span class="number">20</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">5</span>:a+=<span class="number">30</span>;</span><br><span class="line">				<span class="keyword">break</span>;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a;	</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>汇编代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">	.file	&quot;t.c&quot;</span><br><span class="line">	.text</span><br><span class="line">	.globl	jmp</span><br><span class="line">	.type	jmp, @function</span><br><span class="line">jmp:</span><br><span class="line">.LFB0:</span><br><span class="line">	.cfi_startproc</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	cmpl	%esi, %edi  //比较a,b</span><br><span class="line">	je	.L11  //如果相等，跳到.L11，返回a</span><br><span class="line">	movl	$0, %edx  //如果不相等，进行for循环，把0赋给i</span><br><span class="line">	jmp	.L3 //跳到.L3</span><br><span class="line">	/*if实现判断*/</span><br><span class="line">	</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">.L4:</span><br><span class="line">	addl	$1, %edi //a自加</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">.L3:</span><br><span class="line">	cmpl	$4, %edx // i和4比较</span><br><span class="line">	jle	.L4 // i小于或等于4则跳到.L4</span><br><span class="line">	jmp	.L5 //i大于4则跳到.L5,进行do while循环</span><br><span class="line">	/*for循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">.L6:</span><br><span class="line">	addl	$1, %esi //b自加</span><br><span class="line">.L5:</span><br><span class="line">	cmpl	$9, %esi //b和9比较</span><br><span class="line">	jle	.L6 //b小于或等于9，则跳至.L6自加</span><br><span class="line">.L7:</span><br><span class="line">	addl	$1, %edx //i自加</span><br><span class="line">	cmpl	%edx, %edi //a和i比较</span><br><span class="line">	jge	.L7 //a大于或等于i则跳到.L7开头</span><br><span class="line">	/*do while循环实现*/</span><br><span class="line">	</span><br><span class="line">	/*switch语句实现*/</span><br><span class="line">	cmpl	$2, %edi //a和2比较</span><br><span class="line">	je	.L8 //如果a=2，跳至.L8</span><br><span class="line">	cmpl	$5, %edi  //a和5比较</span><br><span class="line">	je	.L9 //a=5则跳至.L9</span><br><span class="line">	cmpl	$1, %edi //a和1比较</span><br><span class="line">	je	.L14 //a=1则跳至.L14</span><br><span class="line">	movl	%edi, %eax //取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L14:</span><br><span class="line">	leal	10(%rdi), %eax //计算10+a并作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L8:</span><br><span class="line">	leal	20(%rdi), %eax //计算20+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L9:</span><br><span class="line">	leal	30(%rdi), %eax //计算30+a作为返回值</span><br><span class="line">	ret</span><br><span class="line">.L11:</span><br><span class="line">	movl	%edi, %eax 取a作为返回值</span><br><span class="line">	ret</span><br><span class="line">	.cfi_endproc</span><br><span class="line">.LFE0:</span><br><span class="line">	.size	jmp, .-jmp</span><br><span class="line">	.ident	&quot;GCC: (Ubuntu 7.3.0-27ubuntu1~18.04) 7.3.0&quot;</span><br><span class="line">	.section	.note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
-<h4 id="cmov指令"><a href="#cmov指令" class="headerlink" title="cmov指令"></a>cmov指令</h4><p>满足条件的时候进行传送，与set比较像</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0k73cx9zoj30jn0diaip.jpg" alt=""></p>
-<p>条件传送指令相当于if-else的赋值判断，一般情况下，比if-else性能好</p>
+          控制条件码寄存器
 
-          
+
+条件码寄存器
+描述
+
+
+
+
+CF
+进位标志寄存器。最近的操作使最高位产生了进位，无符号操作溢出时为1
+
+
+ZF
+零标志寄存器。最近的操作得出的结果是0时为1
+
+
+SF
+符号标志寄存器。最近的操作得到的结果为负数时为1
+
+
+OF
+溢出标志寄存器。最近的操作导致一个补码溢出时为1
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/17/CSAPP-7/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2002,20 +1850,22 @@
       
         
           
-            <h2 id="算术和逻辑操作"><a href="#算术和逻辑操作" class="headerlink" title="算术和逻辑操作"></a>算术和逻辑操作</h2><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cv3rkbknj30rk0iagyk.jpg" alt=""></p>
-<h3 id="加载有效地址"><a href="#加载有效地址" class="headerlink" title="加载有效地址"></a>加载有效地址</h3><p>leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、</p>
-<p>区别于mov！！！！</p>
-<h3 id="一元和二元操作"><a href="#一元和二元操作" class="headerlink" title="一元和二元操作"></a>一元和二元操作</h3><p>一元：一个操作数</p>
-<p>二元：俩个操作数</p>
-<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><p>移位量，要移位的数。</p>
-<p>移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置</p>
-<p>高位被忽略，eg：salb移7位……</p>
-<p>左移：SAL、SHL右边都是填0</p>
-<p>右移：SAR左边填符号位。SHR左边填0</p>
-<p>大多数指令既可以用于无符号运算，也可以用于补码运算，只有右移操作要求区分有符号和无符号数</p>
-<h3 id="特殊的算术操作"><a href="#特殊的算术操作" class="headerlink" title="特殊的算术操作"></a>特殊的算术操作</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0cvvgttn5j30ow0aj7d3.jpg" alt=""></p>
-
-          
+          算术和逻辑操作
+加载有效地址leaq：将有效地址写入目的操作数，目的操作数必须是一个寄存器、
+区别于mov！！！！
+一元和二元操作一元：一个操作数
+二元：俩个操作数
+移位操作移位量，要移位的数。
+移位量可以是立即数，或者放在单字节寄存器%cl中；目的操作数：寄存器或者内存位置
+高位被忽略，eg：sa
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/15/CSAPP-6/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2196,105 +2046,24 @@
       
         
           
-            <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h2 id="机器代码"><a href="#机器代码" class="headerlink" title="机器代码"></a>机器代码</h2><ul>
-<li><p>程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址</p>
-</li>
-<li><p>整数寄存器文件包含16个命名的位置，储存地址或者整数数据。</p>
-</li>
-<li><p>条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。</p>
-</li>
-<li><p>一组向量寄存器可以存放一个或多个整数或浮点数值</p>
-</li>
-<li><p>虚拟地址（64位）的高十六位必须设置为0</p>
-</li>
-<li><p>查看汇编代码（—&gt;test.s)</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -S <span class="keyword">test</span>.c</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编译并汇编该代码(—&gt;test.o)</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux&gt; gcc -Og -<span class="keyword">c</span> test.<span class="keyword">c</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GCC产生的汇编代码指令上有后缀，而反汇编代码没有，x86-64的内存引用都是四字长寄存器给出。</p>
-</li>
-<li><p>反汇编器：根据机器代码生成一种类似于汇编代码的格式。</p>
-<p>查看机器代码文件的内容：</p>
-</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">linux</span>&gt; <span class="selector-tag">objdump</span> <span class="selector-tag">-d</span> <span class="selector-tag">matore</span><span class="selector-class">.o</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0jz3cqxd9j30nt07pdkr.jpg" alt=""></li>
-</ul>
-<h2 id="访问信息"><a href="#访问信息" class="headerlink" title="访问信息"></a>访问信息</h2><p>整数寄存器：</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0ctdymy4kj30lq0oetyj.jpg" alt=""></p>
-<h4 id="操作数指示符"><a href="#操作数指示符" class="headerlink" title="操作数指示符"></a>操作数指示符</h4><p>立即数：常数 ($(C常数表示法))</p>
-<p>寄存器：某个寄存器的内容</p>
-<p>内存引用：根据计算出的地址，访问地址</p>
-<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0csjo1b7wj30oz0angww.jpg" alt=""></p>
-<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><p>MOV类：把数据从源位置复制到目的位置</p>
-<p>源操作数是一个储存在寄存器或者内存中的立即数</p>
-<p>目的操作数是个寄存器或者内存地址（位置），不能是立即数寻址</p>
-<p>x86-64:两操作数不能都指向内存位置。</p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>movb（8）</td>
-<td>传送字节</td>
-</tr>
-<tr>
-<td>movw（16）</td>
-<td>传送字</td>
-</tr>
-<tr>
-<td>movl（32）</td>
-<td>传送双字，以寄存器为目的时，把寄存器高位4字节设置为0</td>
-</tr>
-<tr>
-<td>movq（64）</td>
-<td>传送四字</td>
-</tr>
-<tr>
-<td>movabsq</td>
-<td>传送绝对的四字</td>
-</tr>
-</tbody>
-</table>
-<p><strong>字节传送指令比较（16进制）</strong></p>
-<table>
-<thead>
-<tr>
-<th>指令</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>movb</td>
-<td>不改变其他字节</td>
-</tr>
-<tr>
-<td>movsbq</td>
-<td>把其他字节设为FF</td>
-</tr>
-<tr>
-<td>movzbq</td>
-<td>把其他字节设为00</td>
-</tr>
-</tbody>
-</table>
-<h4 id="压入和弹出栈数据"><a href="#压入和弹出栈数据" class="headerlink" title="压入和弹出栈数据"></a>压入和弹出栈数据</h4><p>pushq：把数据压入到栈上</p>
-<p>popq：弹出数据</p>
-<p>%rsp：栈指针，保存栈顶元素地址</p>
-<p>压入四字节：先减去8(栈倒过来放），然后将值写入新的栈顶地址。</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">subq $8,%rsp</span><br><span class="line">movq %rbp,(%rsp)</span><br></pre></td></tr></table></figure>
-<p>弹出四字节：读出数据，加上8</p>
-<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movq（%rsp），%rax</span><br><span class="line">addq $8,%rsp</span><br></pre></td></tr></table></figure>
+          代码机器代码
+程序计数器（PC）%rip给出将要执行的下一条指令在内存中的地址
 
-          
+整数寄存器文件包含16个命名的位置，储存地址或者整数数据。
+
+条件码寄存器保存最近执行的算术或逻辑指令的状态信息。实现控制或数据流中的条件变化。
+
+一组向量寄存器可以存放一个或多个整数或浮点数值
+
+虚拟地址（64位）的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/13/CSAPP-5/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2475,30 +2244,22 @@
       
         
           
-            <p>bomb lab题目都找不到……所以，又回来啃书了……</p>
-<h3 id="舍入"><a href="#舍入" class="headerlink" title="舍入"></a>舍入</h3><ul>
-<li>向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。</li>
-<li>向零舍入：正数向下舍入，负数向上舍入</li>
-<li>向上舍入：大于该数的最小整数</li>
-<li>向下舍入：不大于该数的最大整数</li>
-</ul>
-<h3 id="IEEE浮点表示"><a href="#IEEE浮点表示" class="headerlink" title="IEEE浮点表示"></a>IEEE浮点表示</h3><p>$$<br>V=(-1)^s\times M\times 2^E<br>$$</p>
-<ul>
-<li><p>符号位（s），阶码字段(E)，小数字段(M)</p>
-</li>
-<li><p>规格化的值</p>
-<p>E的位模式不全为0也不全为1，此时，阶码的值E=e-Bias(偏置值：单精度：127；双精度：1023)，小数字段:[0,1].</p>
-</li>
-<li><p>非规格化的值</p>
-<p>阶码域全为0，E=1-Bias</p>
-</li>
-<li><p>特殊值</p>
-<p>阶码全为1。小数域全为0时，得到的值表示无穷（s=0：正无穷，s=1:负无穷），小数域非0，结果值被称为NaN。</p>
-</li>
-</ul>
-<h3 id="整数转换为浮点数"><a href="#整数转换为浮点数" class="headerlink" title="整数转换为浮点数"></a>整数转换为浮点数</h3><p>创造规格化表示，用IEEE形式编码，构造小数字段，构造阶码字段</p>
+          bomb lab题目都找不到……所以，又回来啃书了……
+舍入
+向偶数舍入（默认）：找到最接近的匹配值，如果是5，则使结果的最低有效数字是偶数。
+向零舍入：正数向下舍入，负数向上舍入
+向上舍入：大于该数的最小整数
+向下舍入：不大于该数的最大整数
 
-          
+IEEE浮点表示$$V=(-1)^s\times M\
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/11/CSAPP-4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

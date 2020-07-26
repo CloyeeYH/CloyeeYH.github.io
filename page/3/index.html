@@ -305,6 +305,678 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/08/19/Java一丢丢/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/19/Java一丢丢/" itemprop="url">Java一丢丢</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-19T10:27:59+08:00">
+                2019-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web-Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java-Web&Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/19/Java一丢丢/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/08/19/Java一丢丢/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  566 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这就开始学习了？？</p>
+<p>暑假看了一点点java，之后一个月就是java实习了，来一个分界线☟☟☟</p>
+<hr>
+<h1 id="零散知识点"><a href="#零散知识点" class="headerlink" title="零散知识点"></a>零散知识点</h1><ul>
+<li><p>‘syso‘ ’alt‘+’/‘&#10233;<code>System.out.println();</code></p>
+</li>
+<li><p><code>Float.MAX_VALUE</code>获取float max</p>
+</li>
+<li><p>println：输出后自动换行，print：输出后不换行</p>
+</li>
+<li><p>数组定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a; </span><br><span class="line"> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>public static final 则为常量</p>
+</li>
+<li><p>1970年1月1日 8点0分0秒开始</p>
+</li>
+<li><p><code>extends</code>继承</p>
+</li>
+<li><p><code>/**</code>+ENTER 多行注释</p>
+</li>
+<li><p>类名。接口名首字母大写</p>
+</li>
+<li><p>函数名，变量名首字母小写</p>
+</li>
+<li><p>常量首字母大写</p>
+</li>
+<li><p>单引号字符，双引号字符串</p>
+</li>
+<li><p>基本数据类型在栈，引用数据类型在堆里</p>
+</li>
+<li><p>main是程序入口，如果写的内容想在控制台输出，必须把内容放在main方法里</p>
+</li>
+<li><p>整数类型：byte（-128~127） short int  long (long num=12L  必须带L)</p>
+</li>
+<li><p>数据类型转换：隐式类型转换，short转int；强制转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">short</span> s2=(<span class="keyword">short</span>)i;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>String 转成int(前提：string内容是数字)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str=<span class="string">"123"</span>;</span><br><span class="line"><span class="keyword">int</span> i2= Integer.parseInt(str);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>int转String </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  i3=<span class="number">12</span>;</span><br><span class="line">string str=i3+<span class="string">""</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类转父类：向上类型转换；父类转子类：向下类型转换（子类之间不能互相强转）</p>
+</li>
+<li><p>boolean类型默认false</p>
+</li>
+<li><p>自动生成set get 方法：source → gets and sets→  select all→ OK</p>
+</li>
+<li><p>在静态static方法内部只能调用static方法或static变量</p>
+</li>
+<li><p>new 后面的是构造方法</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">可能出错的代码</span><br><span class="line">&#125;catch(Exception e)&#123;</span><br><span class="line">	出错的操作</span><br><span class="line">&#125;</span><br><span class="line">finally&#123;</span><br><span class="line">必须要执行的语句&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><ul>
+<li><p>短路与（&amp;&amp;）：第一个false ，不执行第二个（常用，效率高）</p>
+</li>
+<li><p>不短路与（&amp;）：第一个false，第二个也要执行</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person zhangsan; <span class="comment">//定义一个对象</span></span><br><span class="line">zhangsan=person();<span class="comment">//实例化对象</span></span><br><span class="line">zhangsan.name=<span class="string">"zhangsan"</span>;<span class="comment">//给对象的属性赋值</span></span><br><span class="line">zangsan.age=<span class="number">23</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h1><ul>
+<li>‘syso‘ ’ALT‘+’/‘&#10233;<code>System.out.println();</code></li>
+<li>选中 CTRL + SHIFYT + /   &#10233;多行注释</li>
+<li>‘main’ ‘ALT’ + ‘/‘&#10233;<code>public static void main(String []args)</code></li>
+<li>‘CTRL’ + ‘SHIFT’ +’o’&#10233;自动导包</li>
+<li>‘’CTRL’  + ‘1’ &#10233;接口实现</li>
+</ul>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h3 id="继承线程类"><a href="#继承线程类" class="headerlink" title="继承线程类"></a>继承线程类</h3><p>首先准备一个独立的线程类，（继承thread）</p>
+<p>重写run方法，启动线程用start；机制视频9：00</p>
+<h3 id="实现Runnable接口"><a href="#实现Runnable接口" class="headerlink" title="实现Runnable接口"></a>实现Runnable接口</h3><p>一个类，实现runnable接口，因为没继承thread，所以没有start方法</p>
+<p>所以要创建一个thread对象，把battle1作为thread对象的参数扔进去</p>
+<h3 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/27/CSAPP-12/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/27/CSAPP-12/" itemprop="url">CSAPP-12</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T22:02:26+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/27/CSAPP-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/27/CSAPP-12/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  483 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="逻辑设计和硬件控制语言HCL"><a href="#逻辑设计和硬件控制语言HCL" class="headerlink" title="逻辑设计和硬件控制语言HCL"></a>逻辑设计和硬件控制语言HCL</h2><h3 id="逻辑设计"><a href="#逻辑设计" class="headerlink" title="逻辑设计"></a>逻辑设计</h3><p>逻辑门：数字电路的基本计算元素，物理结构与逻辑结构的映射，实质是晶体管。输出是输入的布尔函数。</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lc2ailk2j30ez0430u8.jpg" alt=""></p>
+<p>一个逻辑门计算一位</p>
+<p>组合电路需要遵循的原则</p>
+<ul>
+<li>两个逻辑门的输出不能连到一起。</li>
+<li>组合的电路必须是无环的。输出不能再当输入</li>
+</ul>
+<p>HCL表达式与C表达式区分</p>
+<ul>
+<li>逻辑门是持续输出的，但C语言表达式是执行到的时候才会求值。这个区别可以把逻辑门当成一个电路来看，电路是不能断电的，电流会一直存在。</li>
+<li>C语言中输出可以是任意整数，而HCL只能是1和0。这点比较好理解。</li>
+<li>对于a &amp;&amp; b这个符号来说，C语言中的规定是如果前者为假，则后者不会再计算。而HCL当中没有这种说法。</li>
+</ul>
+<h3 id="按位计算"><a href="#按位计算" class="headerlink" title="按位计算"></a>按位计算</h3><p>位相等：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcm9qhfkj30al05ot8s.jpg" alt=""></p>
+<p>位多路复用器：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcmx9gyqj30a705qdfw.jpg" alt=""></p>
+<p>多位运算就是多个一位一起运算</p>
+<p>32位看是否相等：</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcrkg0qjj30ij0feq47.jpg" alt=""></p>
+<p>s的not被多次用到，否则需要32个not门。</p>
+<p>HCL条件选择表达式的条件不需要互斥，按照优先顺序依次选取</p>
+<p>集合形式的HCL表达式，需要一个输入信号与某些值匹配</p>
+<p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lcsezf60j30au06nmxc.jpg" alt=""></p>
+<h3 id="储存器和时钟"><a href="#储存器和时钟" class="headerlink" title="储存器和时钟"></a>储存器和时钟</h3><p>储存器一般两种：</p>
+<ol>
+<li>时钟寄存器。储存单个位或单个字，时钟信号控制是否加载输入的值</li>
+<li>随机访问储存器。储存多个字，地址来选择</li>
+</ol>
+<p>寄存器文件和随即访问储存器有读写操作，时钟寄存器没有读写。</p>
+<p>寄存器文件两个读端口，一个写端口，端口都带地址标识操作寄存器。</p>
+<p>随即访问储存器只有一个地址输入和一个数据输出</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/25/CSAPP-11/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/25/CSAPP-11/" itemprop="url">CSAPP-11</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-25T21:38:29+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/25/CSAPP-11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/CSAPP-11/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  287 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Y86指令体系结构"><a href="#Y86指令体系结构" class="headerlink" title="Y86指令体系结构"></a>Y86指令体系结构</h2><p>Y86的程序猿可见状态：寄存器，储存器，条件码，PC，程序状态</p>
+<h3 id="Y86指令集"><a href="#Y86指令集" class="headerlink" title="Y86指令集"></a>Y86指令集</h3><p><img src="http://ww1.sinaimg.cn/large/0069QpNUly1g0lbj37uuxj30ms0fegw4.jpg" alt=""></p>
+<p>halt：终止指令的执行</p>
+<p>nop：占位指令，不做任何事</p>
+<p>**movl：一系列数据传送指令。r代表寄存器，m代表储存器，i代表立即数。</p>
+<p>opl：操作指令</p>
+<p>jxx：条件跳转指令，根据后面的条件进行跳转</p>
+<p>cmovxx：条件传送指令。xx是条件，只发生在两个寄存器之间</p>
+<p>call与ret：方法的调用和返回指令。一个将返回地址入栈，并跳到目标地址。一个将返回地址入PC，并跳到返回地址。</p>
+<p>push与pop：入栈和出栈操作</p>
+<h3 id="指令编码"><a href="#指令编码" class="headerlink" title="指令编码"></a>指令编码</h3><p>一般两个寄存器占用一个字节，储存器占四个字节，指令的编码和功能占一个字节。</p>
+<p>寄存器的表示：4个二进制位</p>
+<h3 id="Y86异常"><a href="#Y86异常" class="headerlink" title="Y86异常"></a>Y86异常</h3><p>Y86的四种不同状态码：AOK（正常）、HLT（执行halt指令）、ADR（非法地址）、INS（非法指令）</p>
+<h3 id="Y86程序"><a href="#Y86程序" class="headerlink" title="Y86程序"></a>Y86程序</h3><p>和x86相似，但有时候Y86需要两条指令来达到X86只要一条即可</p>
+<p>eg：addl $4,%ecx</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/23/CSAPP-10/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1860,821 +2532,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/11/CSAPP-datalab/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/11/CSAPP-datalab/" itemprop="url">CSAPP-datalab</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T13:41:56+08:00">
-                2019-02-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/11/CSAPP-datalab/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/11/CSAPP-datalab/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  2k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  9 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
-<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
-<ul>
-<li><p>bitAnd - x&amp;y using only ~ and |</p>
-<ul>
-<li>Example: bitAnd(6, 5) = 4</li>
-<li>Legal ops: ~ |</li>
-<li>Max ops: 8</li>
-<li>Rating: 1</li>
-</ul>
-</li>
-</ul>
-<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
-<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> bit<span class="constructor">And(<span class="params">int</span> <span class="params">x</span>,<span class="params">int</span> <span class="params">y</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x<span class="pattern-match">|~y));</span></span><br><span class="line"><span class="pattern-match">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h3><p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
-<ul>
-<li>getByte - Extract byte n from word x</li>
-<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
-<li>Examples: getByte(0x12345678,1) = 0x56</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 6</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
-<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> getByte(<span class="type">int</span> x,<span class="type">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> <span class="keyword">temp</span>=x&gt;&gt;((n)&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">temp</span>=<span class="keyword">temp</span>&amp;<span class="number">0xFF</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">temp</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
-<ul>
-<li>logicalShift - shift x to the right by n, using a logical shift<ul>
-<li>Can assume that 0 &lt;= n &lt;= 31</li>
-<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 20</li>
-<li>Rating: 3</li>
-</ul>
-</li>
-</ul>
-<p>思路：</p>
-<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> logicalShift(<span class="built_in">int</span> x,<span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> x1=x&gt;&gt;n;</span><br><span class="line">	<span class="built_in">int</span> mask=(~（<span class="number">1</span>&lt;&lt;<span class="number">31</span>)&gt;&gt;n&lt;&lt;<span class="number">1</span>)+<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
-<ul>
-<li><p>bitCount - returns count of number of 1’s in word</p>
-<ul>
-<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 40</li>
-<li>Rating: 4</li>
-</ul>
-</li>
-</ul>
-<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
-<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
-<ul>
-<li>bang - Compute !x without using !</li>
-<li>Examples: bang(3) = 0, bang(0) = 1</li>
-<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 12</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
-<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int bang(int <span class="keyword">x</span>)</span><br><span class="line">&#123;</span><br><span class="line">	int <span class="keyword">x</span><span class="number">1</span>=~<span class="keyword">x</span>+<span class="number">1</span><span class="comment">;</span></span><br><span class="line"><span class="comment">	x=x|x1;</span></span><br><span class="line"><span class="comment">	x=x&gt;&gt;31;</span></span><br><span class="line"><span class="comment">	x=x+1；</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
-<ul>
-<li>tmin - return minimum two’s complement integer</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 4</li>
-<li>Rating: 1</li>
-</ul>
-<p>思路：这不就是返回一个确定的值吗？</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> tmin(<span class="built_in">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0x80</span> &lt;&lt; <span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="fitsBits"><a href="#fitsBits" class="headerlink" title="fitsBits"></a>fitsBits</h3><p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
-<ul>
-<li>fitsBits - return 1 if x can be represented as an</li>
-<li>n-bit, two’s complement integer.</li>
-<li>1 &lt;= n &lt;= 32</li>
-<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> fitsBits(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> x1 =~((~n)+<span class="number">1</span>);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   <span class="built_in">int</span> ans=(!tmpx|!(tmpx+<span class="number">1</span>));</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
-<ul>
-<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
-<li>Round toward zero</li>
-<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 15</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> divpwr2(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> tmp = (~( (x &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>) )+<span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">int</span> q= ~((~<span class="number">0</span>)&lt;&lt;n);</span><br><span class="line">    <span class="built_in">int</span> ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
-<ul>
-<li>negate - return -x <ul>
-<li>Example: negate(1) = -1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 5</li>
-<li>Rating: 2</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> negate(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> ((~x)+<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h3><p>题目:判断x是不是正数</p>
-<ul>
-<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
-<li>Example: isPositive(-1) = 0.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 8</li>
-<li>Rating: 3</li>
-</ul>
-</li>
-</ul>
-<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> isPositive(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> !(!x|(x&gt;&gt;<span class="number">31</span>)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
-<ul>
-<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
-<li>Example: isLessOrEqual(4,5) = 1.</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 24</li>
-<li>Rating: 3</li>
-</ul>
-<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> isLessOrEqual(<span class="built_in">int</span> x, <span class="built_in">int</span> y)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> signx = (x &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> signy = (y &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> isSameSign=!(signx^signy) ;</span><br><span class="line">   <span class="built_in">int</span> p=!(((~x)+<span class="number">1</span>+y)&gt;&gt;<span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ilog2"><a href="#ilog2" class="headerlink" title="ilog2"></a>ilog2</h3><p>题目：求整数的log(x)。</p>
-<ul>
-<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
-<li>Example: ilog2(16) = 4</li>
-<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
-<li>Max ops: 90</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> ilog2(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">num</span>=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">num</span>=(!!(x&gt;&gt;<span class="number">16</span>))&lt;&lt;<span class="number">4</span>;</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">8</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">4</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">2</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">1</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">num</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
-<ul>
-<li>float_neg - Return bit-level equivalent of expression -f for</li>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representations of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 10</li>
-<li>Rating: 2</li>
-</ul>
-<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_neg</span><span class="params">(<span class="keyword">unsigned</span> uf)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> result;</span><br><span class="line">    <span class="keyword">unsigned</span> tmp;</span><br><span class="line">    result=uf^<span class="number">0x80000000</span>;</span><br><span class="line">    tmp=uf&amp;<span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">if</span>(tmp&gt;<span class="number">0x7f800000</span>) result=uf;</span><br><span class="line">    <span class="keyword">return</span>  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
-<ul>
-<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
-<li>Result is returned as unsigned int, but</li>
-<li>it is to be interpreted as the bit-level representation of a</li>
-<li>single-precision floating point values.</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
-<p>如果是0，直接返回即可</p>
-<p>如果是0x80000000,返回0xcf000000</p>
-<p>如果负数：变为整正数之后按照正数计算</p>
-<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
-<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
-<ul>
-<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
-<li>floating point argument f.</li>
-<li>Both the argument and result are passed as unsigned int’s, but</li>
-<li>they are to be interpreted as the bit-level representation of</li>
-<li>single-precision floating point values.</li>
-<li>When argument is NaN, return argument</li>
-<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
-<li>Max ops: 30</li>
-<li>Rating: 4</li>
-</ul>
-</li>
-</ul>
-<p>嘤嘤嘤~浮点数真令人头大</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/01/CSAPP-3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/01/CSAPP-3/" itemprop="url">CSAPP_3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-01T18:57:48+08:00">
-                2019-02-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/01/CSAPP-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/01/CSAPP-3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  185 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
-<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
-<ul>
-<li>无符号数编码唯一性</li>
-<li>双射</li>
-</ul>
-<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
-<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
-<li><p>原码</p>
-<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
-<p>+：0</p>
-<p>—：1</p>
-</li>
-<li><p>反码</p>
-<p>符号位不变，其他取反</p>
-</li>
-<li><p>补码</p>
-<p>负数：反码末尾加一</p>
-<p>正数：本身</p>
-</li>
-</ul>
-<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
-<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
-</li>
-<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/01/30/CSAPP-2/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CloyeeYH">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/blog-logo.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cloyee's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/30/CSAPP-2/" itemprop="url">CSAPP_2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-30T18:57:17+08:00">
-                2019-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机系统基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/01/30/CSAPP-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/30/CSAPP-2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  270 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  1 mins
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
-<li>小端法：最低有效字节在最前面</li>
-<li>大端法：最高有效字节在最前面</li>
-<li>浮点型和整型数据有不同的字节模式</li>
-<li>二进制代码不兼容</li>
-</ol>
-<h4 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h4><table>
-<thead>
-<tr>
-<th style="text-align:center">布尔运算</th>
-<th style="text-align:center">逻辑运算</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">~</td>
-<td style="text-align:center">NOT</td>
-</tr>
-<tr>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">AND</td>
-</tr>
-<tr>
-<td style="text-align:center">单竖线</td>
-<td style="text-align:center">OR</td>
-</tr>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:center">异或（不同为1，相同为0）</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左</li>
-<li>布尔环</li>
-</ul>
-<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：右端补k个0，移位之后符号为不变，将一个整数左移1位相当于乘以2</p>
-<p>逻辑右移：左端补k个0</p>
-<p>算术右移：左端补k个最高有效位的值</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">表示</th>
-<th style="text-align:center">意义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">x&gt;&gt;k</td>
-<td style="text-align:center">x右移k位</td>
-</tr>
-<tr>
-<td style="text-align:center">x&lt;&lt;k</td>
-<td style="text-align:center">x左移k位</td>
-</tr>
-</tbody>
-</table>
-<h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>转换为二进制进行运算，之后转回相应进制</p>
-<p><strong>掩码运算</strong></p>
-<p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
-<p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2727,7 +2584,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2738,7 +2595,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2810,7 +2667,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 24.8k 字</span>
+  <span class="post-count">博客全站共 27.8k 字</span>
 </div>
 
 

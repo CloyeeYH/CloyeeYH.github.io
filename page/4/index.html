@@ -305,6 +305,821 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/11/CSAPP-datalab/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/11/CSAPP-datalab/" itemprop="url">CSAPP-datalab</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T13:41:56+08:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/11/CSAPP-datalab/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/11/CSAPP-datalab/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看CSAPP看的实在是绝望，觉得假期肯定啃不完，所以决定先做实验，遇见不会的再翻书，过年这一个多周的时间，做了下datalab</p>
+<h3 id="bitAnd"><a href="#bitAnd" class="headerlink" title="bitAnd"></a>bitAnd</h3><p>题目：只能用～和|来实现位的与操作。</p>
+<ul>
+<li><p>bitAnd - x&amp;y using only ~ and |</p>
+<ul>
+<li>Example: bitAnd(6, 5) = 4</li>
+<li>Legal ops: ~ |</li>
+<li>Max ops: 8</li>
+<li>Rating: 1</li>
+</ul>
+</li>
+</ul>
+<p>思路：~x：非x，~y：非y，那么~x|~y就是既不是x也不是y，那~（~x|~y）就是既是x也是y，也就是x与y</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> bit<span class="constructor">And(<span class="params">int</span> <span class="params">x</span>,<span class="params">int</span> <span class="params">y</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	return (~(~x<span class="pattern-match">|~y));</span></span><br><span class="line"><span class="pattern-match">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="getByte"><a href="#getByte" class="headerlink" title="getByte"></a>getByte</h3><p>题目：给定n （0&lt;=n&lt;=3），求出x第n个字节是哪数字。</p>
+<ul>
+<li>getByte - Extract byte n from word x</li>
+<li>Bytes numbered from 0 (LSB) to 3 (MSB)</li>
+<li>Examples: getByte(0x12345678,1) = 0x56</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 6</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：（不做题觉得自己了解的还可以，一做题，就觉得，自己啥也没学到……）</p>
+<p>第一感觉和CSAPP书上的一道习题挺像，移位运算，用0xFF移动n个字节，然后&amp;一下</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> getByte(<span class="type">int</span> x,<span class="type">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> <span class="keyword">temp</span>=x&gt;&gt;((n)&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="keyword">temp</span>=<span class="keyword">temp</span>&amp;<span class="number">0xFF</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">temp</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="logicalShift"><a href="#logicalShift" class="headerlink" title="logicalShift"></a>logicalShift</h3><p>题目：将x按逻辑位移移动n（0&lt;=n&lt;=31）位。</p>
+<ul>
+<li>logicalShift - shift x to the right by n, using a logical shift<ul>
+<li>Can assume that 0 &lt;= n &lt;= 31</li>
+<li>Examples: logicalShift(0x87654321,4) = 0x08765432</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 20</li>
+<li>Rating: 3</li>
+</ul>
+</li>
+</ul>
+<p>思路：</p>
+<p>一开始想定义的时候直接unsigned不就好了吗？觉得那这道题就没有意义了。先进行算术右移，然后将右移产生的1mask掉,关键是mask怎么构造，范围是0~31，那1左移31位，然后取反，就是0111……1，然后右移n位，左移1位这样就出来了0…0011…1110，然后加个1，就出来了</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> logicalShift(<span class="built_in">int</span> x,<span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> x1=x&gt;&gt;n;</span><br><span class="line">	<span class="built_in">int</span> mask=(~（<span class="number">1</span>&lt;&lt;<span class="number">31</span>)&gt;&gt;n&lt;&lt;<span class="number">1</span>)+<span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> X1&amp;mask；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="bitCount"><a href="#bitCount" class="headerlink" title="bitCount"></a>bitCount</h3><p>题目：用位运算计算出x中有多少个1</p>
+<ul>
+<li><p>bitCount - returns count of number of 1’s in word</p>
+<ul>
+<li>Examples: bitCount(5) = 2, bitCount(7) = 3</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 40</li>
+<li>Rating: 4</li>
+</ul>
+</li>
+</ul>
+<p>思路：一位一位的右移，然后看奇偶数，然后进行统计，但是不能用==，/，所以没有了思路。整道题看writeup，还是不懂，看完书再说。分治</p>
+<h3 id="bang"><a href="#bang" class="headerlink" title="bang"></a>bang</h3><p>题目：不用！运算符求出！x结果</p>
+<ul>
+<li>bang - Compute !x without using !</li>
+<li>Examples: bang(3) = 0, bang(0) = 1</li>
+<li>Legal ops: ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 12</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：一开始还是想用if，感觉自己还是没找到感觉。这个题就是找0和其他数之间的区别，0|0肯定还是0，但0|1=1，除了0以外，其他数都有1，所以想从这个方面入手。但是没有思路啊，看了别人的才知道，<strong>除了0，任何数自己|上自己的相反数最高位一定是1</strong>，那就好说了，直接|一下相反数，移位一下就OK</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int bang(int <span class="keyword">x</span>)</span><br><span class="line">&#123;</span><br><span class="line">	int <span class="keyword">x</span><span class="number">1</span>=~<span class="keyword">x</span>+<span class="number">1</span><span class="comment">;</span></span><br><span class="line"><span class="comment">	x=x|x1;</span></span><br><span class="line"><span class="comment">	x=x&gt;&gt;31;</span></span><br><span class="line"><span class="comment">	x=x+1；</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="tmin"><a href="#tmin" class="headerlink" title="tmin"></a>tmin</h3><p>题目：返回补码整数的最小整数数值。</p>
+<ul>
+<li>tmin - return minimum two’s complement integer</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 4</li>
+<li>Rating: 1</li>
+</ul>
+<p>思路：这不就是返回一个确定的值吗？</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> tmin(<span class="built_in">void</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0x80</span> &lt;&lt; <span class="number">24</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="fitsBits"><a href="#fitsBits" class="headerlink" title="fitsBits"></a>fitsBits</h3><p>题目：只给出n个二进制位，能否表示x,能返回1.</p>
+<ul>
+<li>fitsBits - return 1 if x can be represented as an</li>
+<li>n-bit, two’s complement integer.</li>
+<li>1 &lt;= n &lt;= 32</li>
+<li>Examples: fitsBits(5,3) = 0, fitsBits(-4,3) = 1</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 15</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：因为在前面的bitCount，我在歪路上想了怎么能知道移位移到了最后一位，也就是怎么知道x转为二进制需要多少位，所以这个题就很简单了。将x右移n-1位，判断是不是全1或全0.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> fitsBits(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> x1 =~((~n)+<span class="number">1</span>);</span><br><span class="line">   x=x&gt;&gt;x1;</span><br><span class="line">   <span class="built_in">int</span> ans=(!tmpx|!(tmpx+<span class="number">1</span>));</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="divpwr2"><a href="#divpwr2" class="headerlink" title="divpwr2"></a>divpwr2</h3><p>题目：给出整数x，整数n，求[x/(2^n)]，答案要接近趋向0方向。</p>
+<ul>
+<li>divpwr2 - Compute x/(2^n), for 0 &lt;= n &lt;= 30</li>
+<li>Round toward zero</li>
+<li>Examples: divpwr2(15,1) = 7, divpwr2(-33,4) = -2</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 15</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：二进制的除就是右移，那就是x&gt;&gt;n.试了一下，只要x是负数，向下取整。首先判断是不是负数，(~( (x &gt;&gt; 31) &amp; 0x1) )+1，是负数构造出0xFF……FF出来，然后构造q=2^n-1 既~((~0)&lt;&lt;n)，如果既然是负数的话就可以加上(tmp &amp; q) 既 0x0…FFF，再右移动n位。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> divpwr2(<span class="built_in">int</span> x, <span class="built_in">int</span> n)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> tmp = (~( (x &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>) )+<span class="number">1</span> ;</span><br><span class="line">    <span class="built_in">int</span> q= ~((~<span class="number">0</span>)&lt;&lt;n);</span><br><span class="line">    <span class="built_in">int</span> ans = (x + (tmp &amp; q) ) &gt;&gt; n ;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="negate"><a href="#negate" class="headerlink" title="negate"></a>negate</h3><p>题目：求相反数</p>
+<ul>
+<li>negate - return -x <ul>
+<li>Example: negate(1) = -1.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 5</li>
+<li>Rating: 2</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> negate(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> ((~x)+<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h3><p>题目:判断x是不是正数</p>
+<ul>
+<li>isPositive - return 1 if x &gt; 0, return 0 otherwise <ul>
+<li>Example: isPositive(-1) = 0.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 8</li>
+<li>Rating: 3</li>
+</ul>
+</li>
+</ul>
+<p>思路：因为有0，所以不能看符号位，那就转换一下思路，取反，如果0，那么结果是1，如果为负数，那结果为正数，符号位为1，如果x为0或负数，那么!x | (x &gt;&gt; 31) != 0，再！一下就OK了</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> isPositive(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> !(!x|(x&gt;&gt;<span class="number">31</span>)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h3><p>题目：用位运算判定x&lt;=y，如果是就返回1，如果不是就返回0。</p>
+<ul>
+<li>isLessOrEqual - if x &lt;= y  then return 1, else return 0</li>
+<li>Example: isLessOrEqual(4,5) = 1.</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 24</li>
+<li>Rating: 3</li>
+</ul>
+<p>思路：分两种情况，同号和异号，异号比较一下符号位就好，同号x-y的符号位是不是0.</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> isLessOrEqual(<span class="built_in">int</span> x, <span class="built_in">int</span> y)</span><br><span class="line">&#123;</span><br><span class="line">   <span class="built_in">int</span> signx = (x &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> signy = (y &gt;&gt; <span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> isSameSign=!(signx^signy) ;</span><br><span class="line">   <span class="built_in">int</span> p=!(((~x)+<span class="number">1</span>+y)&gt;&gt;<span class="number">31</span>);</span><br><span class="line">   <span class="built_in">int</span> ans=(isSameSign&amp;p)|((!isSameSign)&amp;signx);</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ilog2"><a href="#ilog2" class="headerlink" title="ilog2"></a>ilog2</h3><p>题目：求整数的log(x)。</p>
+<ul>
+<li>ilog2 - return floor(log base 2 of x), where x &gt; 0</li>
+<li>Example: ilog2(16) = 4</li>
+<li>Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</li>
+<li>Max ops: 90</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：感觉和之前C程里解方程的实验应该差不多。二分法找最高位为1的位置。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> ilog2(<span class="built_in">int</span> x)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">int</span> <span class="built_in">num</span>=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">num</span>=(!!(x&gt;&gt;<span class="number">16</span>))&lt;&lt;<span class="number">4</span>;</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">8</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">4</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">2</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">num</span>=<span class="built_in">num</span>+((!!(x&gt;&gt;(<span class="number">1</span>+<span class="built_in">num</span>)))&lt;&lt;<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">num</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float-neg"><a href="#float-neg" class="headerlink" title="float_neg"></a>float_neg</h3><p>题目：返回输入uf的负数形式-uf。如果uf是NAN形式就直接返回参数。</p>
+<ul>
+<li>float_neg - Return bit-level equivalent of expression -f for</li>
+<li>floating point argument f.</li>
+<li>Both the argument and result are passed as unsigned int’s, but</li>
+<li>they are to be interpreted as the bit-level representations of</li>
+<li>single-precision floating point values.</li>
+<li>When argument is NaN, return argument.</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 10</li>
+<li>Rating: 2</li>
+</ul>
+<p>思路：题目读不懂，翻书+google，uf：unsigned float   ；  NaN（非数）:未定义或不可表示的值，先判断是不是NaN(&gt;0x2f800000)，是就直接返回，不是则取反</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="title">float_neg</span><span class="params">(<span class="keyword">unsigned</span> uf)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> result;</span><br><span class="line">    <span class="keyword">unsigned</span> tmp;</span><br><span class="line">    result=uf^<span class="number">0x80000000</span>;</span><br><span class="line">    tmp=uf&amp;<span class="number">0x7fffffff</span>;</span><br><span class="line">    <span class="keyword">if</span>(tmp&gt;<span class="number">0x7f800000</span>) result=uf;</span><br><span class="line">    <span class="keyword">return</span>  result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="float-i2f"><a href="#float-i2f" class="headerlink" title="float_i2f"></a>float_i2f</h3><p>题目：将int型的x转为float型的x。</p>
+<ul>
+<li>float_i2f - Return bit-level equivalent of expression (float) x</li>
+<li>Result is returned as unsigned int, but</li>
+<li>it is to be interpreted as the bit-level representation of a</li>
+<li>single-precision floating point values.</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 30</li>
+<li>Rating: 4</li>
+</ul>
+<p>思路：没思路，翻书，感觉一到浮点数就一脸懵逼，完全没有概念，又是一道把别人的答案从头到尾看了好几遍的题，等看完书再说叭（头秃……）。</p>
+<p>如果是0，直接返回即可</p>
+<p>如果是0x80000000,返回0xcf000000</p>
+<p>如果负数：变为整正数之后按照正数计算</p>
+<p>正数：计算尾数部分左移还是右移，然后计算阶码，加上偏置值127，尾数向偶数舍入。</p>
+<h3 id="float-twice"><a href="#float-twice" class="headerlink" title="float_twice"></a>float_twice</h3><p>题目：就是将浮点数乘以2倍。</p>
+<ul>
+<li>float_twice - Return bit-level equivalent of expression 2*f for<ul>
+<li>floating point argument f.</li>
+<li>Both the argument and result are passed as unsigned int’s, but</li>
+<li>they are to be interpreted as the bit-level representation of</li>
+<li>single-precision floating point values.</li>
+<li>When argument is NaN, return argument</li>
+<li>Legal ops: Any integer/unsigned operations incl. ||, &amp;&amp;. also if, while</li>
+<li>Max ops: 30</li>
+<li>Rating: 4</li>
+</ul>
+</li>
+</ul>
+<p>嘤嘤嘤~浮点数真令人头大</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/02/01/CSAPP-3/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/01/CSAPP-3/" itemprop="url">CSAPP_3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-01T18:57:48+08:00">
+                2019-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/01/CSAPP-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/01/CSAPP-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  185 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="无符号数编码"><a href="#无符号数编码" class="headerlink" title="无符号数编码"></a>无符号数编码</h4><p>$$<br>B2U_\omega(\vec x)=\sum^{\omega-1}_{i=0}x_i2^i<br>$$</p>
+<p>$$<br>eg:B2U_4([0001])=0•2^3+0•2^2+0•2^1+1•2^0=0+0+0+1=1<br>$$</p>
+<ul>
+<li>无符号数编码唯一性</li>
+<li>双射</li>
+</ul>
+<h4 id="补码编码"><a href="#补码编码" class="headerlink" title="补码编码"></a>补码编码</h4><p>$$<br>B2T_\omega(\vec x)=-x_{\omega-1}2^{\omega-1}+\sum^{\omega-2}_{i=0}x_i2^i<br>$$</p>
+<h4 id="二进制数编码表示"><a href="#二进制数编码表示" class="headerlink" title="二进制数编码表示"></a>二进制数编码表示</h4><ul>
+<li><p>原码</p>
+<p>最左边一位为符号位（小数：小数点左边一位为符号位）</p>
+<p>+：0</p>
+<p>—：1</p>
+</li>
+<li><p>反码</p>
+<p>符号位不变，其他取反</p>
+</li>
+<li><p>补码</p>
+<p>负数：反码末尾加一</p>
+<p>正数：本身</p>
+</li>
+</ul>
+<h4 id="有符号数和无符号数的转换"><a href="#有符号数和无符号数的转换" class="headerlink" title="有符号数和无符号数的转换"></a>有符号数和无符号数的转换</h4><ul>
+<li><p>补码转换为无符号数<br>$$<br>T2U_\omega(x)=\begin{cases}<br>x+2^\omega, x&lt;0\<br>x,x\geq0\<br>\end{cases}<br>$$</p>
+</li>
+<li><p>无符号数转换为补码<br>$$<br>U2T_\omega(u)=-u_{\omega-1}2^\omega+u<br>$$</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/01/30/CSAPP-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CloyeeYH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cloyee's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/30/CSAPP-2/" itemprop="url">CSAPP_2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-30T18:57:17+08:00">
+                2019-01-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机系统基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机系统基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/30/CSAPP-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/30/CSAPP-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  270 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 mins
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="寻址和字节顺序"><a href="#寻址和字节顺序" class="headerlink" title="寻址和字节顺序"></a>寻址和字节顺序</h4><ol>
+<li>小端法：最低有效字节在最前面</li>
+<li>大端法：最高有效字节在最前面</li>
+<li>浮点型和整型数据有不同的字节模式</li>
+<li>二进制代码不兼容</li>
+</ol>
+<h4 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">布尔运算</th>
+<th style="text-align:center">逻辑运算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">~</td>
+<td style="text-align:center">NOT</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">AND</td>
+</tr>
+<tr>
+<td style="text-align:center">单竖线</td>
+<td style="text-align:center">OR</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">异或（不同为1，相同为0）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>位向量：固定长度，由0，1组成的串,1表示存在，0表示不存在，从右往左</li>
+<li>布尔环</li>
+</ul>
+<h4 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h4><p>左移：右端补k个0，移位之后符号为不变，将一个整数左移1位相当于乘以2</p>
+<p>逻辑右移：左端补k个0</p>
+<p>算术右移：左端补k个最高有效位的值</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">x&gt;&gt;k</td>
+<td style="text-align:center">x右移k位</td>
+</tr>
+<tr>
+<td style="text-align:center">x&lt;&lt;k</td>
+<td style="text-align:center">x左移k位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="位级运算"><a href="#位级运算" class="headerlink" title="位级运算"></a>位级运算</h4><p>转换为二进制进行运算，之后转回相应进制</p>
+<p><strong>掩码运算</strong></p>
+<p>最常见：ch&amp;0xff，生成由ch最低有效字节组成的值</p>
+<p>0xff的二进制形式为11111111，这样最终的值为最后8位不变，其他数均为0</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yoursite.com/2019/01/27/CSAPP-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -784,7 +1599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -795,7 +1610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -867,7 +1682,7 @@
   
   <!-- 添加博客全站总字数统计-->
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共 24.8k 字</span>
+  <span class="post-count">博客全站共 27.8k 字</span>
 </div>
 
 
